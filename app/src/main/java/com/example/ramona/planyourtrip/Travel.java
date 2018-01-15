@@ -10,4 +10,6 @@ public class Travel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
     }
+
+    public void metodaDeTest(){};
 }
