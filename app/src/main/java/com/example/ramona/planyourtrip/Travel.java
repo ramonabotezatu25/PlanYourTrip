@@ -11,36 +11,32 @@ import android.widget.TextView;
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.paperdb.Paper;
 
 public class Travel extends AppCompatActivity {
 
     Language language = new Language();
-
+    public static List<Integer> listaIDTextViews = new ArrayList<>();
+    TextView textView ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
+        //preiau toate textViewurile din clasa
+        textView = (TextView) findViewById(R.id.textView);
+        getAllIdTextView();
+        Integer idTextView = R.string.hello;
         //seteaza limba default
-       //language.setDefaultLanguage(this);
-        //default lang ro
-        Paper.init(this);
-
-        //
-        String limba = Paper.book().read("language");
-        if(limba == null){
-            Paper.book().write("language","ro");
-        }
-        updateView((String) Paper.book().read("language"));
+       language.setDefaultLanguage(this,textView);
     }
 
-    public void updateView (String limba){
-        Context context = MultiLanguageHelper.setLocale(this,limba);
-        Resources resources = context.getResources();
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText(resources.getString(R.string.hello));
+    private void getAllIdTextView() {
+        Integer idTextView = R.string.hello;
+        listaIDTextViews.add(idTextView);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,13 +47,10 @@ public class Travel extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()== R.id.engleza){
-            Paper.book().write("language","en");
-            updateView((String) Paper.book().read("language"));
+           language.schimbaLimba(this,"EN",textView);
         }else if(item.getItemId()== R.id.romana){
-            Paper.book().write("language","ro");
-            updateView((String) Paper.book().read("language"));
+            language.schimbaLimba(this,"RO",textView);
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
