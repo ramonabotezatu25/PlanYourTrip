@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xmls="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/romana"
+        android:title="Romana"
+        ></item>
+    <item android:id="@+id/engleza"
+        android:title="Engleza"
+        ></item>
+
+</menu>
