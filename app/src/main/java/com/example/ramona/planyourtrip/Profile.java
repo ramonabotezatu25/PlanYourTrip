@@ -5,10 +5,18 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ramona.planyourtrip.Util.FragmentList.FragmentLanguage;
+import com.example.ramona.planyourtrip.Util.FragmentList.FragmentList;
 
 public class Profile extends AppCompatActivity {
 
@@ -16,6 +24,29 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        //fragment
+        Bundle bu = getIntent().getExtras();
+        if(bu !=null){
+            FragmentLanguage fragmentList = (FragmentLanguage)getSupportFragmentManager().findFragmentByTag("fragmentList");
+            if(fragmentList==null){
+                fragmentList = new FragmentLanguage();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.add(android.R.id.content,fragmentList,"fragmentList");
+                fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right, android.R.anim.slide_out_right, android.R.anim.slide_in_left);
+               // fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.animator.fade_out);
+                fragmentTransaction.commit();
+            }
+        }else{
+            FragmentList fragmentList = (FragmentList)getSupportFragmentManager().findFragmentByTag("fragmentList");
+            if(fragmentList==null){
+                fragmentList = new FragmentList();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.add(android.R.id.content,fragmentList,"fragmentList");
+                fragmentTransaction.commit();
+            }
+        }
+        //allyouneed
+
         allYouNeed();
     }
     private void allYouNeed() {
@@ -64,5 +95,6 @@ public class Profile extends AppCompatActivity {
         //adauga in lista de traduceri
         //ex: listaIDTextViews.add(idTextView);
     }
+
 
 }
