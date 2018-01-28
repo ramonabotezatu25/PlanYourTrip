@@ -6,5 +6,7 @@
     <string name="nav_explore">Exploreaza</string>
     <string name="nav_profile">Profil</string>
     <string name="nav_exception">Ne pare rau, a intervenit o eroare!Incercati din nou!</string>
+    <!--verifa daca editText e null UTIL-VerificaEmpty-->
+    <string name="util_ve_editText">Toate campurile trebuie completate!</string>
 
 </resources>

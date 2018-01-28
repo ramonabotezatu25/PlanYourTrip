@@ -5,11 +5,9 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Profile extends AppCompatActivity {
@@ -38,7 +36,7 @@ public class Profile extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_home:
-                        startNewActivity(Travel.class);
+                        startNewActivity(TravelTest.class);
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_explore:

@@ -6,4 +6,7 @@
     <string name="nav_explore">Explore</string>
     <string name="nav_profile">Profile</string>
     <string name="nav_exception">Sorry!Please click again!</string>
+    <!--verifa daca editText e null UTIL-VerificaEmpty-->
+    <string name="util_ve_editText">All fields must be filled in!</string>
+
 </resources>

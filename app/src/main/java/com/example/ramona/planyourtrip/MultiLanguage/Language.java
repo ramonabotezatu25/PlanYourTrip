@@ -3,17 +3,11 @@ package com.example.ramona.planyourtrip.MultiLanguage;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.example.ramona.planyourtrip.R;
-
-import java.util.List;
 
 import io.paperdb.Paper;
 
-import static com.example.ramona.planyourtrip.Travel.listaIDTextViews;
+import static com.example.ramona.planyourtrip.TravelTest.listaIDTextViews;
 
 /**
  * Created by claudiu.cercel on 1/19/2018.
