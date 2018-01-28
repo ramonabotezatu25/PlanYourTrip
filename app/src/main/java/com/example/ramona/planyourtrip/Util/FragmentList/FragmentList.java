@@ -37,9 +37,13 @@ public class FragmentList extends ListFragment {
         super.onListItemClick(l, view, position, id);
         ViewGroup viewGroup = (ViewGroup)view;
         TextView textView = (TextView)viewGroup.findViewById(R.id.textViewFragment);
-        Toast.makeText(getActivity(),textView.getText().toString(),Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getActivity(),Profile.class);
-        intent.putExtra("nume","nume");
-        startActivity(intent);
+        if (textView.getText().toString().equals("Limba")) {
+            Intent intent = new Intent(getActivity(),Profile.class);
+            intent.putExtra(FragmentConstant.fragmentName,textView.getText().toString());
+            startActivity(intent);
+        }else{
+            Toast.makeText(getActivity(),"Aceasta functionalitate este in lucru!",Toast.LENGTH_SHORT).show();
+
+        }
     }
 }

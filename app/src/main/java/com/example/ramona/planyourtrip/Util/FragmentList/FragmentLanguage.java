@@ -35,10 +35,7 @@ public class FragmentLanguage extends ListFragment {
         super.onListItemClick(l, view, position, id);
         ViewGroup viewGroup = (ViewGroup)view;
         TextView textView = (TextView)viewGroup.findViewById(R.id.textViewFragment_item);
-        Toast.makeText(getActivity(),textView.getText().toString(),Toast.LENGTH_SHORT).show();
-
         Intent intent = new Intent(getActivity(),Profile.class);
         startActivity(intent);
-
     }
 }
