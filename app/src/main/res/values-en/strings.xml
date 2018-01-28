@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Plan Your Trip</string>
+    <string name="hello">Hello </string>
     <!--NAV BAR -metoda navView()-->
     <string name="nav_home">Home</string>
     <string name="nav_explore">Explore</string>
