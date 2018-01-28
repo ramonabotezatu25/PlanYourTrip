@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Plan Your Trip</string>
+    <!--NAV BAR -metoda navView()-->
+    <string name="nav_home">Home</string>
+    <string name="nav_explore">Explore</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_exception">Sorry!Please click again!</string>
 </resources>

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello </string>
+    <!--NAV BAR -metoda navView()-->
+    <string name="nav_home">Home</string>
+    <string name="nav_explore">Explore</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_exception">Sorry!Please click again!</string>
 </resources>

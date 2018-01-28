@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Salut</string>
+    <!--NAV BAR -metoda navView()-->
+    <string name="nav_home">Acasa</string>
+    <string name="nav_explore">Exploreaza</string>
+    <string name="nav_profile">Profil</string>
+    <string name="nav_exception">Ne pare rau, a intervenit o eroare!Incercati din nou!</string>
+
 </resources>
