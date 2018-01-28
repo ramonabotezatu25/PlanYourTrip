@@ -1,36 +1,31 @@
 package com.example.ramona.planyourtrip;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
-import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Util.VerificaEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.paperdb.Paper;
-
-public class Travel extends AppCompatActivity {
+public class TravelTest extends AppCompatActivity {
 
     Language language = new Language();
     public static List<Integer> listaIDTextViews = new ArrayList<>();
     TextView textView ;
-    TextView textViewNavHome ;
-    TextView textViewNavProfile ;
-    TextView textViewNavExplore ;
+    EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +54,7 @@ public class Travel extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_home:
-                        startNewActivity(Travel.class);
+                        startNewActivity(TravelTest.class);
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_explore:
@@ -104,5 +99,12 @@ public class Travel extends AppCompatActivity {
             language.schimbaLimba(this,"RO",textView);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void faCeva(View view){
+        VerificaEmpty verificaEmpty = new VerificaEmpty();
+        editText = (EditText)findViewById(R.id.editText);
+        verificaEmpty.vericaEmplty(getApplicationContext(),editText);
     }
 }
