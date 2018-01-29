@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#80ccff</color>
+    <color name="colorPrimaryDark">#008ae6</color>
+    <color name="colorAccent">#007acc</color>
+    <color name="colorAccent3">#4db8ff</color>
+    <color name="colorAccent2">#FF4081</color>
+    <color name="turcoazDeschis">#00e6ac</color>
+    <color name="turcoazInchis">#00cc99</color>
+    <color name="turcoaz">#00b386</color>
+    <color name="turcoaz2">#00cc99</color>
+    <color name="turcoaz3">#00e68a</color>
 </resources>

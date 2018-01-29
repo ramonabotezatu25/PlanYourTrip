@@ -16,11 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Util.Popup.Popup"
-            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity
+            android:name=".Util.Popup.Popup"
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity android:name=".Profile" />
         <activity android:name=".Explore" />
-        <activity android:name=".ManageAccount"></activity>
+        <activity android:name=".ManageAccount" />
+        <activity android:name=".LogIn"></activity>
     </application>
 
 </manifest>

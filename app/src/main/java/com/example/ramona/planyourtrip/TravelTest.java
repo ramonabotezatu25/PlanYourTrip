@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -106,5 +107,10 @@ public class TravelTest extends AppCompatActivity {
         VerificaEmpty verificaEmpty = new VerificaEmpty();
         editText = (EditText)findViewById(R.id.editText);
         verificaEmpty.vericaEmplty(getApplicationContext(),editText);
+    }
+    public void deschideLogIn(View view)
+    {
+        Intent intent= new Intent(TravelTest.this, LogIn.class);
+        startActivity(intent);
     }
 }
