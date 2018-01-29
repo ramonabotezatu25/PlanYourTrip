@@ -10,7 +10,7 @@
     <string name="util_ve_editText">Toate campurile trebuie completate!</string>
     <!-- stringuri Log IN -->
     <string name="name">Nume</string>
-    <string name="password">...........</string>
+    <string name="password">Parola</string>
     <string name="login">Autentificare</string>
     <string name="signup">Creeaza cont</string>
 
