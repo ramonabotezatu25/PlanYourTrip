@@ -17,7 +17,6 @@
 
     <style name="TextLabel" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">20sp</item>
-        <item name="android:fontFamily">casual</item>
     </style>
     <!--<style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="turcoaz1">@color/turcoazDeschis</item>

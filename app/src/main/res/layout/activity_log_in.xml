@@ -68,12 +68,13 @@
                     android:drawableLeft="@drawable/icon_user2"
                     android:drawablePadding="15dp"
                     android:ems="10"
-                    android:fontFamily="casual"
+                    android:fontFamily="serif"
                     android:hint="@string/name"
                     android:inputType="textPersonName"
                     android:maxLines="1"
                     android:padding="15dp"
                     android:textColor="#fff"
+                    android:textSize="20dp"
                     android:textColorHint="#fff" />
             </android.support.design.widget.TextInputLayout>
 
@@ -96,14 +97,15 @@
                     android:drawableLeft="@drawable/icon_password2"
                     android:drawablePadding="15dp"
                     android:ems="10"
-                    android:fontFamily="casual"
+                    android:fontFamily="serif"
                     android:hint="@string/password"
                     android:inputType="textPassword"
+                    android:textSize="20dp"
                     android:maxLines="1"
                     android:padding="15dp"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
-                    android:textSize="25dp" />
+                  />
             </android.support.design.widget.TextInputLayout>
 
 \
