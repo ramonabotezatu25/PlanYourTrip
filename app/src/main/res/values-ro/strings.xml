@@ -13,5 +13,7 @@
     <string name="password">Parola</string>
     <string name="login">Autentificare</string>
     <string name="signup">Creeaza cont</string>
+    <string name="questionSignUp">Nu aveti niciun cont?</string>
+    <string name="signUpHere">Creaza cont</string>
 
 </resources>

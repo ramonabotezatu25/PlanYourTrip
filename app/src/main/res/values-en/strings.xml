@@ -11,7 +11,9 @@
     <!-- stringuri Log IN -->
     <string name="name">Username</string>
     <string name="password">Password</string>
-    <string name="login">LogIn</string>
-    <string name="signup">SignUp</string>
+    <string name="login">Sign In</string>
+    <string name="signup">Log In</string>
+    <string name="questionSignUp">Don`t have an account?</string>
+    <string name="signUpHere">Sign up</string>
 
 </resources>
