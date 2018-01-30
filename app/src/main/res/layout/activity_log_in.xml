@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context="com.example.ramona.planyourtrip.LogIn">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@android:color/transparent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background14"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginStart="100dp"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            app:title="Travel Planner">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbarid"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <LinearLayout
+            android:id="@+id/ll_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInput1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText_name_logIn"
+                app:hintTextAppearance="@style/TextLabel"
+                android:minHeight="20dp"
+                android:textColorHint="#fff">
+
+                <EditText
+                    android:id="@+id/editText_name_logIn"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#11000000"
+                    android:drawableLeft="@drawable/icon_user2"
+                    android:drawablePadding="15dp"
+                    android:ems="10"
+                    android:fontFamily="serif"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:textColorHint="#fff" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInput2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editText_password_logIn"
+                app:hintTextAppearance="@style/TextLabel"
+                android:layout_marginBottom="5dp"
+                android:textColorHint="#fff">
+
+                <EditText
+                    android:id="@+id/editText_password_logIn"
+                    android:layout_width="360dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="25dp"
+                    android:background="#11000000"
+                    android:drawableLeft="@drawable/icon_password2"
+                    android:drawablePadding="15dp"
+                    android:ems="10"
+                    android:fontFamily="serif"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:textSize="20dp"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                  />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/login_btn_autentificare"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:padding="15dp"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:fontFamily="casual"
+                android:textStyle="bold"
+                android:background="@drawable/rotunjire_buton_mov"
+                android:textColor="#b56b70"
+                android:text="@string/login"
+
+                android:clickable="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/login_tv_signup_intrebare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="serif"
+                    android:layout_marginLeft="80dp"
+                    android:textSize="15dp"
+                    android:textColor="#704c5b"
+                    android:text="@string/questionSignUp" />
+
+                <TextView
+                    android:id="@+id/login_tv_signUpHere"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#fff"
+                    android:text="@string/signUpHere" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

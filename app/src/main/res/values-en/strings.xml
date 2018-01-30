@@ -8,5 +8,12 @@
     <string name="nav_exception">Sorry!Please click again!</string>
     <!--verifa daca editText e null UTIL-VerificaEmpty-->
     <string name="util_ve_editText">All fields must be filled in!</string>
+    <!-- stringuri Log IN -->
+    <string name="name">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Sign In</string>
+    <string name="signup">Log In</string>
+    <string name="questionSignUp">Don`t have an account?</string>
+    <string name="signUpHere">Sign up</string>
 
 </resources>

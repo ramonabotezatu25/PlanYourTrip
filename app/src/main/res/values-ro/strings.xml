@@ -8,5 +8,12 @@
     <string name="nav_exception">Ne pare rau, a intervenit o eroare!Incercati din nou!</string>
     <!--verifa daca editText e null UTIL-VerificaEmpty-->
     <string name="util_ve_editText">Toate campurile trebuie completate!</string>
+    <!-- stringuri Log IN -->
+    <string name="name">Nume</string>
+    <string name="password">Parola</string>
+    <string name="login">Autentificare</string>
+    <string name="signup">Creeaza cont</string>
+    <string name="questionSignUp">Nu aveti niciun cont?</string>
+    <string name="signUpHere">Creaza cont</string>
 
 </resources>
