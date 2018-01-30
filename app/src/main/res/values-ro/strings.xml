@@ -18,4 +18,7 @@
     <!--meniu profile-->
     <string name="profil_meniu_language">Limba</string>
     <string name="profil_meniu_country">Tara</string>
+    <!--submeniu profil language-->
+    <string name="profil_sub_language_romana">Romana</string>
+    <string name="profil_sub_language_engleza">Engleza</string>
 </resources>
