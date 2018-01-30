@@ -15,5 +15,7 @@
     <string name="signup">Log In</string>
     <string name="questionSignUp">Don`t have an account?</string>
     <string name="signUpHere">Sign up</string>
-
+    <!--meniu profile-->
+    <string name="profil_meniu_language">Language</string>
+    <string name="profil_meniu_country">Country</string>
 </resources>
