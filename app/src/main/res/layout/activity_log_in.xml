@@ -14,12 +14,11 @@
         android:background="@android:color/transparent"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-
-        <android.support.design.widget.CollapsingToolbarLayout
+    <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/login_pic2"
+            android:background="@drawable/background14"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleMarginStart="100dp"
             app:layout_scrollFlags="exitUntilCollapsed|scroll"
@@ -108,7 +107,7 @@
                   />
             </android.support.design.widget.TextInputLayout>
 
-\
+
             <Button
                 android:id="@+id/login_btn_autentificare"
                 android:layout_width="360dp"
