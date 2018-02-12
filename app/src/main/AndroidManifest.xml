@@ -19,11 +19,11 @@
         <activity
             android:name=".Util.Popup.Popup"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".Profile" />
         <activity android:name=".Explore" />
         <activity android:name=".ManageAccount" />
         <activity android:name=".LogIn" />
-        <activity android:name=".CircleProfile"></activity>
+        <activity android:name=".CircleProfile" />
+        <activity android:name=".Util.FragmentList.FragmentChanger"></activity>
     </application>
 
 </manifest>

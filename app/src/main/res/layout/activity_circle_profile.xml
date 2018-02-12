@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.ramona.planyourtrip.CircleProfile">
 
+    <com.hitomi.cmlibrary.CircleMenu
+        android:id="@+id/circleMenu"
+        android:layout_width="450dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        />
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
@@ -14,11 +21,4 @@
         android:layout_alignParentStart="true"
         app:menu="@menu/nav_items"></android.support.design.widget.BottomNavigationView>
 
-    <com.hitomi.cmlibrary.CircleMenu
-        android:id="@+id/circleMenu"
-        android:layout_width="450dp"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        />
 </RelativeLayout>

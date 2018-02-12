@@ -12,12 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.ramona.planyourtrip.MultiLanguage.Language;
+import com.example.ramona.planyourtrip.CircleProfile;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
-import com.example.ramona.planyourtrip.Profile;
 import com.example.ramona.planyourtrip.R;
+import com.hitomi.cmlibrary.CircleMenu;
 
 import io.paperdb.Paper;
 
@@ -32,11 +31,12 @@ public class FragmentLanguage extends ListFragment {
     Context context;
     Resources resources;
     //
-
+    CircleMenu circleMenu;
     private String romana ;
     private String engleza;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle bundle){
+
         ViewGroup rootView =(ViewGroup)inflater.inflate(R.layout.fragment_item,container,false);
         String[] listaMeniu  =getSubmeniuProfil();
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(),R.layout.fragmentraw_item,R.id.textViewFragment_item,listaMeniu);
@@ -55,7 +55,7 @@ public class FragmentLanguage extends ListFragment {
         }else if(textView.getText().toString().equals(romana)){
             schimbaLimba("RO");
         }
-        Intent intent = new Intent(getActivity(),Profile.class);
+        Intent intent = new Intent(getActivity(),CircleProfile.class);
         startActivity(intent);
     }
 

@@ -8,17 +8,27 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Util.FragmentList.FragmentChanger;
+import com.example.ramona.planyourtrip.Util.FragmentList.FragmentConstant;
+import com.example.ramona.planyourtrip.Util.FragmentList.FragmentLanguage;
+import com.example.ramona.planyourtrip.Util.FragmentList.FragmentList;
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 import io.paperdb.Paper;
+
+import static com.example.ramona.planyourtrip.Util.CircleMenu.ConstantsCircleMenu.FRAGENT_LANGUAGE;
+import static com.example.ramona.planyourtrip.Util.CircleMenu.ConstantsCircleMenu.FRAGMENT_LIST;
+import static com.example.ramona.planyourtrip.Util.FragmentList.FragmentConstant.FRAGMENT_NAME;
 
 public class CircleProfile extends AppCompatActivity {
     //setari de limba
@@ -39,11 +49,8 @@ public class CircleProfile extends AppCompatActivity {
     }
 
     public void loadCircleMenu(){
-        String[] arrayMenu ={"Profil",
-                "Language","Nearby","Povestea Mea"};
         int culoareMeniuPrincipal = Color.parseColor("#ff0000");
         int culoareSubmeniuProfil = Color.parseColor("#4ce3af");
-        int culoareSubmeniuLimba = Color.parseColor("#ff0000");
 
             circleMenu =(CircleMenu)findViewById(R.id.circleMenu);
             circleMenu.setMainMenu(culoareMeniuPrincipal,
@@ -53,12 +60,22 @@ public class CircleProfile extends AppCompatActivity {
             circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener() {
                 @Override
                 public void onMenuSelected(int i) {
-                    String var = String.valueOf(i);
-                    Toast.makeText(getApplicationContext(),var, Toast.LENGTH_SHORT).show();
+                    String indexOfMenu = String.valueOf(i);
+                    changeFragment(indexOfMenu);
+                  //  circleMenu.setVisibility(View.INVISIBLE);
                 }
             });
         }
 
+    private void changeFragment(String indexOfMenu){
+        if(indexOfMenu !=null){
+            Intent fragmentChanger = new Intent(this,FragmentChanger.class);
+            fragmentChanger.putExtra(FRAGMENT_NAME,indexOfMenu);
+            startActivity(fragmentChanger);
+        }else{
+            startNewActivity(CircleProfile.class);
+        }
+    }
     private void allYouNeed() {
         //setari de limba
         context = getApplicationContext();
@@ -98,7 +115,7 @@ public class CircleProfile extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_profile:
-                        startNewActivity(Profile.class);
+                        startNewActivity(CircleProfile.class);
                         overridePendingTransition(0, 0);
                         break;
                     default:
