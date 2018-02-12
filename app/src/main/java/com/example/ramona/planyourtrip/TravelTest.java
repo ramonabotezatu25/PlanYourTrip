@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ramona.planyourtrip.GmailSender.SendEmail;
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.VerificaEmpty;
@@ -123,6 +124,10 @@ public class TravelTest extends AppCompatActivity {
     public void deschideLogIn(View view)
     {
         Intent intent= new Intent(TravelTest.this, LogIn.class);
+        startActivity(intent);
+    }
+    public void deschideEmail(View view){
+        Intent intent= new Intent(TravelTest.this, SendEmail.class);
         startActivity(intent);
     }
 }

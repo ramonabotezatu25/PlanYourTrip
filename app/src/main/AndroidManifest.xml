@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ramona.planyourtrip">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,7 +24,8 @@
         <activity android:name=".ManageAccount" />
         <activity android:name=".LogIn" />
         <activity android:name=".CircleProfile" />
-        <activity android:name=".Util.FragmentList.FragmentChanger"></activity>
+        <activity android:name=".Util.FragmentList.FragmentChanger" />
+        <activity android:name=".GmailSender.SendEmail"></activity>
     </application>
 
 </manifest>
