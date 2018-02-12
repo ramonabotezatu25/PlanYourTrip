@@ -3,63 +3,72 @@ package com.example.ramona.planyourtrip;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
-import com.example.ramona.planyourtrip.Util.VerificaEmpty;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.hitomi.cmlibrary.CircleMenu;
+import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 import io.paperdb.Paper;
 
-import static com.example.ramona.planyourtrip.MultiLanguage.Language.setDefaultLanguage;
-
-public class TravelTest extends AppCompatActivity {
+public class CircleProfile extends AppCompatActivity {
     //setari de limba
     Context context;
     Resources resources;
+    CircleMenu circleMenu;
     //
-    TextView textView ;
-    EditText editText;
-    TextInputLayout hintName;
-    TextInputLayout hintPass;
+    Bundle bu;
+    String limba ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_travel);
-
-        setDefaultLanguage(this);
+        setContentView(R.layout.activity_circle_profile);
         allYouNeed();
+        //
+        loadCircleMenu();
 
     }
 
-    private void allYouNeed() {
+    public void loadCircleMenu(){
+        String[] arrayMenu ={"Profil",
+                "Language","Nearby","Povestea Mea"};
+        int culoareMeniuPrincipal = Color.parseColor("#ff0000");
+        int culoareSubmeniuProfil = Color.parseColor("#4ce3af");
+        int culoareSubmeniuLimba = Color.parseColor("#ff0000");
 
+            circleMenu =(CircleMenu)findViewById(R.id.circleMenu);
+            circleMenu.setMainMenu(culoareMeniuPrincipal,
+                    R.drawable.addmenucircle,
+                    R.drawable.removecirclemenu)
+                    .addSubMenu(culoareSubmeniuProfil,R.drawable.languagecirclemenu);
+            circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener() {
+                @Override
+                public void onMenuSelected(int i) {
+                    String var = String.valueOf(i);
+                    Toast.makeText(getApplicationContext(),var, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+    private void allYouNeed() {
+        //setari de limba
+        context = getApplicationContext();
+        context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
+        resources = context.getResources();
         //preiau toate view-urile care trebuie traduce din clasa
-        textView = (TextView) findViewById(R.id.textView);
-        hintName = (TextInputLayout)findViewById(R.id.textInput1);
-        hintPass = (TextInputLayout)findViewById(R.id.textInput2);
-        //pun toate id-urile stringurilor de care am nevoie
-        setAllTextOnActivity();
+        limba = resources.getString(R.string.profil_meniu_language);
         //navigation view
         navView();
     }
-
     private void navView(){
 
         //navigation view
@@ -89,7 +98,7 @@ public class TravelTest extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_profile:
-                        startNewActivity(CircleProfile.class);
+                        startNewActivity(Profile.class);
                         overridePendingTransition(0, 0);
                         break;
                     default:
@@ -106,23 +115,4 @@ public class TravelTest extends AppCompatActivity {
         startActivity(a);
     }
 
-    private void setAllTextOnActivity() {
-        //setari de limba
-        context = getApplicationContext();
-        context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
-        resources = context.getResources();
-        hintPass.setHint(resources.getString(R.string.name));
-        hintName.setHint(resources.getString(R.string.password));
-    }
-
-    public void faCeva(View view){
-        VerificaEmpty verificaEmpty = new VerificaEmpty();
-        editText = (EditText)findViewById(R.id.editText);
-        verificaEmpty.vericaEmplty(getApplicationContext(),editText);
-    }
-    public void deschideLogIn(View view)
-    {
-        Intent intent= new Intent(TravelTest.this, LogIn.class);
-        startActivity(intent);
-    }
 }

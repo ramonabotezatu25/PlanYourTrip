@@ -49,7 +49,7 @@ public class Explore extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_profile:
-                        startNewActivity(Profile.class);
+                        startNewActivity(CircleProfile.class);
                         overridePendingTransition(0, 0);
                         break;
                     default:
