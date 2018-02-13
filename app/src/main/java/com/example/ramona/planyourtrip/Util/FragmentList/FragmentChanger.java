@@ -8,8 +8,10 @@ import android.os.Bundle;
 import com.example.ramona.planyourtrip.CircleProfile;
 import com.example.ramona.planyourtrip.Explore;
 import com.example.ramona.planyourtrip.R;
+import com.example.ramona.planyourtrip.Weather.ChooseCityWeather;
 
 import static com.example.ramona.planyourtrip.Util.CircleMenu.ConstantsCircleMenu.FRAGENT_LANGUAGE;
+import static com.example.ramona.planyourtrip.Util.CircleMenu.ConstantsCircleMenu.FRAGENT_WEATHER;
 import static com.example.ramona.planyourtrip.Util.CircleMenu.ConstantsCircleMenu.FRAGMENT_LIST;
 import static com.example.ramona.planyourtrip.Util.FragmentList.FragmentConstant.FRAGMENT_NAME;
 
@@ -37,6 +39,8 @@ public class FragmentChanger extends AppCompatActivity {
                     //
 
                 }
+            }else if(indexOfMenu.equals(FRAGENT_WEATHER)){
+                startNewActivity(ChooseCityWeather.class);
             }
         }else{
             startNewActivity(CircleProfile.class);

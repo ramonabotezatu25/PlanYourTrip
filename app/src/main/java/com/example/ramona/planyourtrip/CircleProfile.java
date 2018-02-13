@@ -51,12 +51,14 @@ public class CircleProfile extends AppCompatActivity {
     public void loadCircleMenu(){
         int culoareMeniuPrincipal = Color.parseColor("#ff0000");
         int culoareSubmeniuProfil = Color.parseColor("#4ce3af");
+        int culoareSubmeniuWeather = Color.parseColor("#FF0040");
 
             circleMenu =(CircleMenu)findViewById(R.id.circleMenu);
             circleMenu.setMainMenu(culoareMeniuPrincipal,
                     R.drawable.addmenucircle,
                     R.drawable.removecirclemenu)
-                    .addSubMenu(culoareSubmeniuProfil,R.drawable.languagecirclemenu);
+                    .addSubMenu(culoareSubmeniuProfil,R.drawable.languagecirclemenu)
+                    .addSubMenu(culoareSubmeniuProfil,R.drawable.weather);
             circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener() {
                 @Override
                 public void onMenuSelected(int i) {
