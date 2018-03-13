@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="Planyoutrip">Plan your trip</string>
     <string name="hello">Salut</string>
     <!--NAV BAR -metoda navView()-->
     <string name="nav_home">Acasa</string>
@@ -14,11 +15,17 @@
     <string name="login">Autentificare</string>
     <string name="signup">Creeaza cont</string>
     <string name="questionSignUp">Nu aveti niciun cont?</string>
-    <string name="signUpHere">Creaza cont</string>
+    <string name="signUpHere">Creeaza cont</string>
     <!--meniu profile-->
     <string name="profil_meniu_language">Limba</string>
     <string name="profil_meniu_country">Tara</string>
     <!--submeniu profil language-->
     <string name="profil_sub_language_romana">Romana</string>
     <string name="profil_sub_language_engleza">Engleza</string>
+    <!-- SignUP -->
+    <string name="creeazaCont">Creeaza cont</string>
+    <string name="email">Email</string>
+    <string name="alreadyHaveAccount">Sunteti deja membru? Conecteaza-te</string>
+    <string name="bineAtiVenit">Bine ati venit pe PlanYourTrip</string>
+
 </resources>

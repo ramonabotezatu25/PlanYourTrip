@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="Planyoutrip">Plan your trip</string>
     <string name="hello">Hello </string>
     <!--NAV BAR -metoda navView()-->
     <string name="nav_home">Home</string>
@@ -21,4 +22,10 @@
     <!--submeniu profil language-->
     <string name="profil_sub_language_romana">Romanian</string>
     <string name="profil_sub_language_engleza">English</string>
+    <!-- SignUP -->
+    <string name="creeazaCont">Create account</string>
+    <string name="email">Email</string>
+    <string name="alreadyHaveAccount">Already a member? Login</string>
+    <string name="bineAtiVenit">Welcome on PlanYourTrip</string>
+
 </resources>
