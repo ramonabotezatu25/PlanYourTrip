@@ -7,12 +7,24 @@
     android:background="@drawable/background2"
     tools:context="com.example.ramona.planyourtrip.SignUpActivity">
 
+    <com.john.waveview.WaveView
+        android:id="@+id/waveView"
+        android:background="#68394C"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:above_wave_color="@android:color/holo_red_light"
+        app:blow_wave_color="@android:color/holo_purple"
+        app:wave_height="large"
+        app:wave_length="large"
+        app:wave_hz="fast"></com.john.waveview.WaveView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:orientation="vertical">
+
+
 
         <TextView
             android:id="@+id/textView2"

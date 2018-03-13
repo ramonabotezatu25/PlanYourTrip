@@ -36,7 +36,10 @@ dependencies {
     compile files('D:\\Facultate\\an 3\\ANDROID_DAM\\SCDAM_Seminar11\\PlanYourTrip\\app\\libs\\mail.jar')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.taishi-y:flipprogressdialog:0.1.0'
+    //wave screen
+    compile 'com.github.john990:WaveView:v0.9'
     testCompile 'junit:junit:4.12'
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
+
 }
