@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ramona.planyourtrip">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,7 +28,8 @@
         <activity android:name=".Weather.ChooseCityWeather" />
         <activity android:name=".Weather.WeatherMainActivity" />
         <activity android:name=".Util.FragmentList.FragmentChanger" />
-        <activity android:name=".GmailSender.SendEmail"></activity>
+        <activity android:name=".GmailSender.SendEmail" />
+        <activity android:name=".SignUpActivity"></activity>
     </application>
 
 </manifest>
