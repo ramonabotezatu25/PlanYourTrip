@@ -29,7 +29,8 @@
         <activity android:name=".Weather.WeatherMainActivity" />
         <activity android:name=".Util.FragmentList.FragmentChanger" />
         <activity android:name=".GmailSender.SendEmail" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".ConfirmationCode"></activity>
     </application>
 
 </manifest>

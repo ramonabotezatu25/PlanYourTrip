@@ -27,5 +27,13 @@
     <string name="email">Email</string>
     <string name="alreadyHaveAccount">Already a member? Login</string>
     <string name="bineAtiVenit">Welcome on PlanYourTrip</string>
+    <string name="conectareFacebook"> Or create account with </string>
+    <!--ConfirmationCode-->
+    <string name="contCreat">Your account has been created successfully! You will soon receive a confirmation email </string>
+    <string name="introducetiCod">Introduce your confirmation code</string>
+    <string name="verificaCod">Verify code</string>
+    <string name="retrimiteCod">Resend email</string>
+    <string name="succes">Congratulations! You have one more step</string>
+    <string name="campNecompletat">*You must complete all fields</string>
 
 </resources>

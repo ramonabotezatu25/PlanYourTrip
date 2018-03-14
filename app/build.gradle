@@ -38,6 +38,8 @@ dependencies {
     compile 'com.taishi-y:flipprogressdialog:0.1.0'
     //wave screen
     compile 'com.github.john990:WaveView:v0.9'
+    //magic buttons
+    compile 'com.github.bloder:magic:1.1'
     testCompile 'junit:junit:4.12'
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')

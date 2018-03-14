@@ -46,9 +46,24 @@
             android:layout_marginLeft="25dp"
             android:fontFamily="cursive"
             android:textSize="30dp"
-            android:textColor="#5905"
+            android:textColor="#F5A9F2"
             android:layout_marginBottom="20dp"
             android:text="@string/bineAtiVenit" />
+
+        <TextView
+            android:id="@+id/tv_campMesaj_ConfirmationCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FA5858"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="15dp"
+            android:fontFamily="sans-serif-condensed"
+            android:visibility="invisible"
+            android:text="@string/campNecompletat" />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInput1"
@@ -154,6 +169,7 @@
             android:background="@drawable/rotunjire_buton_mov"
             android:textColor="#b56b70"
             android:text="@string/signup"
+            android:onClick="verificaDateSignUp"
             android:clickable="true"/>
 
         <TextView
@@ -165,6 +181,10 @@
             android:textSize="15dp"
             android:textColor="#590021"
             android:text="@string/alreadyHaveAccount" />
+
+
+
+
 
     </LinearLayout>
 </RelativeLayout>

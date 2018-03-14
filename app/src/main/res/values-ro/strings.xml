@@ -27,5 +27,13 @@
     <string name="email">Email</string>
     <string name="alreadyHaveAccount">Sunteti deja membru? Conecteaza-te</string>
     <string name="bineAtiVenit">Bine ati venit pe PlanYourTrip</string>
+    <string name="conectareFacebook">Sau conectare cu </string>
+    <!--ConfirmationCode-->
+    <string name="contCreat">Contul a fost creat cu succes! Veti primi codul de confirmare pe adresa de email </string>
+    <string name="introducetiCod">Introduceti codul de confirmare</string>
+    <string name="verificaCod">Verifica cod</string>
+    <string name="retrimiteCod">Retrimite cod</string>
+    <string name="succes">Felicitari. Mai ai doar un pas</string>
+    <string name="campNecompletat">*Toate campurile sunt obligatorii</string>
 
 </resources>
