@@ -35,5 +35,44 @@
     <string name="retrimiteCod">Retrimite cod</string>
     <string name="succes">Felicitari. Mai ai doar un pas</string>
     <string name="campNecompletat">*Toate campurile sunt obligatorii</string>
+    <!-- Formular interese -->
+    <string name="titlu">Ajuta-ne sa te cunoastem mai bine pentru a-ti putea da cele mai bune oferte pentru tine</string>
+    <string name="statusRelatie">1. Status relatie</string>
+    <string name="single">Singur</string>
+    <string name="inrelatie">intr-o relatie</string>
+    <string name="casatorit">casatorit/a</string>
+    <string name="aveticopii">2. Aveti copii?</string>
+    <string name="da">Da</string>
+    <string name="nu">Na</string>
+    <string name="catdedespleci">3. Cat de des pleci in vacanta?</string>
+    <string name="rar">Rar</string>
+    <string name="des">Des</string>
+    <string name="foarte_des">Foarte des</string>
+    <string name="sunteti_interesat">4. De ce tip de calatorie sunteti interesat</string>
+    <string name="daca_ai_putea_alege">5. Daca ai putea alege o locatie in care sa pleci chiar acum, aceasta ar fi de tip: </string>
+    <string name="orase_vizitate">6. Ati dori sa revizitati orasele in care deja ati fost? </string>
+    <string name="buget">7. Setati un buget pentru calatoriile dumneavoastra</string>
+    <!-- Spinner buget -->
+    <array name="spinnerBuget">
+        <item>Nu conteaza</item>
+        <item>Intre 100$ - 300$</item>
+        <item>Intre 300$- 500$</item>
+        <item>Intre 500$ - 1000$</item>
+        <item>Peste 1000$</item>
+    </array>
+    <!-- Spinner categorii-->
+    <array name="spinnerCategorii">
+        <item>cultural</item>
+        <item>istoric</item>
+        <item>romantic</item>
+        <item>aventura</item>
+        <item>sportiv</item>
+        <item>familie</item>
+        <item>modern</item>
+        <item>exotic</item>
+        <item>parcuri nationale</item>
+    </array>
+    <string name="alegeOrase">8. Selecteaza orasele vizitate</string>
+    <string name="finalizare">Arata-mi ofertele!</string>
 
 </resources>

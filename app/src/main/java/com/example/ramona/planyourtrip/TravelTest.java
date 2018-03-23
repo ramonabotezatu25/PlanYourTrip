@@ -130,4 +130,9 @@ public class TravelTest extends AppCompatActivity {
         Intent intent= new Intent(TravelTest.this, SendEmail.class);
         startActivity(intent);
     }
+    public  void deschideFormular(View view)
+    {
+        Intent intent= new Intent(TravelTest.this, Formular_interese.class);
+        startActivity(intent);
+    }
 }

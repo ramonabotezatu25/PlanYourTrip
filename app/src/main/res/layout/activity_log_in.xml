@@ -83,7 +83,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editText_password_logIn"
                 app:hintTextAppearance="@style/TextLabel"
-                android:layout_marginBottom="5dp"
                 android:textColorHint="#fff">
 
                 <EditText

@@ -30,7 +30,8 @@
         <activity android:name=".Util.FragmentList.FragmentChanger" />
         <activity android:name=".GmailSender.SendEmail" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".ConfirmationCode"></activity>
+        <activity android:name=".ConfirmationCode" />
+        <activity android:name=".Formular_interese"></activity>
     </application>
 
 </manifest>

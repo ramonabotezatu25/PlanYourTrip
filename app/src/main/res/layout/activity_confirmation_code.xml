@@ -96,6 +96,7 @@
                 android:textStyle="bold"
                 android:background="@drawable/rotunjire_buton_mov"
                 android:textColor="#b56b70"
+                android:onClick="sendConfirmationEmail"
                 android:text="@string/retrimiteCod" />
 
         </LinearLayout>
