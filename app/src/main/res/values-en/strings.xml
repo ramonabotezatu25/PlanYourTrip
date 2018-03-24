@@ -55,6 +55,7 @@
     <string name="buget">7. How much money do you want to spent on vacations</string>
     <!-- Spinner buget -->
     <array name="spinnerBuget">
+        <item>Choose an option</item>
         <item>It doesn't matter</item>
         <item>Between 100$ - 300$</item>
         <item>Between 300$- 500$</item>
@@ -63,6 +64,7 @@
     </array>
     <!-- Spinner categorii-->
     <array name="spinnerCategorii">
+        <item>Choose an option</item>
         <item>Cultural</item>
         <item>Hostorical</item>
         <item>Romantic</item>

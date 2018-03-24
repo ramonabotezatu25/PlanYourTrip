@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.john.waveview.WaveView;
@@ -31,6 +32,7 @@ public class Formular_interese extends AppCompatActivity{
     Spinner spinnerBuget;
     Spinner spinnerOrase;
     ArrayList<Integer> listOraseSelectate = new ArrayList<>();
+    TextView tvTari;
     WaveView waveView;
     RadioButton rb_interesatOraseVizitate;
     Set<String> waveViewProgress = new HashSet<>();
@@ -42,7 +44,7 @@ public class Formular_interese extends AppCompatActivity{
 
         waveView = (WaveView) findViewById(R.id.waveView2);
         waveView.setProgress(0);
-
+        tvTari = (TextView)findViewById(R.id.tv_tari) ;
         spinnerCategorii1 = (Spinner) findViewById(R.id.formular_spinnerCategorii_1);
         spinnerCategorii2 = (Spinner) findViewById(R.id.formular_spinnerCategorii_2);
         spinnerBuget = (Spinner) findViewById(R.id.formular_spinerBuget);
@@ -65,37 +67,71 @@ public class Formular_interese extends AppCompatActivity{
                 for (int i = 0; i < list.length; i++) {
                     listaOrase.add(list[i]);
                 }
-                listaOrase.remove(position);
-                ArrayAdapter<String> adapter2 =
-                        new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaOrase);
-                adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-
-                spinnerCategorii2.setAdapter(adapter2);
+                if (position!=0){
+                    waveViewProgress("spinnerCategorii1");
+                    listaOrase.remove(0);
+                    listaOrase.remove(position-1);
+                    ArrayAdapter<String> adapter2 =
+                            new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaOrase);
+                    adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                    spinnerCategorii2.setAdapter(adapter2);
+                    spinnerCategorii2.setVisibility(VISIBLE);
+                }  else{
+                    waveViewProgress("0");
+                    spinnerCategorii2.setVisibility(INVISIBLE);
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
+
             }
 
         });
 
+        spinnerCategorii2.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+               waveViewProgress("spinnerCategorii2");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
         //populez spinner Buget
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.spinnerBuget, android.R.layout.simple_spinner_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerBuget.setAdapter(adapter3);
 
-        rb_interesatOraseVizitate=(RadioButton)findViewById(R.id.formular_rb_oraseVizitate_da);
-        rb_interesatOraseVizitate.setOnClickListener(new OnClickListener() {
+
+        spinnerOrase.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                //populez spinner Orase
-                spinnerOrase.setVisibility(VISIBLE);
-                ArrayAdapter<CharSequence> adapter4= ArrayAdapter.createFromResource(getApplicationContext(), R.array.spinnerOrase, android.R.layout.simple_list_item_multiple_choice);
-                adapter4.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
-                spinnerOrase.setAdapter(adapter4);
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
+
+        spinnerBuget.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                if (position!=0)
+                    waveViewProgress("spinnerBuget");
+                else
+                    waveViewProgress("0");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
     //radio grup
 
@@ -163,6 +199,16 @@ public class Formular_interese extends AppCompatActivity{
                 // This puts the value (true/false) into the variable
                 boolean isChecked = checkedRadioButton.isChecked();
                 // If the radiobutton that has changed in check state is now checked...
+                if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.da))){
+                    spinnerOrase.setVisibility(VISIBLE);
+                    tvTari.setVisibility(VISIBLE);
+                    ArrayAdapter<CharSequence> adapter4= ArrayAdapter.createFromResource(getApplicationContext(), R.array.spinnerOrase, android.R.layout.simple_list_item_multiple_choice);
+                    adapter4.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
+                    spinnerOrase.setAdapter(adapter4);
+                }else{
+                    tvTari.setVisibility(INVISIBLE);
+                    spinnerOrase.setVisibility(INVISIBLE);
+                }
                 if (isChecked)
                 {
                     waveViewProgress("rGroupOraseVizitate");
@@ -172,9 +218,17 @@ public class Formular_interese extends AppCompatActivity{
     }
 
     public void waveViewProgress(String chkGroup){
-        waveView.setProgress(0);
-        waveViewProgress.add(chkGroup);
-        waveView.setProgress((int) (12.5*waveViewProgress.size()));
+        if(!chkGroup.equals("0")) {
+            waveView.setProgress(0);
+            waveViewProgress.add(chkGroup);
+            waveView.setProgress((int) (14.2 * waveViewProgress.size()));
+        }else{
+            if(waveViewProgress.size()==0)
+                waveView.setProgress(0);
+            else
+                waveView.setProgress((int) (14.2 * (waveViewProgress.size()-1) ));
+        }
+
     }
 
 }

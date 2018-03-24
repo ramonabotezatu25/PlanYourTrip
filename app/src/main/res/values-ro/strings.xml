@@ -43,7 +43,7 @@
     <string name="casatorit">casatorit/a</string>
     <string name="aveticopii">2. Aveti copii?</string>
     <string name="da">Da</string>
-    <string name="nu">Na</string>
+    <string name="nu">Nu</string>
     <string name="catdedespleci">3. Cat de des pleci in vacanta?</string>
     <string name="rar">Rar</string>
     <string name="des">Des</string>
@@ -54,6 +54,7 @@
     <string name="buget">7. Setati un buget pentru calatoriile dumneavoastra</string>
     <!-- Spinner buget -->
     <array name="spinnerBuget">
+        <item>Alege o optiune</item>
         <item>Nu conteaza</item>
         <item>Intre 100$ - 300$</item>
         <item>Intre 300$- 500$</item>
@@ -62,15 +63,16 @@
     </array>
     <!-- Spinner categorii-->
     <array name="spinnerCategorii">
-        <item>cultural</item>
-        <item>istoric</item>
-        <item>romantic</item>
-        <item>aventura</item>
-        <item>sportiv</item>
-        <item>familie</item>
-        <item>modern</item>
-        <item>exotic</item>
-        <item>parcuri nationale</item>
+        <item>Alege o optiune</item>
+        <item>Cultural</item>
+        <item>Istoric</item>
+        <item>Romantic</item>
+        <item>Aventura</item>
+        <item>Sportiv</item>
+        <item>Familie</item>
+        <item>Modern</item>
+        <item>Exotic</item>
+        <item>Parcuri nationale</item>
     </array>
     <string name="alegeOrase">8. Selecteaza orasele vizitate</string>
     <string name="finalizare">Arata-mi ofertele!</string>
