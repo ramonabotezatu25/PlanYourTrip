@@ -36,7 +36,8 @@ public class Formular_interese extends AppCompatActivity{
     WaveView waveView;
     RadioButton rb_interesatOraseVizitate;
     Set<String> waveViewProgress = new HashSet<>();
-
+    boolean[] checkedItems;
+    boolean checkItemValid = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,17 +106,7 @@ public class Formular_interese extends AppCompatActivity{
         spinnerBuget.setAdapter(adapter3);
 
 
-        spinnerOrase.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         spinnerBuget.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
@@ -189,7 +180,7 @@ public class Formular_interese extends AppCompatActivity{
             }
         });
         // This will get the radiogroup
-        RadioGroup rGroupOraseVizitate = (RadioGroup)findViewById(R.id.formular_radioGroup_oraseVizitate);
+        final RadioGroup rGroupOraseVizitate = (RadioGroup)findViewById(R.id.formular_radioGroup_oraseVizitate);
         rGroupOraseVizitate.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId)
@@ -201,18 +192,86 @@ public class Formular_interese extends AppCompatActivity{
                 // If the radiobutton that has changed in check state is now checked...
                 if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.da))){
                     spinnerOrase.setVisibility(VISIBLE);
-                    tvTari.setVisibility(VISIBLE);
                     ArrayAdapter<CharSequence> adapter4= ArrayAdapter.createFromResource(getApplicationContext(), R.array.spinnerOrase, android.R.layout.simple_list_item_multiple_choice);
                     adapter4.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
                     spinnerOrase.setAdapter(adapter4);
+                    checkItemValid = true;
                 }else{
-                    tvTari.setVisibility(INVISIBLE);
                     spinnerOrase.setVisibility(INVISIBLE);
                 }
                 if (isChecked)
                 {
                     waveViewProgress("rGroupOraseVizitate");
                 }
+            }
+        });
+
+        spinnerOrase.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                final String[] listaOrase = getResources().getStringArray(R.array.spinnerOrase);
+                checkedItems=new boolean[listaOrase.length];
+                AlertDialog.Builder mBuilder= new AlertDialog.Builder(Formular_interese.this);
+                mBuilder.setTitle("Alegeti orasele vizitate");
+                mBuilder.setMultiChoiceItems(R.array.spinnerOrase, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                        if(isChecked){
+                            if(!listOraseSelectate.contains(position)){
+                                listOraseSelectate.add(position);
+                            }
+                            else {
+                                listOraseSelectate.remove(position);
+                            }
+                        }
+                    }
+                });
+                mBuilder.setCancelable(false);
+                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        String item="";
+                        for(int i=0; i< listOraseSelectate.size();i++){
+                            item=item + listaOrase[listOraseSelectate.get(i)];
+                            if(i!=listOraseSelectate.size()-1){
+                                item=item+ ", ";
+                            }
+                        }
+                        tvTari.setText(item);
+                        rGroupOraseVizitate.check(R.id.formular_rb_oraseVizitate_nu);
+                        spinnerOrase.setVisibility(INVISIBLE);
+                        checkItemValid =false;
+                    }
+                });
+                mBuilder.setNegativeButton("dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        for(int i=0;i<checkedItems.length;i++){
+                            checkedItems[i]=false;
+                            listOraseSelectate.clear();
+                            tvTari.setText("");
+                        }
+                    }
+                });
+
+                if(checkItemValid)
+                {
+                    AlertDialog mDialog= mBuilder.create();
+                    mDialog.show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
     }
