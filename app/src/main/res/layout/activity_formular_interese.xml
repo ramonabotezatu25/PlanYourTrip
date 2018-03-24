@@ -49,16 +49,12 @@
             android:fontFamily="casual"
             android:text="@string/statusRelatie" />
 
-        <RadioGroup
-            android:id="@+id/formular_radioGroup_status_relatie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                <RadioGroup
+                    android:id="@+id/formular_radioGroup_status_relatie"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
 
                 <RadioButton
                     android:id="@+id/formular_rb_singur"
@@ -81,8 +77,7 @@
                     android:layout_weight="1"
                     android:fontFamily="casual"
                     android:text="@string/casatorit" />
-            </LinearLayout>
-        </RadioGroup>
+                </RadioGroup>
 
 
         <TextView
@@ -97,13 +92,8 @@
         <RadioGroup
             android:id="@+id/formular_radioGrup_aveti_copii"
             android:layout_width="wrap_content"
+            android:orientation="horizontal"
             android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/formular_rb_copii_da"
@@ -118,7 +108,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="casual"
                     android:text="@string/nu" />
-            </LinearLayout>
         </RadioGroup>
 
         <TextView
@@ -134,14 +123,8 @@
         <RadioGroup
             android:id="@+id/formular_radioGroup_catDeDesPleci"
             android:layout_width="wrap_content"
+            android:orientation="horizontal"
             android:layout_height="wrap_content">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/formular_rb_calatoresc_rar"
@@ -166,7 +149,6 @@
                     android:layout_weight="1"
                     android:fontFamily="casual"
                     android:text="@string/foarte_des" />
-            </LinearLayout>
         </RadioGroup>
 
             <TextView
@@ -251,12 +233,8 @@
         <RadioGroup
             android:id="@+id/formular_radioGroup_oraseVizitate"
             android:layout_width="wrap_content"
+            android:orientation="horizontal"
             android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/formular_rb_oraseVizitate_da"
@@ -274,7 +252,6 @@
                     android:fontFamily="casual"
                     android:text="@string/nu" />
 
-            </LinearLayout>
         </RadioGroup>
 
         <TextView

@@ -12,12 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static android.widget.AdapterView.*;
 
@@ -28,17 +31,9 @@ public class Formular_interese extends AppCompatActivity{
     Spinner spinnerBuget;
     Spinner spinnerOrase;
     ArrayList<Integer> listOraseSelectate = new ArrayList<>();
-    FlipProgressDialog fpd;
     WaveView waveView;
-    RadioButton rb_single;
-    RadioButton rb_inRelatie;
-    RadioButton rb_castorit;
-    RadioButton rb_avetiCopii;
-    RadioButton rb_catDeDesPleci_rar;
-    RadioButton rb_catDeDesPleci_des;
-    RadioButton rb_catDeDesPleci_foarteDes;
     RadioButton rb_interesatOraseVizitate;
-    RadioGroup radioGroup;
+    Set<String> waveViewProgress = new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,18 +49,6 @@ public class Formular_interese extends AppCompatActivity{
         spinnerOrase = (Spinner) findViewById(R.id.formular_spinnerOrase);
         spinnerOrase.setVisibility(INVISIBLE);
 
-        rb_single=(RadioButton)findViewById(R.id.formular_rb_singur);
-        rb_inRelatie=(RadioButton)findViewById(R.id.formular_rb_inRelatie);
-        rb_castorit=(RadioButton)findViewById(R.id.formular_rb_casatorit);
-        rb_avetiCopii=(RadioButton)findViewById(R.id.formular_rb_copii_da);
-        rb_catDeDesPleci_rar=(RadioButton)findViewById(R.id.formular_rb_calatoresc_rar);
-        rb_catDeDesPleci_des=(RadioButton)findViewById(R.id.formular_rb_calatoresc_des);
-        rb_catDeDesPleci_foarteDes=(RadioButton)findViewById(R.id.formular_rb_calatoresc_foarte_des);
-        rb_interesatOraseVizitate=(RadioButton)findViewById(R.id.formular_rb_oraseVizitate_da);
-
-        rb_single.addTextChangedListener(fieldValidatorTextWatcher);
-        rb_castorit.addTextChangedListener(fieldValidatorTextWatcher);
-        rb_inRelatie.addTextChangedListener(fieldValidatorTextWatcher);
 
         //populez spinnerCategorii 1
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerCategorii, android.R.layout.simple_spinner_item);
@@ -102,6 +85,7 @@ public class Formular_interese extends AppCompatActivity{
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerBuget.setAdapter(adapter3);
 
+        rb_interesatOraseVizitate=(RadioButton)findViewById(R.id.formular_rb_oraseVizitate_da);
         rb_interesatOraseVizitate.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,50 +97,84 @@ public class Formular_interese extends AppCompatActivity{
             }
         });
 
+    //radio grup
 
+        // This will get the radiogroup
+        RadioGroup rGroupStatusRelatie = (RadioGroup)findViewById(R.id.formular_radioGroup_status_relatie);
+        rGroupStatusRelatie.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked)
+                {
+                    waveViewProgress("rGroupStatusRelatie");
+                }
+            }
+        });
+
+        // This will get the radiogroup
+        RadioGroup rGroupCopii = (RadioGroup)findViewById(R.id.formular_radioGrup_aveti_copii);
+        rGroupCopii.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked)
+                {
+                    waveViewProgress("rGroupCopii");
+                }
+            }
+        });
+
+        // This will get the radiogroup
+        RadioGroup rGroupPlecari = (RadioGroup)findViewById(R.id.formular_radioGroup_catDeDesPleci);
+        rGroupPlecari.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked)
+                {
+                    waveViewProgress("rGroupPlecari");
+                }
+            }
+        });
+        // This will get the radiogroup
+        RadioGroup rGroupOraseVizitate = (RadioGroup)findViewById(R.id.formular_radioGroup_oraseVizitate);
+        rGroupOraseVizitate.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = (RadioButton)group.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (isChecked)
+                {
+                    waveViewProgress("rGroupOraseVizitate");
+                }
+            }
+        });
     }
 
-    public void verificaDateFormular(){
+    public void waveViewProgress(String chkGroup){
         waveView.setProgress(0);
-          List<String> lista = new ArrayList<String>();
+        waveViewProgress.add(chkGroup);
+        waveView.setProgress((int) (12.5*waveViewProgress.size()));
+    }
 
-        if (rb_single.isChecked() || rb_castorit.isChecked() || rb_inRelatie.isChecked())
-            lista.add("element");
-
-        if (rb_catDeDesPleci_rar.isChecked() || rb_catDeDesPleci_des.isChecked() || rb_catDeDesPleci_foarteDes.isChecked())
-            lista.add("element");
-
-
-        if (rb_interesatOraseVizitate.isChecked())
-            lista.add("element");
-
-        if(!spinnerCategorii1.getSelectedItem().toString().equals("")){
-            lista.add("element");
-        }
-
-        if(!spinnerCategorii2.getSelectedItem().toString().equals("")){
-            lista.add("element");
-        }
-        if(!spinnerBuget.getSelectedItem().toString().equals("")){
-            lista.add("element");
-        }
-        waveView.setProgress((int) (16.6 * lista.size()));
-
-}
-
-    TextWatcher fieldValidatorTextWatcher = new TextWatcher() {
-        @Override
-        public void afterTextChanged(Editable s) {
-            verificaDateFormular();
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-    };
 }
