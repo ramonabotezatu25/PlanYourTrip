@@ -135,4 +135,8 @@ public class TravelTest extends AppCompatActivity {
         Intent intent= new Intent(TravelTest.this, Formular_interese.class);
         startActivity(intent);
     }
+    public void deschideHome(View view){
+        Intent intent=new Intent(TravelTest.this, Home.class);
+        startActivity(intent);
+    }
 }

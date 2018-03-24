@@ -74,5 +74,30 @@
     </array>
     <string name="alegeOrase">8. Selecteaza orasele vizitate</string>
     <string name="finalizare">Arata-mi ofertele!</string>
+    <!-- spinner Orase-->
+    <array name="spinnerOrase">
+        <item> Amsterdam</item>
+        <item> Barcelona</item>
+        <item> Berlin</item>
+        <item> Bucuresti</item>
+        <item> Budapesta</item>
+        <item> Dublin</item>
+        <item> Instanbul</item>
+        <item> Lisabona</item>
+        <item> Londra</item>
+        <item> Madrid</item>
+        <item> Milano</item>
+        <item> Paris</item>
+        <item> Praga</item>
+        <item> Roma</item>
+        <item> Viena</item>
+        <item> New york</item>
+        <item> San francisco</item>
+        <item> Los Angeles</item>
+        <item> Chicago</item>
+        <item> Hawaii </item>
+        <item> Maldive</item>
+        <item> Thailada</item>
+    </array>
 
 </resources>

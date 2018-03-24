@@ -31,7 +31,8 @@
         <activity android:name=".GmailSender.SendEmail" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ConfirmationCode" />
-        <activity android:name=".Formular_interese"></activity>
+        <activity android:name=".Formular_interese" />
+        <activity android:name=".Home"></activity>
     </application>
 
 </manifest>

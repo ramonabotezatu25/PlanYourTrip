@@ -4,8 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:nestedScrollingEnabled="true"
     tools:context="com.example.ramona.planyourtrip.Formular_interese">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+    <com.john.waveview.WaveView
+        android:id="@+id/waveView2"
+        android:background="#68394C"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:above_wave_color="@android:color/holo_red_light"
+        app:blow_wave_color="@android:color/holo_purple"
+        app:wave_height="large"
+        app:wave_length="large"
+        app:wave_hz="fast"></com.john.waveview.WaveView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,14 +177,16 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="2dp"
                 android:fontFamily="casual"
+                android:textSize="15dp"
                 android:layout_gravity="left"
                 android:text="@string/sunteti_interesat" />
 
             <Spinner
                 android:id="@+id/formular_spinnerCategorii_1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="4dp"
+                android:textSize="15dp"
                 android:fontFamily="casual"
                 android:layout_gravity="left"
                 android:layout_height="wrap_content" />
@@ -182,14 +200,16 @@
                 android:layout_marginBottom="2dp"
                 android:fontFamily="casual"
                 android:layout_gravity="left"
+                android:textSize="15dp"
                 android:text="@string/daca_ai_putea_alege" />
 
             <Spinner
                 android:id="@+id/formular_spinnerCategorii_2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_marginBottom="15dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="4dp"
+                android:textSize="15dp"
                 android:fontFamily="casual"
                 android:layout_gravity="left"
                 android:layout_height="wrap_content" />
@@ -200,16 +220,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
+                android:textSize="15dp"
                 android:fontFamily="casual"
                 android:layout_gravity="left"
                 android:text="@string/buget" />
 
             <Spinner
                 android:id="@+id/formular_spinerBuget"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="casual"
+                android:textSize="15dp"
                 android:layout_marginStart="5dp"
                 android:layout_gravity="left"
                 android:layout_height="wrap_content" />
@@ -220,6 +242,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:textSize="15dp"
+
             android:layout_marginBottom="2dp"
             android:fontFamily="casual"
             android:text="@string/orase_vizitate" />
@@ -238,6 +262,7 @@
                     android:id="@+id/formular_rb_oraseVizitate_da"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="15dp"
                     android:fontFamily="casual"
                     android:text="@string/da" />
 
@@ -245,6 +270,7 @@
                     android:id="@+id/formular_rb_oraseVizitate_nu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="15dp"
                     android:fontFamily="casual"
                     android:text="@string/nu" />
 
@@ -258,6 +284,7 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="2dp"
+            android:textSize="15dp"
             android:fontFamily="casual"
             android:layout_gravity="left"
             android:text="@string/alegeOrase" />
@@ -283,5 +310,4 @@
 
 
     </LinearLayout>
-
 </RelativeLayout>
