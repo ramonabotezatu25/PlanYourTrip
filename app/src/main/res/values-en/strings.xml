@@ -77,6 +77,9 @@
     </array>
     <string name="alegeOrase">8. Select those cities which you`ve visited</string>
     <string name="finalizare">Show me the offers!</string>
+    <!--home page-->
+    <string name="btnExplore">Explore</string>
+    <string name="titluHome">Best deals for you</string>
 
 
 </resources>

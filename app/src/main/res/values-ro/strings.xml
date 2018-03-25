@@ -101,5 +101,7 @@
         <item> Maldive</item>
         <item> Thailada</item>
     </array>
-
+        <!--home page-->
+     <string name="btnExplore">Exploreaza</string>
+    <string name="titluHome">Cele mai bune oferte pentru tine</string>
 </resources>

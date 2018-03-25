@@ -37,7 +37,7 @@
             android:layout_marginTop="14dp"
             android:textSize="15dp"
             android:fontFamily="casual"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="2dp"
             android:text="@string/titlu" />
 
         <TextView
@@ -166,7 +166,7 @@
             <Spinner
                 android:id="@+id/formular_spinnerCategorii_1"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="0dp"
                 android:layout_marginTop="4dp"
                 android:textSize="15dp"
                 android:fontFamily="casual"
@@ -179,7 +179,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginBottom="2dp"
+                android:layout_marginBottom="0dp"
                 android:fontFamily="casual"
                 android:layout_gravity="left"
                 android:textSize="15dp"
@@ -188,7 +188,7 @@
             <Spinner
                 android:id="@+id/formular_spinnerCategorii_2"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="0dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="4dp"
                 android:textSize="15dp"
@@ -210,7 +210,7 @@
             <Spinner
                 android:id="@+id/formular_spinerBuget"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="0dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="casual"
                 android:textSize="15dp"
@@ -270,7 +270,7 @@
             style="@android:style/Widget.Spinner.DropDown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="0dp"
             android:fontFamily="casual" />
 
         <Button
