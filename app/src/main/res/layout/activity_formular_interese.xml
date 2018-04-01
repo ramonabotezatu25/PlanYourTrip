@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:nestedScrollingEnabled="true"
+    tools:context="com.example.ramona.planyourtrip.Formular_interese">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+    <com.john.waveview.WaveView
+        android:id="@+id/waveView2"
+        android:background="#68394C"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:above_wave_color="@android:color/holo_red_light"
+        app:blow_wave_color="@android:color/holo_purple"
+        app:wave_height="large"
+        app:wave_length="large"
+        app:wave_hz="fast"></com.john.waveview.WaveView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="left"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_titlu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="14dp"
+            android:textSize="15dp"
+            android:fontFamily="casual"
+            android:layout_marginBottom="2dp"
+            android:text="@string/titlu" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="casual"
+            android:text="@string/statusRelatie" />
+
+
+                <RadioGroup
+                    android:id="@+id/formular_radioGroup_status_relatie"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/formular_rb_singur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="casual"
+                    android:text="@string/single" />
+
+                <RadioButton
+                    android:id="@+id/formular_rb_inRelatie"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="casual"
+                    android:text="@string/inrelatie" />
+
+                <RadioButton
+                    android:id="@+id/formular_rb_casatorit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@string/casatorit" />
+                </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/tv_copii"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/aveticopii" />
+
+        <RadioGroup
+            android:id="@+id/formular_radioGrup_aveti_copii"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/formular_rb_copii_da"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="casual"
+                    android:text="@string/copiiDa" />
+
+                <RadioButton
+                    android:id="@+id/formular_rb_copii_nu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="casual"
+                    android:text="@string/copiiNu" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_catDeDesCalatoriti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="2dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="4dp"
+            android:text="@string/catdedespleci" />
+
+        <RadioGroup
+            android:id="@+id/formular_radioGroup_catDeDesPleci"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/formular_rb_calatoresc_rar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@string/rar" />
+
+                <RadioButton
+                    android:id="@+id/formular_rb_calatoresc_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@string/des" />
+
+                <RadioButton
+                    android:id="@+id/formular_rb_calatoresc_foarte_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="casual"
+                    android:text="@string/foarte_des" />
+        </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvSpinner1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="casual"
+                android:textSize="15dp"
+                android:layout_gravity="left"
+                android:text="@string/sunteti_interesat" />
+
+            <Spinner
+                android:id="@+id/formular_spinnerCategorii_1"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="4dp"
+                android:textSize="15dp"
+                android:fontFamily="casual"
+                android:layout_gravity="left"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:id="@+id/tvSpinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="casual"
+                android:layout_gravity="left"
+                android:textSize="15dp"
+                android:text="@string/daca_ai_putea_alege" />
+
+            <Spinner
+                android:id="@+id/formular_spinnerCategorii_2"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="4dp"
+                android:textSize="15dp"
+                android:fontFamily="casual"
+                android:layout_gravity="left"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:id="@+id/tvSpinner3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textSize="15dp"
+                android:fontFamily="casual"
+                android:layout_gravity="left"
+                android:text="@string/buget" />
+
+            <Spinner
+                android:id="@+id/formular_spinerBuget"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="casual"
+                android:textSize="15dp"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="left"
+                android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_oraseVizitate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="15dp"
+            android:layout_marginBottom="2dp"
+            android:fontFamily="casual"
+            android:text="@string/orase_vizitate" />
+
+        <RadioGroup
+            android:id="@+id/formular_radioGroup_oraseVizitate"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/formular_rb_oraseVizitate_da"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:fontFamily="casual"
+                    android:text="@string/copiiDa" />
+
+                <RadioButton
+                    android:id="@+id/formular_rb_oraseVizitate_nu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:fontFamily="casual"
+                    android:text="@string/copiiNu" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tv_tari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp"
+            android:textSize="15dp"
+            android:visibility="invisible"
+            android:fontFamily="casual"
+            android:layout_gravity="left"
+            android:text="@string/alegeOrase" />
+
+        <Button
+            android:id="@+id/formular_btn_alegeorase"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#FBEFF2"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:onClick="deschideAlegeOras"
+            android:visibility="invisible"
+            android:background="@drawable/buton_explore"
+            android:text="@string/btnAlegeOrase" />
+
+        <Button
+            android:id="@+id/formular_btn_finalizare"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#FBEFF2"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:onClick="creeazaUserPreferences"
+            android:background="@drawable/rotunjire_buton_mov"
+            android:text="@string/finalizare" />
+
+
+    </LinearLayout>
+</RelativeLayout>

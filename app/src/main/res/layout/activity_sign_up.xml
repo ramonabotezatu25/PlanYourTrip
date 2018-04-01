@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context="com.example.ramona.planyourtrip.SignUpActivity">
+
+    <com.john.waveview.WaveView
+        android:id="@+id/waveView"
+        android:background="#68394C"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:above_wave_color="@android:color/holo_red_light"
+        app:blow_wave_color="@android:color/holo_purple"
+        app:wave_height="large"
+        app:wave_length="large"
+        app:wave_hz="fast"></com.john.waveview.WaveView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:textStyle="bold"
+            android:textColor="#B16282"
+            android:textSize="30dp"
+            android:text="@string/Planyoutrip" />
+
+        <TextView
+            android:id="@+id/tv_welcome_signUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="cursive"
+            android:textSize="30dp"
+            android:textColor="#F5A9F2"
+            android:layout_marginBottom="20dp"
+            android:text="@string/bineAtiVenit" />
+
+        <TextView
+            android:id="@+id/tv_campMesaj_ConfirmationCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FA5858"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="15dp"
+            android:fontFamily="sans-serif-condensed"
+            android:visibility="invisible"
+            android:text="@string/campNecompletat" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_name_SignUp"
+            app:hintTextAppearance="@style/TextLabel"
+            android:minHeight="20dp"
+            android:textColorHint="#fff">
+
+            <EditText
+                android:id="@+id/editText_name_SignUp"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="30dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/icon_user2"
+                android:drawablePadding="15dp"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:textColor="#fff"
+                android:textSize="20dp"
+                android:textColorHint="#fff" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_email_SignUp"
+            app:hintTextAppearance="@style/TextLabel"
+            android:layout_marginBottom="5dp"
+            android:textColorHint="#fff">
+
+            <EditText
+                android:id="@+id/editText_email_SignUp"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/icon_mail"
+                android:drawablePadding="15dp"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textSize="20dp"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText_password_SignUp"
+            app:hintTextAppearance="@style/TextLabel"
+            android:layout_marginBottom="5dp"
+            android:textColorHint="#fff">
+
+            <EditText
+                android:id="@+id/editText_password_SignUp"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/icon_password2"
+                android:drawablePadding="15dp"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textSize="20dp"
+                android:maxLines="1"
+                android:padding="15dp"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/login_btn_autentificare"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="25dp"
+            android:padding="15dp"
+            android:textSize="18dp"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+            android:background="@drawable/rotunjire_buton_mov"
+            android:textColor="#b56b70"
+            android:text="@string/signup"
+            android:onClick="verificaDateSignUp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:textColor="#590021"
+            android:text="@string/alreadyHaveAccount" />
+
+
+
+
+
+    </LinearLayout>
+</RelativeLayout>

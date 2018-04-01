@@ -5,5 +5,5 @@ package com.example.ramona.planyourtrip.Util.FragmentList;
  */
 
 public interface FragmentConstant {
-    String fragmentName = "fragmentName";
+    String FRAGMENT_NAME = "fragmentName";
 }

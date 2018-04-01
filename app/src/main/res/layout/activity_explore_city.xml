@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ramona.planyourtrip.ExploreCity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/home_imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/new_york_cover" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/descrierereOras"
+            android:layout_marginStart="5dp"
+            android:textSize="16dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="casual"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/explore_tv_descriere"
+                    style="@android:style/Widget.DeviceDefault.Light.TextView"
+                    android:layout_width="221dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/text_view_explore"
+                    android:fontFamily="serif"
+                    android:text="@string/newYork_descriere"
+                    android:textSize="14dp" />
+
+                <!-- vremea -->
+                <LinearLayout
+                    android:layout_width="170dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/explore_wheater_design"
+                    android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/explore_city_field"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/explore_updated_field"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/city_field"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/explore_weather_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="60sp" />
+
+                        <TextView
+                            android:id="@+id/explore_current_temperature_field"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/explore_details_field"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/weather_icon"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/explore_humidity_field"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/details_field"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/explore_pressure_field"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/humidity_field"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorPrimary" />
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="15dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="casual"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:text="@string/obiective"/>
+
+        <TextView
+            android:id="@+id/explore_tv_obiective"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="15dp"
+            android:fontFamily="serif"
+            android:background="@drawable/text_view_explore"
+            android:text="@string/newYork_obiective"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="13dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="casual"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:text="@string/activitati"/>
+
+
+        <TextView
+            android:id="@+id/explore_tv_activitati"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="10dp"
+            android:fontFamily="serif"
+            android:background="@drawable/text_view_explore"
+            android:text="@string/newYork_activitati"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="13dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="casual"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:text="@string/restaurante"/>
+
+
+        <TextView
+            android:id="@+id/explore_tv_restaurante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:textSize="10dp"
+            android:fontFamily="serif"
+            android:background="@drawable/text_view_explore"
+            android:text="bla bla"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rotunjire_buton_mov"
+            android:text="@string/biletZbor"/>
+        </LinearLayout>
+</ScrollView>

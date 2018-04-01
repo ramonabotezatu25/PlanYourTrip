@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ramona.planyourtrip.GmailSender.SendEmail;
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.VerificaEmpty;
@@ -89,7 +90,7 @@ public class TravelTest extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_profile:
-                        startNewActivity(Profile.class);
+                        startNewActivity(CircleProfile.class);
                         overridePendingTransition(0, 0);
                         break;
                     default:
@@ -123,6 +124,19 @@ public class TravelTest extends AppCompatActivity {
     public void deschideLogIn(View view)
     {
         Intent intent= new Intent(TravelTest.this, LogIn.class);
+        startActivity(intent);
+    }
+    public void deschideEmail(View view){
+        Intent intent= new Intent(TravelTest.this, SendEmail.class);
+        startActivity(intent);
+    }
+    public  void deschideFormular(View view)
+    {
+        Intent intent= new Intent(TravelTest.this, Formular_interese.class);
+        startActivity(intent);
+    }
+    public void deschideHome(View view){
+        Intent intent=new Intent(TravelTest.this, Home.class);
         startActivity(intent);
     }
 }

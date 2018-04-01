@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ramona.planyourtrip">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,10 +21,19 @@
         <activity
             android:name=".Util.Popup.Popup"
             android:theme="@style/AppTheme.CustomTheme" />
-        <activity android:name=".Profile" />
         <activity android:name=".Explore" />
         <activity android:name=".ManageAccount" />
-        <activity android:name=".LogIn"></activity>
+        <activity android:name=".LogIn" />
+        <activity android:name=".CircleProfile" />
+        <activity android:name=".Weather.ChooseCityWeather" />
+        <activity android:name=".Weather.WeatherMainActivity" />
+        <activity android:name=".Util.FragmentList.FragmentChanger" />
+        <activity android:name=".GmailSender.SendEmail" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".ConfirmationCode" />
+        <activity android:name=".Formular_interese" />
+        <activity android:name=".Home" />
+        <activity android:name=".ExploreCity"></activity>
     </application>
 
 </manifest>

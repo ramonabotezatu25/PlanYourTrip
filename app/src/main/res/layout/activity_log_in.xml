@@ -83,7 +83,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editText_password_logIn"
                 app:hintTextAppearance="@style/TextLabel"
-                android:layout_marginBottom="5dp"
                 android:textColorHint="#fff">
 
                 <EditText
@@ -151,9 +150,59 @@
                     android:textSize="15dp"
                     android:layout_marginLeft="5dp"
                     android:textColor="#fff"
+                    android:onClick="deschideSignUp"
                     android:text="@string/signUpHere" />
             </LinearLayout>
+'
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:layout_marginLeft="50dp"
+                android:textSize="15dp"
+                android:textColor="#704c5b"
+                android:text="@string/conectareFacebook" />
+
+            <br.com.bloder.magic.view.MagicButton
+                android:id="@+id/magic_button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:magic_button_size="50dp"
+                app:button_icon="@drawable/facebook2"
+                app:button_icon_width="25dp"
+                app:button_icon_height="25dp"
+                app:hide_text="Facebook"
+                app:hide_text_size="7dp"
+                app:hide_text_color="#FFFFFF"
+                app:icon_button_color="#3A5BA0"
+                app:expandable_area_color="#313975"/>
+
+            <br.com.bloder.magic.view.MagicButton
+                android:id="@+id/magic_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:magic_button_size="50dp"
+                app:button_icon="@drawable/googleplus"
+                app:button_icon_width="25dp"
+                app:button_icon_height="25dp"
+                app:hide_text="Google+!"
+                app:hide_text_size="7dp"
+                app:hide_text_color="#FFFFFF"
+                app:icon_button_color="#E13719"
+                app:expandable_area_color="#B72B14"/>
         </LinearLayout>
+        </LinearLayout>
+
+
 
 
     </android.support.v4.widget.NestedScrollView>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="Planyoutrip">Plan your trip</string>
     <string name="hello">Salut</string>
     <!--NAV BAR -metoda navView()-->
     <string name="nav_home">Acasa</string>
@@ -14,11 +15,138 @@
     <string name="login">Autentificare</string>
     <string name="signup">Creeaza cont</string>
     <string name="questionSignUp">Nu aveti niciun cont?</string>
-    <string name="signUpHere">Creaza cont</string>
+    <string name="signUpHere">Creeaza cont</string>
     <!--meniu profile-->
     <string name="profil_meniu_language">Limba</string>
     <string name="profil_meniu_country">Tara</string>
     <!--submeniu profil language-->
     <string name="profil_sub_language_romana">Romana</string>
     <string name="profil_sub_language_engleza">Engleza</string>
+    <!-- SignUP -->
+    <string name="creeazaCont">Creeaza cont</string>
+    <string name="email">Email</string>
+    <string name="alreadyHaveAccount">Sunteti deja membru? Conecteaza-te</string>
+    <string name="bineAtiVenit">Bine ati venit pe PlanYourTrip</string>
+    <string name="conectareFacebook">Sau conectare cu </string>
+    <!--ConfirmationCode-->
+    <string name="contCreat">Contul a fost creat cu succes! Veti primi codul de confirmare pe adresa de email </string>
+    <string name="introducetiCod">Introduceti codul de confirmare</string>
+    <string name="verificaCod">Verifica cod</string>
+    <string name="retrimiteCod">Retrimite cod</string>
+    <string name="succes">Felicitari. Mai ai doar un pas</string>
+    <string name="campNecompletat">*Toate campurile sunt obligatorii</string>
+    <!-- Formular interese -->
+    <string name="titlu">Ajuta-ne sa te cunoastem mai bine pentru a-ti putea da cele mai bune oferte pentru tine</string>
+    <string name="statusRelatie">1. Status relatie</string>
+    <string name="single">Singur/a</string>
+    <string name="inrelatie">Intr-o relatie</string>
+    <string name="casatorit">Casatorit/a</string>
+    <string name="aveticopii">2. Aveti copii?</string>
+    <string name="copiiDa">Da</string>
+    <string name="copiiNu">Nu</string>
+    <string name="catdedespleci">3. Cat de des pleci in vacanta?</string>
+    <string name="rar">Rar</string>
+    <string name="des">Des</string>
+    <string name="foarte_des">Foarte des</string>
+    <string name="sunteti_interesat">4. De ce tip de calatorie sunteti interesat</string>
+    <string name="daca_ai_putea_alege">5. Daca ai putea alege o locatie in care sa pleci chiar acum, aceasta ar fi de tip: </string>
+    <string name="orase_vizitate">6. Ati dori sa revizitati orasele in care deja ati fost? </string>
+    <string name="buget">7. Setati un buget pentru calatoriile dumneavoastra</string>
+    <!-- Spinner buget -->
+    <array name="spinnerBuget">
+        <item>Alege o optiune</item>
+        <item>Nu conteaza</item>
+        <item>Intre 100$ - 300$</item>
+        <item>Intre 300$- 500$</item>
+        <item>Intre 500$ - 1000$</item>
+        <item>Peste 1000$</item>
+    </array>
+    <!-- Spinner categorii-->
+    <array name="spinnerCategorii">
+        <item>Alege o optiune</item>
+        <item>Cultural</item>
+        <item>Istoric</item>
+        <item>Romantic</item>
+        <item>Aventura</item>
+        <item>Sportiv</item>
+        <item>Familie</item>
+        <item>Modern</item>
+        <item>Exotic</item>
+        <item>Parcuri nationale</item>
+    </array>
+    <string name="alegeOrase">8. Selecteaza orasele vizitate</string>
+    <string name="finalizare">Arata-mi ofertele!</string>
+    <string name="btnAlegeOrase">Alege orase</string>
+    <!-- spinner Orase-->
+    <array name="spinnerOrase">
+        <item> Amsterdam</item>
+        <item> Barcelona</item>
+        <item> Berlin</item>
+        <item> Bucuresti</item>
+        <item> Budapesta</item>
+        <item> Dublin</item>
+        <item> Instanbul</item>
+        <item> Lisabona</item>
+        <item> Londra</item>
+        <item> Madrid</item>
+        <item> Milano</item>
+        <item> Paris</item>
+        <item> Praga</item>
+        <item> Roma</item>
+        <item> Viena</item>
+        <item> New york</item>
+        <item> San francisco</item>
+        <item> Los Angeles</item>
+        <item> Chicago</item>
+        <item> Hawaii </item>
+        <item> Maldive</item>
+        <item> Thailada</item>
+    </array>
+        <!--home page-->
+     <string name="btnExplore">Exploreaza</string>
+    <string name="titluHome">Cele mai bune oferte pentru tine</string>
+    <!-- explore City activity-->
+    <string name="descrierereOras"> Despre </string>
+    <string name="obiective"> Top atractii turistice </string>
+    <string name="activitati"> Activitati</string>
+    <string name="restaurante"> Ce si unde sa manaci</string>
+    <string name="biletZbor"> Vezi zborurile disponibile</string>
+    <string name="alteOferte"> Alte oferte</string>
+
+    <!-- Lista orase si descrieri-->
+    <!--New york-->
+    <string name="newYork_descriere">
+        Bine ați venit la NYC, este cel mai populat oraș din Statele Unite ale Americii, zona sa metropolitană fiind una dintre cele mai mari zone urbane din lume. New York este de asemenea considerat unul din cele mai importante orașe din lume datorită influenței sale globale din mass-media, educație, divertisment, artă și modă. Orașul este de asemenea și un centru important al afacerilor externe,găzduind sediul Organizației Națiunilor Unite.
+        New York este împărțit în cinci zone: The Bronx, Brooklyn, Manhattan, Queens și insula Staten Island. Cu peste 8.5 milioane de rezidenți pe o arie de 830 km², New York este metropola cu cea mai mare densitate de locuitori din Statele Unite
+    </string>
+    <string name="newYork_obiective">
+        Empire State Building
+        Chiar dacă New York este orașul zgârie-norilor, un singur turn este simbolul orizontului acestei metropole – Empire State Building. Aflat la intersecția dintre Fifth Avenue și West Street 34, Empire State Building are 381 metri înălțime și 102 etaje, fiind a doua cea mai înaltă clădire din New York după One World Trade Center. Acest zgârie-nor a fost inaugurat în 1931, iar în vârful său se află două platforme de observație, la etajul 86 și etajul 102. În zilele senine, de la observatorul de la etajul 102 poți vedea până la 130 de kilometri distanță în statele vecine.
+        Central Park
+        Este cel mai faimos parc din lume și locul de joacă al newyorkezi-lor. Acest parc gigant face ca New York-ul să nu fie doar o "junglă de beton", ci un oraș vibrant și plin de viață. Central Park se mândrește cu sute de atracții și evenimente, precum Central Park Zoo, Strawberry Fields sau lacul uriaș care iarna se transformă în patinoar, iar vara poți să te plimbi cu barca.
+        Broadway
+        Faimosul bulevard este "hotspot-ul" teatrului american. Termenul "teatrul Broadway" înseamnă, de fapt, mai multe teatre care se află pe acest bulevard, dar și pe străzile din jur.
+        Catedrala St. Patrick
+        Este cea mai faimoasă catedrală din New York, dar și cel mai frumos exemplu de arhitectură gotică din "the Big Apple". Superba clădire are o fațadă intricată din marmură și turle de peste 100 de metri înălțime, iar în interior se află o orgă uriașă, vitralii colorate, un baldachin din bronz și o superbă statuie Pieta. Catedrala St. Patrick a fost construită în 1879, astăzi fiind unul dintre cele mai vizitate obiective turistice din New York.
+        Brooklyn Bridge
+        Finalizat în 1883, a fost primul pod din lume realizat din oțel și leagă cele mai faimoase cartiere din New York, Manhattan și Brooklyn, peste East River. Podul a devenit rapid un simbol al Statelor Unite ale Americii, care a inspirat generații întregi de artiști. De pe Brooklyn Bridge vei putea admira și cele mai impresionante panorame peste zgârie-norii din Manhattan, iar în sud poți vedea Governors Island și Statuia Libertății. Pentru a admira podul în sine nu trebuie decât să faci o plimbare pe Brooklyn Promenade, de unde vei fi, din nou, răsplătit cu peisaje de vis.
+        Rockefeller Center
+        Un enorm centru comercial și de entertainment chiar în inima Manhattan-ului. Iconica clădire găzduiește mai multe posturi de televiziune și radio naționale, iar în fața gigantului de oțel se află un patinoar, care este cel mai popular loc din New York în timpul iernii. De Crăciun, un brad enorm se înalță lângă Rockefeller Center, nu departe de sculptura lui Atlas.
+    </string>
+    <string name="newYork_activitati">
+        Statuia Libertății e
+        Este simbolul Americii și una dintre cele mai faimoase locuri din lume. Statuia a fost un cadou din partea Franței, fiind realizată în 1886. Este cea mai mare statuie din lume cu o înălțime de 46 de metri. Curioșii pot "intra" în statuie, iar din coroana figurii poți admira unele dintre cele mai frumoase panorame peste Manhattan.
+        Times Square
+        Este un alt loc extrem de popular care a devenit unul dintre principalele simboluri ale metropolei New York. Numit inițial Longacre Square, Times Square a fost redenumit în 1904 după turnul New York Times. Ziarul a început să posteze titlurile zilei pe afișajul mobil din această piață enormă în 1928, fiind la acea vreme primul afișaj de acest fel din lume. Deși în timpul Marii Depresii, Times Square a căzut în ruină, la mijlocul secolului trecut orașul a fost curățat, iar marile corporații precum Disney au fost invitate să-și construiască sediile aici. Astăzi, Times Square este un adevărat spectacol de culoare și lumini, cu o multitudine de magazine, teatre și restaurante, toate puse în umbră de panourile gigantice cu reclame.
+        One World Observatory
+        Ocupand etajele 100-102 ale celei mai înalte clădiri din emisfera vestică, One World Trade Center, se poate ajunge la această platformă de observație în doar 60 de secunde datorită liftului numit "Sky Pod". În timpul turului interactiv al One World Observatory, curioșii pot vedea mai întâi o parte din temelia acestei clădiri și anume Turnurile Gemene care au fost doborâte în 2001. Apoi vizitatorii sunt luați pe sus în liftul futurist ce are ecrane pe tot peretele pe care apar imagini cu istoria orașului și a clădirii. Odată ajunși în vârf, vizitatorii sunt uimiți de panoramele de 360 de grade peste întregul Manhattan.
+        China Town
+        Fă o plimbare la sud de Broome Street și la est de Lafayette Street și vei avea impresia că ai ajuns pe un alt continent. În Chinatown, Grand Street și Mot Street sunt mărginite cu standuri ce vând alimente exotice precum țipari vii, lubenițe pătrate și rambutan păros, în timp ce Canal Street strălucește cu magazine de bijuterii și cadouri. În Chinatown vei găsi cele mai bune restaurante din New York, ce reprezintă gastronomia a tuturor provinciilor din China și Hong Kong, plus restaurante indoneziene, thailandeze, malaieze și vietnameze. Chinatown este cea mai mare comunitate asiatică din New York, ce continuă să se dezvolte și să se amestece cu Little Italy și Lower Est Side aflate în apropiere.
+        Wall Street
+        Wall Street este una dintre cele mai celebre strazi nu doar din New York ci din intreaga lume. Este la fel de cunoscuta ca Champs Elysee din Paris, La Rambla din Barcelona sau Strip din Las Vegas. Fiind recunoscuta ca centrul financiar al New York-ului, Wall Street este in dese randuri asociata cu bogatia si ambitiile care caracterizeaza America.
+    </string>
+    <string name="newYork_restaurante">
+       Daca ajungi sa explorezi New York-ul, trebuie neaparat sa incerci "street food", asa recunoscutii burgeri si hot-dogi facuti pe strazile New York-ului. Daca vrei totusi un restaurant in adevarul sens al cuvantului, acesteaz sunt recomandarile noastre:
+
+    </string>
 </resources>

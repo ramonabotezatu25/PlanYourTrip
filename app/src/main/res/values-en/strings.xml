@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="Planyoutrip">Plan your trip</string>
     <string name="hello">Hello </string>
     <!--NAV BAR -metoda navView()-->
     <string name="nav_home">Home</string>
@@ -21,4 +22,72 @@
     <!--submeniu profil language-->
     <string name="profil_sub_language_romana">Romanian</string>
     <string name="profil_sub_language_engleza">English</string>
+    <!-- SignUP -->
+    <string name="creeazaCont">Create account</string>
+    <string name="email">Email</string>
+    <string name="alreadyHaveAccount">Already a member? Login</string>
+    <string name="bineAtiVenit">Welcome on PlanYourTrip</string>
+    <string name="conectareFacebook"> Or create account with </string>
+    <!--ConfirmationCode-->
+    <string name="contCreat">Your account has been created successfully! You will soon receive a confirmation email </string>
+    <string name="introducetiCod">Introduce your confirmation code</string>
+    <string name="verificaCod">Verify code</string>
+    <string name="retrimiteCod">Resend email</string>
+    <string name="succes">Congratulations! You have one more step</string>
+    <string name="campNecompletat">*You must complete all fields</string>
+
+    <!-- Formular interese -->
+    <string name="titlu">Help us to know you better to give you the best offers for you</string>
+    <string name="statusRelatie">1. Relationship status</string>
+    <string name="single">Single</string>
+    <string name="inrelatie">In a relationship</string>
+    <string name="casatorit">Married</string>
+    <string name="aveticopii">2. Do you have kids?</string>
+    <string name="copiiDa">Yes</string>
+    <string name="copiiNu">No</string>
+    <string name="catdedespleci">3. How often do you go in vacantion?</string>
+    <string name="rar">rare</string>
+    <string name="des">frequently</string>
+    <string name="foarte_des">veri often</string>
+    <string name="sunteti_interesat">4. What type of trips do you prefer?</string>
+    <string name="daca_ai_putea_alege">5. If you could choose to go somewhere right know, what type of destination do you choose? </string>
+    <string name="orase_vizitate">6. Do you want to go again somewhere which you have already been? </string>
+    <string name="buget">7. How much money do you want to spent on vacations</string>
+    <!-- Spinner buget -->
+    <array name="spinnerBuget">
+        <item>Choose an option</item>
+        <item>It doesn't matter</item>
+        <item>Between 100$ - 300$</item>
+        <item>Between 300$- 500$</item>
+        <item>Between 500$ - 1000$</item>
+        <item>Over 1000$</item>
+    </array>
+    <!-- Spinner categorii-->
+    <array name="spinnerCategorii">
+        <item>Choose an option</item>
+        <item>Cultural</item>
+        <item>Hostorical</item>
+        <item>Romantic</item>
+        <item>Adevnture</item>
+        <item>Sports</item>
+        <item>Family</item>
+        <item>Modern</item>
+        <item>Exotic</item>
+        <item>National Parks</item>
+    </array>
+    <string name="alegeOrase">8. Select those cities which you`ve visited</string>
+    <string name="finalizare">Show me the offers!</string>
+    <string name="btnAlegeOrase">Select cities</string>
+    <!--home page-->
+    <string name="btnExplore">Explore</string>
+    <string name="titluHome">Best deals for you</string>
+    <!-- explore City activity-->
+    <string name="descrierereOras"> Basic info </string>
+    <string name="obiective"> See the Sights </string>
+    <string name="activitati"> Tours and Activities</string>
+    <string name="restaurante"> Where to eat ? </string>
+    <string name="biletZbor"> Check the flight tickets</string>
+    <string name="alteOferte"> Other info</string>
+
+
 </resources>
