@@ -31,16 +31,12 @@ public class ConnectionHelper {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        java.sql.Connection connection = null;
-        String ConnectionURL = null;
+
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://192.168.100.4:3306/world","root","admin");
 
-           // Class.forName("net.sourceforge.jtds.jdbc.Driver");
-           // ConnectionURL = "jdbc:jtds:sqlserver://" + ip +";databaseName="+ db + ";user=" + DBUserNameStr+ ";password=" + DBPasswordStr + ";";
-            //connection = DriverManager.getConnection(ConnectionURL);
         }
         catch (SQLException se)
         {
