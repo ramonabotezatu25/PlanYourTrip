@@ -1,6 +1,7 @@
 package com.example.ramona.planyourtrip;
 
 import android.content.DialogInterface;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,12 +10,14 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ramona.planyourtrip.Util.UserPreferences;
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
 
@@ -30,14 +33,13 @@ public class Formular_interese extends AppCompatActivity{
     Spinner spinnerCategorii1;
     Spinner spinnerCategorii2;
     Spinner spinnerBuget;
-    Spinner spinnerOrase;
     ArrayList<Integer> listOraseSelectate = new ArrayList<>();
     TextView tvTari;
     WaveView waveView;
-    RadioButton rb_interesatOraseVizitate;
     Set<String> waveViewProgress = new HashSet<>();
+    UserPreferences userPreferences= new UserPreferences();
     boolean[] checkedItems;
-    boolean checkItemValid = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +51,6 @@ public class Formular_interese extends AppCompatActivity{
         spinnerCategorii1 = (Spinner) findViewById(R.id.formular_spinnerCategorii_1);
         spinnerCategorii2 = (Spinner) findViewById(R.id.formular_spinnerCategorii_2);
         spinnerBuget = (Spinner) findViewById(R.id.formular_spinerBuget);
-        spinnerOrase = (Spinner) findViewById(R.id.formular_spinnerOrase);
-        spinnerOrase.setVisibility(INVISIBLE);
 
 
         //populez spinnerCategorii 1
@@ -77,6 +77,7 @@ public class Formular_interese extends AppCompatActivity{
                     adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     spinnerCategorii2.setAdapter(adapter2);
                     spinnerCategorii2.setVisibility(VISIBLE);
+                   // DE ACTUALIZAT USER PREFERENCES CU ID-UL CZATEGORIEI ADUS DIN BAA DE DATE CAND INCARC SPINNERUL
                 }  else{
                     waveViewProgress("0");
                     spinnerCategorii2.setVisibility(INVISIBLE);
@@ -94,6 +95,7 @@ public class Formular_interese extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                waveViewProgress("spinnerCategorii2");
+               // DE ACTUALIZAT USER PREFERENCES COMPLETAT CU ID-UL CATEGORIEI ADUSA DIN BAZA DE DATE
             }
 
             @Override
@@ -111,8 +113,9 @@ public class Formular_interese extends AppCompatActivity{
         spinnerBuget.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                if (position!=0)
+                if (position!=0){
                     waveViewProgress("spinnerBuget");
+                    userPreferences.setBuget(spinnerBuget.getSelectedItem().toString());}
                 else
                     waveViewProgress("0");
             }
@@ -140,6 +143,17 @@ public class Formular_interese extends AppCompatActivity{
                 if (isChecked)
                 {
                     waveViewProgress("rGroupStatusRelatie");
+                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.single))){
+                        userPreferences.setStatusRelatie("1");
+                    }
+                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.inrelatie))){
+                        userPreferences.setStatusRelatie("2");
+                    }
+                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.casatorit))){
+                        userPreferences.setStatusRelatie("3");
+                    }
+
+
                 }
             }
         });
@@ -157,7 +171,15 @@ public class Formular_interese extends AppCompatActivity{
                 // If the radiobutton that has changed in check state is now checked...
                 if (isChecked)
                 {
+
                     waveViewProgress("rGroupCopii");
+                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.copiiDa))){
+                        userPreferences.setAreCopii("1");
+                    }
+                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.copiiNu))){
+                        userPreferences.setAreCopii("0");
+                    }
+
                 }
             }
         });
@@ -176,6 +198,16 @@ public class Formular_interese extends AppCompatActivity{
                 if (isChecked)
                 {
                     waveViewProgress("rGroupPlecari");
+                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.rar))){
+                        userPreferences.setCatDeDesPleci("0");
+                    }
+                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.des))){
+                        userPreferences.setCatDeDesPleci("1");
+                    }
+                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.foarte_des))){
+                        userPreferences.setCatDeDesPleci("2");
+                    }
+
                 }
             }
         });
@@ -190,14 +222,15 @@ public class Formular_interese extends AppCompatActivity{
                 // This puts the value (true/false) into the variable
                 boolean isChecked = checkedRadioButton.isChecked();
                 // If the radiobutton that has changed in check state is now checked...
-                if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.da))){
-                    spinnerOrase.setVisibility(VISIBLE);
-                    ArrayAdapter<CharSequence> adapter4= ArrayAdapter.createFromResource(getApplicationContext(), R.array.spinnerOrase, android.R.layout.simple_list_item_multiple_choice);
-                    adapter4.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
-                    spinnerOrase.setAdapter(adapter4);
-                    checkItemValid = true;
+                Button btn= (Button)(findViewById(R.id.formular_btn_alegeorase));
+                TextView tv=(TextView)findViewById(R.id.tv_oraseVizitate);
+
+                if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.copiiDa))){
+                    tv.setVisibility(VISIBLE);
+                    btn.setVisibility(VISIBLE);
                 }else{
-                    spinnerOrase.setVisibility(INVISIBLE);
+                    tv.setVisibility(INVISIBLE);
+                    btn.setVisibility(INVISIBLE);
                 }
                 if (isChecked)
                 {
@@ -206,74 +239,6 @@ public class Formular_interese extends AppCompatActivity{
             }
         });
 
-        spinnerOrase.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                final String[] listaOrase = getResources().getStringArray(R.array.spinnerOrase);
-                checkedItems=new boolean[listaOrase.length];
-                AlertDialog.Builder mBuilder= new AlertDialog.Builder(Formular_interese.this);
-                mBuilder.setTitle("Alegeti orasele vizitate");
-                mBuilder.setMultiChoiceItems(R.array.spinnerOrase, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
-                        if(isChecked){
-                            if(!listOraseSelectate.contains(position)){
-                                listOraseSelectate.add(position);
-                            }
-                            else {
-                                listOraseSelectate.remove(position);
-                            }
-                        }
-                    }
-                });
-                mBuilder.setCancelable(false);
-                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        String item="";
-                        for(int i=0; i< listOraseSelectate.size();i++){
-                            item=item + listaOrase[listOraseSelectate.get(i)];
-                            if(i!=listOraseSelectate.size()-1){
-                                item=item+ ", ";
-                            }
-                        }
-                        tvTari.setText(item);
-                        rGroupOraseVizitate.check(R.id.formular_rb_oraseVizitate_nu);
-                        spinnerOrase.setVisibility(INVISIBLE);
-                        checkItemValid =false;
-                    }
-                });
-                mBuilder.setNegativeButton("dismiss", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-
-                mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        for(int i=0;i<checkedItems.length;i++){
-                            checkedItems[i]=false;
-                            listOraseSelectate.clear();
-                            tvTari.setText("");
-                        }
-                    }
-                });
-
-                if(checkItemValid)
-                {
-                    AlertDialog mDialog= mBuilder.create();
-                    mDialog.show();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
 
     public void waveViewProgress(String chkGroup){
@@ -290,4 +255,69 @@ public class Formular_interese extends AppCompatActivity{
 
     }
 
+
+    public void deschideAlegeOras(View view){
+        final String[] listaOrase = getResources().getStringArray(R.array.spinnerOrase);
+        if(checkedItems==null){
+            checkedItems=new boolean[listaOrase.length];
+        }
+        AlertDialog.Builder mBuilder= new AlertDialog.Builder(Formular_interese.this);
+        mBuilder.setTitle("Alegeti orasele vizitate");
+        mBuilder.setMultiChoiceItems(listaOrase, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                if(isChecked){
+                    if(!listOraseSelectate.contains(position)){
+                        listOraseSelectate.add(position);
+                    }
+                    else {
+                        listOraseSelectate.remove(position);
+                    }
+                }
+            }
+        });
+        mBuilder.setCancelable(false);
+        mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                String item="";
+                for(int i=0; i< listOraseSelectate.size();i++){
+                    item=item + listaOrase[listOraseSelectate.get(i)];
+                    if(i!=listOraseSelectate.size()-1){
+                        item=item+ ", ";
+                    }
+                }
+                tvTari.setText(item);
+                userPreferences.setOraseVizitate(tvTari.getText().toString());
+            }
+        });
+        mBuilder.setNegativeButton("dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                for(int i=0;i<checkedItems.length;i++){
+                    checkedItems[i]=false;
+                    listOraseSelectate.clear();
+                    tvTari.setText("");
+                }
+            }
+        });
+
+        AlertDialog mDialog= mBuilder.create();
+        mDialog.show();
+    }
+
+
+    //metoda creare User Preferences
+    public void creeazaUserPreferences(View view)
+    {
+        //INSERARE USER PREFERENCES IN TABELA
+        System.out.print(userPreferences);
+    }
 }

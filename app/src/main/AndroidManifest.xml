@@ -32,7 +32,8 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ConfirmationCode" />
         <activity android:name=".Formular_interese" />
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Home" />
+        <activity android:name=".ExploreCity"></activity>
     </application>
 
 </manifest>

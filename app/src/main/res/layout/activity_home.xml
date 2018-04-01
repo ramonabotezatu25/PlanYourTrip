@@ -8,6 +8,7 @@
     android:weightSum="10">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -151,6 +152,7 @@
                             android:layout_marginLeft="150dp"
                             android:background="@drawable/buton_explore"
                             android:text="@string/btnExplore"
+                            android:onClick="deschideExploreCity"
                             android:textColor="@android:color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
@@ -213,6 +215,7 @@
                             android:layout_marginLeft="150dp"
                             android:background="@drawable/buton_explore"
                             android:text="@string/btnExplore"
+                            android:onClick="deschideExploreCity"
                             android:textColor="@android:color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
@@ -276,6 +279,7 @@
                             android:background="@drawable/buton_explore"
                             android:text="@string/btnExplore"
                             android:textColor="@android:color/black"
+                            android:onClick="deschideExploreCity"
                             android:textSize="10dp" />
                     </LinearLayout>
 
@@ -337,6 +341,7 @@
                             android:layout_marginLeft="150dp"
                             android:background="@drawable/buton_explore"
                             android:text="@string/btnExplore"
+                            android:onClick="deschideExploreCity"
                             android:textColor="@android:color/black"
                             android:textSize="10dp" />
                     </LinearLayout>
@@ -399,6 +404,7 @@
                             android:layout_marginLeft="150dp"
                             android:background="@drawable/buton_explore"
                             android:text="@string/btnExplore"
+                            android:onClick="deschideExploreCity"
                             android:textColor="@android:color/black"
                             android:textSize="10dp" />
                     </LinearLayout>

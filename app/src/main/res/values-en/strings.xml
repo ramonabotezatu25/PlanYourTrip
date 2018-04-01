@@ -40,11 +40,11 @@
     <string name="titlu">Help us to know you better to give you the best offers for you</string>
     <string name="statusRelatie">1. Relationship status</string>
     <string name="single">Single</string>
-    <string name="inrelatie">in a relationship</string>
-    <string name="casatorit">married</string>
+    <string name="inrelatie">In a relationship</string>
+    <string name="casatorit">Married</string>
     <string name="aveticopii">2. Do you have kids?</string>
-    <string name="da">Yes</string>
-    <string name="nu">No</string>
+    <string name="copiiDa">Yes</string>
+    <string name="copiiNu">No</string>
     <string name="catdedespleci">3. How often do you go in vacantion?</string>
     <string name="rar">rare</string>
     <string name="des">frequently</string>
@@ -77,9 +77,17 @@
     </array>
     <string name="alegeOrase">8. Select those cities which you`ve visited</string>
     <string name="finalizare">Show me the offers!</string>
+    <string name="btnAlegeOrase">Select cities</string>
     <!--home page-->
     <string name="btnExplore">Explore</string>
     <string name="titluHome">Best deals for you</string>
+    <!-- explore City activity-->
+    <string name="descrierereOras"> Basic info </string>
+    <string name="obiective"> See the Sights </string>
+    <string name="activitati"> Tours and Activities</string>
+    <string name="restaurante"> Where to eat ? </string>
+    <string name="biletZbor"> Check the flight tickets</string>
+    <string name="alteOferte"> Other info</string>
 
 
 </resources>
