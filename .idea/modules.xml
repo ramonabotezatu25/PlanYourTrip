@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PlanYourTrip.iml" filepath="$PROJECT_DIR$/PlanYourTrip.iml" />
+      <module fileurl="file://D:\Facultate\an 3\ANDROID_DAM\licenta\PlanYourTrip\PlanYourTrip.iml" filepath="D:\Facultate\an 3\ANDROID_DAM\licenta\PlanYourTrip\PlanYourTrip.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Facultate\an 3\ANDROID_DAM\licenta\PlanYourTrip\app\app.iml" filepath="D:\Facultate\an 3\ANDROID_DAM\licenta\PlanYourTrip\app\app.iml" />
     </modules>
   </component>
 </project>

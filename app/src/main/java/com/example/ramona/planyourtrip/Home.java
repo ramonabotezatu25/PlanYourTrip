@@ -200,7 +200,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(0));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
-                    deschideExploreCity(lL[0],lL[1]);
+                    deschideExploreCity(lL[0],lL[1],homeTv1.getText().toString());
                 }
             }
         });
@@ -211,7 +211,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(1));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
-                    deschideExploreCity(lL[0],lL[1]);
+                    deschideExploreCity(lL[0],lL[1],homeTv2.getText().toString());
                 }
             }
         });
@@ -222,7 +222,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(2));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
-                    deschideExploreCity(lL[0],lL[1]);
+                    deschideExploreCity(lL[0],lL[1],homeTv3.getText().toString());
                 }
             }
         });
@@ -233,7 +233,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(3));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
-                    deschideExploreCity(lL[0],lL[1]);
+                    deschideExploreCity(lL[0],lL[1],homeTv4.getText().toString());
                 }
             }
         });
@@ -244,7 +244,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(4));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
-                    deschideExploreCity(lL[0],lL[1]);
+                    deschideExploreCity(lL[0],lL[1],homeTv5.getText().toString());
                 }
             }
         });
@@ -255,17 +255,18 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(5));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
-                    deschideExploreCity(lL[0],lL[1]);
+                    deschideExploreCity(lL[0],lL[1],homeTv6.getText().toString());
                 }
             }
         });
     }
 
-    public void deschideExploreCity(String lat,String lon){
+    public void deschideExploreCity(String lat,String lon,String name){
         //cam asta e.Pentru test. Apeleaza cu New York
         Intent exploreCity = new Intent(Home.this, ExploreCity.class);
         exploreCity.putExtra("lat",lat);
         exploreCity.putExtra("long",lon);
+        exploreCity.putExtra("name",name);
         startActivity(exploreCity);
 
     }
