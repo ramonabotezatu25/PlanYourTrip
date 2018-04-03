@@ -21,10 +21,12 @@ import android.widget.Toast;
 import com.example.ramona.planyourtrip.GmailSender.SendEmail;
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Util.Database.Background;
 import com.example.ramona.planyourtrip.Util.VerificaEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import io.paperdb.Paper;
 
@@ -139,4 +141,11 @@ public class TravelTest extends AppCompatActivity {
         Intent intent=new Intent(TravelTest.this, Home.class);
         startActivity(intent);
     }
+    public void bazadedate(View view){
+        List<Map<String,String>> MyData = null;
+        Background mydata =new Background();
+        MyData= mydata.doInBackground();
+    }
+
+
 }

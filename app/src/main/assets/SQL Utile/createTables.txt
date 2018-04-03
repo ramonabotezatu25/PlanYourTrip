@@ -1,0 +1,51 @@
+create table user(
+
+id numeric NOT NULL PRIMARY KEY,
+
+nume varchar(400),
+
+email varchar(400),
+
+parola varchar(400),
+
+cod_confirmare varchar(1));
+
+
+
+create table locatii(
+
+id numeric NOT NULL PRIMARY KEY,
+
+nume_oras varchar(400),
+
+id_categorie_1 numeric,
+
+id_categorie_2 numeric,
+
+lat varchar(400),
+
+lon varchar(400));
+
+
+
+create table categorii(
+
+id numeric NOT NULL PRIMARY KEY,
+
+nume_categorie varchar(400));
+
+
+
+create table user_preferences(
+
+id numeric NOT NULL PRIMARY KEY,
+
+id_user numeric,
+
+id_categorie_1 numeric,
+
+id_categorie_2 numeric,
+
+buget varchar(400),
+
+id_locatie numeric);
