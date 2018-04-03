@@ -67,7 +67,7 @@ public class GetCityLongLat {
     public static String getCityLatLong(String oras){
         String latLong = null;
         for(City o : cityList){
-            if(oras.equals(o.getName())){
+            if(oras.toLowerCase().equals(o.getName().toLowerCase().replace(" ",""))){
                 latLong = o.getLat().toString() + ";"+o.getLongitudine().toString();
             }
         }

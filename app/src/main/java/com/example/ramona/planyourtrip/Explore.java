@@ -41,7 +41,7 @@ public class Explore extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.nav_home:
-                        startNewActivity(TravelTest.class);
+                        startNewActivity(Home.class);
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_explore:

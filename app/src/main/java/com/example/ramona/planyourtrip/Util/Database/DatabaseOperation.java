@@ -195,4 +195,31 @@ public class DatabaseOperation {
         }
         return uniqueEmail;
     }
+
+    public Integer logInUtilizator(String email,String parola){
+        Integer utilizatorActiv=0;
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+
+        if (connect == null) {
+            ConnectionResult = "Check Your Internet Access!";
+            return utilizatorActiv;
+        } else {
+            // Change below query according to your own database.
+            String query = "select count(*) from user where email = '"+email +"' and parola='"+parola+"'";
+            try {
+                Statement stmt  = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    utilizatorActiv = rs.getInt(1);
+                }
+                connect.close();
+                return utilizatorActiv;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return utilizatorActiv;
+    }
 }

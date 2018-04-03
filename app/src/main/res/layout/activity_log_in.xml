@@ -120,7 +120,7 @@
                 android:background="@drawable/rotunjire_buton_mov"
                 android:textColor="#b56b70"
                 android:text="@string/login"
-
+                android:onClick="login"
                 android:clickable="true"/>
 
             <LinearLayout
