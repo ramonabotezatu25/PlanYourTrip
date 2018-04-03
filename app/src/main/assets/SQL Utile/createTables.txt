@@ -49,3 +49,7 @@ id_categorie_2 numeric,
 buget varchar(400),
 
 id_locatie numeric);
+
+//
+ALTER TABLE user
+ADD activ int(1) default 0;

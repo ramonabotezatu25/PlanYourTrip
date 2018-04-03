@@ -1,6 +1,7 @@
 package com.example.ramona.planyourtrip;
 
 import android.content.DialogInterface;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
@@ -30,6 +33,10 @@ import static android.widget.AdapterView.*;
 
 public class Formular_interese extends AppCompatActivity{
 
+
+    //data bse operation
+    DatabaseOperation db = new DatabaseOperation();
+    //
     Spinner spinnerCategorii1;
     Spinner spinnerCategorii2;
     Spinner spinnerBuget;
@@ -257,7 +264,12 @@ public class Formular_interese extends AppCompatActivity{
 
 
     public void deschideAlegeOras(View view){
-        final String[] listaOrase = getResources().getStringArray(R.array.spinnerOrase);
+        List<Locatii> locatiiList = db.getLocation();
+        final String[] listaOrase = new String[locatiiList.size()];
+        for(int i =0;i<locatiiList.size();i++){
+            listaOrase[i] = locatiiList.get(i).getNume();
+        }
+
         if(checkedItems==null){
             checkedItems=new boolean[listaOrase.length];
         }

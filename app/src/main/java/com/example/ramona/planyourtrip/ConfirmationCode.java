@@ -1,13 +1,16 @@
 package com.example.ramona.planyourtrip;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.GmailSender.GMailSender;
+import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
 
 import java.util.ArrayList;
@@ -15,17 +18,27 @@ import java.util.List;
 
 import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.codUnicDeIndentificare;
 import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.getSaltString;
+import static com.example.ramona.planyourtrip.Util.Constants.COD_CONFIRMARE;
+import static com.example.ramona.planyourtrip.Util.Constants.SENDER_EMAIL;
 
 public class ConfirmationCode extends AppCompatActivity {
 
+    //database
+    DatabaseOperation db =new DatabaseOperation();
+    String email;
+    String codConfirmare;
+
     FlipProgressDialog fpd;
     EditText cod;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_code);
         cod=(EditText)findViewById(R.id.editText_confirationCode);
-
+        Bundle bu = getIntent().getExtras();
+        email = bu.getString(SENDER_EMAIL);
+        codConfirmare = bu.getString(COD_CONFIRMARE);
     }
     public  void golesteEditText(View view)
     {
@@ -39,10 +52,11 @@ public class ConfirmationCode extends AppCompatActivity {
                 sender.sendMail("Plan Your Trip",
                         "Bun venit !Codul dumneavoastra de identificare este : " +codUnicDeIndentificare,
                         "worldtipstravel@gmail.com",
-                        "dansilviuiancu@gmail.com");
+                        email);
             } catch (Exception e) {
                 Log.e("SendMail", e.getMessage(), e);
             }finally {
+                db.updateConfirmationCode(email,codUnicDeIndentificare);
                 fpd.dismiss();
             }
         }
@@ -91,4 +105,17 @@ public class ConfirmationCode extends AppCompatActivity {
         }
 
     }
+
+    public void checkConfirmationCode(View view){
+        String codConfirmareDb = db.checkConfirmationCode(email);
+        if(codConfirmareDb.equals(codConfirmare)){
+            db.activateUser(email);
+            Intent loginActivity = new Intent(this,LogIn.class);
+            startActivity(loginActivity);
+        }else{
+            Toast.makeText(getApplicationContext(), "Not OK", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 }

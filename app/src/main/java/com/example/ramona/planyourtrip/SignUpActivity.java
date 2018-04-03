@@ -10,8 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.GmailSender.GMailSender;
+import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.User;
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
 
@@ -20,14 +23,18 @@ import java.util.List;
 
 import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.codUnicDeIndentificare;
 import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.getSaltString;
+import static com.example.ramona.planyourtrip.Util.Constants.COD_CONFIRMARE;
+import static com.example.ramona.planyourtrip.Util.Constants.SENDER_EMAIL;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    //database
+    DatabaseOperation db =new DatabaseOperation();
 
     TextView nume;
     TextView email;
     TextView parola;
     WaveView waveView;
-    Button button;
     TextView campMesaj;
     FlipProgressDialog fpd;
 
@@ -111,13 +118,23 @@ public class SignUpActivity extends AppCompatActivity {
                 sender.sendMail("Plan Your Trip",
                         "Bun venit !Codul dumneavoastra de identificare este : " + codUnicDeIndentificare,
                         "worldtipstravel@gmail.com",
-                        "dansilviuiancu@gmail.com");
+                        email.getText().toString());
             } catch (Exception e) {
                 Log.e("SendMail", e.getMessage(), e);
             } finally {
                 fpd.dismiss();
-                Intent intent = new Intent(SignUpActivity.this, ConfirmationCode.class);
-                startActivity(intent);
+                    User user = new User();
+                    user.setNume(nume.getText().toString());
+                    user.setEmail(email.getText().toString());
+                    user.setParola(parola.getText().toString());
+                    user.setCodConfirmare(codUnicDeIndentificare);
+                    db.insertUtilizator(user);
+                    //
+                    Intent intent = new Intent(SignUpActivity.this, ConfirmationCode.class);
+                    intent.putExtra(SENDER_EMAIL, user.getEmail());
+                    intent.putExtra(COD_CONFIRMARE, codUnicDeIndentificare);
+                    startActivity(intent);
+
             }
         }
 
@@ -128,6 +145,8 @@ public class SignUpActivity extends AppCompatActivity {
         progressDialog.setMessage("Doing something, please wait.");
         progressDialog.show();
         myThread.start();*/
+        Integer uniqueEmail = db.checkUniqueEmail(email.getText().toString());
+        if(uniqueEmail == 0) {
         getSaltString();
         List<Integer> imageList = new ArrayList<Integer>();
         imageList.add(R.drawable.gmail);
@@ -158,10 +177,40 @@ public class SignUpActivity extends AppCompatActivity {
             fpd.setMaxAlpha(1.0f);                                    // Set an alpha while image is flipping
 
 
-            fpd.show(getFragmentManager(), "");                        // Show flip-progress-dialg
-            myThread.start();                                                         // Dismiss flip-progress-dialg
+            fpd.show(getFragmentManager(), "");
+            // Show flip-progress-dialg
+
+                myThread.start();
+                                                            // Dismiss flip-progress-dialg
         } catch (Exception ex) {
             System.out.print(ex.toString());
         }
     }
+        else{
+            Toast.makeText(getApplicationContext(),"EMAIL DEJA FOLOSIT",Toast.LENGTH_SHORT);
+            try {
+                verifyUserIdentity.start();
+            } catch (Exception ex) {
+                System.out.print(ex.toString());
+            }
+        }
+    }
+
+    final Thread verifyUserIdentity = new Thread(new Runnable() {
+        @Override
+        public void run() {
+            try {
+                GMailSender sender = new GMailSender("worldtipstravel@gmail.com", "Houriapalace1!");
+                sender.sendMail("Plan Your Trip",
+                        "Cineva incearca sa isi creeze cont cu emailul dumneavoastra",
+                        "worldtipstravel@gmail.com",
+                        email.getText().toString());
+            } catch (Exception e) {
+                Log.e("SendMail", e.getMessage(), e);
+            } finally {
+                Log.e("SendMail", "Protejare indetitate utilizator");
+            }
+        }
+
+    });
 }
