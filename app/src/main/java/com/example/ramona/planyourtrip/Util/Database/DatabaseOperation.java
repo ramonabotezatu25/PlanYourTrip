@@ -207,7 +207,7 @@ public class DatabaseOperation {
             return utilizatorActiv;
         } else {
             // Change below query according to your own database.
-            String query = "select count(*) from user where email = '"+email +"' and parola='"+parola+"'";
+            String query = "select count(*) from user where email = '"+email +"' and parola='"+parola+"' and activ = 1";
             try {
                 Statement stmt  = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
