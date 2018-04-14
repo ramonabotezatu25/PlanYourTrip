@@ -21,21 +21,14 @@ public class ConnectionHelper {
     public Connection connectionclasss()
     {
 
-        // Declaring Server ip, username, database name and password
-        ip = "192.168.100.4:3306";
-        db = "world";
-        DBUserNameStr = "root";
-        DBPasswordStr = "admin";
-        // Declaring Server ip, username, database name and password
-
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://192.168.100.4:3306/world","root","admin");
+            con=DriverManager.getConnection("jdbc:mysql://server.yourz.ro:3306/worldtips","worldtips","1xw50MhJLGDi47L4");
+
 
         }
         catch (SQLException se)
