@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#6F6D6D"
     tools:context="com.example.ramona.planyourtrip.Explore">
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
@@ -12,6 +14,36 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         app:menu="@menu/nav_items"></android.support.design.widget.BottomNavigationView>
+
+    <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
+        android:id="@+id/coverFlow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:coverHeight="200dp"
+        app:coverWidth="140dp"
+        android:paddingBottom="5dp"
+        app:maxScaleFactor="1.5"
+        app:reflectionGap="0px"
+        app:rotationThreshold="0.5"
+        app:scalingThreshold="0.5"
+        app:spacing="0.6"
+        />
+
+    <TextSwitcher
+        android:id="@+id/textSwitcher_numeOras"
+        android:paddingBottom="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></TextSwitcher>
+
+
+
+
+
+
+
+
     <!--  app:itemBackground="@color/colorAccent"
            app:itemIconTint="@color/colorPrimaryDark"
            app:itemTextColor="@color/colorPrimaryDark"-->

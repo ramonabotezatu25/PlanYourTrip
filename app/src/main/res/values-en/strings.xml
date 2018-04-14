@@ -90,4 +90,56 @@
     <string name="alteOferte"> Other info</string>
 
 
+     <!--orase-->
+    <string name="Amsterdam">Amsterdam</string>
+    <string name="Athens">Athens</string>
+    <string name="Barcelona">Barcelona</string>
+    <string name="Brussels">Brussels</string>
+    <string name="Bucharest">Bucharest</string>
+    <string name="Budapest">Budapest</string>
+    <string name="Berlin">Berlin</string>
+    <string name="Cluj">Cluj</string>
+    <string name="Copenhagen">Copenhagen</string>
+    <string name="Dublin">Dublin</string>
+    <string name="Florence">Florence</string>
+    <string name="Glasgow">Glasgow</string>
+    <string name="Hague">Hague</string>
+    <string name="Hamburg">Hamburg</string>
+    <string name="Lisbon">Lisbon</string>
+    <string name="London">London</string>
+    <string name="Madrid">Madrid</string>
+    <string name="Milan">Milan</string>
+    <string name="Malaga">Malaga</string>
+    <string name="Paris">Paris</string>
+    <string name="Mallorca">Mallorca</string>
+    <string name="Prague">Prague</string>
+    <string name="Rome">Rome</string>
+    <string name="Rotterdam">Rotterdam</string>
+    <string name="Salzburg">Salzburg</string>
+    <string name="Valencia">Valencia</string>
+    <string name="Venice">Venice</string>
+    <string name="Vienna">Vienna</string>
+    <string name="Casablanca">Casablanca</string>
+    <string name="Tokyo">Tokyo</string>
+    <string name="Beijing">Beijing</string>
+    <string name="Shanghai">Shanghai</string>
+    <string name="Singapore">Singapore</string>
+    <string name="Dubai">Dubai</string>
+    <string name="Abudhabi">Abu Dhabi</string>
+    <string name="Newyork">New York</string>
+    <string name="Washingtondc">Washington Dc</string>
+    <string name="Sanfrancisco">San Francisco</string>
+    <string name="Chicago">Chicago</string>
+    <string name="Sandiego">San Diego</string>
+    <string name="Losangeles">Los Angeles</string>
+    <string name="Lasvegas">Las Vegas</string>
+    <string name="Hawaii">Hawaii</string>
+    <string name="Cuba">Cuba</string>
+    <string name="Borabora">Bora Bora</string>
+    <string name="Maldive">Maldive</string>
+    <string name="Srilanka">Sri Lanka</string>
+    <string name="Puntacana">Punta Cana</string>
+    <string name="Bangkok">Bangkok</string>
+    <string name="Krabi">Krabi</string>
+
 </resources>

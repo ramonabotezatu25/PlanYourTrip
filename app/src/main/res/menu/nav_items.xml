@@ -4,14 +4,15 @@
 
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/nav_home"
-        android:title="@string/nav_home" />
+        android:icon="@drawable/home"
+        android:title="@string/nav_home"
+        />
     <item
         android:id="@+id/nav_explore"
         android:icon="@drawable/nav_explore"
         android:title="@string/nav_explore" />
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/compass_2"
+        android:icon="@drawable/icon_user2"
         android:title="@string/nav_profile" />
 </menu>

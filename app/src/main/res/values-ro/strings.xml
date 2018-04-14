@@ -77,32 +77,8 @@
     <string name="alegeOrase">8. Selecteaza orasele vizitate</string>
     <string name="finalizare">Arata-mi ofertele!</string>
     <string name="btnAlegeOrase">Alege orase</string>
-    <!-- spinner Orase-->
-    <array name="spinnerOrase">
-        <item> Amsterdam</item>
-        <item> Barcelona</item>
-        <item> Berlin</item>
-        <item> Bucuresti</item>
-        <item> Budapesta</item>
-        <item> Dublin</item>
-        <item> Instanbul</item>
-        <item> Lisabona</item>
-        <item> Londra</item>
-        <item> Madrid</item>
-        <item> Milano</item>
-        <item> Paris</item>
-        <item> Praga</item>
-        <item> Roma</item>
-        <item> Viena</item>
-        <item> New york</item>
-        <item> San francisco</item>
-        <item> Los Angeles</item>
-        <item> Chicago</item>
-        <item> Hawaii </item>
-        <item> Maldive</item>
-        <item> Thailada</item>
-    </array>
-        <!--home page-->
+
+    <!--home page-->
      <string name="btnExplore">Exploreaza</string>
     <string name="titluHome">Cele mai bune oferte pentru tine</string>
     <!-- explore City activity-->
@@ -149,4 +125,56 @@
        Daca ajungi sa explorezi New York-ul, trebuie neaparat sa incerci "street food", asa recunoscutii burgeri si hot-dogi facuti pe strazile New York-ului. Daca vrei totusi un restaurant in adevarul sens al cuvantului, acesteaz sunt recomandarile noastre:
 
     </string>
+
+    <!--orase-->
+    <string name="Amsterdam">Amsterdam</string>
+    <string name="Athens">Atena</string>
+    <string name="Barcelona">Barcelona</string>
+    <string name="Brussels">Bruxelles</string>
+    <string name="Bucharest">Bucuresti</string>
+    <string name="Budapest">Budapesta</string>
+    <string name="Berlin">Berlin</string>
+    <string name="Cluj">Cluj</string>
+    <string name="Copenhagen">Copenhaga</string>
+    <string name="Dublin">Dublin</string>
+    <string name="Florence">Florenta</string>
+    <string name="Glasgow">Glasgow</string>
+    <string name="Hague">Haga</string>
+    <string name="Hamburg">Hamburg</string>
+    <string name="Lisbon">Lisabona</string>
+    <string name="London">Londra</string>
+    <string name="Madrid">Madrid</string>
+    <string name="Milan">Milano</string>
+    <string name="Malaga">Malaga</string>
+    <string name="Paris">Paris</string>
+    <string name="Mallorca">Mallorca</string>
+    <string name="Prague">Praga</string>
+    <string name="Rome">Roma</string>
+    <string name="Rotterdam">Rotterdam</string>
+    <string name="Salzburg">Salzburg</string>
+    <string name="Valencia">Valencia</string>
+    <string name="Venice">Venetia</string>
+    <string name="Vienna">Viena</string>
+    <string name="Casablanca">Casablanca</string>
+    <string name="Tokyo">Tokyo</string>
+    <string name="Beijing">Beijing</string>
+    <string name="Shanghai">Shanghai</string>
+    <string name="Singapore">Singapore</string>
+    <string name="Dubai">Dubai</string>
+    <string name="Abudhabi">Abu dhabi</string>
+    <string name="Newyork">New york</string>
+    <string name="Washingtondc">Washington Dc</string>
+    <string name="Sanfrancisco">San Francisco</string>
+    <string name="Chicago">Chicago</string>
+    <string name="Sandiego">San Diego</string>
+    <string name="Losangeles">Los Angeles</string>
+    <string name="Lasvegas">Las Vegas</string>
+    <string name="Hawaii">Hawaii</string>
+    <string name="Cuba">Cuba</string>
+    <string name="Borabora">Bora Bora</string>
+    <string name="Maldive">Maldive</string>
+    <string name="Srilanka">Sri Lanka</string>
+    <string name="Puntacana">Punta Cana</string>
+    <string name="Bangkok">Bangkok</string>
+    <string name="Krabi">Krabi</string>
 </resources>

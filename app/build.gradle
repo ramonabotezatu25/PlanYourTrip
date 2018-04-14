@@ -54,4 +54,7 @@ dependencies {
     //card view
     implementation 'com.android.support:cardview-v7:26.1.0'
     implementation files('libs/mysql-connector-java-5.1.46.jar')
+    //cover flow explore. (slider)
+    compile 'com.github.moondroid.coverflow:library:1.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

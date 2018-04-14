@@ -82,6 +82,7 @@
                 android:background="@drawable/rotunjire_buton_mov"
                 android:textColor="#b56b70"
                 android:clickable="true"
+                android:onClick="checkConfirmationCode"
                 android:text="@string/verificaCod" />
 
             <Button

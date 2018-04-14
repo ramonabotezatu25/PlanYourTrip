@@ -21,7 +21,8 @@ public class ExploreCity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore_city);
-
+        bu = getIntent().getExtras();
+        final String numeOras = bu.getString("name");
         weatherFont = Typeface.createFromAsset(getAssets(), "font/font/weathericons-regular-webfont.ttf");
 
         cityField = (TextView)findViewById(R.id.explore_city_field);
@@ -36,7 +37,7 @@ public class ExploreCity extends AppCompatActivity {
         Weather.placeIdTask asyncTask =new Weather.placeIdTask(new Weather.AsyncResponse() {
             public void processFinish(String weather_city, String weather_description, String weather_temperature, String weather_humidity, String weather_pressure, String weather_updatedOn, String weather_iconText, String sun_rise) {
 
-                cityField.setText(weather_city);
+                cityField.setText(numeOras);
                 updatedField.setText(weather_updatedOn);
                 detailsField.setText(weather_description);
                 currentTemperatureField.setText(weather_temperature);
@@ -46,7 +47,7 @@ public class ExploreCity extends AppCompatActivity {
 
             }
         });
-        bu = getIntent().getExtras();
+
         if(bu != null){
             latitudine = bu.getString("lat");
             longitudine = bu.getString("long");
