@@ -2,6 +2,7 @@ package com.example.ramona.planyourtrip.Util.Database;
 
 import android.content.ContentValues;
 
+import com.example.ramona.planyourtrip.Util.Email;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.User;
 
@@ -221,5 +222,36 @@ public class DatabaseOperation {
             }
         }
         return utilizatorActiv;
+    }
+
+
+    //insert messages in database
+
+    public int insertMessages(Email message) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        int res = -1;
+        if (message == null) {
+            return res;
+        }
+        try {
+            String query = "INSERT INTO email(nume_utilizator,email,email_to,email_subject,email_body) VALUES(?,?,?,?,?)";
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connect.prepareStatement(query);
+            preparedStatement.setString(1,message.getNume_utilizator());
+            preparedStatement.setString(2,message.getEmailFrom());
+            preparedStatement.setString(3,message.getEmailTo());
+            preparedStatement.setString(4,message.getEmailSubject());
+            preparedStatement.setString(5,message.getEmailBody());
+            res = preparedStatement.executeUpdate();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return res;
     }
 }

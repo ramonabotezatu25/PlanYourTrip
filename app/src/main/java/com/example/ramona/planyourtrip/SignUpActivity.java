@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.GmailSender.GMailSender;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.Email;
 import com.example.ramona.planyourtrip.Util.User;
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
@@ -23,7 +24,11 @@ import java.util.List;
 
 import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.codUnicDeIndentificare;
 import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.getSaltString;
+import static com.example.ramona.planyourtrip.Util.Constants.ADMIN_EMAIL;
 import static com.example.ramona.planyourtrip.Util.Constants.COD_CONFIRMARE;
+import static com.example.ramona.planyourtrip.Util.Constants.EMAIL_BODY_NEW_ACCOUNT;
+import static com.example.ramona.planyourtrip.Util.Constants.EMAIL_BODY_NEW_ACCOUNT_ADMIN;
+import static com.example.ramona.planyourtrip.Util.Constants.EMAIL_SUBJECT_NEW_ACCOUNT;
 import static com.example.ramona.planyourtrip.Util.Constants.SENDER_EMAIL;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -115,9 +120,9 @@ public class SignUpActivity extends AppCompatActivity {
         public void run() {
             try {
                 GMailSender sender = new GMailSender("worldtipstravel@gmail.com", "Houriapalace1!");
-                sender.sendMail("Plan Your Trip",
-                        "Bun venit !Codul dumneavoastra de identificare este : " + codUnicDeIndentificare,
-                        "worldtipstravel@gmail.com",
+                sender.sendMail(EMAIL_SUBJECT_NEW_ACCOUNT,
+                        EMAIL_BODY_NEW_ACCOUNT  + codUnicDeIndentificare,
+                        ADMIN_EMAIL,
                         email.getText().toString());
             } catch (Exception e) {
                 Log.e("SendMail", e.getMessage(), e);
@@ -128,6 +133,24 @@ public class SignUpActivity extends AppCompatActivity {
                     user.setEmail(email.getText().toString());
                     user.setParola(parola.getText().toString());
                     user.setCodConfirmare(codUnicDeIndentificare);
+                    //message Admin
+                    Email messages = new Email();
+                    messages.setNume_utilizator(user.getNume());
+                    messages.setEmailTo(ADMIN_EMAIL);
+                    messages.setEmailFrom(user.getEmail());
+                    messages.setEmailSubject(EMAIL_SUBJECT_NEW_ACCOUNT);
+                    messages.setEmailBody(EMAIL_BODY_NEW_ACCOUNT_ADMIN + user.getEmail());
+                    //Message User
+                    Email messagesUsr = new Email();
+                    messagesUsr.setNume_utilizator(user.getNume());
+                    messagesUsr.setEmailTo(user.getEmail());
+                    messagesUsr.setEmailFrom(ADMIN_EMAIL);
+                    messagesUsr.setEmailSubject(EMAIL_SUBJECT_NEW_ACCOUNT);
+                    messagesUsr.setEmailBody(EMAIL_BODY_NEW_ACCOUNT + codUnicDeIndentificare);
+                    //Message User
+                    //database store
+                    db.insertMessages(messages);
+                    db.insertMessages(messagesUsr);
                     db.insertUtilizator(user);
                     //
                     Intent intent = new Intent(SignUpActivity.this, ConfirmationCode.class);
