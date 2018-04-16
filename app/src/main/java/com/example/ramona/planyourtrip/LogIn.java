@@ -1,15 +1,20 @@
 package com.example.ramona.planyourtrip;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.media.MediaCas;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.User;
 import com.facebook.AccessToken;
@@ -30,6 +35,7 @@ import java.util.Arrays;
 
 import br.com.bloder.magic.internal.MagicAnimation;
 import br.com.bloder.magic.view.MagicButton;
+import io.paperdb.Paper;
 
 public class LogIn extends AppCompatActivity {
     //databse
@@ -37,10 +43,16 @@ public class LogIn extends AppCompatActivity {
     //facebook
     CallbackManager callbackManager;
 
-    MagicButton magicButton;
+
     MagicButton magicButton2;
     EditText email;
     EditText parola;
+    TextView tvSignUpIntrebare;
+    TextView tvSignUpHere;
+    Button buttonLogin;
+    //setari limba
+    Context context;
+    Resources resources;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +62,8 @@ public class LogIn extends AppCompatActivity {
         parola = (EditText) findViewById(R.id.editText_password_logIn);
 
         //
-        magicButton=(MagicButton)findViewById(R.id.magic_button1);
-        magicButton.setLeft(1);
         magicButton2=(MagicButton)findViewById(R.id.magic_button2);
-        magicButton.setLeft(0);
+
 
 
 
@@ -115,13 +125,38 @@ public class LogIn extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "V-ati conectat cu GOOGLE + ", Toast.LENGTH_SHORT).show();
             }
         });
-        magicButton.setMagicButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               Toast.makeText(getApplicationContext(), "V-ati conectat cu FACEBOOK", Toast.LENGTH_SHORT).show();
-            }
-        });
+
+
+        //mulilng
+        allYouNeed();
     }
+
+
+    private void allYouNeed() {
+
+        //preiau toate view-urile care trebuie traduce din clasa
+         tvSignUpIntrebare = (TextView) findViewById(R.id.login_tv_signup_intrebare);
+        tvSignUpHere = (TextView) findViewById(R.id.login_tv_signUpHere);
+        email = (EditText) findViewById(R.id.editText_name_logIn);
+        parola = (EditText) findViewById(R.id.editText_password_logIn);
+        buttonLogin = (Button) findViewById(R.id.login_btn_autentificare);
+        //pun toate id-urile stringurilor de care am nevoie
+        setAllTextOnActivity();
+        //navigation view
+    }
+    private void setAllTextOnActivity() {
+        //setari de limba
+        context = getApplicationContext();
+        context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
+        resources = context.getResources();
+        email.setHint(resources.getString(R.string.name));
+        parola.setHint(resources.getString(R.string.password));
+        tvSignUpIntrebare.setText(resources.getString(R.string.questionSignUp));
+        tvSignUpHere.setText(resources.getString(R.string.signUpHere));
+        buttonLogin.setText(resources.getString(R.string.login));
+    }
+
+
 
     private Bundle getFacebookData(JSONObject object) {
         Bundle nume =null;
@@ -134,6 +169,9 @@ public class LogIn extends AppCompatActivity {
             facebookUser.setCodConfirmare("FACEBOOK");
             facebookUser.setNume(name);
             db.insertUtilizator(facebookUser);
+            Intent explore= new Intent(this, Home.class);
+            startActivity(explore);
+
 
         } catch (JSONException e) {
             e.printStackTrace();

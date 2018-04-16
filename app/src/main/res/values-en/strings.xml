@@ -82,10 +82,10 @@
     <string name="btnExplore">Explore</string>
     <string name="titluHome">Best deals for you</string>
     <!-- explore City activity-->
-    <string name="descrierereOras"> Basic info </string>
+    <string name="descrierereOras"> Discover City </string>
     <string name="obiective"> See the Sights </string>
     <string name="activitati"> Tours and Activities</string>
-    <string name="restaurante"> Where to eat ? </string>
+    <string name="restaurante"> Where to eat ? Our recomandation </string>
     <string name="biletZbor"> Check the flight tickets</string>
     <string name="alteOferte"> Other info</string>
 

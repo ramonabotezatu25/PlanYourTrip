@@ -1,6 +1,8 @@
 package com.example.ramona.planyourtrip;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -12,12 +14,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
@@ -29,6 +33,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.paperdb.Paper;
+
 import static android.widget.AdapterView.*;
 
 public class Formular_interese extends AppCompatActivity{
@@ -37,16 +43,43 @@ public class Formular_interese extends AppCompatActivity{
     //data bse operation
     DatabaseOperation db = new DatabaseOperation();
     //
+    TextView titlu;
+    TextView statusRelatie;
+    RadioButton rbSingur;
+    RadioButton rbInRelatie;
+    RadioButton rbCasatorit;
+    TextView aveticopii;
+    RadioButton rbDA;
+    RadioButton rbNU;
+    TextView catDeDesCalatoriti;
+    RadioButton rbDes;
+    RadioButton rbFoartedes;
+    RadioButton rbRar;
+    TextView tvSpinner1;
+    TextView tvSpinner2;
+    TextView tvSpinner3;
+
     Spinner spinnerCategorii1;
     Spinner spinnerCategorii2;
     Spinner spinnerBuget;
+
+    TextView oraseVizitate;
+    RadioButton rbDa2;
+    RadioButton rbNu2;
+
+    TextView tvAlegeOrtas;
+    Button btnAlegeOras;
+
+    Button btnFinalizare;
     ArrayList<Integer> listOraseSelectate = new ArrayList<>();
     TextView tvTari;
     WaveView waveView;
     Set<String> waveViewProgress = new HashSet<>();
     UserPreferences userPreferences= new UserPreferences();
     boolean[] checkedItems;
-
+    //setari limba
+    Context context;
+    Resources resources;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,18 +92,27 @@ public class Formular_interese extends AppCompatActivity{
         spinnerCategorii2 = (Spinner) findViewById(R.id.formular_spinnerCategorii_2);
         spinnerBuget = (Spinner) findViewById(R.id.formular_spinerBuget);
 
+        //setam contextl pentru multi lang pentru spinner
+        context = getApplicationContext();
+        context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
 
         //populez spinnerCategorii 1
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.spinnerCategorii, android.R.layout.simple_spinner_item);
+        String[] list;
+        list = context.getResources().getStringArray(R.array.spinnerCategorii);
+        List<String> listaOrase = new ArrayList<>();
+        for (int i = 0; i < list.length; i++) {
+            listaOrase.add(list[i]);
+        }
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaOrase);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategorii1.setAdapter(adapter);
-
+        //populez spinner 2 in functie de spinner 1
         spinnerCategorii1.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // your code here
                 String[] list;
-                list = getResources().getStringArray(R.array.spinnerCategorii);
+                list = context.getResources().getStringArray(R.array.spinnerCategorii);
                 List<String> listaOrase = new ArrayList<>();
                 for (int i = 0; i < list.length; i++) {
                     listaOrase.add(list[i]);
@@ -110,11 +152,16 @@ public class Formular_interese extends AppCompatActivity{
             }
         });
         //populez spinner Buget
-        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.spinnerBuget, android.R.layout.simple_spinner_item);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        String[] buget;
+        buget = context.getResources().getStringArray(R.array.spinnerBuget);
+        List<String> listaBuget = new ArrayList<>();
+        for (int i = 0; i < buget.length; i++) {
+            listaBuget.add(buget[i]);
+        }
+        ArrayAdapter<String> adapter3 =
+                new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaBuget);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerBuget.setAdapter(adapter3);
-
-
 
 
         spinnerBuget.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -218,7 +265,7 @@ public class Formular_interese extends AppCompatActivity{
                 }
             }
         });
-        // This will get the radiogroup
+        // orse vizitate
         final RadioGroup rGroupOraseVizitate = (RadioGroup)findViewById(R.id.formular_radioGroup_oraseVizitate);
         rGroupOraseVizitate.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -232,7 +279,7 @@ public class Formular_interese extends AppCompatActivity{
                 Button btn= (Button)(findViewById(R.id.formular_btn_alegeorase));
                 TextView tv=(TextView)findViewById(R.id.tv_oraseVizitate);
 
-                if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.copiiDa))){
+                if(checkedRadioButton.getText().toString().equals(context.getResources().getString(R.string.copiiDa))){
                     tv.setVisibility(VISIBLE);
                     btn.setVisibility(VISIBLE);
                 }else{
@@ -246,8 +293,66 @@ public class Formular_interese extends AppCompatActivity{
             }
         });
 
+        //mulilng
+        allYouNeed();
     }
 
+    private void allYouNeed() {
+
+        //preiau toate view-urile care trebuie traduce din clasa
+        titlu = (TextView) findViewById(R.id.tv_titlu);
+        statusRelatie = (TextView) findViewById(R.id.tv_status);
+        rbSingur = (RadioButton) findViewById(R.id.formular_rb_singur);
+        rbInRelatie = (RadioButton) findViewById(R.id.formular_rb_inRelatie);
+        rbCasatorit = (RadioButton) findViewById(R.id.formular_rb_casatorit);
+        aveticopii = (TextView) findViewById(R.id.tv_copii);
+        rbDA = (RadioButton) findViewById(R.id.formular_rb_copii_da);
+        rbNU = (RadioButton) findViewById(R.id.formular_rb_copii_nu);
+        rbDa2=(RadioButton)findViewById(R.id.formular_rb_oraseVizitate_da);
+        rbNu2=(RadioButton)findViewById(R.id.formular_rb_oraseVizitate_nu);
+        tvSpinner1 = (TextView) findViewById(R.id.tvSpinner1);
+        tvSpinner2 = (TextView) findViewById(R.id.tvSpinner2);
+        tvSpinner3 = (TextView) findViewById(R.id.tvSpinner3);
+        rbDes=(RadioButton)findViewById((R.id.formular_rb_calatoresc_des));
+        rbRar=(RadioButton)findViewById((R.id.formular_rb_calatoresc_rar));
+        rbFoartedes=(RadioButton)findViewById((R.id.formular_rb_calatoresc_foarte_des));
+
+        //setari S[pinner --- ?
+
+        oraseVizitate = (TextView) findViewById(R.id.tv_oraseVizitate);
+        btnAlegeOras = (Button) findViewById(R.id.formular_btn_alegeorase);
+        btnFinalizare = (Button) findViewById(R.id.formular_btn_finalizare);
+
+        //pun toate id-urile stringurilor de care am nevoie
+        setAllTextOnActivity();
+        //navigation view
+    }
+    private void setAllTextOnActivity() {
+        //setari de limba
+        context = getApplicationContext();
+        context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
+        resources = context.getResources();
+
+        titlu.setText(resources.getString(R.string.titlu));
+        statusRelatie.setText(resources.getString(R.string.statusRelatie));
+        rbSingur.setText(resources.getString(R.string.single));
+        rbInRelatie.setText(resources.getString(R.string.inrelatie));
+        rbCasatorit.setText(resources.getString(R.string.casatorit));
+        aveticopii.setText(resources.getString(R.string.aveticopii));
+        rbDA.setText(resources.getString(R.string.copiiDa));
+        rbDa2.setText(resources.getString(R.string.copiiDa));
+        rbNU.setText(resources.getString(R.string.copiiNu));
+        rbNu2.setText(resources.getString(R.string.copiiNu));
+        tvSpinner1.setText(resources.getString(R.string.sunteti_interesat));
+        tvSpinner2.setText(resources.getString(R.string.daca_ai_putea_alege));
+        tvSpinner3.setText(resources.getString(R.string.buget));
+        rbDes.setText(resources.getString(R.string.des));
+        rbRar.setText(resources.getString(R.string.rar));
+        rbFoartedes.setText(resources.getString(R.string.foarte_des));
+        oraseVizitate.setText(resources.getString(R.string.orase_vizitate));
+        btnAlegeOras.setText(resources.getString(R.string.alegeOrase));
+        btnFinalizare.setText(resources.getString(R.string.finalizare));
+    }
     public void waveViewProgress(String chkGroup){
         if(!chkGroup.equals("0")) {
             waveView.setProgress(0);
