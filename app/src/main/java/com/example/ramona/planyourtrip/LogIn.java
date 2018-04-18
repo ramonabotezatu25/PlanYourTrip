@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.User;
+import com.example.ramona.planyourtrip.Util.UserPreferences;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -191,8 +192,16 @@ public class LogIn extends AppCompatActivity {
         String parolaU = parola.getText().toString();
         Integer utilizatorActiv = db.logInUtilizator(emailU,parolaU);
         if(utilizatorActiv==1){
-            Intent explore= new Intent(this, Home.class);
-            startActivity(explore);
+            Integer userPref = db.getUserPref(emailU);
+            if(userPref==1){
+                Intent explore= new Intent(this, Home.class);
+                startActivity(explore);
+            }else{
+                Intent userPreferences= new Intent(this, Formular_interese.class);
+                userPreferences.putExtra("email",emailU);
+                startActivity(userPreferences);
+            }
+
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.ramona.planyourtrip;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Util.Categorii;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
@@ -72,6 +74,11 @@ public class Formular_interese extends AppCompatActivity{
 
     Button btnFinalizare;
     ArrayList<Integer> listOraseSelectate = new ArrayList<>();
+    List<Categorii> listaCategorii = new ArrayList<>();
+    final List<String> listaOrase = new ArrayList<>();
+    final List<String> listaOrase3 = new ArrayList<>();
+    List<Locatii> locatiiList  = new ArrayList<>();
+
     TextView tvTari;
     WaveView waveView;
     Set<String> waveViewProgress = new HashSet<>();
@@ -96,10 +103,17 @@ public class Formular_interese extends AppCompatActivity{
         context = getApplicationContext();
         context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
 
+
+
         //populez spinnerCategorii 1
-        String[] list;
-        list = context.getResources().getStringArray(R.array.spinnerCategorii);
-        List<String> listaOrase = new ArrayList<>();
+        listaCategorii = db.selectCategorii();
+        String[] list = new String[listaCategorii.size()];
+
+        //list = context.getResources().getStringArray(R.array.spinnerCategorii);
+        for(int i = 0;i<listaCategorii.size();i++){
+            list[i] = listaCategorii.get(i).getNumeCategorie();
+        }
+        listaOrase.add("Selectati o categorie");
         for (int i = 0; i < list.length; i++) {
             listaOrase.add(list[i]);
         }
@@ -111,24 +125,27 @@ public class Formular_interese extends AppCompatActivity{
         spinnerCategorii1.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String[] list;
-                list = context.getResources().getStringArray(R.array.spinnerCategorii);
-                List<String> listaOrase = new ArrayList<>();
-                for (int i = 0; i < list.length; i++) {
-                    listaOrase.add(list[i]);
-                }
                 if (position!=0){
+                    List<String> listaOrase2 = new ArrayList<>();
+                    for(String lo :listaOrase){
+                        listaOrase2.add(lo);
+                    }
+                    for(String lo :listaOrase2){
+                        listaOrase3.add(lo);
+                    }
                     waveViewProgress("spinnerCategorii1");
-                    listaOrase.remove(0);
-                    listaOrase.remove(position-1);
+                    userPreferences.setCategoria1(listaOrase.get(position));
+                    listaOrase2.remove(0);
+                    listaOrase2.remove(position-1);
                     ArrayAdapter<String> adapter2 =
-                            new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaOrase);
+                            new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaOrase2);
                     adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
                     spinnerCategorii2.setAdapter(adapter2);
                     spinnerCategorii2.setVisibility(VISIBLE);
                    // DE ACTUALIZAT USER PREFERENCES CU ID-UL CZATEGORIEI ADUS DIN BAA DE DATE CAND INCARC SPINNERUL
                 }  else{
                     waveViewProgress("0");
+                    userPreferences.setCategoria1(listaOrase.get(position));
                     spinnerCategorii2.setVisibility(INVISIBLE);
                 }
             }
@@ -144,6 +161,7 @@ public class Formular_interese extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                waveViewProgress("spinnerCategorii2");
+                userPreferences.setCategoria2(listaOrase3.get(position+1));
                // DE ACTUALIZAT USER PREFERENCES COMPLETAT CU ID-UL CATEGORIEI ADUSA DIN BAZA DE DATE
             }
 
@@ -197,7 +215,7 @@ public class Formular_interese extends AppCompatActivity{
                 if (isChecked)
                 {
                     waveViewProgress("rGroupStatusRelatie");
-                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.single))){
+                    if(checkedRadioButton.getText().toString().equals(resources.getString(R.string.single))){
                         userPreferences.setStatusRelatie("1");
                     }
                     if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.inrelatie))){
@@ -227,10 +245,10 @@ public class Formular_interese extends AppCompatActivity{
                 {
 
                     waveViewProgress("rGroupCopii");
-                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.copiiDa))){
+                    if(checkedRadioButton.getText().toString().equals(resources.getString(R.string.copiiDa))){
                         userPreferences.setAreCopii("1");
                     }
-                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.copiiNu))){
+                    if(checkedRadioButton.getText().toString().equals(resources.getString(R.string.copiiNu))){
                         userPreferences.setAreCopii("0");
                     }
 
@@ -252,13 +270,13 @@ public class Formular_interese extends AppCompatActivity{
                 if (isChecked)
                 {
                     waveViewProgress("rGroupPlecari");
-                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.rar))){
+                    if(checkedRadioButton.getText().toString().equals(resources.getString(R.string.rar))){
                         userPreferences.setCatDeDesPleci("0");
                     }
-                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.des))){
+                    if(checkedRadioButton.getText().toString().equals(resources.getString(R.string.des))){
                         userPreferences.setCatDeDesPleci("1");
                     }
-                    if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.foarte_des))){
+                    if(checkedRadioButton.getText().toString().equals(resources.getString(R.string.foarte_des))){
                         userPreferences.setCatDeDesPleci("2");
                     }
 
@@ -369,7 +387,7 @@ public class Formular_interese extends AppCompatActivity{
 
 
     public void deschideAlegeOras(View view){
-        List<Locatii> locatiiList = db.getLocation();
+        locatiiList = db.getLocation();
         final String[] listaOrase = new String[locatiiList.size()];
         for(int i =0;i<locatiiList.size();i++){
             listaOrase[i] = locatiiList.get(i).getNume();
@@ -435,6 +453,33 @@ public class Formular_interese extends AppCompatActivity{
     public void creeazaUserPreferences(View view)
     {
         //INSERARE USER PREFERENCES IN TABELA
-        System.out.print(userPreferences);
+        Bundle bu = getIntent().getExtras();
+
+        String oraseVizitate = "";
+        for(int i=0;i<checkedItems.length;i++){
+            if(checkedItems[i]==true)
+            {
+                if(oraseVizitate.equals("")){
+                    oraseVizitate+=String.valueOf(locatiiList.get(i).getId());
+                }else{
+                    oraseVizitate+= ",";
+                    oraseVizitate+= String.valueOf(locatiiList.get(i).getId());
+                }
+            }
+
+        }
+        userPreferences.setOraseVizitate(oraseVizitate);
+
+        for(int i = 0;i<listaCategorii.size();i++) {
+            if(userPreferences.getCategoria1().equals(listaCategorii.get(i).getNumeCategorie())){
+                userPreferences.setCategoria1(String.valueOf(listaCategorii.get(i).getId()));
+            }
+            if(userPreferences.getCategoria2().equals(listaCategorii.get(i).getNumeCategorie())){
+                userPreferences.setCategoria2(String.valueOf(listaCategorii.get(i).getId()));
+            }
+        }
+        db.insertUserPref(userPreferences,bu.getString("email"));
+        Intent explore= new Intent(this, Home.class);
+        startActivity(explore);
     }
 }
