@@ -63,6 +63,8 @@ public class Home extends AppCompatActivity {
     ImageView imageView1;
     List<String> orase = new ArrayList<>();
     List<Locatii> locatiiList = new ArrayList<>();
+    //nume pe care il trimit in activitatea explore_city
+    String orasSelectat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,6 +202,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(0));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
+                    orasSelectat= homeTv1.getText().toString();
                     deschideExploreCity(lL[0],lL[1],homeTv1.getText().toString());
                 }
             }
@@ -211,6 +214,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(1));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
+                    orasSelectat= homeTv2.getText().toString();
                     deschideExploreCity(lL[0],lL[1],homeTv2.getText().toString());
                 }
             }
@@ -222,6 +226,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(2));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
+                    orasSelectat= homeTv3.getText().toString();
                     deschideExploreCity(lL[0],lL[1],homeTv3.getText().toString());
                 }
             }
@@ -233,7 +238,9 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(3));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
+                    orasSelectat= homeTv4.getText().toString();
                     deschideExploreCity(lL[0],lL[1],homeTv4.getText().toString());
+
                 }
             }
         });
@@ -244,7 +251,9 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(4));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
+                    orasSelectat= homeTv5.getText().toString();
                     deschideExploreCity(lL[0],lL[1],homeTv5.getText().toString());
+
                 }
             }
         });
@@ -255,6 +264,7 @@ public class Home extends AppCompatActivity {
                 String latLong = getCityLatLong(orase.get(5));
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
+                    orasSelectat= homeTv6.getText().toString();
                     deschideExploreCity(lL[0],lL[1],homeTv6.getText().toString());
                 }
             }
@@ -267,6 +277,7 @@ public class Home extends AppCompatActivity {
         exploreCity.putExtra("lat",lat);
         exploreCity.putExtra("long",lon);
         exploreCity.putExtra("name",name);
+        exploreCity.putExtra("orasSelectat", orasSelectat);
         startActivity(exploreCity);
 
     }

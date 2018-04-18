@@ -200,3 +200,113 @@ insert into locatii (nume_oras,id_categorie_1,id_categorie_2,lat,lon) values
 ('Krabi',6,5,'8.086300','98.906283');
 
 select * from locatii
+
+
+
+insert in desciere_orase
+
+/* 1-10*/
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30712461_587953308239947_3492033068502351872_n.jpg?_nc_cat=0&oh=b38e5409b120619bbd7bfde656c02080&oe=5B27EE83',1);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30704074_587953301573281_27142320704978944_n.jpg?_nc_cat=0&oh=b19a9079a503358661e96b985bfc09ab&oe=5B63960B',2);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30712932_587953358239942_5213909281652342784_n.jpg?_nc_cat=0&oh=8598bf00840463f9f373b720e557ecd9&oe=5B60E68B',3);insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30729234_587953444906600_8166021195330748416_n.jpg?_nc_cat=0&oh=969f13ba300546dfd23ac16539f2baad&oe=5B5CEF76',4);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30709405_587953458239932_6604531885785743360_n.jpg?_nc_cat=0&oh=b593fc2c73e27656f7e41875b3efa02a&oe=5B5B8222',5);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30708722_587953504906594_4349699464412266496_n.jpg?_nc_cat=0&oh=90292d9ce3c6a674d30f332d03a73079&oe=5B62063C',6);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30728977_587953381573273_3500727254835527680_n.jpg?_nc_cat=0&oh=5415913e8f5d3a4423781f7a9d4fa123&oe=5B5AC65C',7);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30742910_587953571573254_787250093559382016_n.jpg?_nc_cat=0&oh=25ed4a1da2eedd3ec1122aa347d8d9da&oe=5B6B79BE',8);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30728327_587953614906583_5374514202092240896_n.jpg?_nc_cat=0&oh=8ef841ccc06562c44b6b9fc33fb7ea76&oe=5B73ACD4',9);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30709041_587953668239911_3442404480878903296_n.jpg?_nc_cat=0&oh=b853ad383c0f1147b0ca9d9331056b83&oe=5B6623C1',10);
+/*11-20 */
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30742197_587953691573242_2038649382877790208_n.jpg?_nc_cat=0&oh=64ee93e58b4639c2ce927cb3e1ed1e54&oe=5B523152',11);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30716716_587953721573239_6164683348699512832_n.jpg?_nc_cat=0&oh=0b7438e5b4132b6ae5d3ead965545f75&oe=5B7088FE',12);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30704558_587953728239905_1890327321580142592_n.jpg?_nc_cat=0&oh=bd47a88d44f6e235893a1f86b3592f1a&oe=5B5DB6B3',13);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30727139_587953748239903_4327343017175285760_n.jpg?_nc_cat=0&oh=9e941b11f6a212f45ab6f9121d93010f&oe=5B6C7B3D',14);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30729554_587953851573226_5967210978746564608_n.jpg?_nc_cat=0&oh=f043eb7ca77f56718ffe52a88eab6571&oe=5B611C44',15);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30708668_587953868239891_1293152122396737536_n.jpg?_nc_cat=0&oh=5ccd0b249953c23adb019ad94bac312d&oe=5B69E314',16);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30712719_587954148239863_5311532526785789952_n.jpg?_nc_cat=0&oh=639ba969fd3409c7817a19d2e33986db&oe=5B54051C',17);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30715803_587954208239857_3654457736520794112_n.jpg?_nc_cat=0&oh=d31ec5660dd89b801dcd0965fa85541a&oe=5B71917E',18);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30729211_587954144906530_4914928288826130432_n.jpg?_nc_cat=0&oh=deef576431424322f6f3de60f3ce5a16&oe=5B68B391',19);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30740440_587954291573182_1964924392341241856_n.jpg?_nc_cat=0&oh=714134de82be96272d5de03626169696&oe=5B621197',20);
+/*21-30*/
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30741577_587954221573189_7654987402129178624_n.jpg?_nc_cat=0&oh=d0f8cd00906f0167a68831f0caca1e00&oe=5B700B03',21);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30724225_587954301573181_2382782452058816512_n.jpg?_nc_cat=0&oh=38d902ce8d7a3e9b7b6dc3ba761d0530&oe=5B70BAEC',22);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30705791_587954354906509_3987070410628792320_n.jpg?_nc_cat=0&oh=520c2bcb0840afab049fe71a3e9f60cc&oe=5B642434',23);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30728504_587954368239841_8361361964424757248_n.jpg?_nc_cat=0&oh=fae9b5cf665acd157521041b5b9da161&oe=5B712298',24);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30725973_587954381573173_682396124954230784_n.jpg?_nc_cat=0&oh=48470792b54f5190b7310242abfc31ec&oe=5B753B1F',25);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30716588_587954538239824_7647999756626558976_n.jpg?_nc_cat=0&oh=0cb075802fb4dd289a0d698866693d43&oe=5B6AFD52',26);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30712021_587954554906489_1891129011585679360_n.jpg?_nc_cat=0&oh=006353b74f5ed6215c78e5961c881183&oe=5B5367DA',27);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30725081_587954571573154_2896780434119589888_n.jpg?_nc_cat=0&oh=565e0d839dcf611e6a01090b00a048ee&oe=5B6E5917',28);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30725721_587953518239926_6857833075330514944_n.jpg?_nc_cat=0&oh=fbca2df1c4a78f801e574d6f3c6d85a9&oe=5B57DD10',29);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30705840_587954501573161_4435973434559692800_n.jpg?_nc_cat=0&oh=6d76ad8d26aca7c000eda3f8a0fe080e&oe=5B56E864',30);
+/*31-40*/
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30707771_587953368239941_6465533257889873920_n.jpg?_nc_cat=0&oh=3941a261a348d5f23f117a0921380e0d&oe=5B7262BC',31);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30716435_587954438239834_1171330571956125696_n.jpg?_nc_cat=0&oh=d53de020e41ce8f99736d17d456b0aeb&oe=5B691936',32);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30704874_587954481573163_9193451396295294976_n.jpg?_nc_cat=0&oh=9b328b563bd56139320e8d1ae33da2c9&oe=5B68BFD6',33);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30709786_587953648239913_8913850034643009536_n.jpg?_nc_cat=0&oh=d816ab82d6bde5cbf0f8a23f9b75bb4e&oe=5B641A6A',34);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30726307_587950954906849_5364109514968662016_n.jpg?_nc_cat=0&oh=0f12e4ad74cff4bd22474c3487c745e9&oe=5B6EDB3E',35);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30741373_587954218239856_8046979566767439872_n.jpg?_nc_cat=0&oh=4adba6347568654b81c996e726d0cb18&oe=5B6409C4',36);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30739958_587954608239817_660418309149163520_n.jpg?_nc_cat=0&oh=744d4aee012c0974bdb52ad74e13d1a7&oe=5B2978EC',37);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30727272_587954424906502_5405350366470471680_n.jpg?_nc_cat=0&oh=efcbd06bfa109ed3686545e4f26f7cf2&oe=5B552486',38);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30712336_587953531573258_145986170319273984_n.jpg?_nc_cat=0&oh=21049cbe2c47f527db15873188e9cb06&oe=5B2852E7',39);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30728829_587954411573170_7762135222572810240_n.jpg?_nc_cat=0&oh=893f24bd164297f8cfa751bdc703b736&oe=5B6CC04A',40);
+/*41-50*/
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30715080_587953878239890_2179810084425564160_n.jpg?_nc_cat=0&oh=ebb29d52aa2aa034c18369a2d192779c&oe=5B60EAA0',41);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30724674_587953824906562_3121401391134801920_n.jpg?_nc_cat=0&oh=8f7c761f00c49468aaa6bad4531fea46&oe=5B284E8E',42);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30716738_587953788239899_4245655230286397440_n.jpg?_nc_cat=0&oh=91a69f4c76a3ac21b5ce64eec848665b&oe=5B5F7ED7',43);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30709330_587953608239917_3129059910529056768_n.jpg?_nc_cat=0&oh=d79da8c54f40fa5b7143699bce61f8dd&oe=5B732AD0',44);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30728351_587953428239935_1460927258809073664_n.jpg?_nc_cat=0&oh=06b9651d036cd028d9699403f7c0bb9b&oe=5B65955D',45);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30727519_587954151573196_2292354733140082688_n.jpg?_nc_cat=0&oh=a7e9115827058bcba5e63e81fb6bf84d&oe=5B6F0BD4',46);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30707530_587954494906495_7772383259354202112_n.jpg?_nc_cat=0&oh=773ca5f791f6d70cf8603496a8feb2f2&oe=5B756EE2',47);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30714402_587954294906515_918447677866246144_n.jpg?_nc_cat=0&oh=93309811c757c30f1acccf286da81b31&oe=5B536E20',48);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30715995_587953304906614_9213062405947392000_n.jpg?_nc_cat=0&oh=89bdc2c3596563268fbac37a76979873&oe=5B279CBC',49);
+insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
+values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30727285_587953811573230_4483915564619661312_n.jpg?_nc_cat=0&oh=2550302bb75d5799db10fc06b7ce47f0&oe=5B5E1BF0',50);
+

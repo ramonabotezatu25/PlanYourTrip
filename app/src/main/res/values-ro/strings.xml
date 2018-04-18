@@ -82,10 +82,10 @@
      <string name="btnExplore">Exploreaza</string>
     <string name="titluHome">Cele mai bune oferte pentru tine</string>
     <!-- explore City activity-->
-    <string name="descrierereOras"> Despre </string>
+    <string name="descrierereOras"> Descopera </string>
     <string name="obiective"> Top atractii turistice </string>
-    <string name="activitati"> Activitati</string>
-    <string name="restaurante"> Ce si unde sa manaci</string>
+    <string name="activitati"> Activitati </string>
+    <string name="restaurante"> Unde poti manca ? - Recomandarile noastre</string>
     <string name="biletZbor"> Vezi zborurile disponibile</string>
     <string name="alteOferte"> Alte oferte</string>
 

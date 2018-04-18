@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">Plan Your Trip</string>
     <!--NAV BAR -metoda navView()-->
+
+    <string name="facebook_app_id">165695570812813</string>
+    <string name="fb_login_protocol_scheme">fb165695570812813</string>
+
+
     <string name="nav_home">Home</string>
     <string name="nav_explore">Explore</string>
     <string name="nav_profile">Profile</string>

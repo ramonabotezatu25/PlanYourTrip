@@ -254,4 +254,36 @@ public class DatabaseOperation {
 
         return res;
     }
+
+
+    //getAllLocation from DB
+    public String getLinkLocatie(String numeLocatie) {
+        String data="";
+        try {
+            ConnectionHelper conStr = new ConnectionHelper();
+            connect = conStr.connectionclasss();        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                // Change below query according to your own database.
+                String query = "SELECT link_locatie \n" +
+                        "FROM descriere_orase \n" +
+                        "WHERE id_locatie=(select id from locatii where upper(nume_oras)='"+numeLocatie.toUpperCase()+"');";
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    data=rs.getString(1);
+                }
+
+                ConnectionResult = " successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+        return data;
+    }
+
 }

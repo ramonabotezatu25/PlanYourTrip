@@ -53,3 +53,20 @@ id_locatie numeric);
 //
 ALTER TABLE user
 ADD activ int(1) default 0;
+
+//
+create table descriere_orase(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+descriere varchar(4000),
+
+atractii varchar(4000),
+
+restaurante varchar(4000),
+
+activitati varchar(4000),
+
+link_locatie varchar(400),
+
+id_locatie INT(11));
