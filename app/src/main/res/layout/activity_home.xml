@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.ramona.planyourtrip.Home"
     android:id="@+id/container_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,13 +26,15 @@
             android:layout_gravity="center"
             android:text="@string/titluHome"
             android:textColor="@android:color/white"
-            android:textSize="15dp" />
-
+            android:textSize="15sp" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
         <GridLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:alignmentMode="alignMargins"
             android:columnCount="1"
             android:columnOrderPreserved="false"
@@ -38,13 +42,12 @@
             android:visibility="visible">
 
             <!-- card1-->
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.CardView
                 android:id="@+id/home_cardView1"
-                android:layout_width="200dp"
-                android:layout_height="220dp"
+                android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="150dp"
                 android:layout_marginBottom="25dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
@@ -59,7 +62,6 @@
                         android:id="@+id/home_imageView1"
                         android:layout_width="336dp"
                         android:layout_height="144dp"
-                        android:adjustViewBounds="true"
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/rome2" />
@@ -74,26 +76,27 @@
                             android:id="@+id/home_tv1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="left"
+                            android:layout_gravity="start"
                             android:layout_marginStart="15dp"
                             android:fontFamily="cursive"
                             android:text="Rome"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
-                            android:textSize="25dp"
+                            android:textSize="25sp"
                             android:textStyle="bold" />
 
                         <Button
                             android:id="@+id/home_btn1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="right"
+                            android:layout_gravity="start"
                             android:layout_marginStart="150dp"
                             android:background="@drawable/buton_explore"
                             android:clickable="true"
+                            android:focusable="true"
                             android:text="@string/btnExplore"
                             android:textColor="@android:color/black"
-                            android:textSize="10dp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
 
@@ -102,7 +105,7 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
             <!--card 2-->
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.CardView
                 android:id="@+id/home_cardView2"
                 android:layout_width="200dp"
                 android:layout_height="220dp"
@@ -140,7 +143,7 @@
                             android:layout_height="wrap_content"
                             android:text="Paris"
                             android:fontFamily="cursive"
-                            android:textSize="25dp"
+                            android:textSize="25sp"
                             android:layout_marginStart="15dp"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
@@ -150,12 +153,12 @@
                             android:id="@+id/home_btn2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="150dp"
+                            android:layout_marginStart="150dp"
                             android:background="@drawable/buton_explore"
                             android:text="@string/btnExplore"
                             android:onClick="deschideExploreCity"
                             android:textColor="@android:color/black"
-                            android:textSize="10dp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
 
@@ -165,7 +168,7 @@
             </android.support.v7.widget.CardView>
 
             <!--card 3-->
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.CardView
                 android:id="@+id/home_cardView3"
                 android:layout_width="200dp"
                 android:layout_height="220dp"
@@ -203,7 +206,7 @@
                             android:layout_height="wrap_content"
                             android:text="New York"
                             android:fontFamily="cursive"
-                            android:textSize="25dp"
+                            android:textSize="25sp"
                             android:layout_marginStart="15dp"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
@@ -218,7 +221,7 @@
                             android:text="@string/btnExplore"
                             android:onClick="deschideExploreCity"
                             android:textColor="@android:color/black"
-                            android:textSize="10dp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
 
@@ -228,7 +231,7 @@
             </android.support.v7.widget.CardView>
 
             <!--card 4-->
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.CardView
                 android:id="@+id/home_cardView4"
                 android:layout_width="200dp"
                 android:layout_height="220dp"
@@ -266,7 +269,7 @@
                             android:layout_height="wrap_content"
                             android:text="Los Angeles"
                             android:fontFamily="cursive"
-                            android:textSize="25dp"
+                            android:textSize="25sp"
                             android:layout_marginStart="15dp"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
@@ -281,7 +284,7 @@
                             android:text="@string/btnExplore"
                             android:textColor="@android:color/black"
                             android:onClick="deschideExploreCity"
-                            android:textSize="10dp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
 
@@ -354,14 +357,14 @@
             </android.support.v7.widget.CardView>
 
             <!--card 6-->
-            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <android.support.v7.widget.CardView
                 android:id="@+id/home_cardView6"
                 android:layout_width="200dp"
                 android:layout_height="220dp"
                 android:layout_columnWeight="1"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="80dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
 
@@ -392,7 +395,7 @@
                             android:layout_height="wrap_content"
                             android:text="Barcelona"
                             android:fontFamily="cursive"
-                            android:textSize="25dp"
+                            android:textSize="25sp"
                             android:layout_marginStart="15dp"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
@@ -402,12 +405,12 @@
                             android:id="@+id/home_btn6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="150dp"
+                            android:layout_marginStart="150dp"
                             android:background="@drawable/buton_explore"
                             android:text="@string/btnExplore"
                             android:onClick="deschideExploreCity"
                             android:textColor="@android:color/black"
-                            android:textSize="10dp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
 
@@ -417,15 +420,19 @@
             </android.support.v7.widget.CardView>
 
         </GridLayout>
-
+        </ScrollView>
+    </LinearLayout>
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/nav_view"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_gravity="bottom"
-            app:menu="@menu/nav_items"></android.support.design.widget.BottomNavigationView>
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
+            android:background="?android:attr/windowBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:menu="@menu/nav_items" />
 
-    </LinearLayout>
-</ScrollView>
+
+</android.support.constraint.ConstraintLayout>
