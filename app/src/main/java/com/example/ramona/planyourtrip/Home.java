@@ -66,6 +66,31 @@ public class Home extends AppCompatActivity {
     //nume pe care il trimit in activitatea explore_city
     String orasSelectat;
 
+    //bottom nav
+    private TextView mTextMessage;
+    BottomNavigationView bottomNavigationView;
+    BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.nav_view:
+                    mTextMessage.setText(R.string.nav_home);
+                    return true;
+                case R.id.nav_explore:
+                    mTextMessage.setText(R.string.nav_explore);
+                    return true;
+                case R.id.nav_profile:
+                    mTextMessage.setText(R.string.nav_profile);
+                    return true;
+            }
+            return false;
+        }
+    };
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,10 +99,8 @@ public class Home extends AppCompatActivity {
         //preia din baza orase
         getDB();
 
-
         //json pentru weather
         loadJSONFromAsset(this);
-
 
         //setare imagine cardviw1 cu poza luata din resurse - merge
         imageView1 = (ImageView) findViewById(R.id.home_imageView1);
@@ -85,12 +108,13 @@ public class Home extends AppCompatActivity {
         int id = getResources().getIdentifier(lowerCountryCode, "drawable", getPackageName());
         imageView1.setImageResource(id);
 
-
         //setari de limba
         setDefaultLanguage(this);
         allYouNeed();
-
         metode();
+
+        //navigation view
+        navView();
     }
 
     public void getDB(){
@@ -101,7 +125,6 @@ public class Home extends AppCompatActivity {
                 orase.add(l.getNume());
         }
     }
-
 
     private void allYouNeed() {
 
@@ -121,24 +144,13 @@ public class Home extends AppCompatActivity {
         buttonExplore6=(Button)findViewById(R.id.home_btn6);
         //pun toate id-urile stringurilor de care am nevoie
         setAllTextOnActivity();
-        //navigation view
-        navView();
+
     }
+
     private void navView(){
 
         //navigation view
-        final BottomNavigationView bottomNavigationView;
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.nav_view);
-        Menu menu = bottomNavigationView.getMenu();
-        for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
-            MenuItem menuItem = menu.getItem(i);
-            if (i == 0)
-                menuItem.setTitle(resources.getString(R.string.nav_home));
-            if (i == 1)
-                menuItem.setTitle(resources.getString(R.string.nav_explore));
-            if (i == 2)
-                menuItem.setTitle(resources.getString(R.string.nav_profile));
-        }
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
             @Override
@@ -169,6 +181,7 @@ public class Home extends AppCompatActivity {
         Intent a = new Intent(this,intent);
         startActivity(a);
     }
+
     private void setAllTextOnActivity() {
         //setari de limba
         context = getApplicationContext();
@@ -203,7 +216,7 @@ public class Home extends AppCompatActivity {
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv1.getText().toString();
-                    deschideExploreCity(lL[0],lL[1],homeTv1.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv1.getText().toString());
                 }
             }
         });
@@ -215,7 +228,7 @@ public class Home extends AppCompatActivity {
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv2.getText().toString();
-                    deschideExploreCity(lL[0],lL[1],homeTv2.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv2.getText().toString());
                 }
             }
         });
@@ -227,7 +240,7 @@ public class Home extends AppCompatActivity {
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv3.getText().toString();
-                    deschideExploreCity(lL[0],lL[1],homeTv3.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv3.getText().toString());
                 }
             }
         });
@@ -239,7 +252,7 @@ public class Home extends AppCompatActivity {
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv4.getText().toString();
-                    deschideExploreCity(lL[0],lL[1],homeTv4.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv4.getText().toString());
 
                 }
             }
@@ -252,7 +265,7 @@ public class Home extends AppCompatActivity {
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv5.getText().toString();
-                    deschideExploreCity(lL[0],lL[1],homeTv5.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv5.getText().toString());
 
                 }
             }
@@ -265,13 +278,13 @@ public class Home extends AppCompatActivity {
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv6.getText().toString();
-                    deschideExploreCity(lL[0],lL[1],homeTv6.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv6.getText().toString());
                 }
             }
         });
     }
 
-    public void deschideExploreCity(String lat,String lon,String name){
+    public void deschideExploreCity(View view,String lat,String lon,String name){
         //cam asta e.Pentru test. Apeleaza cu New York
         Intent exploreCity = new Intent(Home.this, ExploreCity.class);
         exploreCity.putExtra("lat",lat);
