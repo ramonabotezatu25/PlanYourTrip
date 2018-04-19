@@ -1,0 +1,3 @@
+//
+ALTER TABLE user
+ADD activ int(1) default 0;

@@ -1,0 +1,92 @@
+create table user_preferences(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+id_user INT(11),
+
+status_relatie varchar(99),
+
+copii varchar(99),
+
+calatorii varchar(99),
+
+
+id_categorie_1 INT(11),
+
+id_categorie_2 INT(11),
+
+buget varchar(400),
+
+id_locatii varchar(99)
+
+);
+
+
+//
+create table descriere_orase(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+descriere varchar(4000),
+
+atractii varchar(4000),
+
+restaurante varchar(4000),
+
+activitati varchar(4000),
+
+link_locatie varchar(400),
+
+id_locatie INT(11));
+
+
+/*
+locatii
+*/
+
+drop table locatii;
+
+create table locatii(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+nume_oras varchar(400),
+
+id_categorie_1 INT(11),
+
+id_categorie_2 INT(11),
+
+lat varchar(400),
+
+lon varchar(400));
+
+
+/*
+user
+*/
+
+drop table user;
+
+create table user(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+nume varchar(400),
+
+email varchar(400),
+
+parola varchar(400),
+
+cod_confirmare varchar(1));
+
+
+/*
+categorii
+*/
+
+
+create table categorii(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+nume_categorie varchar(99));

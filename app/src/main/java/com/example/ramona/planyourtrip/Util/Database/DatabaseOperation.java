@@ -1,10 +1,15 @@
 package com.example.ramona.planyourtrip.Util.Database;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 
+import com.example.ramona.planyourtrip.Util.Categorii;
 import com.example.ramona.planyourtrip.Util.Email;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.User;
+import com.example.ramona.planyourtrip.Util.UserPreferences;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,7 +37,9 @@ public class DatabaseOperation {
     Connection connect;
     String ConnectionResult = "";
     Boolean isSuccess = false;
-
+    //setari limba
+    Context context;
+    Resources resources;
 
 
     //getAllLocation from DB
@@ -95,6 +102,51 @@ public class DatabaseOperation {
             preparedStatement.setString(2,user.getEmail());
             preparedStatement.setString(3,user.getParola());
             preparedStatement.setString(4,user.getCodConfirmare());
+            res = preparedStatement.executeUpdate();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
+    public int insertUserPref(UserPreferences userPreferences,String email) {
+        Integer idUtilizator  = 0;
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        int res = -1;
+
+
+        String query = "select id from user where email = '"+email +"'";
+        try {
+            Statement stmt  = connect.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                idUtilizator = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        if (userPreferences == null) {
+            return res;
+        }
+        try {
+            String query2 = "INSERT INTO user_preferences(id_user,status_relatie,copii,calatorii,id_categorie_1,id_categorie_2,buget,id_locatii) VALUES(?,?,?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connect.prepareStatement(query2);
+            preparedStatement.setInt(1,idUtilizator);
+            preparedStatement.setString(2,userPreferences.getStatusRelatie());
+            preparedStatement.setString(3,userPreferences.getAreCopii());
+            preparedStatement.setString(4,userPreferences.getCatDeDesPleci());
+            preparedStatement.setString(5,userPreferences.getCategoria1());
+            preparedStatement.setString(6,userPreferences.getCategoria2());
+            preparedStatement.setString(7,userPreferences.getBuget());
+            preparedStatement.setString(8,userPreferences.getOraseVizitate());
             res = preparedStatement.executeUpdate();
             connect.close();
         } catch (SQLException e) {
@@ -285,5 +337,65 @@ public class DatabaseOperation {
         }
         return data;
     }
+
+
+    //getAllLocation from DB
+    public Integer getUserPref(String email) {
+        Integer data=0;
+        try {
+            ConnectionHelper conStr = new ConnectionHelper();
+            connect = conStr.connectionclasss();        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                // Change below query according to your own database.
+                String query = "select count(*) from user_preferences where id_user = (select id from user where email = '"+email+"')";
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    data=rs.getInt(1);
+                }
+
+                ConnectionResult = " successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+        return data;
+    }
+
+
+    public List<Categorii> selectCategorii(){
+        List<Categorii> data  = new ArrayList<>();
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+
+        if (connect == null) {
+            ConnectionResult = "Check Your Internet Access!";
+            return null;
+        } else {
+            // Change below query according to your own database.
+            String query = "select * from categorii";
+            try {
+                Statement stmt  = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    Categorii categorie = new Categorii();
+                    categorie.setId(Integer.parseInt(rs.getString(1)));
+                    categorie.setNumeCategorie(rs.getString(2));
+                    data.add(categorie);
+                }
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return data;
+    }
+
 
 }
