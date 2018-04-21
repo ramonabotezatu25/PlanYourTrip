@@ -26,7 +26,6 @@ import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
 import io.paperdb.Paper;
 
-import static com.example.ramona.planyourtrip.Util.CircleMenu.ConstantsCircleMenu.FRAGENT_LANGUAGE;
 import static com.example.ramona.planyourtrip.Util.CircleMenu.ConstantsCircleMenu.FRAGMENT_LIST;
 import static com.example.ramona.planyourtrip.Util.FragmentList.FragmentConstant.FRAGMENT_NAME;
 
@@ -51,14 +50,19 @@ public class CircleProfile extends AppCompatActivity {
     public void loadCircleMenu(){
         int culoareMeniuPrincipal = Color.parseColor("#ff0000");
         int culoareSubmeniuProfil = Color.parseColor("#4ce3af");
-        int culoareSubmeniuWeather = Color.parseColor("#FF0040");
+        int culoareSubmeniuNearbyPlaces = Color.parseColor("#FF0040");
+        int culoareSubMeniuLocatiiVizitate=Color.parseColor("#2C6307");
+        int culoareSubMeniuLista=Color.parseColor("#FFFF00");
 
             circleMenu =(CircleMenu)findViewById(R.id.circleMenu);
             circleMenu.setMainMenu(culoareMeniuPrincipal,
                     R.drawable.addmenucircle,
                     R.drawable.removecirclemenu)
                     .addSubMenu(culoareSubmeniuProfil,R.drawable.languagecirclemenu)
-                    .addSubMenu(culoareSubmeniuProfil,R.drawable.weather);
+                    .addSubMenu(culoareSubmeniuNearbyPlaces,R.drawable.nav_explore)
+                    .addSubMenu(culoareSubMeniuLocatiiVizitate,R.drawable.icon_user2)
+                    .addSubMenu(culoareSubMeniuLista,R.drawable.languagecirclemenu);
+
             circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener() {
                 @Override
                 public void onMenuSelected(int i) {
