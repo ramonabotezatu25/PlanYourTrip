@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -98,6 +99,16 @@ public class ExploreCity extends AppCompatActivity {
 
         //setare imageView
         setImageViewExplore();
+
+
+        //
+        final Button seeFlight = (Button)findViewById(R.id.explore_button_vezi_bilete);
+        seeFlight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                seeFlights();
+            }
+        });
     }
 
     private void allYouNeed() {
@@ -145,5 +156,11 @@ public class ExploreCity extends AppCompatActivity {
             e.printStackTrace();
         }
         imageView.setImageBitmap(mIcon_val);
+    }
+
+
+    private void seeFlights(){
+        Intent flight = new Intent(this,Flight.class);
+        startActivity(flight);
     }
 }
