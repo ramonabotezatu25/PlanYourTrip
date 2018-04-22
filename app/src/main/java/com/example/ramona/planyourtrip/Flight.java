@@ -13,7 +13,12 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.Locatii;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Flight extends AppCompatActivity {
 
@@ -21,8 +26,8 @@ public class Flight extends AppCompatActivity {
     Button endTime;
     int year,mounth,day;
     int DIALOG_ID=0;
-
-
+    Calendar calendar;
+    DatePickerDialog dpd;
     //variables
     String getTime="";
     //
@@ -38,30 +43,39 @@ public class Flight extends AppCompatActivity {
     String linkCars = "https://www.momondo.com/cars/";
     String linkCarsArrCity = "los-angeles-c16078/";
     String linkCarsStartTime= "";
+
+    //database
+    DatabaseOperation db = new DatabaseOperation();
+    List<Locatii> listaocatii = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight);
 
-        //get the spinner from the xml.
+
         Spinner dropdown = findViewById(R.id.spinner1);
         Spinner dropdown2 = findViewById(R.id.spinner2);
-        //create a list of items for the spinner.
-        String[] items = new String[]{"1", "2", "three"};
-        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
-        //There are multiple variations of this, but this is the basic variant.
+
+        listaocatii = db.getLocation();
+        String[] items = new String[listaocatii.size()];
+        for(int i =0;i<listaocatii.size();i++){
+            items[i] = listaocatii.get(i).getNume();
+        }
+
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        //set the spinners adapter to the previously created one.
+
         dropdown.setAdapter(adapter);
         dropdown2.setAdapter(adapter);
 
         ////
         startTime = (Button)findViewById(R.id.startTime);
         endTime = (Button)findViewById(R.id.endTime);
-        final Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         mounth = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+
         showCalendar();
 
     }
@@ -86,8 +100,14 @@ public class Flight extends AppCompatActivity {
 
     @Override
     protected Dialog onCreateDialog(int id) {
-        if(id == DIALOG_ID)
-            return new DatePickerDialog(this,dpickerListener,year,mounth,day);
+        if(id == DIALOG_ID){
+            dpd = new DatePickerDialog(this,dpickerListener,year,mounth,day);
+            calendar.set(Calendar.YEAR,year);
+            calendar.set(Calendar.MONTH,mounth);
+            calendar.set(Calendar.DAY_OF_MONTH,day);
+            dpd.getDatePicker().setMinDate(calendar.getTimeInMillis());
+            return dpd;
+        }
         return null;
     }
 
@@ -98,7 +118,8 @@ public class Flight extends AppCompatActivity {
            String dayS = "";
             year = yearX;
             mounth = mounthX;
-            day = dayX+7;
+            day = dayX;
+
 
             if(mounthX < 10)
                 monthS = "0"+String.valueOf(mounth);

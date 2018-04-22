@@ -27,7 +27,7 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-
+import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.userPreferencesForHome;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -192,9 +192,10 @@ public class LogIn extends AppCompatActivity {
         String parolaU = parola.getText().toString();
         Integer utilizatorActiv = db.logInUtilizator(emailU,parolaU);
         if(utilizatorActiv==1){
-            Integer userPref = db.getUserPref(emailU);
-            if(userPref==1){
+            UserPreferences userPref = db.getUserPref(emailU);
+            if(userPref!=null){
                 Intent explore= new Intent(this, Home.class);
+                userPreferencesForHome = userPref;
                 startActivity(explore);
             }else{
                 Intent userPreferences= new Intent(this, Formular_interese.class);
