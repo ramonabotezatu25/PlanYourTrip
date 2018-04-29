@@ -99,7 +99,7 @@ public class TravelTest extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),R.string.nav_exception,Toast.LENGTH_SHORT).show();
                         break;
                 }
-                return false;
+                return true;
             }
         });
     }

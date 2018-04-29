@@ -18,8 +18,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.TABLE_NAME_UTILIZATORI;
 import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_COD_CONFIRMARE;
@@ -340,8 +342,8 @@ public class DatabaseOperation {
 
 
     //getAllLocation from DB
-    public Integer getUserPref(String email) {
-        Integer data=0;
+    public UserPreferences  getUserPref(String email) {
+        UserPreferences data=new UserPreferences();
         try {
             ConnectionHelper conStr = new ConnectionHelper();
             connect = conStr.connectionclasss();        // Connect to database
@@ -349,11 +351,12 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "select count(*) from user_preferences where id_user = (select id from user where email = '"+email+"')";
+                String query = "select * from user_preferences where id_user = (select id from user where email = '"+email+"')";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                    data=rs.getInt(1);
+                     data.setCategoria1(rs.getString(6));
+                     data.setCategoria2(rs.getString(7));
                 }
 
                 ConnectionResult = " successful";
@@ -397,5 +400,79 @@ public class DatabaseOperation {
         return data;
     }
 
+
+    //getLocationByCateg from DB
+    public Set<Locatii>  getLocationByCateg(UserPreferences userPreferences) {
+        Set<Locatii> data=new HashSet<>();
+        try {
+            ConnectionHelper conStr = new ConnectionHelper();
+            connect = conStr.connectionclasss();        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                // Change below query according to your own database.
+                String query = "SELECT * FROM locatii " +
+                        " WHERE id_categorie_1 = '" +userPreferences.getCategoria1()+
+                        "' ORDER BY RAND() " +
+                        " LIMIT 2";
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    Locatii locatie = new Locatii();
+                    locatie.setId(rs.getInt(1));
+                    locatie.setNume(rs.getString(2));
+                    locatie.setCategorie(rs.getInt(3));
+                    locatie.setCategorie2(rs.getInt(4));
+                    locatie.setLon(rs.getString(5));
+                    locatie.setLon(rs.getString(6));
+                     data.add(locatie);
+                }
+
+
+                String query2 = "SELECT * FROM locatii " +
+                        " WHERE id_categorie_1 = '" +userPreferences.getCategoria2()+
+                        "' ORDER BY RAND() " +
+                        " LIMIT 2";
+                Statement stmt2 = connect.createStatement();
+                ResultSet rs2 = stmt2.executeQuery(query2);
+                while (rs2.next()) {
+                    Locatii locatie = new Locatii();
+                    locatie.setId(rs2.getInt(1));
+                    locatie.setNume(rs2.getString(2));
+                    locatie.setCategorie(rs2.getInt(3));
+                    locatie.setCategorie2(rs2.getInt(4));
+                    locatie.setLon(rs2.getString(5));
+                    locatie.setLon(rs2.getString(6));
+                    data.add(locatie);
+                }
+
+                String query3 = "SELECT * FROM locatii\n" +
+                        " WHERE id_categorie_2 in('"+userPreferences.getCategoria1()+"','"+userPreferences.getCategoria2()+"') and\n" +
+                        " id_categorie_1 != '"+userPreferences.getCategoria1()+ "' and id_categorie_1 !='"+userPreferences.getCategoria2() +
+                        "' ORDER BY RAND() " +
+                        " LIMIT 2 ";
+                Statement stmt3 = connect.createStatement();
+                ResultSet rs3 = stmt3.executeQuery(query3);
+                while (rs3.next()) {
+                    Locatii locatie = new Locatii();
+                    locatie.setId(rs3.getInt(1));
+                    locatie.setNume(rs3.getString(2));
+                    locatie.setCategorie(rs3.getInt(3));
+                    locatie.setCategorie2(rs3.getInt(4));
+                    locatie.setLon(rs3.getString(5));
+                    locatie.setLon(rs3.getString(6));
+                    data.add(locatie);
+
+                }
+                ConnectionResult = " successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+        return data;
+    }
 
 }

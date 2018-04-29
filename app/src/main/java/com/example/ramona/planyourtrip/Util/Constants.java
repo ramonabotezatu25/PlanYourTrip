@@ -14,5 +14,4 @@ public interface Constants {
 
     String EMAIL_BODY_NEW_ACCOUNT_ADMIN = "Buna ziua . Un nou cont a fost creat. Adresa de email a utilizatorului este :";
 
-
 }

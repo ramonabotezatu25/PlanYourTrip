@@ -29,10 +29,13 @@ import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Weather.WeatherMainActivity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import io.paperdb.Paper;
 
+import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.userPreferencesForHome;
 import static com.example.ramona.planyourtrip.MultiLanguage.Language.setDefaultLanguage;
 import static com.example.ramona.planyourtrip.Weather.GetCityLongLat.cityList;
 import static com.example.ramona.planyourtrip.Weather.GetCityLongLat.getCityLatLong;
@@ -62,7 +65,7 @@ public class Home extends AppCompatActivity {
 
     ImageView imageView1;
     List<String> orase = new ArrayList<>();
-    List<Locatii> locatiiList = new ArrayList<>();
+    Set<Locatii> locatiiList = new HashSet<>();
     //nume pe care il trimit in activitatea explore_city
     String orasSelectat;
 
@@ -119,7 +122,7 @@ public class Home extends AppCompatActivity {
 
     public void getDB(){
 
-        locatiiList=db.getLocation();
+        locatiiList=db.getLocationByCateg(userPreferencesForHome);
         for(Locatii l : locatiiList){
             if(orase.size()<6)
                 orase.add(l.getNume());
@@ -150,7 +153,21 @@ public class Home extends AppCompatActivity {
     private void navView(){
 
         //navigation view
+        final BottomNavigationView bottomNavigationView;
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.nav_view);
+        Menu menu = bottomNavigationView.getMenu();
+        for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
+            bottomNavigationView.getMenu().getItem(0).setChecked(true);
+            MenuItem menuItem = menu.getItem(i);
+            if (i == 0)
+                menuItem.setTitle(resources.getString(R.string.nav_home));
+            if (i == 1)
+                menuItem.setTitle(resources.getString(R.string.nav_explore));
+            if (i == 2)
+                menuItem.setTitle(resources.getString(R.string.nav_profile));
+        }
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
             @Override

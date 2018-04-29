@@ -1,5 +1,7 @@
 package com.example.ramona.planyourtrip.GmailSender;
 
+import com.example.ramona.planyourtrip.Util.UserPreferences;
+
 import java.security.SecureRandom;
 import java.util.Locale;
 import java.util.Objects;
@@ -12,6 +14,8 @@ import java.util.Random;
 public class CodUnicIdentificare {
 
     public static String codUnicDeIndentificare="";
+    public static UserPreferences userPreferencesForHome;
+
 
     public static final void getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
