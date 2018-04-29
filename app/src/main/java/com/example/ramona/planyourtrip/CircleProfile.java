@@ -99,6 +99,7 @@ public class CircleProfile extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.nav_view);
         Menu menu = bottomNavigationView.getMenu();
         for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
+            bottomNavigationView.getMenu().getItem(2).setChecked(true);
             MenuItem menuItem = menu.getItem(i);
             if (i == 0)
                 menuItem.setTitle(resources.getString(R.string.nav_home));
@@ -107,6 +108,8 @@ public class CircleProfile extends AppCompatActivity {
             if (i == 2)
                 menuItem.setTitle(resources.getString(R.string.nav_profile));
         }
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
             @Override

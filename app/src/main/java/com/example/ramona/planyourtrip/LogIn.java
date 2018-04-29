@@ -1,11 +1,8 @@
 package com.example.ramona.planyourtrip;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.media.MediaCas;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,11 +27,10 @@ import com.facebook.login.widget.LoginButton;
 import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.userPreferencesForHome;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
+
 
 import java.util.Arrays;
 
-import br.com.bloder.magic.internal.MagicAnimation;
 import br.com.bloder.magic.view.MagicButton;
 import io.paperdb.Paper;
 

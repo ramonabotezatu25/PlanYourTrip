@@ -153,7 +153,21 @@ public class Home extends AppCompatActivity {
     private void navView(){
 
         //navigation view
+        final BottomNavigationView bottomNavigationView;
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.nav_view);
+        Menu menu = bottomNavigationView.getMenu();
+        for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
+            bottomNavigationView.getMenu().getItem(0).setChecked(true);
+            MenuItem menuItem = menu.getItem(i);
+            if (i == 0)
+                menuItem.setTitle(resources.getString(R.string.nav_home));
+            if (i == 1)
+                menuItem.setTitle(resources.getString(R.string.nav_explore));
+            if (i == 2)
+                menuItem.setTitle(resources.getString(R.string.nav_profile));
+        }
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
             @Override
