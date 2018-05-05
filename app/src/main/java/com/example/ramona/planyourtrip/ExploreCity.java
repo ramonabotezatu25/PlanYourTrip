@@ -142,6 +142,10 @@ public class ExploreCity extends AppCompatActivity {
         String nume=numeOrasPrimit.replace(" ","");
         String link=db.getLinkLocatie(nume);
 
+        if(link.isEmpty()){
+            link="https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30712461_587953308239947_3492033068502351872_n.jpg?_nc_cat=0&oh=b38e5409b120619bbd7bfde656c02080&oe=5B27EE83";
+        }
+
         ImageView imageView=(ImageView)findViewById(R.id.explore_imageView1);
         URL newurl = null;
         try {

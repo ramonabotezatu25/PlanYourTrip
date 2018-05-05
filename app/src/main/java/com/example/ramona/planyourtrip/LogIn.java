@@ -41,7 +41,6 @@ public class LogIn extends AppCompatActivity {
     CallbackManager callbackManager;
 
 
-    MagicButton magicButton2;
     EditText email;
     EditText parola;
     TextView tvSignUpIntrebare;
@@ -59,7 +58,7 @@ public class LogIn extends AppCompatActivity {
         parola = (EditText) findViewById(R.id.editText_password_logIn);
 
         //
-        magicButton2=(MagicButton)findViewById(R.id.magic_button2);
+
 
 
 
@@ -114,15 +113,6 @@ public class LogIn extends AppCompatActivity {
             Intent activity  = new Intent(this,Home.class);
             startActivity(activity);
         }
-
-        //magic
-        magicButton2.setMagicButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "V-ati conectat cu GOOGLE + ", Toast.LENGTH_SHORT).show();
-            }
-        });
-
 
         //mulilng
         allYouNeed();

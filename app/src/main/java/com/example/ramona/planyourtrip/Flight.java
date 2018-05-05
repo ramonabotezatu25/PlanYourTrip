@@ -2,7 +2,9 @@ package com.example.ramona.planyourtrip;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
+import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
 
@@ -20,10 +23,17 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import io.paperdb.Paper;
+
 public class Flight extends AppCompatActivity {
 
-    Button startTime;
-    Button endTime;
+    //setari de limba
+    Context context;
+    Resources resources;
+    ///
+    Button startTime,endTime;
+    TextView tvStartTime,tvEndTime;
+    Spinner dropdown,dropdown2;
     int year,mounth,day;
     int DIALOG_ID=0;
     Calendar calendar;
@@ -39,28 +49,27 @@ public class Flight extends AppCompatActivity {
     //hotel
     String linkHotel = "https://www.momondo.com/hotels/search/";
     String linkHotelArrCity = "paris";
-    //
-    String linkCars = "https://www.momondo.com/cars/";
-    String linkCarsArrCity = "los-angeles-c16078/";
-    String linkCarsStartTime= "";
 
     //database
     DatabaseOperation db = new DatabaseOperation();
     List<Locatii> listaocatii = new ArrayList<>();
+    String[] items;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight);
 
 
-        Spinner dropdown = findViewById(R.id.spinner1);
-        Spinner dropdown2 = findViewById(R.id.spinner2);
+         dropdown = findViewById(R.id.spinner1);
+         dropdown2 = findViewById(R.id.spinner2);
 
         listaocatii = db.getLocation();
-        String[] items = new String[listaocatii.size()];
-        for(int i =0;i<listaocatii.size();i++){
-            items[i] = listaocatii.get(i).getNume();
-        }
+        items = new String[listaocatii.size()];
+
+        allYouNeed();
+
+
+
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -71,12 +80,33 @@ public class Flight extends AppCompatActivity {
         ////
         startTime = (Button)findViewById(R.id.startTime);
         endTime = (Button)findViewById(R.id.endTime);
+        tvStartTime = (TextView)findViewById(R.id.startTimeTV);
+        tvEndTime = (TextView)findViewById(R.id.endTimeTv);
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         mounth = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
 
         showCalendar();
+
+    }
+
+    private void allYouNeed() {
+
+        //preiau toate view-urile care trebuie traduce din clasa
+        setAllTextOnActivity();
+
+    }
+    private void setAllTextOnActivity() {
+        //setari de limba
+        context = getApplicationContext();
+        context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
+        resources = context.getResources();
+
+        for(int i =0;i<listaocatii.size();i++){
+            int oras = resources.getIdentifier(listaocatii.get(i).getNume()+"AER", "string", context.getPackageName());
+            items[i] = resources.getText(oras).toString();
+        }
 
     }
 
@@ -117,7 +147,7 @@ public class Flight extends AppCompatActivity {
            String monthS = "";
            String dayS = "";
             year = yearX;
-            mounth = mounthX;
+            mounth = mounthX+1;
             day = dayX;
 
 
@@ -133,31 +163,32 @@ public class Flight extends AppCompatActivity {
 
             if(getTime.equals("startTime")){
                 linkFlightStartTime =String.valueOf(year)+ "-" + monthS + "-"+dayS+"/";
-                linkCarsStartTime =String.valueOf(year)+ "-" + monthS + "-"+dayS+"-1h/";
-
+                tvStartTime.setText(String.valueOf(year)+ "-" + monthS + "-"+dayS);
             }
-            else
-                linkFlightendTime=String.valueOf(year)+ "-" + monthS + "-"+dayS;
-
+            else {
+                linkFlightendTime = String.valueOf(year) + "-" + monthS + "-" + dayS;
+                tvEndTime.setText(String.valueOf(year)+ "-" + monthS + "-"+dayS);
+            }
             getTime="";
         }
     };
 
     public void searchFlight(View view){
+        String orasPlecare = dropdown.getSelectedItem().toString();
+        String orasDestinatie = dropdown2.getSelectedItem().toString();
+
+        linkFlightDepCity = orasPlecare.substring(orasPlecare.indexOf("(")+1,orasPlecare.indexOf(")"))+"-";
+        linkFlightArrCity = orasDestinatie.substring(orasDestinatie.indexOf("(")+1,orasDestinatie.indexOf(")"))+"/";
+
         linkFlight = linkFlight + linkFlightDepCity+linkFlightArrCity+linkFlightStartTime+linkFlightendTime;
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkFlight));
         startActivity(browserIntent);
     }
 
     public void searchHotel(View view){
+        linkHotelArrCity = dropdown2.getSelectedItem().toString();
         linkHotel = linkHotel+linkHotelArrCity;
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkHotel));
-        startActivity(browserIntent);
-    }
-
-    public void searchCars(View view){
-        linkCars = linkCars + linkCarsArrCity +linkCarsStartTime+linkFlightendTime;
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkCars));
         startActivity(browserIntent);
     }
 

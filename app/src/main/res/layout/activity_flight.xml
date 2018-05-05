@@ -27,14 +27,18 @@
         android:id="@+id/startTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="startTime"
-        android:layout_marginTop="120dp"/>
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinner2"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+        android:text="startTime" />
 
     <Button
         android:id="@+id/endTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="endTime"
+        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
         android:layout_marginTop="200dp"/>
 
     <Button
@@ -43,6 +47,7 @@
         android:layout_height="wrap_content"
         android:text="Search Flight"
         android:onClick="searchFlight"
+        android:drawableLeft="@android:drawable/ic_menu_search"
         android:layout_marginTop="300dp"/>
     <Button
         android:id="@+id/searchHotel"
@@ -50,12 +55,25 @@
         android:layout_height="wrap_content"
         android:text="Search Hotel"
         android:onClick="searchHotel"
+        android:drawableLeft="@android:drawable/ic_menu_search"
         android:layout_marginTop="400dp"/>
-    <Button
-        android:id="@+id/searchCars"
+
+    <TextView
+        android:id="@+id/startTimeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Cars"
-        android:onClick="searchCars"
-        android:layout_marginTop="500dp"/>
+        android:layout_alignBaseline="@+id/startTime"
+        android:layout_alignBottom="@+id/startTime"
+        android:layout_marginStart="56dp"
+        android:layout_toEndOf="@+id/searchFlight"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/endTimeTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/endTime"
+        android:layout_alignBottom="@+id/endTime"
+        android:layout_alignStart="@+id/startTimeTV"
+        android:text="TextView" />
 </RelativeLayout>
