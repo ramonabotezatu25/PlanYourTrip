@@ -475,4 +475,45 @@ public class DatabaseOperation {
         return data;
     }
 
+
+    //getAllLocation from DB
+    public List<Locatii> getUserLocation(Integer idUer) {
+        List<Locatii> locatiiList = new ArrayList<>();
+        String locationIds="";
+        try {
+            ConnectionHelper conStr = new ConnectionHelper();
+            connect = conStr.connectionclasss();        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                // Change below query according to your own database.
+                String query = "select id_locatii from user_preferences where id_user ="+idUer;
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    locationIds=rs.getString("id_locatii");
+                }
+                String query2 = "select * from locatii where id in("+locationIds+")";
+                Statement stmt2 = connect.createStatement();
+                ResultSet rs2 = stmt2.executeQuery(query2);
+                while (rs2.next()) {
+                    Locatii locatie = new Locatii();
+                    locatie.setId(rs2.getInt("id"));
+                    locatie.setNume(rs2.getString("nume_oras"));
+                    locatie.setCategorie(rs2.getInt("id_categorie_1"));
+                    locatie.setCategorie2(rs2.getInt("id_categorie_2"));
+                    locatie.setLat(rs2.getString("lat"));
+                    locatie.setLon(rs2.getString("lon"));
+                    locatiiList.add(locatie);
+                }
+                ConnectionResult = " successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+        return locatiiList;
+    }
 }

@@ -14,4 +14,5 @@
     <string name="util_ve_editText">All fields must be filled in!</string>
     <!--orase-->
     <string name="rome">Rome</string>
+    <string name="title_activity_your_place">Map</string>
 </resources>

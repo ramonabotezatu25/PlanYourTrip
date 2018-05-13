@@ -127,4 +127,14 @@
         android:layout_toStartOf="@+id/button3"
         android:text="BD"
         android:onClick="bazadedate"/>
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/button5"
+        android:layout_below="@+id/button5"
+        android:layout_marginTop="28dp"
+        android:onClick="yourPlace"
+        android:text="MAP" />
 </RelativeLayout>
