@@ -19,6 +19,7 @@ public class CodUnicIdentificare {
     public static String codUnicDeIndentificare="";
     public static UserPreferences userPreferencesForHome;
     public static List<Locatii> locatiiList = new ArrayList<>();
+    public static String orasDestinatieFlight="";
 
 
     public static final void getSaltString() {

@@ -27,6 +27,7 @@ import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Weather.WeatherMainActivity;
+import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.orasDestinatieFlight;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -308,6 +309,7 @@ public class Home extends AppCompatActivity {
         exploreCity.putExtra("long",lon);
         exploreCity.putExtra("name",name);
         exploreCity.putExtra("orasSelectat", orasSelectat);
+        orasDestinatieFlight =orasSelectat;
         startActivity(exploreCity);
 
     }
