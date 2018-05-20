@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
@@ -22,13 +23,18 @@ import com.example.ramona.planyourtrip.GmailSender.SendEmail;
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Database.Background;
+import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.VerificaEmpty;
+import com.example.ramona.planyourtrip.maps.YourPlace;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import io.paperdb.Paper;
+import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.locatiiList;
 
 import static com.example.ramona.planyourtrip.MultiLanguage.Language.setDefaultLanguage;
 
@@ -41,6 +47,8 @@ public class TravelTest extends AppCompatActivity {
     EditText editText;
     TextInputLayout hintName;
     TextInputLayout hintPass;
+    //databse
+    DatabaseOperation db = new DatabaseOperation();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,6 +153,12 @@ public class TravelTest extends AppCompatActivity {
         List<Map<String,String>> MyData = null;
         Background mydata =new Background();
         MyData= mydata.doInBackground();
+    }
+
+    public void yourPlace(View view){
+        locatiiList = db.getUserLocation(1);
+        Intent yourPlace = new Intent(this, YourPlace.class);
+        startActivity(yourPlace);
     }
 
 

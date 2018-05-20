@@ -1,8 +1,11 @@
 package com.example.ramona.planyourtrip.GmailSender;
 
+import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
@@ -15,6 +18,8 @@ public class CodUnicIdentificare {
 
     public static String codUnicDeIndentificare="";
     public static UserPreferences userPreferencesForHome;
+    public static List<Locatii> locatiiList = new ArrayList<>();
+    public static String orasDestinatieFlight="";
 
 
     public static final void getSaltString() {

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
+import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.orasDestinatieFlight;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,6 +55,7 @@ public class Flight extends AppCompatActivity {
     DatabaseOperation db = new DatabaseOperation();
     List<Locatii> listaocatii = new ArrayList<>();
     String[] items;
+    Integer indexOrasDestinatie=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,12 +72,11 @@ public class Flight extends AppCompatActivity {
 
 
 
-
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
 
         dropdown.setAdapter(adapter);
         dropdown2.setAdapter(adapter);
+        dropdown2.setSelection(indexOrasDestinatie);
 
         ////
         startTime = (Button)findViewById(R.id.startTime);
@@ -106,6 +107,8 @@ public class Flight extends AppCompatActivity {
         for(int i =0;i<listaocatii.size();i++){
             int oras = resources.getIdentifier(listaocatii.get(i).getNume()+"AER", "string", context.getPackageName());
             items[i] = resources.getText(oras).toString();
+            if(items[i].contains(orasDestinatieFlight))
+                indexOrasDestinatie=i;
         }
 
     }
