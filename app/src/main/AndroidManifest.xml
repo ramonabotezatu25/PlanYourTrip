@@ -78,7 +78,9 @@
 
         <activity
             android:name=".maps.YourPlace"
-            android:label="@string/title_activity_your_place"></activity>
+            android:label="@string/title_activity_your_place" />
+        <activity android:name=".Profile.UserProfile" />
+        <activity android:name=".Profile.ChangeLanguage"></activity>
     </application>
 
 </manifest>

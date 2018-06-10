@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.ramona.planyourtrip.GmailSender.SendEmail;
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Profile.UserProfile;
 import com.example.ramona.planyourtrip.Util.Database.Background;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
@@ -100,7 +101,7 @@ public class TravelTest extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_profile:
-                        startNewActivity(CircleProfile.class);
+                        startNewActivity(UserProfile.class);
                         overridePendingTransition(0, 0);
                         break;
                     default:
