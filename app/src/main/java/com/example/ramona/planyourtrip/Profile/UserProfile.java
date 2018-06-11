@@ -10,6 +10,7 @@ import com.example.ramona.planyourtrip.R;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.maps.YourPlace;
 
+import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 
 public class UserProfile extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class UserProfile extends AppCompatActivity {
     }
 
     public void yourPlace(View view){
-        locatiiList = db.getUserLocation(1);
+        locatiiList = db.getUserLocation(idUtilizator);
         Intent yourPlace = new Intent(this, YourPlace.class);
         startActivity(yourPlace);
     }

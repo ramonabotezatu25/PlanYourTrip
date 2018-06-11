@@ -22,6 +22,7 @@ import android.widget.ViewSwitcher;
 
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Profile.UserProfile;
 import com.example.ramona.planyourtrip.coverFlow.LocatiiAdapter;
 import com.example.ramona.planyourtrip.coverFlow.LocatiiExplore;
 import com.hitomi.cmlibrary.CircleMenu;
@@ -153,7 +154,7 @@ public class Explore extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_profile:
-                        startNewActivity(CircleProfile.class);
+                        startNewActivity(UserProfile.class);
                         overridePendingTransition(0, 0);
                         break;
                     default:
