@@ -1,5 +1,7 @@
 package com.example.ramona.planyourtrip.Util;
 
+import android.content.Intent;
+
 /**
  * Created by Ramona on 4/3/2018.
  */
@@ -10,16 +12,18 @@ public class User {
     private String email;
     private String parola;
     private String codConfirmare;
+    private Integer activ;
 
     public User() {
     }
 
-    public User(Integer id, String nume, String email, String parola, String codConfirmare) {
+    public User(Integer id, String nume, String email, String parola, String codConfirmare,Integer activ) {
         this.id = id;
         this.nume = nume;
         this.email = email;
         this.parola = parola;
         this.codConfirmare = codConfirmare;
+        this.activ= activ;
     }
 
     public Integer getId() {
@@ -60,5 +64,13 @@ public class User {
 
     public void setCodConfirmare(String codConfirmare) {
         this.codConfirmare = codConfirmare;
+    }
+
+    public Integer getActiv() {
+        return activ;
+    }
+
+    public void setActiv(Integer activ) {
+        this.activ = activ;
     }
 }

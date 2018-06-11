@@ -5,11 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.ramona.planyourtrip.Formular_interese;
 import com.example.ramona.planyourtrip.R;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.maps.YourPlace;
 
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.locatiiList;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 
 public class UserProfile extends AppCompatActivity {
 
@@ -31,5 +32,9 @@ public class UserProfile extends AppCompatActivity {
         locatiiList = db.getUserLocation(1);
         Intent yourPlace = new Intent(this, YourPlace.class);
         startActivity(yourPlace);
+    }
+    public void settingsPreferences(View view){
+        Intent settings = new Intent(this, Formular_interese.class);
+        startActivity(settings);
     }
 }

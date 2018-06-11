@@ -8,7 +8,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +21,8 @@ import com.taishi.flipprogressdialog.FlipProgressDialog;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.codUnicDeIndentificare;
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.getSaltString;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.codUnicDeIndentificare;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.getSaltString;
 import static com.example.ramona.planyourtrip.Util.Constants.ADMIN_EMAIL;
 import static com.example.ramona.planyourtrip.Util.Constants.COD_CONFIRMARE;
 import static com.example.ramona.planyourtrip.Util.Constants.EMAIL_BODY_NEW_ACCOUNT;

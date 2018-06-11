@@ -4,14 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,22 +18,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.GmailSender.SendEmail;
-import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Profile.UserProfile;
 import com.example.ramona.planyourtrip.Util.Database.Background;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
-import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.VerificaEmpty;
 import com.example.ramona.planyourtrip.maps.YourPlace;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import io.paperdb.Paper;
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.locatiiList;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 
 import static com.example.ramona.planyourtrip.MultiLanguage.Language.setDefaultLanguage;
 

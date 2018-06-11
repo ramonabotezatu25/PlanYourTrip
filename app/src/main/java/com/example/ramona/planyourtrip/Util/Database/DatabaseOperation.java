@@ -251,31 +251,31 @@ public class DatabaseOperation {
         return uniqueEmail;
     }
 
-    public Integer logInUtilizator(String email,String parola){
-        Integer utilizatorActiv=0;
-
+    public User logInUtilizator(String email,String parola){
+        User utilizator = new User();
         ConnectionHelper conStr = new ConnectionHelper();
         connect = conStr.connectionclasss();        // Connect to database
 
         if (connect == null) {
             ConnectionResult = "Check Your Internet Access!";
-            return utilizatorActiv;
+            return utilizator;
         } else {
             // Change below query according to your own database.
-            String query = "select count(*) from user where email = '"+email +"' and parola='"+parola+"' and activ = 1";
+            String query = "select count(*) activ,id from user where email = '"+email +"' and parola='"+parola+"' and activ = 1";
             try {
                 Statement stmt  = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                    utilizatorActiv = rs.getInt(1);
+                    utilizator.setActiv(rs.getInt("activ"));
+                    utilizator.setId(rs.getInt("id"));
                 }
                 connect.close();
-                return utilizatorActiv;
+                return utilizator;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return utilizatorActiv;
+        return utilizator;
     }
 
 

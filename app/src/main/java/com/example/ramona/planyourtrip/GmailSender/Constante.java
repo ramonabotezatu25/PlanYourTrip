@@ -14,12 +14,13 @@ import java.util.Random;
  * Created by Infrasoft Ciprian on 31-Jan-18.
  */
 
-public class CodUnicIdentificare {
+public class Constante {
 
     public static String codUnicDeIndentificare="";
     public static UserPreferences userPreferencesForHome;
     public static List<Locatii> locatiiList = new ArrayList<>();
     public static String orasDestinatieFlight="";
+    public static Integer idUtilizator;
 
 
     public static final void getSaltString() {

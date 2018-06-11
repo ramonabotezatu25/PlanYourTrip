@@ -24,14 +24,15 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.userPreferencesForHome;
+
+import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.userPreferencesForHome;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
 import java.util.Arrays;
 
-import br.com.bloder.magic.view.MagicButton;
 import io.paperdb.Paper;
 
 public class LogIn extends AppCompatActivity {
@@ -56,12 +57,6 @@ public class LogIn extends AppCompatActivity {
         //
         email = (EditText) findViewById(R.id.editText_name_logIn);
         parola = (EditText) findViewById(R.id.editText_password_logIn);
-
-        //
-
-
-
-
 
         //facebook Auth
         //callback
@@ -176,8 +171,9 @@ public class LogIn extends AppCompatActivity {
     public void login(View view){
         String emailU = email.getText().toString();
         String parolaU = parola.getText().toString();
-        Integer utilizatorActiv = db.logInUtilizator(emailU,parolaU);
-        if(utilizatorActiv==1){
+        User utilizatorActiv = db.logInUtilizator(emailU,parolaU);
+        if(utilizatorActiv!=null && utilizatorActiv.getActiv()==1){
+            idUtilizator = utilizatorActiv.getId();
             UserPreferences userPref = db.getUserPref(emailU);
             if(userPref!=null){
                 Intent explore= new Intent(this, Home.class);
