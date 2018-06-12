@@ -113,47 +113,64 @@ public class DatabaseOperation {
         return res;
     }
 
-    public int insertUserPref(UserPreferences userPreferences,String email) {
-        Integer idUtilizator  = 0;
+    public int insertUserPref(UserPreferences userPreferences,Integer idUtilizator) {
 
         ConnectionHelper conStr = new ConnectionHelper();
         connect = conStr.connectionclasss();        // Connect to database
         if (connect == null)
             ConnectionResult = "Check Your Internet Access!";
         int res = -1;
-
-
-        String query = "select id from user where email = '"+email +"'";
-        try {
-            Statement stmt  = connect.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                idUtilizator = rs.getInt(1);
+            if (userPreferences == null) {
+                return res;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            try {
+                String query2 = "INSERT INTO user_preferences(id_user,status_relatie,copii,calatorii,id_categorie_1,id_categorie_2,buget,id_locatii) VALUES(?,?,?,?,?,?,?,?)";
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query2);
+                preparedStatement.setInt(1, idUtilizator);
+                preparedStatement.setString(2, userPreferences.getStatusRelatie());
+                preparedStatement.setString(3, userPreferences.getAreCopii());
+                preparedStatement.setString(4, userPreferences.getCatDeDesPleci());
+                preparedStatement.setString(5, userPreferences.getCategoria1());
+                preparedStatement.setString(6, userPreferences.getCategoria2());
+                preparedStatement.setString(7, userPreferences.getBuget());
+                preparedStatement.setString(8, userPreferences.getOraseVizitate());
+                res = preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
+
+        return res;
+    }
+    public int updateUserPref(UserPreferences userPreferences,Integer idUtilizator) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        int res = -1;
         if (userPreferences == null) {
             return res;
         }
         try {
-            String query2 = "INSERT INTO user_preferences(id_user,status_relatie,copii,calatorii,id_categorie_1,id_categorie_2,buget,id_locatii) VALUES(?,?,?,?,?,?,?,?)";
+            String query2 = "update user_preferences set status_relatie="+userPreferences.getStatusRelatie()+
+                    ", copii ="+userPreferences.getAreCopii()+
+                    ",calatorii="+userPreferences.getCatDeDesPleci()+
+                    ",id_categorie_1="+userPreferences.getCategoria1()+
+                    ",id_categorie_2="+userPreferences.getCategoria2()+
+                    ",buget = "+userPreferences.getBuget()+
+                    "id_locatii="+userPreferences.getOraseVizitate()+
+                    " where id_utilizator = "+idUtilizator;
             PreparedStatement preparedStatement = null;
             preparedStatement = connect.prepareStatement(query2);
-            preparedStatement.setInt(1,idUtilizator);
-            preparedStatement.setString(2,userPreferences.getStatusRelatie());
-            preparedStatement.setString(3,userPreferences.getAreCopii());
-            preparedStatement.setString(4,userPreferences.getCatDeDesPleci());
-            preparedStatement.setString(5,userPreferences.getCategoria1());
-            preparedStatement.setString(6,userPreferences.getCategoria2());
-            preparedStatement.setString(7,userPreferences.getBuget());
-            preparedStatement.setString(8,userPreferences.getOraseVizitate());
             res = preparedStatement.executeUpdate();
             connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
 
         return res;
     }
@@ -342,7 +359,7 @@ public class DatabaseOperation {
 
 
     //getAllLocation from DB
-    public UserPreferences  getUserPref(String email) {
+    public UserPreferences  getUserPref(Integer idUtilizator) {
         UserPreferences data=new UserPreferences();
         try {
             ConnectionHelper conStr = new ConnectionHelper();
@@ -351,12 +368,17 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "select * from user_preferences where id_user = (select id from user where email = '"+email+"')";
+                String query = "select * from user_preferences where id_user = "+idUtilizator;
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                     data.setCategoria1(rs.getString(6));
-                     data.setCategoria2(rs.getString(7));
+                     data.setCatDeDesPleci(rs.getString("calatorii"));
+                     data.setStatusRelatie(rs.getString("status_relatie"));
+                     data.setAreCopii(rs.getString("copii"));
+                     data.setCategoria1(rs.getString("id_categorie_1"));
+                     data.setCategoria2(rs.getString("id_categorie_2"));
+                     data.setBuget(rs.getString("buget"));
+                     data.setOraseVizitate(rs.getString("id_locatii"));
                 }
 
                 ConnectionResult = " successful";

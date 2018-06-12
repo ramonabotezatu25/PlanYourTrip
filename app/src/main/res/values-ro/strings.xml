@@ -57,8 +57,8 @@
         <item>Alege o optiune</item>
         <item>Nu conteaza</item>
         <item>Intre 100$ - 300$</item>
-        <item>Intre 300$- 500$</item>
-        <item>Intre 500$ - 1000$</item>
+        <item>Intre 301$- 500$</item>
+        <item>Intre 501$ - 1000$</item>
         <item>Peste 1000$</item>
     </array>
     <!-- Spinner categorii-->

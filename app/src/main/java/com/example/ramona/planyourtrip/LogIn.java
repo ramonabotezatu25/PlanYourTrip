@@ -174,14 +174,14 @@ public class LogIn extends AppCompatActivity {
         User utilizatorActiv = db.logInUtilizator(emailU,parolaU);
         if(utilizatorActiv!=null && utilizatorActiv.getActiv()==1){
             idUtilizator = utilizatorActiv.getId();
-            UserPreferences userPref = db.getUserPref(emailU);
+            UserPreferences userPref = db.getUserPref(idUtilizator);
             if(userPref!=null){
                 Intent explore= new Intent(this, Home.class);
                 userPreferencesForHome = userPref;
                 startActivity(explore);
             }else{
                 Intent userPreferences= new Intent(this, Formular_interese.class);
-                userPreferences.putExtra("email",emailU);
+                userPreferences.putExtra("operatie","insert");
                 startActivity(userPreferences);
             }
 

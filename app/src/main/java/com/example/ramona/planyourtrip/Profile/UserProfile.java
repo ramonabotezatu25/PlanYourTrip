@@ -36,6 +36,7 @@ public class UserProfile extends AppCompatActivity {
     }
     public void settingsPreferences(View view){
         Intent settings = new Intent(this, Formular_interese.class);
+        settings.putExtra("operatie","update");
         startActivity(settings);
     }
 }
