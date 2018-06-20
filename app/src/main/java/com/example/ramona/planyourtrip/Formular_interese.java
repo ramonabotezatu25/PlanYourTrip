@@ -324,8 +324,18 @@ public class Formular_interese extends AppCompatActivity{
         //mulilng
         allYouNeed();
 
+        locatiiList = db.getLocation();
+
         if(operatie.equals("update")) {
             userPreferences = db.getUserPref(idUtilizator);
+            checkedItems = new boolean[locatiiList.size()];
+            for(int i =0;i<locatiiList.size();i++){
+                String[] oraseUser = userPreferences.getOraseVizitate().split(",");
+                for(int j=0;j<oraseUser.length;j++){
+                    if(Integer.parseInt(oraseUser[j]) == locatiiList.get(i).getId())
+                        checkedItems[i] = true;
+                }
+            }
             setUserPreferences();
         }
     }
@@ -429,7 +439,6 @@ public class Formular_interese extends AppCompatActivity{
 
 
     public void deschideAlegeOras(View view){
-        locatiiList = db.getLocation();
         final String[] listaOrase = new String[locatiiList.size()];
         for(int i =0;i<locatiiList.size();i++){
             listaOrase[i] = locatiiList.get(i).getNume();
@@ -522,7 +531,7 @@ public class Formular_interese extends AppCompatActivity{
         if(operatie.equals("insert"))
             db.insertUserPref(userPreferences,idUtilizator);
         else
-            db.updateUserPref(userPreferences,idUtilizator);
+            db.updateUserPref(userPreferences);
 
         Intent explore= new Intent(this, Home.class);
         startActivity(explore);

@@ -144,7 +144,7 @@ public class DatabaseOperation {
 
         return res;
     }
-    public int updateUserPref(UserPreferences userPreferences,Integer idUtilizator) {
+    public int updateUserPref(UserPreferences userPreferences) {
 
         ConnectionHelper conStr = new ConnectionHelper();
         connect = conStr.connectionclasss();        // Connect to database
@@ -160,9 +160,9 @@ public class DatabaseOperation {
                     ",calatorii="+userPreferences.getCatDeDesPleci()+
                     ",id_categorie_1="+userPreferences.getCategoria1()+
                     ",id_categorie_2="+userPreferences.getCategoria2()+
-                    ",buget = "+userPreferences.getBuget()+
-                    "id_locatii="+userPreferences.getOraseVizitate()+
-                    " where id_utilizator = "+idUtilizator;
+                    ",buget = '"+userPreferences.getBuget()+
+                    "',id_locatii='"+userPreferences.getOraseVizitate()+
+                    "' where id = "+userPreferences.getId();
             PreparedStatement preparedStatement = null;
             preparedStatement = connect.prepareStatement(query2);
             res = preparedStatement.executeUpdate();
@@ -372,6 +372,7 @@ public class DatabaseOperation {
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
+                     data.setId(rs.getInt("id"));
                      data.setCatDeDesPleci(rs.getString("calatorii"));
                      data.setStatusRelatie(rs.getString("status_relatie"));
                      data.setAreCopii(rs.getString("copii"));

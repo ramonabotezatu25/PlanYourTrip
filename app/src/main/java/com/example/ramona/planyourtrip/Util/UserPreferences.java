@@ -5,6 +5,7 @@ package com.example.ramona.planyourtrip.Util;
  */
 
 public class UserPreferences {
+    private Integer id;
     private String statusRelatie;
     private String areCopii;
     private String catDeDesPleci;
@@ -16,7 +17,8 @@ public class UserPreferences {
     public UserPreferences() {
     }
 
-    public UserPreferences(String statusRelatie, String areCopii, String catDeDesPleci, String categoria1, String categoria2, String buget, String oraseVizitate) {
+    public UserPreferences(Integer id,String statusRelatie, String areCopii, String catDeDesPleci, String categoria1, String categoria2, String buget, String oraseVizitate) {
+        this.id= id;
         this.statusRelatie = statusRelatie;
         this.areCopii = areCopii;
         this.catDeDesPleci = catDeDesPleci;
@@ -24,6 +26,14 @@ public class UserPreferences {
         this.categoria2 = categoria2;
         this.buget = buget;
         this.oraseVizitate = oraseVizitate;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getStatusRelatie() {
