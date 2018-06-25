@@ -9,6 +9,7 @@ import com.example.ramona.planyourtrip.Formular_interese;
 import com.example.ramona.planyourtrip.R;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.maps.YourPlace;
+import com.example.ramona.planyourtrip.voiceControl.VoiceControl;
 
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
@@ -39,4 +40,9 @@ public class UserProfile extends AppCompatActivity {
         settings.putExtra("operatie","update");
         startActivity(settings);
     }
+    public void voiceControl(View view){
+        Intent settings = new Intent(this, VoiceControl.class);
+        startActivity(settings);
+    }
+
 }
