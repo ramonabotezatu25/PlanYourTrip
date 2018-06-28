@@ -344,7 +344,10 @@ public class Formular_interese extends AppCompatActivity{
         rGroupStatusRelatie.check(rGroupStatusRelatie.getChildAt(Integer.parseInt(userPreferences.getStatusRelatie())).getId());
         rGroupCopii.check(rGroupCopii.getChildAt(Integer.parseInt(userPreferences.getAreCopii())).getId());
         rGroupPlecari.check(rGroupPlecari.getChildAt(Integer.parseInt(userPreferences.getCatDeDesPleci())).getId());
-       // rGroupOraseVizitate.check(rGroupOraseVizitate.getChildAt(Integer.parseInt(userPreferences.getOraseVizitate())).getId());
+        if(userPreferences.getOraseVizitate()!=null){
+           // rGroupOraseVizitate.check(rGroupOraseVizitate.getChildAt(0));
+            rbDa2.setChecked(true);
+        }
         String[] selectedCategoria1 = userPreferences.getCategoria1().split(",");
         String[] selectedCategoria2 = userPreferences.getCategoria2().split(",");
         for(int i=0;i<selectedCategoria1.length;i++){
@@ -386,6 +389,7 @@ public class Formular_interese extends AppCompatActivity{
         rbDes=(RadioButton)findViewById((R.id.formular_rb_calatoresc_des));
         rbRar=(RadioButton)findViewById((R.id.formular_rb_calatoresc_rar));
         rbFoartedes=(RadioButton)findViewById((R.id.formular_rb_calatoresc_foarte_des));
+
 
         //setari S[pinner --- ?
 
