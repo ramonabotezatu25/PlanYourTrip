@@ -14,4 +14,10 @@ public interface Constants {
 
     String EMAIL_BODY_NEW_ACCOUNT_ADMIN = "Buna ziua . Un nou cont a fost creat. Adresa de email a utilizatorului este :";
 
+    //shared preferences
+    String SHAREDPREFERENCES_NAME = "pref";
+    String SHAREDPREFERENCES2_NAME="pref2";;
+    String LOGIN_NAME="username";
+    String PAROLA_NAME="parola";
+    String FARA_NUME_LOGIN="unknown";
 }

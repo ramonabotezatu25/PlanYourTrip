@@ -2,6 +2,7 @@ package com.example.ramona.planyourtrip;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Util.Constants;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.User;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
@@ -40,7 +42,8 @@ public class LogIn extends AppCompatActivity {
     DatabaseOperation db = new DatabaseOperation();
     //facebook
     CallbackManager callbackManager;
-
+    //retine user name si parola
+    SharedPreferences preferences;
 
     EditText email;
     EditText parola;
@@ -111,7 +114,23 @@ public class LogIn extends AppCompatActivity {
 
         //mulilng
         allYouNeed();
+        //shared pref
+        preferences=getSharedPreferences(Constants.SHAREDPREFERENCES2_NAME, MODE_PRIVATE);
+
+        final String u=preferences.getString(Constants.LOGIN_NAME, Constants.FARA_NUME_LOGIN);
+        final String p=preferences.getString(Constants.PAROLA_NAME, Constants.FARA_NUME_LOGIN);
+
+        if(!u.equals(null))
+        {
+            email.setText(u.toString());
+        }
+        if(!p.equals(null))
+        {
+            parola.setText(p.toString());
+        }
+
     }
+
 
 
     private void allYouNeed() {
@@ -174,6 +193,10 @@ public class LogIn extends AppCompatActivity {
         User utilizatorActiv = db.logInUtilizator(emailU,parolaU);
         if(utilizatorActiv!=null && utilizatorActiv.getActiv()==1){
             idUtilizator = utilizatorActiv.getId();
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(Constants.LOGIN_NAME, emailU);
+            editor.putString(Constants.PAROLA_NAME, parolaU);
+            editor.commit();
             UserPreferences userPref = db.getUserPref(idUtilizator);
             if(userPref!=null){
                 Intent explore= new Intent(this, Home.class);
@@ -185,9 +208,9 @@ public class LogIn extends AppCompatActivity {
                 startActivity(userPreferences);
             }
 
+
         }
     }
-
     //deschide SignUp Form
     public void deschideSignUp(View View){
         Intent intent= new Intent(LogIn.this, SignUpActivity.class);

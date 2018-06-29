@@ -64,30 +64,6 @@ public class Home extends AppCompatActivity {
     //nume pe care il trimit in activitatea explore_city
     String orasSelectat;
 
-    //bottom nav
-    private TextView mTextMessage;
-    BottomNavigationView bottomNavigationView;
-    BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.nav_view:
-                    mTextMessage.setText(R.string.nav_home);
-                    return true;
-                case R.id.nav_explore:
-                    mTextMessage.setText(R.string.nav_explore);
-                    return true;
-                case R.id.nav_profile:
-                    mTextMessage.setText(R.string.nav_profile);
-                    return true;
-            }
-            return false;
-        }
-    };
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
