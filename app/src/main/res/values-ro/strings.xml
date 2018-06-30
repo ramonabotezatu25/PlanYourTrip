@@ -229,4 +229,16 @@
     <string name="BangkokAER">Bangkok(BKK)</string>
     <string name="KrabiAER">Krabi(KBV)</string>
 
+
+    <!--user profile-->
+    <string name="language">Limba</string>
+    <string name="myPlaces">Locurile Mele</string>
+    <string name="findPlaces">Imprejurimi</string>
+    <string name="userSecurity">Securitate</string>
+    <string name="settings">Preferinte</string>
+    <string name="stories">Povesti</string>
+    <string name="sendStories">Povesteste-ne</string>
+    <string name="aboutUS">Despre noi</string>
+    <string name="voiceControl">Control vocal</string>
+
 </resources>

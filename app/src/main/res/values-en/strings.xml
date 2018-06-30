@@ -16,9 +16,6 @@
     <string name="signup">Log In</string>
     <string name="questionSignUp">Don`t have an account?</string>
     <string name="signUpHere">Sign up</string>
-    <!--meniu profile-->
-    <string name="profil_meniu_language">Language</string>
-    <string name="profil_meniu_country">Country</string>
     <!--submeniu profil language-->
     <string name="profil_sub_language_romana">Romanian</string>
     <string name="profil_sub_language_engleza">English</string>
@@ -193,6 +190,15 @@
     <string name="BangkokAER">Bangkok(BKK)</string>
     <string name="KrabiAER">Krabi(KBV)</string>
 
-
+    <!--user profile-->
+    <string name="language">Language</string>
+    <string name="myPlaces">My Places</string>
+    <string name="findPlaces">Find Places</string>
+    <string name="userSecurity">Secutiry</string>
+    <string name="settings">Preferences</string>
+    <string name="stories">Stories</string>
+    <string name="sendStories">Send Stories</string>
+    <string name="aboutUS">About Us</string>
+    <string name="voiceControl">Voice Control</string>
 
 </resources>
