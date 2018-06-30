@@ -79,7 +79,8 @@
             android:label="@string/title_activity_your_place" />
         <activity android:name=".Profile.UserProfile" />
         <activity android:name=".Profile.ChangeLanguage" />
-        <activity android:name=".voiceControl.VoiceControl"></activity>
+        <activity android:name=".voiceControl.VoiceControl" />
+        <activity android:name=".exploreCity.ExploreMyCity"></activity>
     </application>
 
 </manifest>

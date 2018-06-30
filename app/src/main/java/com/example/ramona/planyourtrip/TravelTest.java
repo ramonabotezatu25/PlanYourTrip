@@ -23,6 +23,7 @@ import com.example.ramona.planyourtrip.Profile.UserProfile;
 import com.example.ramona.planyourtrip.Util.Database.Background;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.VerificaEmpty;
+import com.example.ramona.planyourtrip.exploreCity.ExploreMyCity;
 import com.example.ramona.planyourtrip.maps.YourPlace;
 
 import java.util.List;
@@ -137,7 +138,7 @@ public class TravelTest extends AppCompatActivity {
     }
     public  void deschideFormular(View view)
     {
-        Intent intent= new Intent(TravelTest.this, Formular_interese.class);
+        Intent intent= new Intent(TravelTest.this, ExploreMyCity.class);
         startActivity(intent);
     }
     public void deschideHome(View view){
