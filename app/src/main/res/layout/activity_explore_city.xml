@@ -47,81 +47,81 @@
                     android:text="@string/newYork_descriere"
                     android:textSize="14dp" />
 
-                <!-- vremea -->
-                <LinearLayout
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/explore_wheater_design"
-                    android:orientation="vertical">
+                <!--&lt;!&ndash; vremea &ndash;&gt;-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="170dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginEnd="5dp"-->
+                    <!--android:background="@drawable/explore_wheater_design"-->
+                    <!--android:orientation="vertical">-->
 
-                        <TextView
-                            android:id="@+id/explore_city_field"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:layout_centerHorizontal="true"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/colorPrimary" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/explore_city_field"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignParentTop="true"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                            <!--android:textColor="@color/colorPrimary" />-->
 
-                        <TextView
-                            android:id="@+id/explore_updated_field"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/city_field"
-                            android:layout_centerHorizontal="true"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="13sp" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/explore_updated_field"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@+id/city_field"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                            <!--android:textColor="@color/colorPrimary"-->
+                            <!--android:textSize="13sp" />-->
 
-                        <TextView
-                            android:id="@+id/explore_weather_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="60sp" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/explore_weather_icon"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+                            <!--android:textColor="@color/colorPrimary"-->
+                            <!--android:textSize="60sp" />-->
 
-                        <TextView
-                            android:id="@+id/explore_current_temperature_field"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_centerHorizontal="true"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="15sp" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/explore_current_temperature_field"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_alignParentBottom="true"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                            <!--android:textColor="@color/colorPrimary"-->
+                            <!--android:textSize="15sp" />-->
 
-                        <TextView
-                            android:id="@+id/explore_details_field"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/weather_icon"
-                            android:layout_centerHorizontal="true"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textColor="@color/colorPrimary" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/explore_details_field"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@+id/weather_icon"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                            <!--android:textColor="@color/colorPrimary" />-->
 
-                        <TextView
-                            android:id="@+id/explore_humidity_field"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/details_field"
-                            android:layout_centerHorizontal="true"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textColor="@color/colorPrimary" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/explore_humidity_field"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@+id/details_field"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                            <!--android:textColor="@color/colorPrimary" />-->
 
-                        <TextView
-                            android:id="@+id/explore_pressure_field"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/humidity_field"
-                            android:layout_centerHorizontal="true"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:textColor="@color/colorPrimary" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/explore_pressure_field"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@+id/humidity_field"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                            <!--android:textColor="@color/colorPrimary" />-->
 
-                </LinearLayout>
+                <!--</LinearLayout>-->
 
         </LinearLayout>
 

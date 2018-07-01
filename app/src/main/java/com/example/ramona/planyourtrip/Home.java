@@ -21,6 +21,7 @@ import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Profile.UserProfile;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
+import com.example.ramona.planyourtrip.exploreCity.ExploreMyCity;
 
 import static com.example.ramona.planyourtrip.GmailSender.Constante.orasDestinatieFlight;
 
@@ -274,7 +275,7 @@ public class Home extends AppCompatActivity {
 
     public void deschideExploreCity(View view,String lat,String lon,String name){
         //cam asta e.Pentru test. Apeleaza cu New York
-        Intent exploreCity = new Intent(Home.this, ExploreCity.class);
+        Intent exploreCity = new Intent(Home.this, ExploreMyCity.class);
         exploreCity.putExtra("lat",lat);
         exploreCity.putExtra("long",lon);
         exploreCity.putExtra("name",name);

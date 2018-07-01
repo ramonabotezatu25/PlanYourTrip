@@ -1,5 +1,6 @@
 package com.example.ramona.planyourtrip.exploreCity;
 
+import android.content.res.AssetManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -19,7 +20,7 @@ public class CardFragmentPagerAdapter extends FragmentStatePagerAdapter implemen
         fragments = new ArrayList<>();
         this.baseElevation = baseElevation;
 
-        for(int i = 0; i< 8; i++){
+        for(int i = 0; i< 6; i++){
             addCardFragment(new CardFragment());
         }
     }
