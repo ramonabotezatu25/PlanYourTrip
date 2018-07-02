@@ -11,17 +11,19 @@ public class Locatii {
     private Integer categorie2;
     private String lat;
     private String lon;
+    private String link;
 
     public Locatii() {
     }
 
-    public Locatii(Integer id, String nume, Integer cateorie1, Integer categorie2, String lat, String lon) {
+    public Locatii(Integer id, String nume, Integer cateorie1, Integer categorie2, String lat, String lon, String link) {
         this.id = id;
         this.nume = nume;
         this.categorie = cateorie1;
         this.categorie2 = categorie2;
         this.lat = lat;
         this.lon = lon;
+        this.link=link;
     }
 
     public Integer getId() {
@@ -70,5 +72,15 @@ public class Locatii {
 
     public void setLon(String lon) {
         this.lon = lon;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

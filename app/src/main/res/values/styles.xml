@@ -19,6 +19,11 @@
     <style name="TextLabel" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">20sp</item>
     </style>
+
+    <style name="TitleExpandLogIn" parent="TextAppearance.AppCompat.Title">
+        <item name="android:fontFamily">casual</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <!--<style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="turcoaz1">@color/turcoazDeschis</item>
         <item name="turcoaz2">@color/turcoazInchis</item>

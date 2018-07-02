@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ramona.planyourtrip.R;
+import com.example.ramona.planyourtrip.Util.Locatii;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
@@ -21,10 +22,10 @@ import java.util.List;
 
 public class LocatiiAdapter extends BaseAdapter {
 
-    private List<LocatiiExplore> locatiiExploreList;
+    private List<Locatii> locatiiExploreList;
     private Context mContext;
 
-    public LocatiiAdapter(List<LocatiiExplore> locatiiExploreList, Context mContext) {
+    public LocatiiAdapter(List<Locatii> locatiiExploreList, Context mContext) {
         this.locatiiExploreList = locatiiExploreList;
         this.mContext = mContext;
     }
@@ -56,9 +57,9 @@ public class LocatiiAdapter extends BaseAdapter {
 
             //Set Data
 
-            Picasso.with(mContext).load(locatiiExploreList.get(i).getImageURL())
+            Picasso.with(mContext).load(locatiiExploreList.get(i).getLink())
                     .into(image);
-            name.setText(locatiiExploreList.get(i).getNumeLocatie());
+            name.setText(locatiiExploreList.get(i).getNume());
 
         }
 

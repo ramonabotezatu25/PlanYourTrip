@@ -4,9 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/zboruri_bg1"
     tools:context="com.example.ramona.planyourtrip.Flight">
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alege zboruri"
+        android:fontFamily="cursive"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="#F2EBF1"
+        android:layout_marginBottom="25dp"
+        android:layout_gravity="center"/>
     <Spinner
     android:id="@+id/spinner1"
     android:layout_width="match_parent"
@@ -18,62 +33,96 @@
         android:id="@+id/spinner2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"/>
-
-
-    <Button
-        android:id="@+id/startTime"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinner2"
-        android:layout_marginTop="30dp"
-        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
-        android:text="startTime" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/endTime"
-        android:layout_width="wrap_content"
+
+            <Button
+                android:id="@+id/startTime"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/spinner2"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/buton_zboruri_stil"
+                android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+                android:fontFamily="casual"
+                android:text="startTime"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/startTimeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/startTime"
+                android:layout_alignBottom="@+id/startTime"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#F2EBF1"
+                android:textStyle="bold"
+                android:layout_toEndOf="@+id/searchFlight"
+                android:fontFamily="casual"
+                android:text=" " />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="endTime"
-        android:drawableLeft="@android:drawable/ic_menu_my_calendar"
-        android:layout_marginTop="200dp"/>
+        android:orientation="horizontal">
+            <Button
+                android:id="@+id/endTime"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:drawableLeft="@android:drawable/ic_menu_my_calendar"
+                android:fontFamily="casual"
+                android:background="@drawable/buton_zboruri_stil"
+                android:text="endTime"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/endTimeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/endTime"
+                android:layout_alignBottom="@+id/endTime"
+                android:layout_alignStart="@+id/startTimeTV"
+                android:textColor="#F2EBF1"
+                android:fontFamily="casual"
+                android:textStyle="bold"
+                android:layout_marginLeft="100dp"
+                android:text=" " />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
     <Button
         android:id="@+id/searchFlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search Flight"
         android:onClick="searchFlight"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:background="@drawable/buton_zboruri_stil"
         android:drawableLeft="@android:drawable/ic_menu_search"
-        android:layout_marginTop="300dp"/>
+      />
     <Button
         android:id="@+id/searchHotel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
         android:text="Search Hotel"
         android:onClick="searchHotel"
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:layout_marginTop="400dp"/>
-
-    <TextView
-        android:id="@+id/startTimeTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/startTime"
-        android:layout_alignBottom="@+id/startTime"
-        android:layout_marginStart="56dp"
-        android:layout_toEndOf="@+id/searchFlight"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/endTimeTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/endTime"
-        android:layout_alignBottom="@+id/endTime"
-        android:layout_alignStart="@+id/startTimeTV"
-        android:text="TextView" />
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:background="@drawable/buton_zboruri_stil"
+        android:drawableLeft="@android:drawable/ic_menu_search" />
+    </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

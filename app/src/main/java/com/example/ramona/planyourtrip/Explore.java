@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,15 +24,18 @@ import android.widget.ViewSwitcher;
 import com.example.ramona.planyourtrip.MultiLanguage.Language;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Profile.UserProfile;
+import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.coverFlow.LocatiiAdapter;
-import com.example.ramona.planyourtrip.coverFlow.LocatiiExplore;
-import com.hitomi.cmlibrary.CircleMenu;
+import com.example.ramona.planyourtrip.exploreCity.ExploreMyCity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.paperdb.Paper;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
+
+import static com.example.ramona.planyourtrip.GmailSender.Constante.orasDestinatieFlight;
 
 public class Explore extends AppCompatActivity {
 
@@ -40,13 +44,14 @@ public class Explore extends AppCompatActivity {
     Context context;
     Resources resources;
     String limba ;
-
-
+    //database
+    DatabaseOperation db =new DatabaseOperation();
     //pentru Cover Flow
     private FeatureCoverFlow coverFlow;
     private LocatiiAdapter locatiiAdapter;
-    private List<LocatiiExplore> locatiiExploreList= new ArrayList<>();
+    private List<Locatii> locatiiExploreList= new ArrayList<>();
     private TextSwitcher mTitle;
+    //lista orase
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +60,8 @@ public class Explore extends AppCompatActivity {
         setContentView(R.layout.activity_explore);
         allYouNeed();
 
-        //initializare cover Flow
-
-        initData();
+        //initializare lista locatii
+        getLocatii();
         mTitle=(TextSwitcher)findViewById(R.id.textSwitcher_numeOras);
         mTitle.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
@@ -84,26 +88,27 @@ public class Explore extends AppCompatActivity {
         coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
-                mTitle.setText(locatiiExploreList.get(position).getNumeLocatie());
+                mTitle.setText(locatiiExploreList.get(position).getNume());
 
             }
-
             @Override
             public void onScrolling() {
 
             }
         });
-    }
 
-    private void initData() {
-
-        locatiiExploreList.add(new LocatiiExplore("Los Anegeles", "https://www.lacity.org/sites/g/files/wph781/f/styles/tiled_homepage_blog/public/bigstock-Los-Angeles-5909078.jpg?itok=Pu2dewLz"));
-        locatiiExploreList.add(new LocatiiExplore("Barcelona", "http://cdn.hotellacasadelsol.com/wp-content/uploads/2018/01/barcelona-cultura-historia.jpg"));
-        locatiiExploreList.add(new LocatiiExplore("Dubai", "https://gdb.alhurra.eu/B1C207A2-7469-4534-83CD-BF225D3E34A2_cx0_cy10_cw0_w1023_r1_s.jpg"));
-        locatiiExploreList.add(new LocatiiExplore("San Francisco", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-rP5URd2M-Xre2cWlUSHdeUS7GLWr-dSFrv990OdFWdfr6nTo"));
-
-
-
+        coverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent= new Intent(getApplicationContext(), ExploreMyCity.class);
+                intent.putExtra("lat",locatiiExploreList.get(i).getLat());
+                intent.putExtra("long",locatiiExploreList.get(i).getLon());
+                intent.putExtra("name",locatiiExploreList.get(i).getNume());
+                intent.putExtra("link", locatiiExploreList.get(i).getLink());
+                orasDestinatieFlight =locatiiExploreList.get(i).getNume();
+                startActivity(intent);
+            }
+        });
     }
 
     private void allYouNeed() {
@@ -111,8 +116,6 @@ public class Explore extends AppCompatActivity {
         context = getApplicationContext();
         context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
         resources = context.getResources();
-        //preiau toate view-urile care trebuie traduce din clasa
-        limba = resources.getString(R.string.profil_meniu_language);
         //navigation view
         //preiau toate textViewurile din clasa
        // ex: textView = (TextView) findViewById(R.id.textView);
@@ -174,5 +177,18 @@ public class Explore extends AppCompatActivity {
         //ex:Integer idTextView = R.string.hello;
         //adauga in lista de traduceri
         //ex: listaIDTextViews.add(idTextView);
+    }
+
+    //setare galerie
+    private void getLocatii(){
+        //preia din baza orase
+        locatiiExploreList= db.getLinksiNumeLocatii();
+        for(int i=0;i<locatiiExploreList.size();i++){
+            String locatie=locatiiExploreList.get(i).getNume();
+            int id=resources.getIdentifier(locatie, "string", context.getPackageName());
+            locatie=resources.getString(id);
+            locatiiExploreList.get(i).setNume(locatie);
+
+        }
     }
 }

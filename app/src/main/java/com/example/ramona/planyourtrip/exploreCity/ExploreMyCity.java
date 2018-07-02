@@ -42,6 +42,7 @@ public class ExploreMyCity extends AppCompatActivity {
     ImageView imageView;
     //database
     DatabaseOperation db =new DatabaseOperation();
+    String linkLocatie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class ExploreMyCity extends AppCompatActivity {
             numeOras=bu.getString("name");
             latitudine = bu.getString("lat");
             longitudine = bu.getString("long");
+            linkLocatie=bu.getString("link");
 
         }
         CardFragmentPagerAdapter pagerAdapter = new CardFragmentPagerAdapter(getSupportFragmentManager(), dpToPixels(2, this));
@@ -80,7 +82,7 @@ public class ExploreMyCity extends AppCompatActivity {
     private void setImageViewExplore(){
         //preia din baza orase
         String nume=numeOras.replace(" ","");
-        String link=db.getLinkLocatie(nume);
+        String link=linkLocatie;
 
         if(link.isEmpty()){
             link="https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30712461_587953308239947_3492033068502351872_n.jpg?_nc_cat=0&oh=b38e5409b120619bbd7bfde656c02080&oe=5B27EE83";

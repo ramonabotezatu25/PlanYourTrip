@@ -1,8 +1,6 @@
 package com.example.ramona.planyourtrip.Util.Database;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 
 import com.example.ramona.planyourtrip.Util.Categorii;
@@ -17,18 +15,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.TABLE_NAME_UTILIZATORI;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_COD_CONFIRMARE;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_EMAIL;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_ID;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_NAME;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_PASS;
 
 /**
  * Created by Ramona on 4/3/2018.
@@ -357,6 +346,40 @@ public class DatabaseOperation {
         return data;
     }
 
+    //getALLLocation from db BY ID
+    public List<Locatii> getLinksiNumeLocatii() {
+        List<Locatii> data=new ArrayList<>();
+            try {
+            ConnectionHelper conStr = new ConnectionHelper();
+            connect = conStr.connectionclasss();        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                // Change below query according to your own database.
+                String query = "select l.nume_oras as nume, d.link_locatie as link, l.lat, l.lon from locatii as l ,descriere_orase as d \n" +
+                        "where l.id=d.id_locatie limit 35";
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    Locatii locatie= new Locatii();
+                    locatie.setNume(rs.getString("nume"));
+                    locatie.setLink(rs.getString("link"));
+                    data.add(locatie);
+                }
+
+                ConnectionResult = " successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+        return data;
+    }
+
+
+
 
     //getAllLocation from DB
     public UserPreferences  getUserPref(Integer idUtilizator) {
@@ -425,8 +448,8 @@ public class DatabaseOperation {
 
 
     //getLocationByCateg from DB
-    public Set<Locatii>  getLocationByCateg(UserPreferences userPreferences) {
-        Set<Locatii> data=new HashSet<>();
+    public List<Locatii>  getLocationByCateg(UserPreferences userPreferences) {
+        List<Locatii> data=new ArrayList<>();
         try {
             ConnectionHelper conStr = new ConnectionHelper();
             connect = conStr.connectionclasss();        // Connect to database
@@ -434,9 +457,9 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "SELECT * FROM locatii " +
+                String query = "SELECT l.*, d.link_locatie FROM locatii as l, descriere_orase as d " +
                         " WHERE id_categorie_1 = '" +userPreferences.getCategoria1()+
-                        "' ORDER BY RAND() " +
+                        "' and l.id=d.id_locatie ORDER BY RAND() " +
                         " LIMIT 2";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -448,13 +471,14 @@ public class DatabaseOperation {
                     locatie.setCategorie2(rs.getInt(4));
                     locatie.setLon(rs.getString(5));
                     locatie.setLon(rs.getString(6));
+                    locatie.setLink(rs.getString("link_locatie"));
                      data.add(locatie);
                 }
 
 
-                String query2 = "SELECT * FROM locatii " +
+                String query2 = "SELECT l.*, d.link_locatie FROM locatii as l, descriere_orase as d " +
                         " WHERE id_categorie_1 = '" +userPreferences.getCategoria2()+
-                        "' ORDER BY RAND() " +
+                        "' and l.id=d.id_locatie ORDER BY RAND() " +
                         " LIMIT 2";
                 Statement stmt2 = connect.createStatement();
                 ResultSet rs2 = stmt2.executeQuery(query2);
@@ -466,13 +490,14 @@ public class DatabaseOperation {
                     locatie.setCategorie2(rs2.getInt(4));
                     locatie.setLon(rs2.getString(5));
                     locatie.setLon(rs2.getString(6));
+                    locatie.setLink(rs2.getString("link_locatie"));
                     data.add(locatie);
                 }
 
-                String query3 = "SELECT * FROM locatii\n" +
+                String query3 = "SELECT l.*, d.link_locatie FROM locatii as l, descriere_orase as d \n" +
                         " WHERE id_categorie_2 in('"+userPreferences.getCategoria1()+"','"+userPreferences.getCategoria2()+"') and\n" +
                         " id_categorie_1 != '"+userPreferences.getCategoria1()+ "' and id_categorie_1 !='"+userPreferences.getCategoria2() +
-                        "' ORDER BY RAND() " +
+                        "' and l.id=d.id_locatie ORDER BY RAND() " +
                         " LIMIT 2 ";
                 Statement stmt3 = connect.createStatement();
                 ResultSet rs3 = stmt3.executeQuery(query3);
@@ -484,6 +509,7 @@ public class DatabaseOperation {
                     locatie.setCategorie2(rs3.getInt(4));
                     locatie.setLon(rs3.getString(5));
                     locatie.setLon(rs3.getString(6));
+                    locatie.setLink(rs3.getString("link_locatie"));
                     data.add(locatie);
 
                 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Plan Your Trip</string>
+    <string name="app_name">WTT</string>
     <!--NAV BAR -metoda navView()-->
 
     <string name="facebook_app_id">165695570812813</string>

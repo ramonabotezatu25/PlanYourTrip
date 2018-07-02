@@ -3,6 +3,8 @@ package com.example.ramona.planyourtrip;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -25,6 +27,9 @@ import com.example.ramona.planyourtrip.exploreCity.ExploreMyCity;
 
 import static com.example.ramona.planyourtrip.GmailSender.Constante.orasDestinatieFlight;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -60,8 +65,12 @@ public class Home extends AppCompatActivity {
     DatabaseOperation db =new DatabaseOperation();
 
     ImageView imageView1;
-    List<String> orase = new ArrayList<>();
-    Set<Locatii> locatiiList = new HashSet<>();
+    ImageView imageView2;
+    ImageView imageView3;
+    ImageView imageView4;
+    ImageView imageView5;
+    ImageView imageView6;
+    List<Locatii> locatiiList = new ArrayList<>();
     //nume pe care il trimit in activitatea explore_city
     String orasSelectat;
 
@@ -76,13 +85,14 @@ public class Home extends AppCompatActivity {
 
         //json pentru weather
         loadJSONFromAsset(this);
-
-        //setare imagine cardviw1 cu poza luata din resurse - merge
+        //id urile imaginilor pentru setarea pozelor
         imageView1 = (ImageView) findViewById(R.id.home_imageView1);
-        String lowerCountryCode = "rome2";
-        int id = getResources().getIdentifier(lowerCountryCode, "drawable", getPackageName());
-        imageView1.setImageResource(id);
-
+        imageView2 = (ImageView) findViewById(R.id.home_imageView2);
+        imageView3 = (ImageView) findViewById(R.id.home_imageView3);
+        imageView4 = (ImageView) findViewById(R.id.home_imageView4);
+        imageView5 = (ImageView) findViewById(R.id.home_imageView5);
+        imageView6 = (ImageView) findViewById(R.id.home_imageView6);
+        setareImagini();
         //setari de limba
         setDefaultLanguage(this);
         allYouNeed();
@@ -90,15 +100,12 @@ public class Home extends AppCompatActivity {
 
         //navigation view
         navView();
+
     }
 
     public void getDB(){
 
         locatiiList=db.getLocationByCateg(userPreferencesForHome);
-        for(Locatii l : locatiiList){
-            if(orase.size()<6)
-                orase.add(l.getNume());
-        }
     }
 
     private void allYouNeed() {
@@ -176,12 +183,12 @@ public class Home extends AppCompatActivity {
         context = getApplicationContext();
         context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
         resources = context.getResources();
-        int oras1 = resources.getIdentifier(orase.get(0), "string", context.getPackageName());
-        int oras2 = resources.getIdentifier(orase.get(1), "string", context.getPackageName());
-        int oras3 = resources.getIdentifier(orase.get(2), "string", context.getPackageName());
-        int oras4 = resources.getIdentifier(orase.get(3), "string", context.getPackageName());
-        int oras5 = resources.getIdentifier(orase.get(4), "string", context.getPackageName());
-        int oras6 = resources.getIdentifier(orase.get(5), "string", context.getPackageName());
+        int oras1 = resources.getIdentifier(locatiiList.get(0).getNume(), "string", context.getPackageName());
+        int oras2 = resources.getIdentifier(locatiiList.get(1).getNume(), "string", context.getPackageName());
+        int oras3 = resources.getIdentifier(locatiiList.get(2).getNume(), "string", context.getPackageName());
+        int oras4 = resources.getIdentifier(locatiiList.get(3).getNume(), "string", context.getPackageName());
+        int oras5 = resources.getIdentifier(locatiiList.get(4).getNume(), "string", context.getPackageName());
+        int oras6 = resources.getIdentifier(locatiiList.get(5).getNume(), "string", context.getPackageName());
         homeTv1.setText(resources.getText(oras1));
         homeTv2.setText(resources.getText(oras2));
         homeTv3.setText(resources.getText(oras3));
@@ -195,17 +202,19 @@ public class Home extends AppCompatActivity {
         buttonExplore4.setText(resources.getString(R.string.btnExplore));
         buttonExplore5.setText(resources.getString(R.string.btnExplore));
         buttonExplore6.setText(resources.getString(R.string.btnExplore));
+
+
     }
 
     public void metode (){
         buttonExplore1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(orase.get(0));
+                String latLong = getCityLatLong(locatiiList.get(0).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv1.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv1.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv1.getText().toString(),locatiiList.get(0).getLink());
                 }
             }
         });
@@ -213,11 +222,11 @@ public class Home extends AppCompatActivity {
         buttonExplore2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(orase.get(1));
+                String latLong = getCityLatLong(locatiiList.get(1).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv2.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv2.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv2.getText().toString(),locatiiList.get(1).getLink());
                 }
             }
         });
@@ -225,11 +234,11 @@ public class Home extends AppCompatActivity {
         buttonExplore3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(orase.get(2));
+                String latLong = getCityLatLong(locatiiList.get(2).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv3.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv3.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv3.getText().toString(),locatiiList.get(2).getLink());
                 }
             }
         });
@@ -237,11 +246,11 @@ public class Home extends AppCompatActivity {
         buttonExplore4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(orase.get(3));
+                String latLong = getCityLatLong(locatiiList.get(3).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv4.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv4.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv4.getText().toString(),locatiiList.get(3).getLink());
 
                 }
             }
@@ -250,11 +259,11 @@ public class Home extends AppCompatActivity {
         buttonExplore5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(orase.get(4));
+                String latLong = getCityLatLong(locatiiList.get(4).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv5.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv5.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv5.getText().toString(),locatiiList.get(4).getLink());
 
                 }
             }
@@ -263,25 +272,75 @@ public class Home extends AppCompatActivity {
         buttonExplore6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(orase.get(5));
+                String latLong = getCityLatLong(locatiiList.get(5).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv6.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv6.getText().toString());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv6.getText().toString(),locatiiList.get(5).getLink());
                 }
             }
         });
     }
 
-    public void deschideExploreCity(View view,String lat,String lon,String name){
+    public void deschideExploreCity(View view,String lat,String lon,String name, String link){
         //cam asta e.Pentru test. Apeleaza cu New York
         Intent exploreCity = new Intent(Home.this, ExploreMyCity.class);
         exploreCity.putExtra("lat",lat);
         exploreCity.putExtra("long",lon);
         exploreCity.putExtra("name",name);
         exploreCity.putExtra("orasSelectat", orasSelectat);
+        exploreCity.putExtra("link", link);
         orasDestinatieFlight =orasSelectat;
         startActivity(exploreCity);
 
     }
+
+    public void setareImagini(){
+        String link1=locatiiList.get(0).getLink();
+        String link2=locatiiList.get(1).getLink();
+        String link3=locatiiList.get(2).getLink();
+        String link4=locatiiList.get(3).getLink();
+        String link5=locatiiList.get(4).getLink();
+        String link6=locatiiList.get(5).getLink();
+        URL newurl1 = null;
+        URL newurl2 = null;
+        URL newurl3 = null;
+        URL newurl4 = null;
+        URL newurl5 = null;
+        URL newurl6 = null;
+        try {
+            newurl1 = new URL(link1);
+            newurl2 = new URL(link2);
+            newurl3 = new URL(link3);
+            newurl4 = new URL(link4);
+            newurl5 = new URL(link5);
+            newurl6 = new URL(link6);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        Bitmap mIcon_val1 = null;
+        Bitmap mIcon_val2 = null;
+        Bitmap mIcon_val3 = null;
+        Bitmap mIcon_val4= null;
+        Bitmap mIcon_val5= null;
+        Bitmap mIcon_val6= null;
+        try {
+            mIcon_val1 = BitmapFactory.decodeStream(newurl1.openConnection() .getInputStream());
+            mIcon_val2 = BitmapFactory.decodeStream(newurl2.openConnection() .getInputStream());
+            mIcon_val3 = BitmapFactory.decodeStream(newurl3.openConnection() .getInputStream());
+            mIcon_val4 = BitmapFactory.decodeStream(newurl4.openConnection() .getInputStream());
+            mIcon_val5 = BitmapFactory.decodeStream(newurl5.openConnection() .getInputStream());
+            mIcon_val6 = BitmapFactory.decodeStream(newurl6.openConnection() .getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        imageView1.setImageBitmap(mIcon_val1);
+        imageView2.setImageBitmap(mIcon_val2);
+        imageView3.setImageBitmap(mIcon_val3);
+        imageView4.setImageBitmap(mIcon_val4);
+        imageView5.setImageBitmap(mIcon_val5);
+        imageView6.setImageBitmap(mIcon_val6);
+
+    }
 }
+

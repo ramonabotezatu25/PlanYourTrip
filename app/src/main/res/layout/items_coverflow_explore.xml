@@ -7,16 +7,15 @@
     android:background="@drawable/selector_bg_cover_flow"
     >
     <!-- Item pentru Cover Flow -->
-
     <ImageView
         android:id="@+id/cover_flow_image"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-
+    <!-- -->
     <TextView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cover_flow_textView"
