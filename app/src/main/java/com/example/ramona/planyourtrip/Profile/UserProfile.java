@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ramona.planyourtrip.AddStory;
 import com.example.ramona.planyourtrip.Explore;
 import com.example.ramona.planyourtrip.Formular_interese;
 import com.example.ramona.planyourtrip.Home;
@@ -123,6 +124,12 @@ public class UserProfile extends AppCompatActivity {
 
     private void startNewActivity(Class intent) {
         Intent a = new Intent(this,intent);
+        startActivity(a);
+    }
+
+
+    public void addStory(View view){
+        Intent a = new Intent(this, AddStory.class);
         startActivity(a);
     }
 }

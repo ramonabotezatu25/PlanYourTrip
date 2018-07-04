@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import com.example.ramona.planyourtrip.Util.Categorii;
 import com.example.ramona.planyourtrip.Util.Email;
 import com.example.ramona.planyourtrip.Util.Locatii;
+import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.example.ramona.planyourtrip.Util.User;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 
@@ -565,4 +566,34 @@ public class DatabaseOperation {
         }
         return locatiiList;
     }
+
+    //add story
+    public int addDBstory(StoryObj storyObj){
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        int res = -1;
+        if (storyObj == null) {
+            return res;
+        }
+        try {
+            String query = "INSERT INTO story(id_user,id_locatie,titlu,poveste,facebook,instagram) VALUES(?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connect.prepareStatement(query);
+            preparedStatement.setInt(1, storyObj.getIdUser());
+            preparedStatement.setInt(2,storyObj.getIdLocatie());
+            preparedStatement.setString(3,storyObj.getTitlu());
+            preparedStatement.setString(4,storyObj.getPoveste());
+            preparedStatement.setString(5,storyObj.getFacebook());
+            preparedStatement.setString(6,storyObj.getInstagram());
+            res = preparedStatement.executeUpdate();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
 }
