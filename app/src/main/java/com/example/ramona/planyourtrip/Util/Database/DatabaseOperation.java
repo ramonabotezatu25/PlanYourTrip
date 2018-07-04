@@ -46,7 +46,9 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "select * from locatii order by nume_oras";
+                String query = "select l.*,d.descriere,d.atractii,d.restaurante,d.activitati,d.link_locatie from locatii l " +
+                        " left join descriere_orase d on d.id_locatie = l.id " +
+                        " order by l.nume_oras asc";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
@@ -57,6 +59,11 @@ public class DatabaseOperation {
                     locatie.setCategorie2(rs.getInt("id_categorie_2"));
                     locatie.setLat(rs.getString("lat"));
                     locatie.setLon(rs.getString("lon"));
+                    locatie.setDescriere(rs.getString("descriere"));
+                    locatie.setAtractii(rs.getString("atractii"));
+                    locatie.setRestaurante(rs.getString("restaurante"));
+                    locatie.setActivitati(rs.getString("activitati"));
+                    locatie.setLink(rs.getString("link_locatie"));
                     data.add(locatie);
                 }
 

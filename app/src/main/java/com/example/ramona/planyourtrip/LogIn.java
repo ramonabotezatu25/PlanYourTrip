@@ -234,10 +234,9 @@ class TestAsync extends AsyncTask<Void, Integer, String> {
     protected String doInBackground(Void... arg0) {
         Log.d(TAG + " DoINBackGround", "On doInBackground...");
 
-        for (int i = 0; i < 10; i++) {
-            DatabaseOperation databaseOperation = new DatabaseOperation();
-            locatiiList = databaseOperation.getLocation();
-        }
+         DatabaseOperation databaseOperation = new DatabaseOperation();
+         locatiiList = databaseOperation.getLocation();
+
         return "You are at PostExecute";
     }
 

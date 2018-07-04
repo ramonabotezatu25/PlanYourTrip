@@ -35,6 +35,7 @@ import java.util.List;
 import io.paperdb.Paper;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.orasDestinatieFlight;
 
 public class Explore extends AppCompatActivity {
@@ -49,7 +50,6 @@ public class Explore extends AppCompatActivity {
     //pentru Cover Flow
     private FeatureCoverFlow coverFlow;
     private LocatiiAdapter locatiiAdapter;
-    private List<Locatii> locatiiExploreList= new ArrayList<>();
     private TextSwitcher mTitle;
     //lista orase
 
@@ -79,7 +79,7 @@ public class Explore extends AppCompatActivity {
         mTitle.setOutAnimation(out);
 
         //
-        locatiiAdapter= new LocatiiAdapter(locatiiExploreList, this);
+        locatiiAdapter= new LocatiiAdapter(locatiiList, this);
         coverFlow= (FeatureCoverFlow)findViewById(R.id.coverFlow);
         coverFlow.setAdapter(locatiiAdapter);
 
@@ -88,7 +88,7 @@ public class Explore extends AppCompatActivity {
         coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
-                mTitle.setText(locatiiExploreList.get(position).getNume());
+                mTitle.setText(locatiiList.get(position).getNume());
 
             }
             @Override
@@ -101,11 +101,11 @@ public class Explore extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent= new Intent(getApplicationContext(), ExploreMyCity.class);
-                intent.putExtra("lat",locatiiExploreList.get(i).getLat());
-                intent.putExtra("long",locatiiExploreList.get(i).getLon());
-                intent.putExtra("name",locatiiExploreList.get(i).getNume());
-                intent.putExtra("link", locatiiExploreList.get(i).getLink());
-                orasDestinatieFlight =locatiiExploreList.get(i).getNume();
+                intent.putExtra("lat",locatiiList.get(i).getLat());
+                intent.putExtra("long",locatiiList.get(i).getLon());
+                intent.putExtra("name",locatiiList.get(i).getNume());
+                intent.putExtra("link", locatiiList.get(i).getLink());
+                orasDestinatieFlight = locatiiList.get(i).getNume();
                 startActivity(intent);
             }
         });
@@ -182,12 +182,15 @@ public class Explore extends AppCompatActivity {
     //setare galerie
     private void getLocatii(){
         //preia din baza orase
-        locatiiExploreList= db.getLinksiNumeLocatii();
-        for(int i=0;i<locatiiExploreList.size();i++){
-            String locatie=locatiiExploreList.get(i).getNume();
+        if(locatiiList.size()==0){
+            locatiiList= db.getLocation();
+        }
+
+        for(int i=0;i<35;i++){
+            String locatie=locatiiList.get(i).getNume();
             int id=resources.getIdentifier(locatie, "string", context.getPackageName());
             locatie=resources.getString(id);
-            locatiiExploreList.get(i).setNume(locatie);
+            locatiiList.get(i).setNume(locatie);
 
         }
     }

@@ -25,6 +25,7 @@ import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.exploreCity.ExploreMyCity;
 
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.orasDestinatieFlight;
 
 import java.io.IOException;
@@ -33,6 +34,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import io.paperdb.Paper;
@@ -43,6 +45,8 @@ import static com.example.ramona.planyourtrip.Weather.GetCityLongLat.getCityLatL
 import static com.example.ramona.planyourtrip.Weather.GetCityLongLat.loadJSONFromAsset;
 
 public class Home extends AppCompatActivity {
+
+    private Random randomGenerator=new Random();
 
     //setari de limba
     Context context;
@@ -70,9 +74,11 @@ public class Home extends AppCompatActivity {
     ImageView imageView4;
     ImageView imageView5;
     ImageView imageView6;
-    List<Locatii> locatiiList = new ArrayList<>();
     //nume pe care il trimit in activitatea explore_city
     String orasSelectat;
+    //locatii list
+    List<Locatii> locatiiListHome = new ArrayList<>();
+
 
 
     @Override
@@ -104,8 +110,41 @@ public class Home extends AppCompatActivity {
     }
 
     public void getDB(){
+        locatiiListHome = locatiiList;
+        if(locatiiListHome.size()==0){
+            locatiiListHome=db.getLocationByCateg(userPreferencesForHome);
+        }else{
+            List<Locatii> locatiiListHomeCategoria1 = new ArrayList<>();
+            List<Locatii> locatiiListHomeCategoria2 = new ArrayList<>();
+            List<Locatii> locatiiListHomeRandom =new ArrayList<>();
+            for(int i = 0;i<locatiiListHome.size();i++){
+                if(locatiiListHome.get(i).getCategorie() == Integer.parseInt(userPreferencesForHome.getCategoria1())){
+                    locatiiListHomeCategoria1.add(locatiiListHome.get(i));
+                }else if(locatiiListHome.get(i).getCategorie2() == Integer.parseInt(userPreferencesForHome.getCategoria2())){
+                    locatiiListHomeCategoria2.add(locatiiListHome.get(i));
+                }else{
+                    locatiiListHomeRandom.add(locatiiListHome.get(i));
+                }
+            }
+            locatiiListHome = new ArrayList<>();
+            for(int j =0;j<2;j++){
+            int index = randomGenerator.nextInt(locatiiListHomeCategoria1.size());
+                locatiiListHome.add(locatiiListHomeCategoria1.get(index));
+            }
 
-        locatiiList=db.getLocationByCateg(userPreferencesForHome);
+            for(int j =0;j<2;j++){
+                int index = randomGenerator.nextInt(locatiiListHomeCategoria2.size());
+                locatiiListHome.add(locatiiListHomeCategoria2.get(index));
+            }
+
+
+            for(int j =0;j<2;j++){
+                int index = randomGenerator.nextInt(locatiiListHomeRandom.size());
+                locatiiListHome.add(locatiiListHomeRandom.get(index));
+            }
+
+            }
+
     }
 
     private void allYouNeed() {
@@ -183,12 +222,12 @@ public class Home extends AppCompatActivity {
         context = getApplicationContext();
         context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
         resources = context.getResources();
-        int oras1 = resources.getIdentifier(locatiiList.get(0).getNume(), "string", context.getPackageName());
-        int oras2 = resources.getIdentifier(locatiiList.get(1).getNume(), "string", context.getPackageName());
-        int oras3 = resources.getIdentifier(locatiiList.get(2).getNume(), "string", context.getPackageName());
-        int oras4 = resources.getIdentifier(locatiiList.get(3).getNume(), "string", context.getPackageName());
-        int oras5 = resources.getIdentifier(locatiiList.get(4).getNume(), "string", context.getPackageName());
-        int oras6 = resources.getIdentifier(locatiiList.get(5).getNume(), "string", context.getPackageName());
+        int oras1 = resources.getIdentifier(locatiiListHome.get(0).getNume(), "string", context.getPackageName());
+        int oras2 = resources.getIdentifier(locatiiListHome.get(1).getNume(), "string", context.getPackageName());
+        int oras3 = resources.getIdentifier(locatiiListHome.get(2).getNume(), "string", context.getPackageName());
+        int oras4 = resources.getIdentifier(locatiiListHome.get(3).getNume(), "string", context.getPackageName());
+        int oras5 = resources.getIdentifier(locatiiListHome.get(4).getNume(), "string", context.getPackageName());
+        int oras6 = resources.getIdentifier(locatiiListHome.get(5).getNume(), "string", context.getPackageName());
         homeTv1.setText(resources.getText(oras1));
         homeTv2.setText(resources.getText(oras2));
         homeTv3.setText(resources.getText(oras3));
@@ -210,11 +249,11 @@ public class Home extends AppCompatActivity {
         buttonExplore1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiList.get(0).getNume());
+                String latLong = getCityLatLong(locatiiListHome.get(0).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv1.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv1.getText().toString(),locatiiList.get(0).getLink());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv1.getText().toString(),locatiiListHome.get(0).getLink());
                 }
             }
         });
@@ -222,11 +261,11 @@ public class Home extends AppCompatActivity {
         buttonExplore2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiList.get(1).getNume());
+                String latLong = getCityLatLong(locatiiListHome.get(1).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv2.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv2.getText().toString(),locatiiList.get(1).getLink());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv2.getText().toString(),locatiiListHome.get(1).getLink());
                 }
             }
         });
@@ -234,11 +273,11 @@ public class Home extends AppCompatActivity {
         buttonExplore3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiList.get(2).getNume());
+                String latLong = getCityLatLong(locatiiListHome.get(2).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv3.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv3.getText().toString(),locatiiList.get(2).getLink());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv3.getText().toString(),locatiiListHome.get(2).getLink());
                 }
             }
         });
@@ -246,11 +285,11 @@ public class Home extends AppCompatActivity {
         buttonExplore4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiList.get(3).getNume());
+                String latLong = getCityLatLong(locatiiListHome.get(3).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv4.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv4.getText().toString(),locatiiList.get(3).getLink());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv4.getText().toString(),locatiiListHome.get(3).getLink());
 
                 }
             }
@@ -259,11 +298,11 @@ public class Home extends AppCompatActivity {
         buttonExplore5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiList.get(4).getNume());
+                String latLong = getCityLatLong(locatiiListHome.get(4).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv5.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv5.getText().toString(),locatiiList.get(4).getLink());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv5.getText().toString(),locatiiListHome.get(4).getLink());
 
                 }
             }
@@ -272,11 +311,11 @@ public class Home extends AppCompatActivity {
         buttonExplore6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiList.get(5).getNume());
+                String latLong = getCityLatLong(locatiiListHome.get(5).getNume());
                 if(!latLong.equals("")) {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv6.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv6.getText().toString(),locatiiList.get(5).getLink());
+                    deschideExploreCity(view,lL[0],lL[1],homeTv6.getText().toString(),locatiiListHome.get(5).getLink());
                 }
             }
         });
@@ -296,12 +335,12 @@ public class Home extends AppCompatActivity {
     }
 
     public void setareImagini(){
-        String link1=locatiiList.get(0).getLink();
-        String link2=locatiiList.get(1).getLink();
-        String link3=locatiiList.get(2).getLink();
-        String link4=locatiiList.get(3).getLink();
-        String link5=locatiiList.get(4).getLink();
-        String link6=locatiiList.get(5).getLink();
+        String link1=locatiiListHome.get(0).getLink();
+        String link2=locatiiListHome.get(1).getLink();
+        String link3=locatiiListHome.get(2).getLink();
+        String link4=locatiiListHome.get(3).getLink();
+        String link5=locatiiListHome.get(4).getLink();
+        String link6=locatiiListHome.get(5).getLink();
         URL newurl1 = null;
         URL newurl2 = null;
         URL newurl3 = null;
