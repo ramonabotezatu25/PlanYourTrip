@@ -86,7 +86,8 @@
     <string name="obiective"> Top atractii turistice </string>
     <string name="activitati"> Activitati </string>
     <string name="restaurante"> Unde poti manca ? - Recomandarile noastre</string>
-    <string name="biletZbor"> Vezi zborurile disponibile</string>
+    <string name="zboruri">Zboruri si Cazare</string>
+    <string name="biletZbor"> Vezi zborurile si hotelurile disponibile</string>
     <string name="alteOferte"> Alte oferte</string>
 
     <!-- Lista orase si descrieri-->
@@ -240,5 +241,11 @@
     <string name="sendStories">Povesteste-ne</string>
     <string name="aboutUS">Despre noi</string>
     <string name="voiceControl">Control vocal</string>
+    <!--ADD STORY-->
+    <string name="storyTitle">Titlu</string>
+    <string name="storyDescription">Povesteste-ne experienta ta</string>
+    <string name="buttonPublica">Publica</string>
+    <string name="activityStoryTitle">Imparte experienta ta cu noi</string>
+    <string name="storyLocation">Locatie</string>
 
 </resources>

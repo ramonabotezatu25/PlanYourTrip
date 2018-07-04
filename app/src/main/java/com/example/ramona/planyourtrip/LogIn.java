@@ -136,7 +136,7 @@ public class LogIn extends AppCompatActivity {
     private void allYouNeed() {
 
         //preiau toate view-urile care trebuie traduce din clasa
-         tvSignUpIntrebare = (TextView) findViewById(R.id.login_tv_signup_intrebare);
+        tvSignUpIntrebare = (TextView) findViewById(R.id.login_tv_signup_intrebare);
         tvSignUpHere = (TextView) findViewById(R.id.login_tv_signUpHere);
         email = (EditText) findViewById(R.id.editText_name_logIn);
         parola = (EditText) findViewById(R.id.editText_password_logIn);

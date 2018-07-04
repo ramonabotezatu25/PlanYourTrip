@@ -44,13 +44,12 @@
                 android:text="String" />
 
             <Button
-
                 android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:layout_height="119dp"
                 android:layout_marginTop="24dp"
-                android:visibility="invisible"
-                android:text="@string/biletZbor" />
+                android:background="@drawable/buton_zboruri_bg3"
+                android:visibility="visible" />
         </LinearLayout>
         </ScrollView>
 
@@ -68,7 +67,9 @@
             android:id="@+id/whether_layout"
             android:layout_height="match_parent"
             android:visibility="invisible"
-            android:background="@drawable/explore_wheater_design"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/transWhite"
             android:orientation="vertical">
 
             <TextView

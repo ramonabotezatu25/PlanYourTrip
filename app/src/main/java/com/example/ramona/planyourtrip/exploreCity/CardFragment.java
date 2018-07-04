@@ -65,7 +65,8 @@ public class CardFragment extends Fragment {
 
         if(position==0){
             //vez ofertele
-            title.setText(getResources().getString(R.string.biletZbor));
+            title.setText(getResources().getString(R.string.zboruri));
+            descieri.setText(getResources().getString(R.string.biletZbor));
             button.setVisibility(View.VISIBLE);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override

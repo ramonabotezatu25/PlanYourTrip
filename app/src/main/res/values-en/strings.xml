@@ -83,7 +83,8 @@
     <string name="obiective"> See the Sights </string>
     <string name="activitati"> Tours and Activities</string>
     <string name="restaurante"> Where to eat ? Our recomandation </string>
-    <string name="biletZbor"> Check the flight tickets</string>
+    <string name="zboruri">Flights and Hotels</string>
+    <string name="biletZbor"> Check the flight tickets and hotels</string>
     <string name="alteOferte"> Other info</string>
 
 
@@ -200,5 +201,11 @@
     <string name="sendStories">Send Stories</string>
     <string name="aboutUS">About Us</string>
     <string name="voiceControl">Voice Control</string>
+    <!--ADD STORY-->
+    <string name="storyTitle">Title</string>
+    <string name="storyDescription">Tell us your story</string>
+    <string name="buttonPublica">Post</string>
+    <string name="activityStoryTitle">Share your experience with us</string>
+    <string name="storyLocation">Location</string>
 
 </resources>

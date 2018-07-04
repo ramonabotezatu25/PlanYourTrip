@@ -81,7 +81,8 @@
         <activity android:name=".Profile.ChangeLanguage" />
         <activity android:name=".voiceControl.VoiceControl" />
         <activity android:name=".exploreCity.ExploreMyCity" />
-        <activity android:name=".stories.Story"></activity>
+        <activity android:name=".stories.Story" />
+        <activity android:name=".AddStory"></activity>
     </application>
 
 </manifest>

@@ -139,7 +139,7 @@ public class TravelTest extends AppCompatActivity {
     }
     public  void deschideFormular(View view)
     {
-        Intent intent= new Intent(TravelTest.this, Story.class);
+        Intent intent= new Intent(TravelTest.this, AddStory.class);
         startActivity(intent);
     }
     public void deschideHome(View view){
