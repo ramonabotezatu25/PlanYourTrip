@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,7 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.userPreferencesForHome;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,7 +40,7 @@ import java.util.Arrays;
 
 import io.paperdb.Paper;
 
-public class LogIn extends AppCompatActivity {
+public class LogIn extends AppCompatActivity{
     //databse
     DatabaseOperation db = new DatabaseOperation();
     //facebook
@@ -57,6 +60,8 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        //
+        new TestAsync().execute();
         //
         email = (EditText) findViewById(R.id.editText_name_logIn);
         parola = (EditText) findViewById(R.id.editText_password_logIn);
@@ -215,5 +220,34 @@ public class LogIn extends AppCompatActivity {
     public void deschideSignUp(View View){
         Intent intent= new Intent(LogIn.this, SignUpActivity.class);
         startActivity(intent);
+    }
+}
+
+class TestAsync extends AsyncTask<Void, Integer, String> {
+    String TAG = getClass().getSimpleName();
+
+    protected void onPreExecute() {
+        super.onPreExecute();
+        Log.d(TAG + " PreExceute", "On pre Exceute......");
+    }
+
+    protected String doInBackground(Void... arg0) {
+        Log.d(TAG + " DoINBackGround", "On doInBackground...");
+
+        for (int i = 0; i < 10; i++) {
+            DatabaseOperation databaseOperation = new DatabaseOperation();
+            locatiiList = databaseOperation.getLocation();
+        }
+        return "You are at PostExecute";
+    }
+
+    protected void onProgressUpdate(Integer... a) {
+        super.onProgressUpdate(a);
+        Log.d(TAG + " onProgressUpdate", "You are in progress update ... " + a[0]);
+    }
+
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        Log.d(TAG + " onPostExecute", "" + result);
     }
 }

@@ -34,6 +34,7 @@
         <activity android:name=".Weather.ChooseCityWeather" />
         <activity android:name=".Weather.WeatherMainActivity" />
         <activity android:name=".GmailSender.SendEmail" />
+        <activity android:name=".Intro.IntroActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ConfirmationCode" />
         <activity android:name=".Formular_interese" />
