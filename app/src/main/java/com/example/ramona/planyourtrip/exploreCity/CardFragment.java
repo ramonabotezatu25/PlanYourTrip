@@ -91,7 +91,6 @@ public class CardFragment extends Fragment {
         }
         if(position==5){
             ///whether
-            button.setVisibility(View.INVISIBLE);
             layoutWheter.setVisibility(View.VISIBLE);
             layoutCardView.setVisibility(View.INVISIBLE);
         }
