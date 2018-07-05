@@ -17,12 +17,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.assetManager;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.numeOras;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.latitudine;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.longitudine;
 
 import com.example.ramona.planyourtrip.Flight;
 import com.example.ramona.planyourtrip.R;
+import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Weather.Weather;
 
 
@@ -30,6 +32,10 @@ public class CardFragment extends Fragment {
     private CardView cardView;
     private View layoutWheter;
     private View layoutCardView;
+    private String descriereOras;
+    private String restaurante;
+    private String topAtractiiTuristice;
+    private String activitati;
     //whether
     TextView cityField, detailsField, currentTemperatureField, humidity_field, pressure_field, weatherIcon, updatedField;
     Typeface weatherFont;
@@ -63,6 +69,14 @@ public class CardFragment extends Fragment {
         layoutCardView=(View) view.findViewById(R.id.cardView_layout);
         layoutWheter=(View) view.findViewById(R.id.whether_layout);
 
+        for(Locatii l : locatiiList){
+            if(l.getNume().equals(numeOras)){
+                descriereOras=l.getDescriere();
+                restaurante= l.getRestaurante();
+                topAtractiiTuristice=l.getAtractii();
+                activitati=l.getActivitati();
+            }
+        }
         if(position==0){
             //vez ofertele
             title.setText(getResources().getString(R.string.zboruri));
@@ -78,16 +92,19 @@ public class CardFragment extends Fragment {
         }
         if(position==1){
             title.setText(getResources().getString(R.string.descrierereOras));
-            descieri.setText(getResources().getString(R.string.newYork_descriere));
+            descieri.setText(descriereOras);
         }
         if(position==2){
             title.setText(getResources().getString(R.string.obiective));
+            descieri.setText(topAtractiiTuristice);
         }
         if(position==3){
             title.setText(getResources().getString(R.string.restaurante));
+            descieri.setText(restaurante);
         }
         if(position==4){
             title.setText(getResources().getString(R.string.activitati));
+            descieri.setText(activitati);
         }
         if(position==5){
             ///whether
