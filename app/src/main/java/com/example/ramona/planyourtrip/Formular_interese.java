@@ -26,6 +26,7 @@ import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Categorii;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
@@ -87,10 +88,21 @@ public class Formular_interese extends AppCompatActivity{
     //setari limba
     Context context;
     Resources resources;
+    String operatie;
+    //
+    RadioGroup rGroupStatusRelatie;
+    RadioGroup rGroupCopii;
+    RadioGroup rGroupPlecari;
+    RadioGroup rGroupOraseVizitate;
+    List<String> listaBuget;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formular_interese);
+
+        Bundle bu = getIntent().getExtras();
+        operatie = bu.getString("operatie");
+
 
         waveView = (WaveView) findViewById(R.id.waveView2);
         waveView.setProgress(0);
@@ -102,8 +114,6 @@ public class Formular_interese extends AppCompatActivity{
         //setam contextl pentru multi lang pentru spinner
         context = getApplicationContext();
         context = MultiLanguageHelper.setLocale(context,(String) Paper.book().read("language"));
-
-
 
         //populez spinnerCategorii 1
         listaCategorii = db.selectCategorii();
@@ -172,7 +182,7 @@ public class Formular_interese extends AppCompatActivity{
         //populez spinner Buget
         String[] buget;
         buget = context.getResources().getStringArray(R.array.spinnerBuget);
-        List<String> listaBuget = new ArrayList<>();
+        listaBuget = new ArrayList<>();
         for (int i = 0; i < buget.length; i++) {
             listaBuget.add(buget[i]);
         }
@@ -202,7 +212,7 @@ public class Formular_interese extends AppCompatActivity{
     //radio grup
 
         // This will get the radiogroup
-        RadioGroup rGroupStatusRelatie = (RadioGroup)findViewById(R.id.formular_radioGroup_status_relatie);
+        rGroupStatusRelatie = (RadioGroup)findViewById(R.id.formular_radioGroup_status_relatie);
         rGroupStatusRelatie.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId)
@@ -231,7 +241,7 @@ public class Formular_interese extends AppCompatActivity{
         });
 
         // This will get the radiogroup
-        RadioGroup rGroupCopii = (RadioGroup)findViewById(R.id.formular_radioGrup_aveti_copii);
+        rGroupCopii = (RadioGroup)findViewById(R.id.formular_radioGrup_aveti_copii);
         rGroupCopii.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId)
@@ -257,7 +267,7 @@ public class Formular_interese extends AppCompatActivity{
         });
 
         // This will get the radiogroup
-        RadioGroup rGroupPlecari = (RadioGroup)findViewById(R.id.formular_radioGroup_catDeDesPleci);
+        rGroupPlecari = (RadioGroup)findViewById(R.id.formular_radioGroup_catDeDesPleci);
         rGroupPlecari.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId)
@@ -284,7 +294,7 @@ public class Formular_interese extends AppCompatActivity{
             }
         });
         // orse vizitate
-        final RadioGroup rGroupOraseVizitate = (RadioGroup)findViewById(R.id.formular_radioGroup_oraseVizitate);
+        rGroupOraseVizitate = (RadioGroup)findViewById(R.id.formular_radioGroup_oraseVizitate);
         rGroupOraseVizitate.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId)
@@ -313,6 +323,51 @@ public class Formular_interese extends AppCompatActivity{
 
         //mulilng
         allYouNeed();
+
+        locatiiList = db.getLocation();
+
+        if(operatie.equals("update")) {
+            userPreferences = db.getUserPref(idUtilizator);
+            checkedItems = new boolean[locatiiList.size()];
+            for(int i =0;i<locatiiList.size();i++){
+                String[] oraseUser = userPreferences.getOraseVizitate().split(",");
+                for(int j=0;j<oraseUser.length;j++){
+                    if(Integer.parseInt(oraseUser[j]) == locatiiList.get(i).getId())
+                        checkedItems[i] = true;
+                }
+            }
+            setUserPreferences();
+        }
+    }
+
+    private void setUserPreferences(){
+        rGroupStatusRelatie.check(rGroupStatusRelatie.getChildAt(Integer.parseInt(userPreferences.getStatusRelatie())).getId());
+        rGroupCopii.check(rGroupCopii.getChildAt(Integer.parseInt(userPreferences.getAreCopii())).getId());
+        rGroupPlecari.check(rGroupPlecari.getChildAt(Integer.parseInt(userPreferences.getCatDeDesPleci())).getId());
+        if(userPreferences.getOraseVizitate()!=null){
+           // rGroupOraseVizitate.check(rGroupOraseVizitate.getChildAt(0));
+            rbDa2.setChecked(true);
+        }
+        String[] selectedCategoria1 = userPreferences.getCategoria1().split(",");
+        String[] selectedCategoria2 = userPreferences.getCategoria2().split(",");
+        for(int i=0;i<selectedCategoria1.length;i++){
+            spinnerCategorii1.setSelection(Integer.parseInt(selectedCategoria1[i]));
+        }
+
+        for(int i=0;i<selectedCategoria2.length;i++){
+            spinnerCategorii2.setSelection(Integer.parseInt(selectedCategoria1[i]));
+        }
+
+        if(userPreferences.getBuget().contains("100"))
+            spinnerBuget.setSelection(2);
+        else if(userPreferences.getBuget().contains("301"))
+            spinnerBuget.setSelection(3);
+        else if(userPreferences.getBuget().contains("501"))
+            spinnerBuget.setSelection(4);
+        else if(userPreferences.getBuget().contains("Over") || userPreferences.getBuget().contains("Peste"))
+            spinnerBuget.setSelection(5);
+        else
+            spinnerBuget.setSelection(1);
     }
 
     private void allYouNeed() {
@@ -334,6 +389,7 @@ public class Formular_interese extends AppCompatActivity{
         rbDes=(RadioButton)findViewById((R.id.formular_rb_calatoresc_des));
         rbRar=(RadioButton)findViewById((R.id.formular_rb_calatoresc_rar));
         rbFoartedes=(RadioButton)findViewById((R.id.formular_rb_calatoresc_foarte_des));
+
 
         //setari S[pinner --- ?
 
@@ -387,7 +443,6 @@ public class Formular_interese extends AppCompatActivity{
 
 
     public void deschideAlegeOras(View view){
-        locatiiList = db.getLocation();
         final String[] listaOrase = new String[locatiiList.size()];
         for(int i =0;i<locatiiList.size();i++){
             listaOrase[i] = locatiiList.get(i).getNume();
@@ -453,8 +508,6 @@ public class Formular_interese extends AppCompatActivity{
     public void creeazaUserPreferences(View view)
     {
         //INSERARE USER PREFERENCES IN TABELA
-        Bundle bu = getIntent().getExtras();
-
         String oraseVizitate = "";
         for(int i=0;i<checkedItems.length;i++){
             if(checkedItems[i]==true)
@@ -478,7 +531,12 @@ public class Formular_interese extends AppCompatActivity{
                 userPreferences.setCategoria2(String.valueOf(listaCategorii.get(i).getId()));
             }
         }
-        db.insertUserPref(userPreferences,bu.getString("email"));
+
+        if(operatie.equals("insert"))
+            db.insertUserPref(userPreferences,idUtilizator);
+        else
+            db.updateUserPref(userPreferences);
+
         Intent explore= new Intent(this, Home.class);
         startActivity(explore);
     }

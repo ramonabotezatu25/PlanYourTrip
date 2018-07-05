@@ -16,9 +16,6 @@
     <string name="signup">Log In</string>
     <string name="questionSignUp">Don`t have an account?</string>
     <string name="signUpHere">Sign up</string>
-    <!--meniu profile-->
-    <string name="profil_meniu_language">Language</string>
-    <string name="profil_meniu_country">Country</string>
     <!--submeniu profil language-->
     <string name="profil_sub_language_romana">Romanian</string>
     <string name="profil_sub_language_engleza">English</string>
@@ -58,8 +55,8 @@
         <item>Choose an option</item>
         <item>It doesn't matter</item>
         <item>Between 100$ - 300$</item>
-        <item>Between 300$- 500$</item>
-        <item>Between 500$ - 1000$</item>
+        <item>Between 301$ - 500$</item>
+        <item>Between 501$ - 1000$</item>
         <item>Over 1000$</item>
     </array>
     <!-- Spinner categorii-->
@@ -86,7 +83,8 @@
     <string name="obiective"> See the Sights </string>
     <string name="activitati"> Tours and Activities</string>
     <string name="restaurante"> Where to eat ? Our recomandation </string>
-    <string name="biletZbor"> Check the flight tickets</string>
+    <string name="zboruri">Flights and Hotels</string>
+    <string name="biletZbor"> Check the flight tickets and hotels</string>
     <string name="alteOferte"> Other info</string>
 
 
@@ -193,6 +191,21 @@
     <string name="BangkokAER">Bangkok(BKK)</string>
     <string name="KrabiAER">Krabi(KBV)</string>
 
-
+    <!--user profile-->
+    <string name="language">Language</string>
+    <string name="myPlaces">My Places</string>
+    <string name="findPlaces">Find Places</string>
+    <string name="userSecurity">Secutiry</string>
+    <string name="settings">Preferences</string>
+    <string name="stories">Stories</string>
+    <string name="sendStories">Send Stories</string>
+    <string name="aboutUS">About Us</string>
+    <string name="voiceControl">Voice Control</string>
+    <!--ADD STORY-->
+    <string name="storyTitle">Title</string>
+    <string name="storyDescription">Tell us your story</string>
+    <string name="buttonPublica">Post</string>
+    <string name="activityStoryTitle">Share your experience with us</string>
+    <string name="storyLocation">Location</string>
 
 </resources>

@@ -1,10 +1,7 @@
 package com.example.ramona.planyourtrip.GmailSender;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Color;
-import android.media.tv.TvInputService;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,13 +12,9 @@ import com.taishi.flipprogressdialog.FlipProgressDialog;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Handler;
 
-import javax.mail.Session;
-
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.codUnicDeIndentificare;
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.getSaltString;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.codUnicDeIndentificare;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.getSaltString;
 
 public class SendEmail extends AppCompatActivity {
 

@@ -3,8 +3,8 @@ package com.example.ramona.planyourtrip;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Build;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
@@ -20,21 +20,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.GmailSender.SendEmail;
-import com.example.ramona.planyourtrip.MultiLanguage.Language;
+import com.example.ramona.planyourtrip.Intro.IntroActivity;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Profile.UserProfile;
 import com.example.ramona.planyourtrip.Util.Database.Background;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.VerificaEmpty;
+import com.example.ramona.planyourtrip.exploreCity.ExploreMyCity;
 import com.example.ramona.planyourtrip.maps.YourPlace;
+import com.example.ramona.planyourtrip.stories.Story;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import io.paperdb.Paper;
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.locatiiList;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 
 import static com.example.ramona.planyourtrip.MultiLanguage.Language.setDefaultLanguage;
 
@@ -100,7 +101,7 @@ public class TravelTest extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         break;
                     case R.id.nav_profile:
-                        startNewActivity(CircleProfile.class);
+                        startNewActivity(UserProfile.class);
                         overridePendingTransition(0, 0);
                         break;
                     default:
@@ -142,7 +143,7 @@ public class TravelTest extends AppCompatActivity {
     }
     public  void deschideFormular(View view)
     {
-        Intent intent= new Intent(TravelTest.this, Formular_interese.class);
+        Intent intent= new Intent(TravelTest.this, IntroActivity.class);
         startActivity(intent);
     }
     public void deschideHome(View view){
@@ -162,4 +163,34 @@ public class TravelTest extends AppCompatActivity {
     }
 
 
+}
+
+class TestAsync2 extends AsyncTask<Void, Integer, String>
+{
+    String TAG = getClass().getSimpleName();
+
+    protected void onPreExecute (){
+        super.onPreExecute();
+        Log.d(TAG + " PreExceute","On pre Exceute......");
+    }
+
+    protected String doInBackground(Void...arg0) {
+        Log.d(TAG + " DoINBackGround","On doInBackground...");
+
+        for(int i=0; i<10; i++){
+           DatabaseOperation databaseOperation = new DatabaseOperation();
+           locatiiList= databaseOperation.getLocation();
+        }
+        return "You are at PostExecute";
+    }
+
+    protected void onProgressUpdate(Integer...a){
+        super.onProgressUpdate(a);
+        Log.d(TAG + " onProgressUpdate", "You are in progress update ... " + a[0]);
+    }
+
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        Log.d(TAG + " onPostExecute", "" + result);
+    }
 }

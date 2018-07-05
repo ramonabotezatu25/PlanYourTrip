@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Plan Your Trip</string>
+    <string name="app_name">WTT</string>
     <!--NAV BAR -metoda navView()-->
 
     <string name="facebook_app_id">165695570812813</string>
@@ -15,4 +15,15 @@
     <!--orase-->
     <string name="rome">Rome</string>
     <string name="title_activity_your_place">Map</string>
+
+    <!--user profile-->
+    <string name="language">Language</string>
+    <string name="myPlaces">My Places</string>
+    <string name="findPlaces">Find Places</string>
+    <string name="userSecurity">Secutiry</string>
+    <string name="settings">Preferences</string>
+    <string name="stories">Stories</string>
+    <string name="sendStories">Send Stories</string>
+    <string name="aboutUS">About Us</string>
+    <string name="voiceControl">Voice Control</string>
 </resources>

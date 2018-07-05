@@ -90,3 +90,37 @@ create table categorii(
 id INT(11) NOT NULL PRIMARY KEY auto_increment,
 
 nume_categorie varchar(99));
+
+
+create table story(
+
+id numeric NOT NULL PRIMARY KEY,
+
+id_user numeric,
+
+id_locatie numeric,
+
+titlu varchar(400),
+
+poveste varchar(400),
+facebook varchar(400),
+instagram varchar(400)
+
+);
+
+
+create table story(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+id_user INT(11),
+
+id_locatie INT(11),
+
+titlu varchar(400),
+
+poveste varchar(400),
+facebook varchar(400),
+instagram varchar(400)
+
+);

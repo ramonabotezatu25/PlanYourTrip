@@ -36,14 +36,7 @@
         android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></TextSwitcher>
-
-
-
-
-
-
-
-
+    
     <!--  app:itemBackground="@color/colorAccent"
            app:itemIconTint="@color/colorPrimaryDark"
            app:itemTextColor="@color/colorPrimaryDark"-->

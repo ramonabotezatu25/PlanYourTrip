@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.orasDestinatieFlight;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.orasDestinatieFlight;
 
 import java.util.ArrayList;
 import java.util.Calendar;

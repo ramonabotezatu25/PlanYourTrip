@@ -14,6 +14,8 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -31,11 +33,10 @@
         <activity android:name=".Explore" />
         <activity android:name=".ManageAccount" />
         <activity android:name=".LogIn" />
-        <activity android:name=".CircleProfile" />
         <activity android:name=".Weather.ChooseCityWeather" />
         <activity android:name=".Weather.WeatherMainActivity" />
-        <activity android:name=".Util.FragmentList.FragmentChanger" />
         <activity android:name=".GmailSender.SendEmail" />
+        <activity android:name=".Intro.IntroActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ConfirmationCode" />
         <activity android:name=".Formular_interese" />
@@ -78,7 +79,13 @@
 
         <activity
             android:name=".maps.YourPlace"
-            android:label="@string/title_activity_your_place"></activity>
+            android:label="@string/title_activity_your_place" />
+        <activity android:name=".Profile.UserProfile" />
+        <activity android:name=".Profile.ChangeLanguage" />
+        <activity android:name=".voiceControl.VoiceControl" />
+        <activity android:name=".exploreCity.ExploreMyCity" />
+        <activity android:name=".stories.Story" />
+        <activity android:name=".AddStory"></activity>
     </application>
 
 </manifest>

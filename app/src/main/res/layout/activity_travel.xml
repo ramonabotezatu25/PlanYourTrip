@@ -107,7 +107,7 @@
         android:layout_below="@+id/button"
         android:layout_marginTop="28dp"
         android:onClick="deschideFormular"
-        android:text="formular" />
+        android:text="ceva nou" />
 
     <Button
         android:id="@+id/button6"

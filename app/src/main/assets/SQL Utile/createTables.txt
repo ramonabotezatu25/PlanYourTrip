@@ -70,3 +70,20 @@ activitati varchar(4000),
 link_locatie varchar(400),
 
 id_locatie INT(11));
+
+
+create table story(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+id_user INT(11),
+
+id_locatie INT(11),
+
+titlu varchar(400),
+
+poveste varchar(400),
+facebook varchar(400),
+instagram varchar(400)
+
+);

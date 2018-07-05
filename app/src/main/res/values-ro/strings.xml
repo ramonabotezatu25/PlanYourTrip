@@ -57,8 +57,8 @@
         <item>Alege o optiune</item>
         <item>Nu conteaza</item>
         <item>Intre 100$ - 300$</item>
-        <item>Intre 300$- 500$</item>
-        <item>Intre 500$ - 1000$</item>
+        <item>Intre 301$- 500$</item>
+        <item>Intre 501$ - 1000$</item>
         <item>Peste 1000$</item>
     </array>
     <!-- Spinner categorii-->
@@ -86,7 +86,8 @@
     <string name="obiective"> Top atractii turistice </string>
     <string name="activitati"> Activitati </string>
     <string name="restaurante"> Unde poti manca ? - Recomandarile noastre</string>
-    <string name="biletZbor"> Vezi zborurile disponibile</string>
+    <string name="zboruri">Zboruri si Cazare</string>
+    <string name="biletZbor"> Vezi zborurile si hotelurile disponibile</string>
     <string name="alteOferte"> Alte oferte</string>
 
     <!-- Lista orase si descrieri-->
@@ -228,5 +229,23 @@
     <string name="PuntacanaAER">Punta Cana(PUJ)</string>
     <string name="BangkokAER">Bangkok(BKK)</string>
     <string name="KrabiAER">Krabi(KBV)</string>
+
+
+    <!--user profile-->
+    <string name="language">Limba</string>
+    <string name="myPlaces">Locurile Mele</string>
+    <string name="findPlaces">Imprejurimi</string>
+    <string name="userSecurity">Securitate</string>
+    <string name="settings">Preferinte</string>
+    <string name="stories">Povesti</string>
+    <string name="sendStories">Povesteste-ne</string>
+    <string name="aboutUS">Despre noi</string>
+    <string name="voiceControl">Control vocal</string>
+    <!--ADD STORY-->
+    <string name="storyTitle">Titlu</string>
+    <string name="storyDescription">Povesteste-ne experienta ta</string>
+    <string name="buttonPublica">Publica</string>
+    <string name="activityStoryTitle">Imparte experienta ta cu noi</string>
+    <string name="storyLocation">Locatie</string>
 
 </resources>

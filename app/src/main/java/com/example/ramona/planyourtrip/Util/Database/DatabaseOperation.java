@@ -1,13 +1,12 @@
 package com.example.ramona.planyourtrip.Util.Database;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 
 import com.example.ramona.planyourtrip.Util.Categorii;
 import com.example.ramona.planyourtrip.Util.Email;
 import com.example.ramona.planyourtrip.Util.Locatii;
+import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.example.ramona.planyourtrip.Util.User;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 
@@ -17,18 +16,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.TABLE_NAME_UTILIZATORI;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_COD_CONFIRMARE;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_EMAIL;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_ID;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_NAME;
-import static com.example.ramona.planyourtrip.Util.Database.DataBaseContants.USER_PASS;
 
 /**
  * Created by Ramona on 4/3/2018.
@@ -56,7 +46,9 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "select * from locatii order by nume_oras";
+                String query = "select l.*,d.descriere,d.atractii,d.restaurante,d.activitati,d.link_locatie from locatii l " +
+                        " left join descriere_orase d on d.id_locatie = l.id " +
+                        " order by l.nume_oras asc";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
@@ -67,6 +59,11 @@ public class DatabaseOperation {
                     locatie.setCategorie2(rs.getInt("id_categorie_2"));
                     locatie.setLat(rs.getString("lat"));
                     locatie.setLon(rs.getString("lon"));
+                    locatie.setDescriere(rs.getString("descriere"));
+                    locatie.setAtractii(rs.getString("atractii"));
+                    locatie.setRestaurante(rs.getString("restaurante"));
+                    locatie.setActivitati(rs.getString("activitati"));
+                    locatie.setLink(rs.getString("link_locatie"));
                     data.add(locatie);
                 }
 
@@ -113,47 +110,64 @@ public class DatabaseOperation {
         return res;
     }
 
-    public int insertUserPref(UserPreferences userPreferences,String email) {
-        Integer idUtilizator  = 0;
+    public int insertUserPref(UserPreferences userPreferences,Integer idUtilizator) {
 
         ConnectionHelper conStr = new ConnectionHelper();
         connect = conStr.connectionclasss();        // Connect to database
         if (connect == null)
             ConnectionResult = "Check Your Internet Access!";
         int res = -1;
-
-
-        String query = "select id from user where email = '"+email +"'";
-        try {
-            Statement stmt  = connect.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                idUtilizator = rs.getInt(1);
+            if (userPreferences == null) {
+                return res;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            try {
+                String query2 = "INSERT INTO user_preferences(id_user,status_relatie,copii,calatorii,id_categorie_1,id_categorie_2,buget,id_locatii) VALUES(?,?,?,?,?,?,?,?)";
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query2);
+                preparedStatement.setInt(1, idUtilizator);
+                preparedStatement.setString(2, userPreferences.getStatusRelatie());
+                preparedStatement.setString(3, userPreferences.getAreCopii());
+                preparedStatement.setString(4, userPreferences.getCatDeDesPleci());
+                preparedStatement.setString(5, userPreferences.getCategoria1());
+                preparedStatement.setString(6, userPreferences.getCategoria2());
+                preparedStatement.setString(7, userPreferences.getBuget());
+                preparedStatement.setString(8, userPreferences.getOraseVizitate());
+                res = preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
+
+        return res;
+    }
+    public int updateUserPref(UserPreferences userPreferences) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        int res = -1;
         if (userPreferences == null) {
             return res;
         }
         try {
-            String query2 = "INSERT INTO user_preferences(id_user,status_relatie,copii,calatorii,id_categorie_1,id_categorie_2,buget,id_locatii) VALUES(?,?,?,?,?,?,?,?)";
+            String query2 = "update user_preferences set status_relatie="+userPreferences.getStatusRelatie()+
+                    ", copii ="+userPreferences.getAreCopii()+
+                    ",calatorii="+userPreferences.getCatDeDesPleci()+
+                    ",id_categorie_1="+userPreferences.getCategoria1()+
+                    ",id_categorie_2="+userPreferences.getCategoria2()+
+                    ",buget = '"+userPreferences.getBuget()+
+                    "',id_locatii='"+userPreferences.getOraseVizitate()+
+                    "' where id = "+userPreferences.getId();
             PreparedStatement preparedStatement = null;
             preparedStatement = connect.prepareStatement(query2);
-            preparedStatement.setInt(1,idUtilizator);
-            preparedStatement.setString(2,userPreferences.getStatusRelatie());
-            preparedStatement.setString(3,userPreferences.getAreCopii());
-            preparedStatement.setString(4,userPreferences.getCatDeDesPleci());
-            preparedStatement.setString(5,userPreferences.getCategoria1());
-            preparedStatement.setString(6,userPreferences.getCategoria2());
-            preparedStatement.setString(7,userPreferences.getBuget());
-            preparedStatement.setString(8,userPreferences.getOraseVizitate());
             res = preparedStatement.executeUpdate();
             connect.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
 
         return res;
     }
@@ -251,31 +265,31 @@ public class DatabaseOperation {
         return uniqueEmail;
     }
 
-    public Integer logInUtilizator(String email,String parola){
-        Integer utilizatorActiv=0;
-
+    public User logInUtilizator(String email,String parola){
+        User utilizator = new User();
         ConnectionHelper conStr = new ConnectionHelper();
         connect = conStr.connectionclasss();        // Connect to database
 
         if (connect == null) {
             ConnectionResult = "Check Your Internet Access!";
-            return utilizatorActiv;
+            return utilizator;
         } else {
             // Change below query according to your own database.
-            String query = "select count(*) from user where email = '"+email +"' and parola='"+parola+"' and activ = 1";
+            String query = "select count(*) activ,id from user where email = '"+email +"' and parola='"+parola+"' and activ = 1";
             try {
                 Statement stmt  = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                    utilizatorActiv = rs.getInt(1);
+                    utilizator.setActiv(rs.getInt("activ"));
+                    utilizator.setId(rs.getInt("id"));
                 }
                 connect.close();
-                return utilizatorActiv;
+                return utilizator;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        return utilizatorActiv;
+        return utilizator;
     }
 
 
@@ -340,9 +354,43 @@ public class DatabaseOperation {
         return data;
     }
 
+    //getALLLocation from db BY ID
+    public List<Locatii> getLinksiNumeLocatii() {
+        List<Locatii> data=new ArrayList<>();
+            try {
+            ConnectionHelper conStr = new ConnectionHelper();
+            connect = conStr.connectionclasss();        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                // Change below query according to your own database.
+                String query = "select l.nume_oras as nume, d.link_locatie as link, l.lat, l.lon from locatii as l ,descriere_orase as d \n" +
+                        "where l.id=d.id_locatie limit 35";
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    Locatii locatie= new Locatii();
+                    locatie.setNume(rs.getString("nume"));
+                    locatie.setLink(rs.getString("link"));
+                    data.add(locatie);
+                }
+
+                ConnectionResult = " successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+        return data;
+    }
+
+
+
 
     //getAllLocation from DB
-    public UserPreferences  getUserPref(String email) {
+    public UserPreferences  getUserPref(Integer idUtilizator) {
         UserPreferences data=new UserPreferences();
         try {
             ConnectionHelper conStr = new ConnectionHelper();
@@ -351,12 +399,18 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "select * from user_preferences where id_user = (select id from user where email = '"+email+"')";
+                String query = "select * from user_preferences where id_user = "+idUtilizator;
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                     data.setCategoria1(rs.getString(6));
-                     data.setCategoria2(rs.getString(7));
+                     data.setId(rs.getInt("id"));
+                     data.setCatDeDesPleci(rs.getString("calatorii"));
+                     data.setStatusRelatie(rs.getString("status_relatie"));
+                     data.setAreCopii(rs.getString("copii"));
+                     data.setCategoria1(rs.getString("id_categorie_1"));
+                     data.setCategoria2(rs.getString("id_categorie_2"));
+                     data.setBuget(rs.getString("buget"));
+                     data.setOraseVizitate(rs.getString("id_locatii"));
                 }
 
                 ConnectionResult = " successful";
@@ -402,8 +456,8 @@ public class DatabaseOperation {
 
 
     //getLocationByCateg from DB
-    public Set<Locatii>  getLocationByCateg(UserPreferences userPreferences) {
-        Set<Locatii> data=new HashSet<>();
+    public List<Locatii>  getLocationByCateg(UserPreferences userPreferences) {
+        List<Locatii> data=new ArrayList<>();
         try {
             ConnectionHelper conStr = new ConnectionHelper();
             connect = conStr.connectionclasss();        // Connect to database
@@ -411,9 +465,9 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "SELECT * FROM locatii " +
+                String query = "SELECT l.*, d.link_locatie FROM locatii as l, descriere_orase as d " +
                         " WHERE id_categorie_1 = '" +userPreferences.getCategoria1()+
-                        "' ORDER BY RAND() " +
+                        "' and l.id=d.id_locatie ORDER BY RAND() " +
                         " LIMIT 2";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -425,13 +479,14 @@ public class DatabaseOperation {
                     locatie.setCategorie2(rs.getInt(4));
                     locatie.setLon(rs.getString(5));
                     locatie.setLon(rs.getString(6));
+                    locatie.setLink(rs.getString("link_locatie"));
                      data.add(locatie);
                 }
 
 
-                String query2 = "SELECT * FROM locatii " +
+                String query2 = "SELECT l.*, d.link_locatie FROM locatii as l, descriere_orase as d " +
                         " WHERE id_categorie_1 = '" +userPreferences.getCategoria2()+
-                        "' ORDER BY RAND() " +
+                        "' and l.id=d.id_locatie ORDER BY RAND() " +
                         " LIMIT 2";
                 Statement stmt2 = connect.createStatement();
                 ResultSet rs2 = stmt2.executeQuery(query2);
@@ -443,13 +498,14 @@ public class DatabaseOperation {
                     locatie.setCategorie2(rs2.getInt(4));
                     locatie.setLon(rs2.getString(5));
                     locatie.setLon(rs2.getString(6));
+                    locatie.setLink(rs2.getString("link_locatie"));
                     data.add(locatie);
                 }
 
-                String query3 = "SELECT * FROM locatii\n" +
+                String query3 = "SELECT l.*, d.link_locatie FROM locatii as l, descriere_orase as d \n" +
                         " WHERE id_categorie_2 in('"+userPreferences.getCategoria1()+"','"+userPreferences.getCategoria2()+"') and\n" +
                         " id_categorie_1 != '"+userPreferences.getCategoria1()+ "' and id_categorie_1 !='"+userPreferences.getCategoria2() +
-                        "' ORDER BY RAND() " +
+                        "' and l.id=d.id_locatie ORDER BY RAND() " +
                         " LIMIT 2 ";
                 Statement stmt3 = connect.createStatement();
                 ResultSet rs3 = stmt3.executeQuery(query3);
@@ -461,6 +517,7 @@ public class DatabaseOperation {
                     locatie.setCategorie2(rs3.getInt(4));
                     locatie.setLon(rs3.getString(5));
                     locatie.setLon(rs3.getString(6));
+                    locatie.setLink(rs3.getString("link_locatie"));
                     data.add(locatie);
 
                 }
@@ -516,4 +573,34 @@ public class DatabaseOperation {
         }
         return locatiiList;
     }
+
+    //add story
+    public int addDBstory(StoryObj storyObj){
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        int res = -1;
+        if (storyObj == null) {
+            return res;
+        }
+        try {
+            String query = "INSERT INTO story(id_user,id_locatie,titlu,poveste,facebook,instagram) VALUES(?,?,?,?,?,?)";
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connect.prepareStatement(query);
+            preparedStatement.setInt(1, storyObj.getIdUser());
+            preparedStatement.setInt(2,storyObj.getIdLocatie());
+            preparedStatement.setString(3,storyObj.getTitlu());
+            preparedStatement.setString(4,storyObj.getPoveste());
+            preparedStatement.setString(5,storyObj.getFacebook());
+            preparedStatement.setString(6,storyObj.getInstagram());
+            res = preparedStatement.executeUpdate();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
+
 }

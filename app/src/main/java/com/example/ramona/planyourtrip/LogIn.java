@@ -2,9 +2,12 @@ package com.example.ramona.planyourtrip;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Util.Constants;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.User;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
@@ -24,22 +28,25 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import static com.example.ramona.planyourtrip.GmailSender.CodUnicIdentificare.userPreferencesForHome;
+
+import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.userPreferencesForHome;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
 import java.util.Arrays;
 
-import br.com.bloder.magic.view.MagicButton;
 import io.paperdb.Paper;
 
-public class LogIn extends AppCompatActivity {
+public class LogIn extends AppCompatActivity{
     //databse
     DatabaseOperation db = new DatabaseOperation();
     //facebook
     CallbackManager callbackManager;
-
+    //retine user name si parola
+    SharedPreferences preferences;
 
     EditText email;
     EditText parola;
@@ -54,14 +61,10 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         //
+        new TestAsync().execute();
+        //
         email = (EditText) findViewById(R.id.editText_name_logIn);
         parola = (EditText) findViewById(R.id.editText_password_logIn);
-
-        //
-
-
-
-
 
         //facebook Auth
         //callback
@@ -116,13 +119,29 @@ public class LogIn extends AppCompatActivity {
 
         //mulilng
         allYouNeed();
+        //shared pref
+        preferences=getSharedPreferences(Constants.SHAREDPREFERENCES2_NAME, MODE_PRIVATE);
+
+        final String u=preferences.getString(Constants.LOGIN_NAME, Constants.FARA_NUME_LOGIN);
+        final String p=preferences.getString(Constants.PAROLA_NAME, Constants.FARA_NUME_LOGIN);
+
+        if(!u.equals(null))
+        {
+            email.setText(u.toString());
+        }
+        if(!p.equals(null))
+        {
+            parola.setText(p.toString());
+        }
+
     }
+
 
 
     private void allYouNeed() {
 
         //preiau toate view-urile care trebuie traduce din clasa
-         tvSignUpIntrebare = (TextView) findViewById(R.id.login_tv_signup_intrebare);
+        tvSignUpIntrebare = (TextView) findViewById(R.id.login_tv_signup_intrebare);
         tvSignUpHere = (TextView) findViewById(R.id.login_tv_signUpHere);
         email = (EditText) findViewById(R.id.editText_name_logIn);
         parola = (EditText) findViewById(R.id.editText_password_logIn);
@@ -176,25 +195,58 @@ public class LogIn extends AppCompatActivity {
     public void login(View view){
         String emailU = email.getText().toString();
         String parolaU = parola.getText().toString();
-        Integer utilizatorActiv = db.logInUtilizator(emailU,parolaU);
-        if(utilizatorActiv==1){
-            UserPreferences userPref = db.getUserPref(emailU);
+        User utilizatorActiv = db.logInUtilizator(emailU,parolaU);
+        if(utilizatorActiv!=null && utilizatorActiv.getActiv()==1){
+            idUtilizator = utilizatorActiv.getId();
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString(Constants.LOGIN_NAME, emailU);
+            editor.putString(Constants.PAROLA_NAME, parolaU);
+            editor.commit();
+            UserPreferences userPref = db.getUserPref(idUtilizator);
             if(userPref!=null){
                 Intent explore= new Intent(this, Home.class);
                 userPreferencesForHome = userPref;
                 startActivity(explore);
             }else{
                 Intent userPreferences= new Intent(this, Formular_interese.class);
-                userPreferences.putExtra("email",emailU);
+                userPreferences.putExtra("operatie","insert");
                 startActivity(userPreferences);
             }
 
+
         }
     }
-
     //deschide SignUp Form
     public void deschideSignUp(View View){
         Intent intent= new Intent(LogIn.this, SignUpActivity.class);
         startActivity(intent);
+    }
+}
+
+class TestAsync extends AsyncTask<Void, Integer, String> {
+    String TAG = getClass().getSimpleName();
+
+    protected void onPreExecute() {
+        super.onPreExecute();
+        Log.d(TAG + " PreExceute", "On pre Exceute......");
+    }
+
+    protected String doInBackground(Void... arg0) {
+        Log.d(TAG + " DoINBackGround", "On doInBackground...");
+
+         DatabaseOperation databaseOperation = new DatabaseOperation();
+         locatiiList = databaseOperation.getLocation();
+
+        return "You are at PostExecute";
+    }
+
+    protected void onProgressUpdate(Integer... a) {
+        super.onProgressUpdate(a);
+        Log.d(TAG + " onProgressUpdate", "You are in progress update ... " + a[0]);
+    }
+
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        Log.d(TAG + " onPostExecute", "" + result);
     }
 }
