@@ -128,19 +128,22 @@ public class Home extends AppCompatActivity {
             }
             locatiiListHome = new ArrayList<>();
             for(int j =0;j<2;j++){
-            int index = randomGenerator.nextInt(locatiiListHomeCategoria1.size());
+                int index = randomGenerator.nextInt(locatiiListHomeCategoria1.size());
                 locatiiListHome.add(locatiiListHomeCategoria1.get(index));
+                locatiiListHomeCategoria1.remove(index);
             }
 
             for(int j =0;j<2;j++){
                 int index = randomGenerator.nextInt(locatiiListHomeCategoria2.size());
                 locatiiListHome.add(locatiiListHomeCategoria2.get(index));
+                locatiiListHomeCategoria2.remove(index);
             }
 
 
             for(int j =0;j<2;j++){
                 int index = randomGenerator.nextInt(locatiiListHomeRandom.size());
                 locatiiListHome.add(locatiiListHomeRandom.get(index));
+                locatiiListHomeRandom.remove(index);
             }
 
             }
@@ -228,12 +231,18 @@ public class Home extends AppCompatActivity {
         int oras4 = resources.getIdentifier(locatiiListHome.get(3).getNume(), "string", context.getPackageName());
         int oras5 = resources.getIdentifier(locatiiListHome.get(4).getNume(), "string", context.getPackageName());
         int oras6 = resources.getIdentifier(locatiiListHome.get(5).getNume(), "string", context.getPackageName());
-        homeTv1.setText(resources.getText(oras1));
-        homeTv2.setText(resources.getText(oras2));
-        homeTv3.setText(resources.getText(oras3));
-        homeTv4.setText(resources.getText(oras4));
-        homeTv5.setText(resources.getText(oras5));
-        homeTv6.setText(resources.getText(oras6));
+        if(oras1!=0)
+            homeTv1.setText(resources.getText(oras1));
+        if(oras2!=0)
+            homeTv2.setText(resources.getText(oras2));
+        if(oras3!=0)
+            homeTv3.setText(resources.getText(oras3));
+        if(oras4!=0)
+            homeTv4.setText(resources.getText(oras4));
+        if(oras5!=0)
+            homeTv5.setText(resources.getText(oras5));
+        if(oras6!=0)
+            homeTv6.setText(resources.getText(oras6));
 
         buttonExplore1.setText(resources.getString(R.string.btnExplore));
         buttonExplore2.setText(resources.getString(R.string.btnExplore));

@@ -186,11 +186,14 @@ public class Explore extends AppCompatActivity {
             locatiiList= db.getLocation();
         }
 
+
         for(int i=0;i<35;i++){
             String locatie=locatiiList.get(i).getNume();
             int id=resources.getIdentifier(locatie, "string", context.getPackageName());
-            locatie=resources.getString(id);
-            locatiiList.get(i).setNume(locatie);
+            if(id!=0){
+                locatie=resources.getString(id);
+                locatiiList.get(i).setNume(locatie);
+            }
 
         }
     }
