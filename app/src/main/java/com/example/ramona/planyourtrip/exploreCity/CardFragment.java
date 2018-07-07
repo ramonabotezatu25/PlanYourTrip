@@ -112,6 +112,20 @@ public class CardFragment extends Fragment {
             layoutCardView.setVisibility(View.INVISIBLE);
         }
 
+        if(position==6){
+            title.setText(getResources().getString(R.string.zboruri));
+            descieri.setText(getResources().getString(R.string.biletZbor));
+            button.setVisibility(View.VISIBLE);
+            button.setBackgroundResource(R.drawable.abudhabi);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getContext(),"HEI",Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
+
 
         return view;
     }

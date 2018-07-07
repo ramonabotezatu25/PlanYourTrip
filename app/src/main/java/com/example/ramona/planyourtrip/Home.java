@@ -25,6 +25,7 @@ import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.exploreCity.ExploreMyCity;
 
+import static com.example.ramona.planyourtrip.GmailSender.Constante.idLocatie;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.orasDestinatieFlight;
 
@@ -263,6 +264,7 @@ public class Home extends AppCompatActivity {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv1.getText().toString();
                     deschideExploreCity(view,lL[0],lL[1],homeTv1.getText().toString(),locatiiListHome.get(0).getLink());
+                    idLocatie=locatiiListHome.get(0).getId();
                 }
             }
         });
@@ -275,6 +277,7 @@ public class Home extends AppCompatActivity {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv2.getText().toString();
                     deschideExploreCity(view,lL[0],lL[1],homeTv2.getText().toString(),locatiiListHome.get(1).getLink());
+                    idLocatie=locatiiListHome.get(1).getId();
                 }
             }
         });
@@ -287,6 +290,7 @@ public class Home extends AppCompatActivity {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv3.getText().toString();
                     deschideExploreCity(view,lL[0],lL[1],homeTv3.getText().toString(),locatiiListHome.get(2).getLink());
+                    idLocatie=locatiiListHome.get(2).getId();
                 }
             }
         });
@@ -299,6 +303,7 @@ public class Home extends AppCompatActivity {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv4.getText().toString();
                     deschideExploreCity(view,lL[0],lL[1],homeTv4.getText().toString(),locatiiListHome.get(3).getLink());
+                    idLocatie=locatiiListHome.get(3).getId();
 
                 }
             }
@@ -312,6 +317,7 @@ public class Home extends AppCompatActivity {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv5.getText().toString();
                     deschideExploreCity(view,lL[0],lL[1],homeTv5.getText().toString(),locatiiListHome.get(4).getLink());
+                    idLocatie=locatiiListHome.get(4).getId();
 
                 }
             }
@@ -325,6 +331,7 @@ public class Home extends AppCompatActivity {
                     String[] lL = latLong.split(";");
                     orasSelectat= homeTv6.getText().toString();
                     deschideExploreCity(view,lL[0],lL[1],homeTv6.getText().toString(),locatiiListHome.get(5).getLink());
+                    idLocatie=locatiiListHome.get(5).getId();
                 }
             }
         });
