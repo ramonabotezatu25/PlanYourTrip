@@ -3,6 +3,7 @@ package com.example.ramona.planyourtrip.GmailSender;
 import android.content.res.AssetManager;
 
 import com.example.ramona.planyourtrip.Util.Locatii;
+import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 
 import java.security.SecureRandom;
@@ -29,7 +30,14 @@ public class Constante {
     public static String numeOras;
     public static String latitudine;
     public static String longitudine ;
+
+
+    //story
+    public static List<StoryObj> storyList = new ArrayList<>();
     public static Integer idLocatie;
+
+
+
 
     public static final void getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";

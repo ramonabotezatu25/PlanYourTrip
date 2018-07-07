@@ -5,17 +5,22 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.assetManager;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.numeOras;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.latitudine;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.longitudine;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.idLocatie;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.storyList;
 
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.R;
@@ -48,6 +53,10 @@ public class ExploreMyCity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore_my_city);
+
+
+        //async
+        new TestAsyncExplore().execute();
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
 
@@ -122,4 +131,32 @@ public class ExploreMyCity extends AppCompatActivity {
 
 
 
+}
+class TestAsyncExplore extends AsyncTask<Void, Integer, String> {
+    String TAG = getClass().getSimpleName();
+
+    protected void onPreExecute() {
+        super.onPreExecute();
+        Log.d(TAG + " PreExceute", "On pre Exceute......");
+    }
+
+    protected String doInBackground(Void... arg0) {
+        Log.d(TAG + " DoINBackGround", "On doInBackground...");
+
+        DatabaseOperation databaseOperation = new DatabaseOperation();
+       // storyList = databaseOperation.getStories(idLocatie);
+        storyList = databaseOperation.getStories(3);
+
+        return "You are at PostExecute";
+    }
+
+    protected void onProgressUpdate(Integer... a) {
+        super.onProgressUpdate(a);
+        Log.d(TAG + " onProgressUpdate", "You are in progress update ... " + a[0]);
+    }
+
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        Log.d(TAG + " onPostExecute", "" + result);
+    }
 }

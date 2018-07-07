@@ -9,6 +9,7 @@ import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.example.ramona.planyourtrip.Util.User;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
+import com.example.ramona.planyourtrip.stories.Story;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -601,6 +602,49 @@ public class DatabaseOperation {
         }
 
         return res;
+    }
+
+    //getAllLocation from DB
+    public List<StoryObj> getStories(Integer idLocatie) {
+
+        List<StoryObj> data = new ArrayList<StoryObj>();;
+
+        try {
+            ConnectionHelper conStr = new ConnectionHelper();
+            connect = conStr.connectionclasss();        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                // Change below query according to your own database.
+                String query = " select s.*, v.link_locatie " +
+                        " from story s" +
+                        " left join v_locatii v on v.id = s.id_locatie where id_locatie = "+idLocatie;
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    StoryObj storyObj = new StoryObj();
+                    storyObj.setId(rs.getInt("id"));
+                    storyObj.setIdUser(rs.getInt("id_user"));
+                    storyObj.setIdLocatie(rs.getInt("id_locatie"));
+                    storyObj.setTitlu(rs.getString("titlu"));
+                    storyObj.setPoveste(rs.getString("poveste"));
+                    storyObj.setFacebook(rs.getString("facebook"));
+                    storyObj.setInstagram(rs.getString("instagram"));
+                    storyObj.setLink(rs.getString("link_locatie"));
+                    data.add(storyObj);
+                }
+
+
+                ConnectionResult = " successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+
+        return data;
     }
 
 }

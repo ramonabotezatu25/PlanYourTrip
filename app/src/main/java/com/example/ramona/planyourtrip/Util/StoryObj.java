@@ -13,6 +13,7 @@ public class StoryObj {
     private String poveste;
     private String facebook;
     private String instagram;
+    private String link;
 
 
     public String getTitlu() {
@@ -69,5 +70,13 @@ public class StoryObj {
 
     public void setInstagram(String instagram) {
         this.instagram = instagram;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

@@ -1,0 +1,4 @@
+create view v_locatii as
+select l.*,d.descriere,d.atractii,d.restaurante,d.activitati,d.link_locatie from locatii l
+left join descriere_orase d on d.id_locatie = l.id
+order by l.nume_oras asc;

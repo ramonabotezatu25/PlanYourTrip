@@ -14,10 +14,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ramona.planyourtrip.TravelTest;
+import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.example.ramona.planyourtrip.R;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.ramona.planyourtrip.GmailSender.Constante.storyList;
 
 public class Story extends AppCompatActivity {
 
@@ -35,7 +38,10 @@ public class Story extends AppCompatActivity {
         flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
 
         array = new ArrayList<>();
-        array.add(new StoryData("https://www.lacity.org/sites/g/files/wph781/f/styles/tiled_homepage_blog/public/bigstock-Los-Angeles-5909078.jpg?itok=Pu2dewLz", "Alexis Sanchez, Arsenal forward. Wanna chat with me ?. \n" +
+        for(StoryObj s: storyList) {
+            array.add(new StoryData(s.getLink(),s.getPoveste()));
+        }
+        /*       array.add(new StoryData("https://www.lacity.org/sites/g/files/wph781/f/styles/tiled_homepage_blog/public/bigstock-Los-Angeles-5909078.jpg?itok=Pu2dewLz", "Alexis Sanchez, Arsenal forward. Wanna chat with me ?. \n" +
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
         array.add(new StoryData("https://www.google.ro/search?q=messi&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjBmOmepPzbAhVFDywKHefwBGYQ_AUICigB&biw=1396&bih=674#imgdii=NMwHCiQ-ENYGLM:&imgrc=dsgmRdbm7Ypq4M:", "Christano Ronaldo, Real Madrid star. Wanna chat with me ? \n" +
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
@@ -49,7 +55,7 @@ public class Story extends AppCompatActivity {
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
         array.add(new StoryData("http://www.delaroystudios.com/images/7.jpg", "Robert Lewandoski. Wanna chat with me ? \n" +
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
-
+*/
         arrayList = array;
         myAppAdapter = new MyAppAdapter(array, Story.this);
         flingContainer.setAdapter(myAppAdapter);
@@ -65,12 +71,10 @@ public class Story extends AppCompatActivity {
 
                 myAppAdapter.notifyDataSetChanged();
                 if(array.size()==0){
-                    Intent intent = new Intent(getApplicationContext(), TravelTest.class);
+                    Intent intent = new Intent(getApplicationContext(), Story.class);
                     startActivity(intent);
                 }
-                //Do something on the left!
-                //You also have access to the original object.
-                //If you want to use it just cast it (String) dataObject
+
             }
 
             @Override
@@ -78,6 +82,11 @@ public class Story extends AppCompatActivity {
 
                 array.remove(0);
                 myAppAdapter.notifyDataSetChanged();
+
+                if(array.size()==0){
+                    Intent intent = new Intent(getApplicationContext(), Story.class);
+                    startActivity(intent);
+                }
             }
 
             @Override

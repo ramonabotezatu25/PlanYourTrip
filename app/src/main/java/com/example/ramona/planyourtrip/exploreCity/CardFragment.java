@@ -26,6 +26,7 @@ import com.example.ramona.planyourtrip.Flight;
 import com.example.ramona.planyourtrip.R;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Weather.Weather;
+import com.example.ramona.planyourtrip.stories.Story;
 
 
 public class CardFragment extends Fragment {
@@ -120,7 +121,8 @@ public class CardFragment extends Fragment {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(),"HEI",Toast.LENGTH_LONG).show();
+                    Intent seeFlights= new Intent(getActivity(), Story.class);
+                    startActivity(seeFlights);
                 }
             });
         }
