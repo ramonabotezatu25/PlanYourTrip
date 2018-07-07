@@ -259,80 +259,54 @@ public class Home extends AppCompatActivity {
         buttonExplore1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiListHome.get(0).getNume());
-                if(!latLong.equals("")) {
-                    String[] lL = latLong.split(";");
-                    orasSelectat= homeTv1.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv1.getText().toString(),locatiiListHome.get(0).getLink());
-                    idLocatie=locatiiListHome.get(0).getId();
-                }
+                orasSelectat= homeTv1.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(0).getLon(),orasSelectat,locatiiListHome.get(0).getLink());
+                idLocatie=locatiiListHome.get(0).getId();
             }
         });
 
         buttonExplore2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiListHome.get(1).getNume());
-                if(!latLong.equals("")) {
-                    String[] lL = latLong.split(";");
-                    orasSelectat= homeTv2.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv2.getText().toString(),locatiiListHome.get(1).getLink());
-                    idLocatie=locatiiListHome.get(1).getId();
-                }
+                orasSelectat= homeTv1.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(1).getLon(),orasSelectat,locatiiListHome.get(1).getLink());
+                idLocatie=locatiiListHome.get(1).getId();
             }
         });
 
         buttonExplore3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiListHome.get(2).getNume());
-                if(!latLong.equals("")) {
-                    String[] lL = latLong.split(";");
-                    orasSelectat= homeTv3.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv3.getText().toString(),locatiiListHome.get(2).getLink());
-                    idLocatie=locatiiListHome.get(2).getId();
-                }
+                orasSelectat= homeTv1.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(2).getLon(),orasSelectat,locatiiListHome.get(2).getLink());
+                idLocatie=locatiiListHome.get(2).getId();
             }
         });
 
         buttonExplore4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiListHome.get(3).getNume());
-                if(!latLong.equals("")) {
-                    String[] lL = latLong.split(";");
-                    orasSelectat= homeTv4.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv4.getText().toString(),locatiiListHome.get(3).getLink());
-                    idLocatie=locatiiListHome.get(3).getId();
-
-                }
+                orasSelectat= homeTv1.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(3).getLon(),orasSelectat,locatiiListHome.get(3).getLink());
+                idLocatie=locatiiListHome.get(3).getId();
             }
         });
 
         buttonExplore5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiListHome.get(4).getNume());
-                if(!latLong.equals("")) {
-                    String[] lL = latLong.split(";");
-                    orasSelectat= homeTv5.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv5.getText().toString(),locatiiListHome.get(4).getLink());
-                    idLocatie=locatiiListHome.get(4).getId();
-
-                }
+                orasSelectat= homeTv1.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(4).getLon(),orasSelectat,locatiiListHome.get(4).getLink());
+                idLocatie=locatiiListHome.get(4).getId();
             }
         });
 
         buttonExplore6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String latLong = getCityLatLong(locatiiListHome.get(5).getNume());
-                if(!latLong.equals("")) {
-                    String[] lL = latLong.split(";");
-                    orasSelectat= homeTv6.getText().toString();
-                    deschideExploreCity(view,lL[0],lL[1],homeTv6.getText().toString(),locatiiListHome.get(5).getLink());
-                    idLocatie=locatiiListHome.get(5).getId();
-                }
+                orasSelectat= homeTv1.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(5).getLon(),orasSelectat,locatiiListHome.get(5).getLink());
+                idLocatie=locatiiListHome.get(5).getId();
             }
         });
     }

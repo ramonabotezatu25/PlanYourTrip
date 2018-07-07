@@ -21,7 +21,9 @@ import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.numeOras;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.latitudine;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.longitudine;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.storyList;
 
+import com.example.ramona.planyourtrip.AddStory;
 import com.example.ramona.planyourtrip.Flight;
 import com.example.ramona.planyourtrip.R;
 import com.example.ramona.planyourtrip.Util.Locatii;
@@ -113,7 +115,7 @@ public class CardFragment extends Fragment {
             layoutCardView.setVisibility(View.INVISIBLE);
         }
 
-        if(position==6){
+        if(position==6) {
             title.setText(getResources().getString(R.string.zboruri));
             descieri.setText(getResources().getString(R.string.biletZbor));
             button.setVisibility(View.VISIBLE);
@@ -121,10 +123,28 @@ public class CardFragment extends Fragment {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent seeFlights= new Intent(getActivity(), Story.class);
-                    startActivity(seeFlights);
+                    if (storyList.size() > 0) {
+                        Intent seeStory = new Intent(getActivity(), Story.class);
+                        startActivity(seeStory);
+                    } else {
+                        Toast.makeText(getContext(), "Is no story to show at this city!Tell us one!", Toast.LENGTH_LONG).show();
+                    }
                 }
             });
+        }
+
+        if(position==7){
+                title.setText(getResources().getString(R.string.zboruri));
+                descieri.setText(getResources().getString(R.string.biletZbor));
+                button.setVisibility(View.VISIBLE);
+                button.setBackgroundResource(R.drawable.add_story_bg1);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent addStory= new Intent(getActivity(), AddStory.class);
+                        startActivity(addStory);
+                    }
+                });
         }
 
 

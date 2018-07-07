@@ -145,7 +145,7 @@ class TestAsyncExplore extends AsyncTask<Void, Integer, String> {
 
         DatabaseOperation databaseOperation = new DatabaseOperation();
        // storyList = databaseOperation.getStories(idLocatie);
-        storyList = databaseOperation.getStories(3);
+        storyList = databaseOperation.getStories(idLocatie);
 
         return "You are at PostExecute";
     }
