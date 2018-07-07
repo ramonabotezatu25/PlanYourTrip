@@ -268,8 +268,8 @@ public class Home extends AppCompatActivity {
         buttonExplore2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orasSelectat= homeTv1.getText().toString();
-                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(1).getLon(),orasSelectat,locatiiListHome.get(1).getLink());
+                orasSelectat= homeTv2.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(1).getLat(),locatiiListHome.get(1).getLon(),orasSelectat,locatiiListHome.get(1).getLink());
                 idLocatie=locatiiListHome.get(1).getId();
             }
         });
@@ -277,8 +277,8 @@ public class Home extends AppCompatActivity {
         buttonExplore3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orasSelectat= homeTv1.getText().toString();
-                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(2).getLon(),orasSelectat,locatiiListHome.get(2).getLink());
+                orasSelectat= homeTv3.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(2).getLat(),locatiiListHome.get(2).getLon(),orasSelectat,locatiiListHome.get(2).getLink());
                 idLocatie=locatiiListHome.get(2).getId();
             }
         });
@@ -286,8 +286,8 @@ public class Home extends AppCompatActivity {
         buttonExplore4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orasSelectat= homeTv1.getText().toString();
-                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(3).getLon(),orasSelectat,locatiiListHome.get(3).getLink());
+                orasSelectat= homeTv4.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(3).getLat(),locatiiListHome.get(3).getLon(),orasSelectat,locatiiListHome.get(3).getLink());
                 idLocatie=locatiiListHome.get(3).getId();
             }
         });
@@ -295,8 +295,8 @@ public class Home extends AppCompatActivity {
         buttonExplore5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orasSelectat= homeTv1.getText().toString();
-                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(4).getLon(),orasSelectat,locatiiListHome.get(4).getLink());
+                orasSelectat= homeTv5.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(4).getLat(),locatiiListHome.get(4).getLon(),orasSelectat,locatiiListHome.get(4).getLink());
                 idLocatie=locatiiListHome.get(4).getId();
             }
         });
@@ -304,8 +304,8 @@ public class Home extends AppCompatActivity {
         buttonExplore6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orasSelectat= homeTv1.getText().toString();
-                deschideExploreCity(view,locatiiListHome.get(0).getLat(),locatiiListHome.get(5).getLon(),orasSelectat,locatiiListHome.get(5).getLink());
+                orasSelectat= homeTv6.getText().toString();
+                deschideExploreCity(view,locatiiListHome.get(5).getLat(),locatiiListHome.get(5).getLon(),orasSelectat,locatiiListHome.get(5).getLink());
                 idLocatie=locatiiListHome.get(5).getId();
             }
         });
@@ -317,7 +317,6 @@ public class Home extends AppCompatActivity {
         exploreCity.putExtra("lat",lat);
         exploreCity.putExtra("long",lon);
         exploreCity.putExtra("name",name);
-        exploreCity.putExtra("orasSelectat", orasSelectat);
         exploreCity.putExtra("link", link);
         orasDestinatieFlight =orasSelectat;
         startActivity(exploreCity);

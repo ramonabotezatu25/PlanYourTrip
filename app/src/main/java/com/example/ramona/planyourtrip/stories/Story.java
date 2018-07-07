@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ramona.planyourtrip.Home;
 import com.example.ramona.planyourtrip.TravelTest;
 import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -178,5 +180,17 @@ public class Story extends AppCompatActivity {
 
             return rowView;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch(keyCode){
+            case KeyEvent.KEYCODE_BACK:
+                // do something here
+                Intent home = new Intent(getApplicationContext(), Home.class);
+                startActivity(home);
+                return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
