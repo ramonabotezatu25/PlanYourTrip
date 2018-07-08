@@ -3,6 +3,7 @@ package com.example.ramona.planyourtrip;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -143,8 +144,13 @@ public class TravelTest extends AppCompatActivity {
     }
     public  void deschideFormular(View view)
     {
-        Intent intent= new Intent(TravelTest.this, AddStory.class);
-        startActivity(intent);
+        try {
+            getApplicationContext().getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            Intent instagram = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/danutzuu.silviu"));
+            startActivity(instagram);
+        } catch (Exception e) {
+
+        }
     }
     public void deschideHome(View view){
         Intent intent=new Intent(TravelTest.this, Home.class);

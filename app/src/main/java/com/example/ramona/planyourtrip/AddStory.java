@@ -74,7 +74,6 @@ public class AddStory extends AppCompatActivity {
             if(l.getNume().equals(numeSelectat))
                 idLocatieSelectata = l.getId();
         }
-
         StoryObj storyObj = new StoryObj();
         storyObj.setIdUser(idUtilizator);
         storyObj.setIdLocatie(idLocatieSelectata);

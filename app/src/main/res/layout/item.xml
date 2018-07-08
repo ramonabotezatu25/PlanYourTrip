@@ -89,7 +89,7 @@
         android:layout_height="150dp"
         android:alpha="0"
 
-        android:background="@drawable/ic_rate_us" />
+        android:background="@drawable/ic_iconmonstr_facebook_4" />
 
     <View
         android:id="@+id/item_swipe_right_indicator"
@@ -98,6 +98,6 @@
         android:layout_gravity="right"
         android:alpha="0"
 
-        android:background="@drawable/ic_rate_us" />
+        android:background="@drawable/ic_iconmonstr_instagram_2" />
 
 </FrameLayout>

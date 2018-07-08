@@ -1,7 +1,13 @@
 package com.example.ramona.planyourtrip.stories;
 
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -41,7 +47,7 @@ public class Story extends AppCompatActivity {
 
         array = new ArrayList<>();
         for(StoryObj s: storyList) {
-            array.add(new StoryData(s.getLink(),s.getPoveste()));
+            array.add(new StoryData(s.getLink(),s.getPoveste(),s.getFacebook(),s.getInstagram()));
         }
         /*       array.add(new StoryData("https://www.lacity.org/sites/g/files/wph781/f/styles/tiled_homepage_blog/public/bigstock-Los-Angeles-5909078.jpg?itok=Pu2dewLz", "Alexis Sanchez, Arsenal forward. Wanna chat with me ?. \n" +
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
@@ -69,26 +75,168 @@ public class Story extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                array.remove(0);
 
-                myAppAdapter.notifyDataSetChanged();
-                if(array.size()==0){
-                    Intent intent = new Intent(getApplicationContext(), Story.class);
-                    startActivity(intent);
+                // setup the alert builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(Story.this);
+                builder.setTitle("Notice");
+                builder.setMessage("Do you want to connect with this this user on instagram?");
+
+                // add the buttons
+                builder.setPositiveButton("Continue", null);
+                // builder.setNeutralButton("Continue", null);
+                builder.setNegativeButton("Cancel", null);
+
+                builder.setNeutralButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        array.remove(0);
+                        myAppAdapter.notifyDataSetChanged();
+                        if(array.size()==0){
+                            Intent intent = new Intent(getApplicationContext(), Story.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // do something like...
+                        // do something like...
+
+
+                        String instagram = array.get(0).getInstagram();
+                        Uri uri = Uri.parse("http://instagram.com/_u/"+instagram);
+                        Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+                        likeIng.setPackage("com.instagram.android");
+
+                        try {
+                            startActivity(likeIng);
+                        } catch (ActivityNotFoundException e) {
+                            startActivity(new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("http://instagram.com/xxx")));
+                        }
+
+                        array.remove(0);
+                        myAppAdapter.notifyDataSetChanged();
+                        if(array.size()==0){
+                            Intent intent = new Intent(getApplicationContext(), Story.class);
+                            startActivity(intent);
+                        }
+
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // do something like...
+                        array.remove(0);
+                        myAppAdapter.notifyDataSetChanged();
+                        if(array.size()==0){
+                            Intent intent = new Intent(getApplicationContext(), Story.class);
+                            startActivity(intent);
+                        }
+
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                if(!array.get(0).getInstagram().equals("")){
+                    dialog.show();
+                } else {
+                    array.remove(0);
+                    myAppAdapter.notifyDataSetChanged();
+                    if (array.size() == 0) {
+                        Intent intent = new Intent(getApplicationContext(), Story.class);
+                        startActivity(intent);
+                    }
                 }
-
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
 
-                array.remove(0);
-                myAppAdapter.notifyDataSetChanged();
+                // setup the alert builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(Story.this);
+                builder.setTitle("Notice");
+                builder.setMessage("Do you want to connect with this this user on facebook?");
 
-                if(array.size()==0){
-                    Intent intent = new Intent(getApplicationContext(), Story.class);
-                    startActivity(intent);
+                // add the buttons
+                builder.setNeutralButton("Continue", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        array.remove(0);
+                        myAppAdapter.notifyDataSetChanged();
+                        if(array.size()==0){
+                            Intent intent = new Intent(getApplicationContext(), Story.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // do something like...
+                        String facebookName = array.get(0).getFacebook();
+
+                        array.remove(0);
+                        myAppAdapter.notifyDataSetChanged();
+                        if(array.size()==0){
+                            Intent intent = new Intent(getApplicationContext(), Story.class);
+                            startActivity(intent);
+                        }
+                        try {
+                            PackageManager pm = getApplicationContext().getPackageManager();
+                            ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
+                            String url = "https://www.facebook.com/"+facebookName;
+                            Uri uri = Uri.parse(url);
+                            if (applicationInfo.enabled) {
+                                uri = Uri.parse("fb://facewebmodal/f?href=" + url);
+                            }
+                            Intent facebook = new Intent(Intent.ACTION_VIEW, uri);
+                            startActivity(facebook);
+                        } catch (Exception e) {
+                            Intent facebook = new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/"));
+                            startActivity(facebook);
+                        }
+
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // do something like...
+                        array.remove(0);
+                        myAppAdapter.notifyDataSetChanged();
+                        if(array.size()==0){
+                            Intent intent = new Intent(getApplicationContext(), Story.class);
+                            startActivity(intent);
+                        }
+
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                if(!array.get(0).getFacebook().equals("")){
+                    dialog.show();}
+                else {
+                    array.remove(0);
+                    myAppAdapter.notifyDataSetChanged();
+                    if(array.size()==0){
+                        Intent intent = new Intent(getApplicationContext(), Story.class);
+                        startActivity(intent);
+                    }
                 }
+
+
             }
 
             @Override
