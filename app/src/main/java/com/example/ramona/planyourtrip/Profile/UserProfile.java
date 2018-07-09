@@ -19,6 +19,7 @@ import com.example.ramona.planyourtrip.AddStory;
 import com.example.ramona.planyourtrip.Explore;
 import com.example.ramona.planyourtrip.Formular_interese;
 import com.example.ramona.planyourtrip.Home;
+import com.example.ramona.planyourtrip.LuggageList.Luggage;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.R;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
@@ -129,7 +130,7 @@ public class UserProfile extends AppCompatActivity {
 
 
     public void addStory(View view){
-        Intent a = new Intent(this, AddStory.class);
+        Intent a = new Intent(this, Luggage.class);
         startActivity(a);
     }
 }

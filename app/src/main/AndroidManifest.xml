@@ -13,10 +13,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:largeHeap="true"
         android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -85,7 +85,8 @@
         <activity android:name=".voiceControl.VoiceControl" />
         <activity android:name=".exploreCity.ExploreMyCity" />
         <activity android:name=".stories.Story" />
-        <activity android:name=".AddStory"></activity>
+        <activity android:name=".AddStory" />
+        <activity android:name=".LuggageList.Luggage"></activity>
     </application>
 
 </manifest>
