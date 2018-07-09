@@ -35,6 +35,8 @@ public class Constante {
     //story
     public static List<StoryObj> storyList = new ArrayList<>();
     public static Integer idLocatie;
+    //luggage
+    public static List<String> luggageList = new ArrayList<>();
 
 
 
