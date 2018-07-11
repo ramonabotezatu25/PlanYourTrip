@@ -21,8 +21,10 @@ import java.util.ArrayList;
 
 import io.paperdb.Paper;
 
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageListUser;
 
 public class Luggage extends AppCompatActivity {
     ArrayList<String> selectedItems;
@@ -41,6 +43,12 @@ public class Luggage extends AppCompatActivity {
         chl=(ListView) findViewById(R.id.checkable_list);
         //set multiple selection mode
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+
+        for(String luggage : luggageListUser){
+            if(!luggageList.contains(luggage))
+                luggageList.add(luggage);
+        }
 
         //supply data itmes to ListView
         adapter=new ArrayAdapter<String>(this,R.layout.checkable_list_layout,R.id.txt_title,luggageList);
@@ -74,7 +82,6 @@ public class Luggage extends AppCompatActivity {
     }
 
     public void addItems(View view){
-
         luggageList.add(editText.getText().toString());
         new TestAsyncUserProfile().execute(editText.getText().toString());
         Intent intent = getIntent();
@@ -95,8 +102,10 @@ class TestAsyncUserProfile extends AsyncTask<String, Integer, String> {
 
     protected String doInBackground(String... arg0) {
         Log.d(TAG + " DoINBackGround", "On doInBackground...");
-        DatabaseOperation databaseOperation = new DatabaseOperation();
-        Integer id=databaseOperation.addLuggage(arg0[0].toString(),idUtilizator);
+        if(!luggageList.contains(arg0[0].toString())) {
+            DatabaseOperation databaseOperation = new DatabaseOperation();
+            Integer id = databaseOperation.addLuggage(arg0[0].toString(), idUtilizator);
+        }
         return "You are at PostExecute";
     }
 

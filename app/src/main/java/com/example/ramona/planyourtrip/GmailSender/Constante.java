@@ -37,6 +37,8 @@ public class Constante {
     public static Integer idLocatie;
     //luggage
     public static List<String> luggageList = new ArrayList<>();
+    public static Integer luggageListSize = 0;
+    public static List<String> luggageListUser = new ArrayList<>();
 
 
 

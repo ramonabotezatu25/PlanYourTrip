@@ -33,6 +33,8 @@ import io.paperdb.Paper;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageList;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageListUser;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageListSize;
 
 public class UserProfile extends AppCompatActivity {
     //Context
@@ -152,7 +154,8 @@ class TestAsyncUserProfile extends AsyncTask<Void, Integer, String> {
         String limba =(String) Paper.book().read("language");
         DatabaseOperation databaseOperation = new DatabaseOperation();
         luggageList = databaseOperation.getStandardLuggage(limba);
-
+        luggageListUser =  databaseOperation.getStandardLuggageUser(idUtilizator);
+        luggageListSize = luggageList.size();
         return "You are at PostExecute";
     }
 
