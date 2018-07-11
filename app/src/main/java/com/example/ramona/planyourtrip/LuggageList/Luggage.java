@@ -1,8 +1,10 @@
 package com.example.ramona.planyourtrip.LuggageList;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,10 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.R;
+import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 
 import java.util.ArrayList;
 
+import io.paperdb.Paper;
+
 import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageList;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
 
 public class Luggage extends AppCompatActivity {
     ArrayList<String> selectedItems;
@@ -32,25 +38,12 @@ public class Luggage extends AppCompatActivity {
         //create an ArrayList object to store selected items
         selectedItems=new ArrayList<String>();
         editText = (EditText)findViewById(R.id.plain_text_input);
-    }
-
-
-
-    public void onStart(){
-        super.onStart();
-        //create an instance of ListView
         chl=(ListView) findViewById(R.id.checkable_list);
         //set multiple selection mode
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        items = new String[50];
-        luggageList.add("English");
-        luggageList.add("USA");
-        luggageList.add("Romania");
-        for(int i=0;i<luggageList.size();i++){
-            items[i]=luggageList.get(i);
-        }
+
         //supply data itmes to ListView
-        adapter=new ArrayAdapter<String>(this,R.layout.checkable_list_layout,R.id.txt_title,items);
+        adapter=new ArrayAdapter<String>(this,R.layout.checkable_list_layout,R.id.txt_title,luggageList);
         chl.setAdapter(adapter);
 
         //set OnItemClickListener
@@ -68,6 +61,7 @@ public class Luggage extends AppCompatActivity {
         });
     }
 
+
     public void showSelectedItems(View view){
         String selItems="";
         for(String item:selectedItems){
@@ -82,10 +76,37 @@ public class Luggage extends AppCompatActivity {
     public void addItems(View view){
 
         luggageList.add(editText.getText().toString());
-
+        new TestAsyncUserProfile().execute(editText.getText().toString());
         Intent intent = getIntent();
         finish();
         startActivity(intent);
     }
 
+}
+
+
+class TestAsyncUserProfile extends AsyncTask<String, Integer, String> {
+    String TAG = getClass().getSimpleName();
+
+    protected void onPreExecute() {
+        super.onPreExecute();
+        Log.d(TAG + " PreExceute", "On pre Exceute......");
+    }
+
+    protected String doInBackground(String... arg0) {
+        Log.d(TAG + " DoINBackGround", "On doInBackground...");
+        DatabaseOperation databaseOperation = new DatabaseOperation();
+        Integer id=databaseOperation.addLuggage(arg0[0].toString(),idUtilizator);
+        return "You are at PostExecute";
+    }
+
+    protected void onProgressUpdate(Integer... a) {
+        super.onProgressUpdate(a);
+        Log.d(TAG + " onProgressUpdate", "You are in progress update ... " + a[0]);
+    }
+
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        Log.d(TAG + " onPostExecute", "" + result);
+    }
 }

@@ -235,3 +235,13 @@ values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t
 insert into descriere_orase(descriere,atractii,restaurante,activitati,link_locatie,id_locatie)
 values (' indisponibil', '-','-','-','https://scontent.fotp3-3.fna.fbcdn.net/v/t1.0-9/30727285_587953811573230_4483915564619661312_n.jpg?_nc_cat=0&oh=2550302bb75d5799db10fc06b7ce47f0&oe=5B5E1BF0',50);
 
+//luggage list
+
+insert into lista_bagaj_standard values('Pasaport','ro');
+insert into lista_bagaj_standard values('Passport','en');
+
+insert into lista_bagaj_standard values('Camera Foto','ro');
+insert into lista_bagaj_standard values('Photo Camera','en');
+
+insert into lista_bagaj_standard values('Harta','ro');
+insert into lista_bagaj_standard values('Map','en');

@@ -124,3 +124,18 @@ facebook varchar(400),
 instagram varchar(400)
 
 );
+
+
+create table lista_bagaj_standard(
+lista varchar(99),
+limba varchar(99)
+);
+
+
+create table lista_bagaj_user(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+lista varchar(99),
+
+id_user INT(11));

@@ -9,15 +9,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ramona.planyourtrip.LuggageList.Luggage">
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="250dp">
+
     <ListView
         android:id="@+id/checkable_list"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="300dp">
     </ListView>
-</ScrollView>
+
     <Button
         android:id="@+id/btshow"
         android:layout_width="wrap_content"

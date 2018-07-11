@@ -3,12 +3,14 @@ package com.example.ramona.planyourtrip.Profile;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +32,7 @@ import io.paperdb.Paper;
 
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageList;
 
 public class UserProfile extends AppCompatActivity {
     //Context
@@ -44,7 +47,8 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-
+        //
+        new TestAsyncUserProfile().execute();
         //
         setAllTextOnActivity();
         //navigation view
@@ -134,4 +138,31 @@ public class UserProfile extends AppCompatActivity {
         startActivity(a);
     }
 }
+class TestAsyncUserProfile extends AsyncTask<Void, Integer, String> {
+    String TAG = getClass().getSimpleName();
 
+    protected void onPreExecute() {
+        super.onPreExecute();
+        Log.d(TAG + " PreExceute", "On pre Exceute......");
+    }
+
+    protected String doInBackground(Void... arg0) {
+        Log.d(TAG + " DoINBackGround", "On doInBackground...");
+
+        String limba =(String) Paper.book().read("language");
+        DatabaseOperation databaseOperation = new DatabaseOperation();
+        luggageList = databaseOperation.getStandardLuggage(limba);
+
+        return "You are at PostExecute";
+    }
+
+    protected void onProgressUpdate(Integer... a) {
+        super.onProgressUpdate(a);
+        Log.d(TAG + " onProgressUpdate", "You are in progress update ... " + a[0]);
+    }
+
+    protected void onPostExecute(String result) {
+        super.onPostExecute(result);
+        Log.d(TAG + " onPostExecute", "" + result);
+    }
+}

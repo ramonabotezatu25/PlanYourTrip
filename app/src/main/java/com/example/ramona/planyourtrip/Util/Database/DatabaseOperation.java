@@ -647,4 +647,62 @@ public class DatabaseOperation {
         return data;
     }
 
+
+
+    //getAllLocation from DB
+    public List<String> getStandardLuggage(String lang) {
+
+        List<String> data = new ArrayList<String>();;
+
+        try {
+            ConnectionHelper conStr = new ConnectionHelper();
+            connect = conStr.connectionclasss();        // Connect to database
+            if (connect == null) {
+                ConnectionResult = "Check Your Internet Access!";
+            } else {
+                // Change below query according to your own database.
+                String query = " select * from lista_bagaj_standard where limba = '"+lang+"'";
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                   data.add(rs.getString("lista"));
+                }
+
+                ConnectionResult = " successful";
+                isSuccess = true;
+                connect.close();
+            }
+        } catch (Exception ex) {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+
+        return data;
+    }
+
+
+    //add story
+    public int addLuggage(String bagaj,Integer id_user){
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        int res = -1;
+        if (bagaj == null || id_user==null) {
+            return res;
+        }
+        try {
+            String query = "INSERT INTO lista_bagaj_user(lista,id_user) VALUES(?,?)";
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connect.prepareStatement(query);
+            preparedStatement.setString(1, bagaj);
+            preparedStatement.setInt(2, id_user);
+            res = preparedStatement.executeUpdate();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return res;
+    }
 }
