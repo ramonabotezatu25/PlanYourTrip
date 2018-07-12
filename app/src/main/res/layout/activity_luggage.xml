@@ -35,5 +35,11 @@
         android:layout_height="wrap_content"
         android:onClick="addItems"
         android:text="add in list" />
+    <Button
+        android:id="@+id/removeFromList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="removeItems"
+        android:text="remove" />
 
 </LinearLayout>

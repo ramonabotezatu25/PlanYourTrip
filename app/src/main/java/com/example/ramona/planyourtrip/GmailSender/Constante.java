@@ -3,6 +3,7 @@ package com.example.ramona.planyourtrip.GmailSender;
 import android.content.res.AssetManager;
 
 import com.example.ramona.planyourtrip.Util.Locatii;
+import com.example.ramona.planyourtrip.Util.LuggageList;
 import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 
@@ -38,7 +39,8 @@ public class Constante {
     //luggage
     public static List<String> luggageList = new ArrayList<>();
     public static Integer luggageListSize = 0;
-    public static List<String> luggageListUser = new ArrayList<>();
+    public static List<LuggageList> luggageListUser = new ArrayList<>();
+    public static List<String> luggageListChecked = new ArrayList<>();
 
 
 

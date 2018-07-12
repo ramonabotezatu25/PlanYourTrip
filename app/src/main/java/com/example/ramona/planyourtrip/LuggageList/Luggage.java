@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.ramona.planyourtrip.R;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.LuggageList;
 
 import java.util.ArrayList;
 
@@ -24,30 +25,34 @@ import io.paperdb.Paper;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageListSize;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageListUser;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.luggageListChecked;
 
 public class Luggage extends AppCompatActivity {
-    ArrayList<String> selectedItems;
     EditText editText;
     ArrayAdapter<String> adapter;
     ListView chl;
     String[] items;
+    DatabaseOperation databaseOperation = new DatabaseOperation();
 
     protected void onCreate(Bundle savedInstanceState) {
         //TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_luggage);
         //create an ArrayList object to store selected items
-        selectedItems=new ArrayList<String>();
         editText = (EditText)findViewById(R.id.plain_text_input);
         chl=(ListView) findViewById(R.id.checkable_list);
         //set multiple selection mode
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 
-        for(String luggage : luggageListUser){
-            if(!luggageList.contains(luggage))
-                luggageList.add(luggage);
+        for(LuggageList luggage : luggageListUser){
+            if(!luggageList.contains(luggage.getLuggageName()))
+                luggageList.add(luggage.getLuggageName());
+            if(luggage.getChecked()==1){
+                luggageListChecked.add(luggage.getLuggageName());
+            }
         }
 
         //supply data itmes to ListView
@@ -59,20 +64,28 @@ public class Luggage extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // selected item
                 String selectedItem = ((TextView) view).getText().toString();
-                if(selectedItems.contains(selectedItem))
-                    selectedItems.remove(selectedItem); //remove deselected item from the list of selected items
-                else
-                    selectedItems.add(selectedItem); //add selected item to the list of selected items
+                if(luggageListChecked.contains(selectedItem)){
+                    luggageListChecked.remove(selectedItem);//remove deselected item from the list of selected items
+                    databaseOperation.updateLuggageItem(luggageList.indexOf(selectedItem),0);
+                } else{
+                    luggageListChecked.add(selectedItem); //add selected item to the list of selected items
+                    databaseOperation.updateLuggageItem(luggageList.indexOf(selectedItem),1);
+                }
 
             }
 
         });
+
+        for(String s : luggageListChecked ){
+            Integer indexOfItem = luggageList.indexOf(s);
+            chl.setItemChecked(indexOfItem,true);
+        }
     }
 
 
     public void showSelectedItems(View view){
         String selItems="";
-        for(String item:selectedItems){
+        for(String item:luggageListChecked){
             if(selItems=="")
                 selItems=item;
             else
@@ -82,11 +95,45 @@ public class Luggage extends AppCompatActivity {
     }
 
     public void addItems(View view){
-        luggageList.add(editText.getText().toString());
-        new TestAsyncUserProfile().execute(editText.getText().toString());
-        Intent intent = getIntent();
-        finish();
-        startActivity(intent);
+
+        try{
+            new TestAsyncUserProfile().execute(editText.getText().toString(),"ADD");
+            if(!luggageList.contains(editText.getText().toString()))
+                luggageList.add(editText.getText().toString());
+        }
+        catch(Exception ex){
+
+        }finally {
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }
+
+    }
+
+    public void removeItems(View view){
+
+
+        if(luggageListChecked.size()==0){
+            Toast.makeText(this, "Please select an item", Toast.LENGTH_LONG).show();
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }else{
+            for(String item:luggageListChecked){
+                Integer indexOfObject = luggageList.indexOf(item)+1;
+                Integer idLuggage =luggageListUser.get(indexOfObject-1-luggageListSize).getId();
+                if(indexOfObject>luggageListSize){
+                    luggageList.remove(item);
+                    luggageListChecked.remove(item);
+                    luggageListUser.remove(indexOfObject-1-luggageListSize);
+                    new TestAsyncUserProfile().execute(idLuggage.toString(),"REMOVE");
+                }else{
+                    Toast.makeText(this, "This item can't be deleted!Is our standard list", Toast.LENGTH_LONG).show();
+
+                }
+            }
+        }
     }
 
 }
@@ -102,10 +149,13 @@ class TestAsyncUserProfile extends AsyncTask<String, Integer, String> {
 
     protected String doInBackground(String... arg0) {
         Log.d(TAG + " DoINBackGround", "On doInBackground...");
-        if(!luggageList.contains(arg0[0].toString())) {
-            DatabaseOperation databaseOperation = new DatabaseOperation();
-            Integer id = databaseOperation.addLuggage(arg0[0].toString(), idUtilizator);
+        DatabaseOperation databaseOperation = new DatabaseOperation();
+        if(arg0[1].toString().equals("REMOVE")){
+            databaseOperation.removeItem(Integer.parseInt(arg0[0].toString()));
+        }else{
+            databaseOperation.addLuggage(arg0[0].toString(), idUtilizator);
         }
+
         return "You are at PostExecute";
     }
 

@@ -6,10 +6,10 @@ import android.content.res.Resources;
 import com.example.ramona.planyourtrip.Util.Categorii;
 import com.example.ramona.planyourtrip.Util.Email;
 import com.example.ramona.planyourtrip.Util.Locatii;
+import com.example.ramona.planyourtrip.Util.LuggageList;
 import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.example.ramona.planyourtrip.Util.User;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
-import com.example.ramona.planyourtrip.stories.Story;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,9 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Ramona on 4/3/2018.
@@ -682,9 +680,9 @@ public class DatabaseOperation {
 
 
     //getLuggageList for user from DB
-    public List<String> getStandardLuggageUser(Integer idUser) {
+    public List<LuggageList> getStandardLuggageUser(Integer idUser) {
 
-        List<String> data = new ArrayList<String>();;
+        List<LuggageList> data = new ArrayList<LuggageList>();;
 
         try {
             ConnectionHelper conStr = new ConnectionHelper();
@@ -697,7 +695,11 @@ public class DatabaseOperation {
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                    data.add(rs.getString("lista"));
+                    LuggageList luggage = new LuggageList();
+                    luggage.setLuggageName(rs.getString("lista"));
+                    luggage.setChecked(rs.getInt("checked"));
+                    luggage.setId(rs.getInt("id"));
+                    data.add(luggage);
                 }
 
                 ConnectionResult = " successful";
@@ -723,11 +725,12 @@ public class DatabaseOperation {
             return res;
         }
         try {
-            String query = "INSERT INTO lista_bagaj_user(lista,id_user) VALUES(?,?)";
+            String query = "INSERT INTO lista_bagaj_user(lista,id_user,checked) VALUES(?,?,?)";
             PreparedStatement preparedStatement = null;
             preparedStatement = connect.prepareStatement(query);
             preparedStatement.setString(1, bagaj);
             preparedStatement.setInt(2, id_user);
+            preparedStatement.setInt(3, 0);
             res = preparedStatement.executeUpdate();
             connect.close();
         } catch (SQLException e) {
@@ -735,5 +738,42 @@ public class DatabaseOperation {
         }
 
         return res;
+    }
+
+    //add story
+    public void removeItem(Integer id){
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        try {
+            String query = "delete from lista_bagaj_user where id=" + id ;
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connect.prepareStatement(query);
+            preparedStatement.executeUpdate();
+            connect.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void updateLuggageItem (Integer id,Integer checked ) {
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+        if (connect == null)
+            ConnectionResult = "Check Your Internet Access!";
+        if (id!=null) {
+            try {
+                String query = "UPDATE lista_bagaj_user SET checked = "+checked+" where id = " + id ;
+                PreparedStatement preparedStatement = null;
+                preparedStatement = connect.prepareStatement(query);
+                preparedStatement.executeUpdate();
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
