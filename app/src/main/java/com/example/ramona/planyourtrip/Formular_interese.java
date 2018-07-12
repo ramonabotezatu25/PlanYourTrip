@@ -226,13 +226,13 @@ public class Formular_interese extends AppCompatActivity{
                 {
                     waveViewProgress("rGroupStatusRelatie");
                     if(checkedRadioButton.getText().toString().equals(resources.getString(R.string.single))){
-                        userPreferences.setStatusRelatie("1");
+                        userPreferences.setStatusRelatie("0");
                     }
                     if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.inrelatie))){
-                        userPreferences.setStatusRelatie("2");
+                        userPreferences.setStatusRelatie("1");
                     }
                     if(checkedRadioButton.getText().toString().equals(getResources().getString(R.string.casatorit))){
-                        userPreferences.setStatusRelatie("3");
+                        userPreferences.setStatusRelatie("2");
                     }
 
 
@@ -330,7 +330,11 @@ public class Formular_interese extends AppCompatActivity{
             userPreferences = db.getUserPref(idUtilizator);
             checkedItems = new boolean[locatiiList.size()];
             for(int i =0;i<locatiiList.size();i++){
-                String[] oraseUser = userPreferences.getOraseVizitate().split(",");
+                String[] oraseUser = new String[0];
+                if(userPreferences.getOraseVizitate().contains(","))
+                    oraseUser = userPreferences.getOraseVizitate().split(",");
+                else
+                    oraseUser = new String[]{userPreferences.getOraseVizitate().toString()};
                 for(int j=0;j<oraseUser.length;j++){
                     if(Integer.parseInt(oraseUser[j]) == locatiiList.get(i).getId())
                         checkedItems[i] = true;
