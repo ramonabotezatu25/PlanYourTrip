@@ -6,14 +6,16 @@ package com.example.ramona.planyourtrip.stories;
 
 public class StoryData {
     private String description;
-
+    private String title;
     private String imagePath;
     private String facebook;
     private String instagram;
 
-    public StoryData(String imagePath, String description,String facebook,String instagram) {
-        this.imagePath = imagePath;
+    public StoryData(String description, String title, String imagePath, String facebook, String instagram) {
         this.description = description;
+        this.title = title;
+
+        this.imagePath = imagePath;
         this.facebook = facebook;
         this.instagram = instagram;
     }
@@ -41,4 +43,13 @@ public class StoryData {
     public void setInstagram(String instagram) {
         this.instagram = instagram;
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
 }

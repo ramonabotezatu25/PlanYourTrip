@@ -210,5 +210,8 @@
     <string name="buttonPublica">Post</string>
     <string name="activityStoryTitle">Share your experience with us</string>
     <string name="storyLocation">Location</string>
-
+    <string name="userName">User</string>
+    <!-- BAGAJE -->
+    <string name="removeItem">Remove Item</string>
+    <string name="addItem">Add Item</string>
 </resources>

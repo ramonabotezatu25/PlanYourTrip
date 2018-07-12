@@ -25,6 +25,9 @@ import com.example.ramona.planyourtrip.TravelTest;
 import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.example.ramona.planyourtrip.R;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +50,7 @@ public class Story extends AppCompatActivity {
 
         array = new ArrayList<>();
         for(StoryObj s: storyList) {
-            array.add(new StoryData(s.getLink(),s.getPoveste(),s.getFacebook(),s.getInstagram()));
+            array.add(new StoryData(s.getPoveste(), s.getTitlu(), s.getLink(), s.getFacebook(), s.getInstagram()));
         }
         /*       array.add(new StoryData("https://www.lacity.org/sites/g/files/wph781/f/styles/tiled_homepage_blog/public/bigstock-Los-Angeles-5909078.jpg?itok=Pu2dewLz", "Alexis Sanchez, Arsenal forward. Wanna chat with me ?. \n" +
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
@@ -271,9 +274,9 @@ public class Story extends AppCompatActivity {
     public static class ViewHolder {
         public static FrameLayout background;
         public TextView DataText;
+        public TextView Title;
+        public TextView NameUser;
         public ImageView cardImage;
-
-
     }
 
     public class MyAppAdapter extends BaseAdapter {
@@ -317,12 +320,17 @@ public class Story extends AppCompatActivity {
                 viewHolder.DataText = (TextView) rowView.findViewById(R.id.bookText);
                 viewHolder.background = (FrameLayout) rowView.findViewById(R.id.background);
                 viewHolder.cardImage = (ImageView) rowView.findViewById(R.id.cardImage);
+                viewHolder.Title=(TextView)rowView.findViewById(R.id.titluStory);
+                viewHolder.NameUser=(TextView)rowView.findViewById(R.id.userStory);
+
                 rowView.setTag(viewHolder);
 
             } else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
             viewHolder.DataText.setText(parkingList.get(position).getDescription() + "");
+            viewHolder.Title.setText(parkingList.get(position).getTitle()+ "");
+            viewHolder.NameUser.setText(parkingList.get(position).getInstagram()+ "");
 
             Glide.with(Story.this).load(parkingList.get(position).getImagePath()).into(viewHolder.cardImage);
 

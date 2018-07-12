@@ -250,5 +250,8 @@
     <string name="buttonPublica">Publica</string>
     <string name="activityStoryTitle">Imparte experienta ta cu noi</string>
     <string name="storyLocation">Locatie</string>
-
+    <string name="userName">Utilizator</string>
+    <!-- BAGAJE -->
+    <string name="removeItem">Remove Item</string>
+    <string name="addItem">Add Item</string>
 </resources>

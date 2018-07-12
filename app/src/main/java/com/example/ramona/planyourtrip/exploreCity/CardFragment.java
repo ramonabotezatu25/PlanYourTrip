@@ -2,14 +2,12 @@ package com.example.ramona.planyourtrip.exploreCity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.text.Html;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,7 +117,7 @@ public class CardFragment extends Fragment {
             title.setText(getResources().getString(R.string.veziPovesti));
             descieri.setText(getResources().getString(R.string.veziPovesti));
             button.setVisibility(View.VISIBLE);
-            button.setBackgroundResource(R.drawable.abudhabi);
+            button.setBackgroundResource(R.drawable.stories);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -137,7 +135,7 @@ public class CardFragment extends Fragment {
                 title.setText(getResources().getString(R.string.scriePovesti));
                 descieri.setText(getResources().getString(R.string.scriePovesti));
                 button.setVisibility(View.VISIBLE);
-                button.setBackgroundResource(R.drawable.add_story_bg1);
+                button.setBackgroundResource(R.drawable.writestory);
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

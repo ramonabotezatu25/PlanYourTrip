@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/los_angeles2"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,6 +14,7 @@
     <ListView
         android:id="@+id/checkable_list"
         android:layout_width="fill_parent"
+        android:background="@drawable/buton_zboruri_stil"
         android:layout_height="300dp">
     </ListView>
 
@@ -25,21 +27,30 @@
 
     <EditText
         android:id="@+id/plain_text_input"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_width="match_parent"
+        android:background="#E2E2E2"
+        android:layout_marginBottom="10dp"
         android:inputType="text"/>
 
     <Button
         android:id="@+id/btshowInList"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:onClick="addItems"
-        android:text="add in list" />
+        android:background="@drawable/buton_zboruri_stil"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:text="@string/addItem" />
     <Button
         android:id="@+id/removeFromList"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:onClick="removeItems"
-        android:text="remove" />
+        android:background="@drawable/buton_zboruri_stil"
+        android:fontFamily="casual"
+        android:textStyle="bold"
+        android:text="@string/removeItem" />
 
 </LinearLayout>
