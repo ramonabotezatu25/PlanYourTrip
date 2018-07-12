@@ -16,23 +16,7 @@ public class Locatii {
     private String restaurante;
     private String activitati;
     private String link;
-
-    public Locatii() {
-    }
-
-    public Locatii(Integer id, String nume, Integer categorie, Integer categorie2, String lat, String lon, String descriere, String atractii, String restaurante, String activitati, String link) {
-        this.id = id;
-        this.nume = nume;
-        this.categorie = categorie;
-        this.categorie2 = categorie2;
-        this.lat = lat;
-        this.lon = lon;
-        this.descriere = descriere;
-        this.atractii = atractii;
-        this.restaurante = restaurante;
-        this.activitati = activitati;
-        this.link = link;
-    }
+    private String link2;
 
     public Integer getId() {
         return id;
@@ -120,5 +104,13 @@ public class Locatii {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getLink2() {
+        return link2;
+    }
+
+    public void setLink2(String link2) {
+        this.link2 = link2;
     }
 }

@@ -86,6 +86,8 @@
     <string name="zboruri">Flights and Hotels</string>
     <string name="biletZbor"> Check the flight tickets and hotels</string>
     <string name="alteOferte"> Other info</string>
+    <string name="veziPovesti"> Stories</string>
+    <string name="scriePovesti"> Write a story</string>
 
 
      <!--orase-->
@@ -201,6 +203,7 @@
     <string name="sendStories">Send Stories</string>
     <string name="aboutUS">About Us</string>
     <string name="voiceControl">Voice Control</string>
+    <string name="bagaje">Items List</string>
     <!--ADD STORY-->
     <string name="storyTitle">Title</string>
     <string name="storyDescription">Tell us your story</string>

@@ -187,7 +187,7 @@ public class Explore extends AppCompatActivity {
         }
 
 
-        for(int i=0;i<35;i++){
+        for(int i=0;i<30;i++){
             String locatie=locatiiList.get(i).getNume();
             int id=resources.getIdentifier(locatie, "string", context.getPackageName());
             if(id!=0){

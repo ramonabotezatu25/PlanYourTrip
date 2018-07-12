@@ -55,7 +55,6 @@ public class UserProfile extends AppCompatActivity {
         setAllTextOnActivity();
         //navigation view
         navView();
-
     }
 
     private void setAllTextOnActivity() {
@@ -80,12 +79,11 @@ public class UserProfile extends AppCompatActivity {
         startActivity(settings);
     }
     public void voiceControl(View view){
-        Intent settings = new Intent(this, VoiceControl.class);
+        Intent settings = new Intent(this, Home.class);
         startActivity(settings);
     }
 
     private void navView(){
-
         //navigation view
         final BottomNavigationView bottomNavigationView;
         bottomNavigationView = (BottomNavigationView)findViewById(R.id.nav_view_profile);
@@ -100,7 +98,6 @@ public class UserProfile extends AppCompatActivity {
             if (i == 2)
                 menuItem.setTitle(resources.getString(R.string.nav_profile));
         }
-
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
@@ -134,7 +131,6 @@ public class UserProfile extends AppCompatActivity {
         startActivity(a);
     }
 
-
     public void addStory(View view){
         Intent a = new Intent(this, Luggage.class);
         startActivity(a);
@@ -145,7 +141,7 @@ class TestAsyncUserProfile extends AsyncTask<Void, Integer, String> {
 
     protected void onPreExecute() {
         super.onPreExecute();
-        Log.d(TAG + " PreExceute", "On pre Exceute......");
+        Log.d(TAG + " PreExceute", "On pre Exceute...");
     }
 
     protected String doInBackground(Void... arg0) {

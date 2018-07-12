@@ -116,8 +116,8 @@ public class CardFragment extends Fragment {
         }
 
         if(position==6) {
-            title.setText(getResources().getString(R.string.zboruri));
-            descieri.setText(getResources().getString(R.string.biletZbor));
+            title.setText(getResources().getString(R.string.veziPovesti));
+            descieri.setText(getResources().getString(R.string.veziPovesti));
             button.setVisibility(View.VISIBLE);
             button.setBackgroundResource(R.drawable.abudhabi);
             button.setOnClickListener(new View.OnClickListener() {
@@ -134,8 +134,8 @@ public class CardFragment extends Fragment {
         }
 
         if(position==7){
-                title.setText(getResources().getString(R.string.zboruri));
-                descieri.setText(getResources().getString(R.string.biletZbor));
+                title.setText(getResources().getString(R.string.scriePovesti));
+                descieri.setText(getResources().getString(R.string.scriePovesti));
                 button.setVisibility(View.VISIBLE);
                 button.setBackgroundResource(R.drawable.add_story_bg1);
                 button.setOnClickListener(new View.OnClickListener() {

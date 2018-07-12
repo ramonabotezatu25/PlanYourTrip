@@ -89,6 +89,8 @@
     <string name="zboruri">Zboruri si Cazare</string>
     <string name="biletZbor"> Vezi zborurile si hotelurile disponibile</string>
     <string name="alteOferte"> Alte oferte</string>
+    <string name="veziPovesti"> Povesti</string>
+    <string name="scriePovesti"> Scrie o poveste</string>
 
     <!-- Lista orase si descrieri-->
     <!--New york-->
@@ -241,6 +243,7 @@
     <string name="sendStories">Povesteste-ne</string>
     <string name="aboutUS">Despre noi</string>
     <string name="voiceControl">Control vocal</string>
+    <string name="bagaje">Lista bagaje</string>
     <!--ADD STORY-->
     <string name="storyTitle">Titlu</string>
     <string name="storyDescription">Povesteste-ne experienta ta</string>

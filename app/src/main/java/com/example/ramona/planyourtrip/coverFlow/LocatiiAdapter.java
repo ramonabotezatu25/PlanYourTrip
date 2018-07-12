@@ -57,7 +57,7 @@ public class LocatiiAdapter extends BaseAdapter {
 
             //Set Data
 
-            Picasso.with(mContext).load(locatiiExploreList.get(i).getLink())
+            Picasso.with(mContext).load(locatiiExploreList.get(i).getLink2())
                     .into(image);
             name.setText(locatiiExploreList.get(i).getNume());
 

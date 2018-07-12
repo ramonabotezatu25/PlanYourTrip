@@ -65,11 +65,11 @@ public class Luggage extends AppCompatActivity {
                 // selected item
                 String selectedItem = ((TextView) view).getText().toString();
                 if(luggageListChecked.contains(selectedItem)){
-                    luggageListChecked.remove(selectedItem);//remove deselected item from the list of selected items
-                    databaseOperation.updateLuggageItem(luggageList.indexOf(selectedItem),0);
+                    luggageListChecked.remove(selectedItem);
+                    new TestAsyncUserProfile().execute(selectedItem,"UNCHECK");
                 } else{
-                    luggageListChecked.add(selectedItem); //add selected item to the list of selected items
-                    databaseOperation.updateLuggageItem(luggageList.indexOf(selectedItem),1);
+                    luggageListChecked.add(selectedItem);
+                    new TestAsyncUserProfile().execute(selectedItem,"CHECK");
                 }
 
             }
@@ -98,8 +98,10 @@ public class Luggage extends AppCompatActivity {
 
         try{
             new TestAsyncUserProfile().execute(editText.getText().toString(),"ADD");
-            if(!luggageList.contains(editText.getText().toString()))
+            if(!luggageList.contains(editText.getText().toString())){
                 luggageList.add(editText.getText().toString());
+            }
+
         }
         catch(Exception ex){
 
@@ -120,18 +122,24 @@ public class Luggage extends AppCompatActivity {
             finish();
             startActivity(intent);
         }else{
+            if(luggageListChecked.size()<2){
             for(String item:luggageListChecked){
                 Integer indexOfObject = luggageList.indexOf(item)+1;
-                Integer idLuggage =luggageListUser.get(indexOfObject-1-luggageListSize).getId();
                 if(indexOfObject>luggageListSize){
+                    Integer idLuggage =luggageListUser.get(indexOfObject-1-luggageListSize).getId();
                     luggageList.remove(item);
                     luggageListChecked.remove(item);
                     luggageListUser.remove(indexOfObject-1-luggageListSize);
                     new TestAsyncUserProfile().execute(idLuggage.toString(),"REMOVE");
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
                 }else{
                     Toast.makeText(this, "This item can't be deleted!Is our standard list", Toast.LENGTH_LONG).show();
-
                 }
+            }
+            }else{
+                Toast.makeText(this, "Select only one item.", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -152,8 +160,15 @@ class TestAsyncUserProfile extends AsyncTask<String, Integer, String> {
         DatabaseOperation databaseOperation = new DatabaseOperation();
         if(arg0[1].toString().equals("REMOVE")){
             databaseOperation.removeItem(Integer.parseInt(arg0[0].toString()));
-        }else{
+            luggageListUser =  databaseOperation.getStandardLuggageUser(idUtilizator);
+        }else if(arg0[1].toString().equals("CHECK")){
+            databaseOperation.updateLuggageItem(luggageList.indexOf(arg0[0].toString()),1);
+        }
+        else if(arg0[1].toString().equals("UNCHECK")){
+            databaseOperation.updateLuggageItem(luggageList.indexOf(arg0[0].toString()),0);
+        } else{
             databaseOperation.addLuggage(arg0[0].toString(), idUtilizator);
+            luggageListUser =  databaseOperation.getStandardLuggageUser(idUtilizator);
         }
 
         return "You are at PostExecute";

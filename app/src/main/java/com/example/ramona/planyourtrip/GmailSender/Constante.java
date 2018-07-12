@@ -41,6 +41,7 @@ public class Constante {
     public static Integer luggageListSize = 0;
     public static List<LuggageList> luggageListUser = new ArrayList<>();
     public static List<String> luggageListChecked = new ArrayList<>();
+    public static Integer lastLuggageIDUser =0;
 
 
 
