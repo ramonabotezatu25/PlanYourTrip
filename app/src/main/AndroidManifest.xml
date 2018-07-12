@@ -86,7 +86,8 @@
         <activity android:name=".exploreCity.ExploreMyCity" />
         <activity android:name=".stories.Story" />
         <activity android:name=".AddStory" />
-        <activity android:name=".LuggageList.Luggage"></activity>
+        <activity android:name=".LuggageList.Luggage" />
+        <activity android:name=".Open_Setting"></activity>
     </application>
 
 </manifest>

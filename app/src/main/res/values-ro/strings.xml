@@ -254,4 +254,13 @@
     <!-- BAGAJE -->
     <string name="removeItem">Remove Item</string>
     <string name="addItem">Add Item</string>
+    <!-- Settings-->
+    <string name="changePassword">Schimbare parola</string>
+    <string name="changeForm">Schimbare formular de interese</string>
+    <string name="settingsTitle">Setari</string>
+    <string name="currentPassword">Parola Curenta</string>
+    <string name="newPassword">Parola noua</string>
+    <string name="veziParola">Vezi parola</string>
+    <string name="updatePass">Actualizare parola</string>
+    <string name="updateSucces">Parola a fost schimbata</string>
 </resources>

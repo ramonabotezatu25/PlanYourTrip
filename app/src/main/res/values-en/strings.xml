@@ -214,4 +214,14 @@
     <!-- BAGAJE -->
     <string name="removeItem">Remove Item</string>
     <string name="addItem">Add Item</string>
+    <!-- Settings-->
+    <string name="changePassword">Change Password</string>
+    <string name="changeForm">Change user preferences</string>
+    <string name="settingsTitle">Settings</string>
+    <string name="currentPassword">Current Password</string>
+    <string name="newPassword">New Password</string>
+    <string name="veziParola">See Password</string>
+    <string name="updatePass">Update Password</string>
+    <string name="updateSucces">Password is now changed</string>
+
 </resources>

@@ -138,6 +138,7 @@
                     android:layout_height="120dp"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
+                    android:onClick="deschideSetari"
                     android:orientation="vertical"
                     android:background="@color/colorGrass"
                     >
@@ -169,7 +170,6 @@
                     android:layout_weight="1"
                     android:layout_margin="2dp"
                     android:orientation="vertical"
-                    android:onClick="settingsPreferences"
                     android:background="@color/colorBlueJeans"
                     >
                     <ImageView

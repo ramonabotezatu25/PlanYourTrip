@@ -23,10 +23,12 @@ import com.example.ramona.planyourtrip.Formular_interese;
 import com.example.ramona.planyourtrip.Home;
 import com.example.ramona.planyourtrip.LuggageList.Luggage;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
+import com.example.ramona.planyourtrip.Open_Setting;
 import com.example.ramona.planyourtrip.R;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.maps.YourPlace;
 import com.example.ramona.planyourtrip.voiceControl.VoiceControl;
+import com.facebook.share.internal.VideoUploader;
 
 import io.paperdb.Paper;
 
@@ -73,11 +75,12 @@ public class UserProfile extends AppCompatActivity {
         Intent yourPlace = new Intent(this, YourPlace.class);
         startActivity(yourPlace);
     }
-    public void settingsPreferences(View view){
-        Intent settings = new Intent(this, Formular_interese.class);
-        settings.putExtra("operatie","update");
-        startActivity(settings);
-    }
+
+   public void deschideSetari(View view){
+        Intent intent= new Intent(this, Open_Setting.class);
+        startActivity(intent);
+   }
+
     public void voiceControl(View view){
         Intent settings = new Intent(this, Home.class);
         startActivity(settings);
