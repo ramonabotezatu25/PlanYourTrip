@@ -197,11 +197,12 @@
     <string name="language">Language</string>
     <string name="myPlaces">My Places</string>
     <string name="findPlaces">Find Places</string>
-    <string name="userSecurity">Secutiry</string>
-    <string name="settings">Preferences</string>
+    <string name="userSecurity">Settings</string>
+    <string name="recomandariBuget">Recomandările  noastre</string>
     <string name="stories">Stories</string>
     <string name="sendStories">Send Stories</string>
     <string name="aboutUS">About Us</string>
+    <string name="changeLang">Click on Image to change language</string>
     <string name="voiceControl">Voice Control</string>
     <string name="bagaje">Items List</string>
     <!--ADD STORY-->

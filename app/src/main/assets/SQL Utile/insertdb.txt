@@ -245,3 +245,27 @@ insert into lista_bagaj_standard values('Photo Camera','en');
 
 insert into lista_bagaj_standard values('Harta','ro');
 insert into lista_bagaj_standard values('Map','en');
+
+ //INSERT STORY
+
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,1,"Superb","Am petrecut 3 zile minunate in Amsterdam si recomand sa stati cat mai in centru","ramona.i.botezatu","ramona.botezatu");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,1,"Great Amsterdam","Cazarea a fost ieftina la hotelul Center AMS","ramona.i.botezatu","world.tips.travel");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,2,"Vacanta in Grecia","Cel mai bine e de vizitat toamna","-","-");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,2,"Amazing trip","It was an amazing 3 days trip. I truly recommend Achropole for visiting","ramona.i.botezatu","ramona.botezatu");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,3,"Barcelona","Recomand sa vizitati stadionul","ramona.i.botezatu","world.tips.travel");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,4,"Brussels","Restaurantele sunt scumpe","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,5,"Bucurestiul aglomerat","Trafic intens la ora 18","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,6,"Buda si Pesta","Foarte curat si recomand sa vizitati cu familia","-","-");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,12,"Glasgow, un oras extraordinar","Ai foarte multe de vizitat aici. Nu uita camera foto!","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,12,"Vremea nu a tinut cu noi","A plouat in majoritatea zilelor, dar cu toate astea, orasul merita vizitat.","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,20,"Disneyland Paris","Daca ajungeti in Paris, merita sa vizitati DisneyLand pentru cel putin 2 zile","ramona.i.botezatu","ramona.botezatu");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,20,"Un oras romantic","Parisul m-a impresionat din toate punctele de vedere. Este o atmosfera romantica si boema. Incercati sa va duceti la turnul Eiffel cand se lasa seara","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,46,"My dream came true","No words can describe how amazing this place is","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,46,"O locatie extraordinara","Peisajul este divin, apa limpede. Recomand scuba diving","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,24,"Rotterdam","Un oras frumos. Trebuie sa vizitam EuroMast","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,45,"Amazing","The most wonderful place on Earth","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,38,"California Dreaming","The Golden Gate Bridge is a must see","ramona.i.botezatu","ramona.botezatu");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,38,"SFOOOOO ","Ne-am plimbat pe strazile orasului, iar arhitectura cladirilor este minunata. Recomand sa vizitati Alcatraz si muzeele de arta.","ramona.i.botezatu","ramona.botezatu");
+ insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,29,"Experienta marocana","Casa Blanca este unul din cele mai frumoase orase din Maroc. Mancarea si fresh-urile din diferite combinatii de fructe va vor impresiona","ramona.i.botezatu","ramona.botezatu");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,25,"Family Trip","It traveled with my family and it was a great experience for us","ramona.i.botezatu","-");
+ insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,11,"Italy trip","Florenta este un oras minunat si trebuie sa nu va uitati camera foto","-","-");
