@@ -31,4 +31,28 @@
         <item name="turcoaz4">@color/turcoaz2</item>
         <item name="turcoaz5">@color/turcoaz3</item>
     </style>-->
+
+    <style name="style1">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">25sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:padding">1sp</item>
+        <item name="android:layout_margin">1sp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:stretchMode">columnWidth</item>
+        <item name="android:gravity">left</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowRadius">10</item>
+        <item name="android:shadowColor">#000</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+    </style>
+
+    <style name="style2">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">13sp</item>
+    </style>
 </resources>

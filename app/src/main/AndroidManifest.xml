@@ -10,7 +10,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -88,7 +88,8 @@
         <activity android:name=".AddStory" />
         <activity android:name=".LuggageList.Luggage" />
         <activity android:name=".Open_Setting" />
-        <activity android:name=".RecomandariBuget"></activity>
+        <activity android:name=".RecomandariBuget" />
+        <activity android:name=".NearbyPlaces.MapsActivity" />
     </application>
 
 </manifest>

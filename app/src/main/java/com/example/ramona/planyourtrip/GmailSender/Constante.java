@@ -43,7 +43,7 @@ public class Constante {
     public static List<String> luggageListChecked = new ArrayList<>();
     public static Integer lastLuggageIDUser =0;
 
-
+     public static final double[] currentLocation = new double[2];
 
 
     public static final void getSaltString() {

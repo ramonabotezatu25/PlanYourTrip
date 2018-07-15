@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_find_places"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="1dp"
+    tools:context="com.example.ramona.planyourtrip.NearbyPlaces.MAPS.FindPlaces">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.places.map.mapplaces.MapsActivity" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <CheckBox
+                android:id="@+id/check1"
+                style="@style/style2"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <EditText
+                android:id="@+id/placename"
+                style="@style/style2"
+                android:layout_width="260dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15px" />
+            <Button  android:id="@+id/nextbutton"
+                style="@style/style2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:onClick="backButton"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:layout_weight="0.73">
+            </Button>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/LProgress"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:colorBackground="#000"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/pbHeaderProgress"
+                style="?android:attr/progressBarStyleLarge"
+                android:color="#fff"
+                android:layout_width="150dp"
+                android:layout_height="150dp"></ProgressBar>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:colorBackground="#ff0">
+
+        <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            style="@style/style2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:columnCount="3"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:rowCount="2"
+            android:scrollbars="vertical">
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gradio"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/gorestaurant"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Restaurant" />
+
+                <RadioButton
+                    android:id="@+id/goschool"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="School" />
+
+                <RadioButton
+                    android:id="@+id/gofood"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Food" />
+
+                <RadioButton
+                    android:id="@+id/goatm"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Atm" />
+
+                <RadioButton
+                    android:id="@+id/gotourist"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Tourist" />
+
+                <RadioButton
+                    android:id="@+id/gobank"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Bank" />
+
+                <RadioButton
+                    android:id="@+id/gogym"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Gym" />
+
+                <RadioButton
+                    android:id="@+id/goshoppingmall"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="shopp.Mall" />
+
+                <RadioButton
+                    android:id="@+id/gotemple"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Temple" />
+
+                <RadioButton
+                    android:id="@+id/gopark"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Park" />
+
+                <RadioButton
+                    android:id="@+id/gopharmacy"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Pharmacy" />
+
+                <RadioButton
+                    android:id="@+id/gohospital"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Hospital" />
+
+                <RadioButton
+                    android:id="@+id/goplumber"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Plumber" />
+
+                <RadioButton
+                    android:id="@+id/gotaxistand"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Taxi Stand" />
+
+                <RadioButton
+                    android:id="@+id/godepartmentstore"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Dep.Store" />
+
+                <RadioButton
+                    android:id="@+id/gocarwash"
+                style="@style/style1"
+                android:checked="false"
+                android:text="Car Wash" />
+
+                <RadioButton
+                    android:id="@+id/gocarrepair"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Car Repair" />
+
+                <RadioButton
+                    android:id="@+id/gobook_store"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Book Store" />
+
+                <RadioButton
+                    android:id="@+id/gobakery"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Bakery" />
+
+                <RadioButton
+                    android:id="@+id/gobookstore"
+                    style="@style/style1"
+                    android:checked="false"
+                    android:text="Book Store" />
+            </RadioGroup>
+        </GridLayout>
+    </ScrollView>
+
+</RelativeLayout>
