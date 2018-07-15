@@ -16,9 +16,12 @@ import com.example.ramona.planyourtrip.GmailSender.Constante;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Constants;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.Encrypt.Encrypt;
 
 import io.paperdb.Paper;
 
+import static com.example.ramona.planyourtrip.GmailSender.Constante.initVector;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.key;
 import static com.example.ramona.planyourtrip.MultiLanguage.Language.setDefaultLanguage;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
 
@@ -63,7 +66,11 @@ public class Open_Setting extends AppCompatActivity {
     public void updatePassword(View view){
 
         String parola= parolaNoua.getText().toString();
-        db.updateUserPassword(idUtilizator, parola);
+        String parolaActuala= parolaCurenta.getText().toString();
+        Encrypt encryptor = new Encrypt();
+        String parolaNoua = encryptor.encrypt(key,initVector,parola);
+        String parolaVeche = encryptor.encrypt(key,initVector,parolaActuala);
+        db.updateUserPassword(idUtilizator, parolaNoua,parolaVeche);
         Toast.makeText(getApplicationContext(),R.string.updateSucces, Toast.LENGTH_SHORT).show();
         linearLayout.setVisibility(View.INVISIBLE);
     }

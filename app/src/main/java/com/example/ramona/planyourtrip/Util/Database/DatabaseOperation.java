@@ -785,14 +785,14 @@ public class DatabaseOperation {
         }
     }
 
-    public void updateUserPassword(Integer idUser, String parolaNoua){
+    public void updateUserPassword(Integer idUser, String parolaNoua,String parolaVeche){
         ConnectionHelper conStr = new ConnectionHelper();
         connect = conStr.connectionclasss();        // Connect to database
         if (connect == null) {
             ConnectionResult = "Check You Internet Acces!";
         } if(idUser!=null){
                 try{
-                    String query= "UPDATE user SET parola="+ parolaNoua+" where id=" + idUser+ ";";
+                    String query= "UPDATE user SET parola='"+ parolaNoua+"' where id=" + idUser+ " and parola = '"+parolaVeche+"'";
                     PreparedStatement preparedStatement = null;
                     preparedStatement = connect.prepareStatement(query);
                     preparedStatement.executeUpdate();
