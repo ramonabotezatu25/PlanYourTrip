@@ -52,7 +52,7 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "select l.*,d.descriere,d.atractii,d.restaurante,d.activitati,d.link_locatie,d.link_locatie_2 from locatii l " +
+                String query = "select l.*,d.descriere,d.descriere_ro,d.atractii,d.restaurante,d.activitati,d.link_locatie,d.link_locatie_2 from locatii l " +
                         " left join descriere_orase d on d.id_locatie = l.id " +
                         " order by l.nume_oras asc";
                 Statement stmt = connect.createStatement();
@@ -66,6 +66,7 @@ public class DatabaseOperation {
                     locatie.setLat(rs.getString("lat"));
                     locatie.setLon(rs.getString("lon"));
                     locatie.setDescriere(rs.getString("descriere"));
+                    locatie.setDescriereRo(rs.getString("descriere_ro"));
                     locatie.setAtractii(rs.getString("atractii"));
                     locatie.setRestaurante(rs.getString("restaurante"));
                     locatie.setActivitati(rs.getString("activitati"));

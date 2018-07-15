@@ -17,6 +17,15 @@ public class Locatii {
     private String activitati;
     private String link;
     private String link2;
+    private String descriereRo;
+
+    public String getDescriereRo() {
+        return descriereRo;
+    }
+
+    public void setDescriereRo(String descriereRo) {
+        this.descriereRo = descriereRo;
+    }
 
     public Integer getId() {
         return id;

@@ -28,6 +28,8 @@ import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Weather.Weather;
 import com.example.ramona.planyourtrip.stories.Story;
 
+import io.paperdb.Paper;
+
 
 public class CardFragment extends Fragment {
     private CardView cardView;
@@ -72,7 +74,12 @@ public class CardFragment extends Fragment {
 
         for(Locatii l : locatiiList){
             if(l.getNume().equals(numeOras)){
-                descriereOras=l.getDescriere();
+                String limba = (String) Paper.book().read("language");
+                if(limba.equals("ro"))
+                    descriereOras = l.getDescriereRo();
+                else
+                    descriereOras=l.getDescriere();
+
                 restaurante= l.getRestaurante();
                 topAtractiiTuristice=l.getAtractii();
                 activitati=l.getActivitati();
