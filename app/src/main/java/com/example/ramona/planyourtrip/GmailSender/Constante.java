@@ -46,6 +46,9 @@ public class Constante {
      public static final double[] currentLocation = new double[2];
 
 
+    public static String key = "Bar12345Bar12345"; // 128 bit key
+    public static String initVector = "RandomInitVector"; // 16 bytes IV
+
     public static final void getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();

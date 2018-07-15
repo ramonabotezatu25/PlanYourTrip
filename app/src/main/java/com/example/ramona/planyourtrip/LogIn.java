@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Util.Constants;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.Encrypt.Encrypt;
 import com.example.ramona.planyourtrip.Util.User;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 import com.facebook.AccessToken;
@@ -30,6 +31,8 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.initVector;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.key;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.userPreferencesForHome;
 import org.json.JSONException;
@@ -195,7 +198,10 @@ public class LogIn extends AppCompatActivity{
     public void login(View view){
         String emailU = email.getText().toString();
         String parolaU = parola.getText().toString();
-        User utilizatorActiv = db.logInUtilizator(emailU,parolaU);
+        Encrypt encryptor = new Encrypt();
+        String parola = encryptor.encrypt(key,initVector,parolaU);
+
+        User utilizatorActiv = db.logInUtilizator(emailU,parola);
         if(utilizatorActiv!=null && utilizatorActiv.getActiv()==1){
             idUtilizator = utilizatorActiv.getId();
             SharedPreferences.Editor editor = preferences.edit();
@@ -214,6 +220,8 @@ public class LogIn extends AppCompatActivity{
             }
 
 
+        }else{
+            Toast.makeText(this,"Parola gresita sau utilizator inactiv!",Toast.LENGTH_SHORT).show();
         }
     }
     //deschide SignUp Form

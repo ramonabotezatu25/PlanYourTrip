@@ -5,6 +5,7 @@ import android.content.res.Resources;
 
 import com.example.ramona.planyourtrip.Util.Categorii;
 import com.example.ramona.planyourtrip.Util.Email;
+import com.example.ramona.planyourtrip.Util.Encrypt.Encrypt;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.LuggageList;
 import com.example.ramona.planyourtrip.Util.StoryObj;
@@ -19,6 +20,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.ramona.planyourtrip.GmailSender.Constante.initVector;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.key;
+
 /**
  * Created by Ramona on 4/3/2018.
  */
@@ -31,6 +35,8 @@ public class DatabaseOperation {
     //setari limba
     Context context;
     Resources resources;
+    Encrypt encryptor = new Encrypt();
+
 
 
     //getAllLocation from DB
@@ -94,12 +100,13 @@ public class DatabaseOperation {
             return res;
         }
         try {
+            String userPassword = encryptor.encrypt(key,initVector,user.getParola());
             String query = "INSERT INTO user(nume,email,parola,cod_confirmare) VALUES(?,?,?,?)";
             PreparedStatement preparedStatement = null;
             preparedStatement = connect.prepareStatement(query);
             preparedStatement.setString(1, user.getNume());
             preparedStatement.setString(2,user.getEmail());
-            preparedStatement.setString(3,user.getParola());
+            preparedStatement.setString(3,userPassword);
             preparedStatement.setString(4,user.getCodConfirmare());
             res = preparedStatement.executeUpdate();
             connect.close();
@@ -275,7 +282,7 @@ public class DatabaseOperation {
             return utilizator;
         } else {
             // Change below query according to your own database.
-            String query = "select count(*) activ,id from user where email = '"+email +"' and parola='"+parola+"' and activ = 1";
+            String query = "select count(*) activ,id from user where email = '"+email +"' and parola='"+parola.replace("\n","")+"' and activ = 1";
             try {
                 Statement stmt  = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
