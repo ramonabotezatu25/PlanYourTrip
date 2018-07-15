@@ -11,13 +11,13 @@ public class UserPreferences {
     private String catDeDesPleci;
     private String categoria1;
     private String categoria2;
-    private String buget;
+    private Integer buget;
     private String oraseVizitate;
 
     public UserPreferences() {
     }
 
-    public UserPreferences(Integer id,String statusRelatie, String areCopii, String catDeDesPleci, String categoria1, String categoria2, String buget, String oraseVizitate) {
+    public UserPreferences(Integer id,String statusRelatie, String areCopii, String catDeDesPleci, String categoria1, String categoria2, Integer buget, String oraseVizitate) {
         this.id= id;
         this.statusRelatie = statusRelatie;
         this.areCopii = areCopii;
@@ -76,11 +76,11 @@ public class UserPreferences {
         this.categoria2 = categoria2;
     }
 
-    public String getBuget() {
+    public Integer getBuget() {
         return buget;
     }
 
-    public void setBuget(String buget) {
+    public void setBuget(Integer buget) {
         this.buget = buget;
     }
 

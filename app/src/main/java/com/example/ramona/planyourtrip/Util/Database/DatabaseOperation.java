@@ -23,6 +23,7 @@ import java.util.List;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.initVector;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.key;
 
+
 /**
  * Created by Ramona on 4/3/2018.
  */
@@ -137,7 +138,7 @@ public class DatabaseOperation {
                 preparedStatement.setString(4, userPreferences.getCatDeDesPleci());
                 preparedStatement.setString(5, userPreferences.getCategoria1());
                 preparedStatement.setString(6, userPreferences.getCategoria2());
-                preparedStatement.setString(7, userPreferences.getBuget());
+                preparedStatement.setInt(7, userPreferences.getBuget());
                 preparedStatement.setString(8, userPreferences.getOraseVizitate());
                 res = preparedStatement.executeUpdate();
                 connect.close();
@@ -416,7 +417,7 @@ public class DatabaseOperation {
                      data.setAreCopii(rs.getString("copii"));
                      data.setCategoria1(rs.getString("id_categorie_1"));
                      data.setCategoria2(rs.getString("id_categorie_2"));
-                     data.setBuget(rs.getString("buget"));
+                     data.setBuget(rs.getInt("buget"));
                      data.setOraseVizitate(rs.getString("id_locatii"));
                 }
 

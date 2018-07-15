@@ -27,6 +27,7 @@ import com.example.ramona.planyourtrip.Util.Categorii;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
@@ -78,7 +79,6 @@ public class Formular_interese extends AppCompatActivity{
     List<Categorii> listaCategorii = new ArrayList<>();
     final List<String> listaOrase = new ArrayList<>();
     final List<String> listaOrase3 = new ArrayList<>();
-    List<Locatii> locatiiList  = new ArrayList<>();
 
     TextView tvTari;
     WaveView waveView;
@@ -197,7 +197,7 @@ public class Formular_interese extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if (position!=0){
                     waveViewProgress("spinnerBuget");
-                    userPreferences.setBuget(spinnerBuget.getSelectedItem().toString());}
+                    userPreferences.setBuget(position);}
                 else
                     waveViewProgress("0");
             }
@@ -324,7 +324,8 @@ public class Formular_interese extends AppCompatActivity{
         //mulilng
         allYouNeed();
 
-        locatiiList = db.getLocation();
+        if(locatiiList.size()==0)
+            locatiiList = db.getLocation();
 
         if(operatie.equals("update")) {
             userPreferences = db.getUserPref(idUtilizator);
@@ -362,16 +363,8 @@ public class Formular_interese extends AppCompatActivity{
             spinnerCategorii2.setSelection(Integer.parseInt(selectedCategoria1[i]));
         }
 
-        if(userPreferences.getBuget().contains("100"))
-            spinnerBuget.setSelection(2);
-        else if(userPreferences.getBuget().contains("301"))
-            spinnerBuget.setSelection(3);
-        else if(userPreferences.getBuget().contains("501"))
-            spinnerBuget.setSelection(4);
-        else if(userPreferences.getBuget().contains("Over") || userPreferences.getBuget().contains("Peste"))
-            spinnerBuget.setSelection(5);
-        else
-            spinnerBuget.setSelection(1);
+        if(userPreferences.getBuget()!=null)
+            spinnerBuget.setSelection(userPreferences.getBuget());
     }
 
     private void allYouNeed() {

@@ -140,3 +140,10 @@ lista varchar(99),
 
 id_user INT(11),
 checked numeric(1) default 0 );
+
+
+create table buget(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+
+buget int(11) );
