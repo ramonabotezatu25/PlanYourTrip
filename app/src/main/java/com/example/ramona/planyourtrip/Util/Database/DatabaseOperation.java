@@ -8,6 +8,7 @@ import com.example.ramona.planyourtrip.Util.Email;
 import com.example.ramona.planyourtrip.Util.Encrypt.Encrypt;
 import com.example.ramona.planyourtrip.Util.Locatii;
 import com.example.ramona.planyourtrip.Util.LuggageList;
+import com.example.ramona.planyourtrip.Util.Oferte;
 import com.example.ramona.planyourtrip.Util.StoryObj;
 import com.example.ramona.planyourtrip.Util.User;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
@@ -408,7 +409,7 @@ public class DatabaseOperation {
                 ConnectionResult = "Check Your Internet Access!";
             } else {
                 // Change below query according to your own database.
-                String query = "select * from user_preferences where id_user = "+idUtilizator;
+                String query = "select u.*,b.buget as buget_oferte from user_preferences u left join buget b on u.buget=b.id where id_user="+idUtilizator;
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
@@ -420,6 +421,7 @@ public class DatabaseOperation {
                      data.setCategoria2(rs.getString("id_categorie_2"));
                      data.setBuget(rs.getInt("buget"));
                      data.setOraseVizitate(rs.getString("id_locatii"));
+                     data.setBugetOferte(rs.getInt("buget_oferte"));
                 }
 
                 ConnectionResult = " successful";
@@ -804,7 +806,37 @@ public class DatabaseOperation {
                 }
             }
         }
+
+    public List<Oferte> getOffers(Integer buget){
+        List<Oferte> data  = new ArrayList<>();
+
+        ConnectionHelper conStr = new ConnectionHelper();
+        connect = conStr.connectionclasss();        // Connect to database
+
+        if (connect == null) {
+            ConnectionResult = "Check Your Internet Access!";
+            return null;
+        } else {
+            // Change below query according to your own database.
+            String query = "select * from oferte where buget <"+buget +" order by buget asc";
+            try {
+                Statement stmt  = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()) {
+                    Oferte oferta = new Oferte();
+                    oferta.setDescriere(rs.getString("descriere"));
+                    oferta.setBuget(rs.getInt("buget"));
+                    data.add(oferta);
+                }
+                connect.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return data;
     }
+
+}
 
 
 

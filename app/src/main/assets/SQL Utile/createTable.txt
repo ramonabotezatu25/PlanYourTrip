@@ -147,3 +147,12 @@ create table buget(
 id INT(11) NOT NULL PRIMARY KEY auto_increment,
 
 buget int(11) );
+
+
+create table oferte(
+
+id INT(11) NOT NULL PRIMARY KEY auto_increment,
+descriere varchar(4000),
+
+buget int(11) );
+

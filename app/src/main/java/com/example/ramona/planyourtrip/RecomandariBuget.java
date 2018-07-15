@@ -8,19 +8,34 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
+import com.example.ramona.planyourtrip.Util.Oferte;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.userPreferencesForHome;
+
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecomandariBuget extends AppCompatActivity {
 
-    String[] TITLES={"2 zile Paris", "Weekend Barcelina", "Excursie in Maroc"};
-    String[] DESCRIPTIONS={"bilet avion ieftin",  "cazare ieftina in centtu", "mancarea ieftina"};
-   ListView listView;
+    String[] TITLES;
+    String[] DESCRIPTIONS;
+    ListView listView;
+    DatabaseOperation databaseOperation = new DatabaseOperation();
+    List<Oferte> offerte = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recomandari_buget);
         listView=(ListView)findViewById(R.id.listview_recomandari);
-
+        offerte = databaseOperation.getOffers(userPreferencesForHome.getBugetOferte());
+        TITLES = new String[offerte.size()];
+        DESCRIPTIONS = new String[offerte.size()];
+        for(int i =0;i<offerte.size();i++){
+            TITLES[i] = offerte.get(i).getBuget().toString()+"$";
+            DESCRIPTIONS[i] =offerte.get(i).getDescriere();
+        }
         CustomAdapter customAdapter= new CustomAdapter();
         listView.setAdapter(customAdapter);
     }

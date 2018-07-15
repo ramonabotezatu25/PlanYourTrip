@@ -13,6 +13,7 @@ public class UserPreferences {
     private String categoria2;
     private Integer buget;
     private String oraseVizitate;
+    private Integer bugetOferte;
 
     public UserPreferences() {
     }
@@ -26,6 +27,15 @@ public class UserPreferences {
         this.categoria2 = categoria2;
         this.buget = buget;
         this.oraseVizitate = oraseVizitate;
+    }
+
+
+    public Integer getBugetOferte() {
+        return bugetOferte;
+    }
+
+    public void setBugetOferte(Integer bugetOferte) {
+        this.bugetOferte = bugetOferte;
     }
 
     public Integer getId() {

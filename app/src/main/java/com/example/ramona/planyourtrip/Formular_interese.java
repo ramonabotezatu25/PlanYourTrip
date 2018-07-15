@@ -40,6 +40,7 @@ import java.util.Set;
 import io.paperdb.Paper;
 
 import static android.widget.AdapterView.*;
+import static com.example.ramona.planyourtrip.GmailSender.Constante.userPreferencesForHome;
 
 public class Formular_interese extends AppCompatActivity{
 
@@ -328,7 +329,9 @@ public class Formular_interese extends AppCompatActivity{
             locatiiList = db.getLocation();
 
         if(operatie.equals("update")) {
-            userPreferences = db.getUserPref(idUtilizator);
+            userPreferences = userPreferencesForHome;
+            if(userPreferences==null)
+                userPreferences = db.getUserPref(idUtilizator);
             checkedItems = new boolean[locatiiList.size()];
             for(int i =0;i<locatiiList.size();i++){
                 String[] oraseUser = new String[0];

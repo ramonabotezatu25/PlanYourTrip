@@ -347,3 +347,14 @@ insert into lista_bagaj_standard values('Map','en');
  Meta $$$; Cure $$$; Samy`s Curry $;',
  activitati='Visit Marina Bay; Chinatown; Orchard Road; Merlion Park;
  Take a night safari; Walk through Gardens by the Bay; SEA Aquarium;' WHERE ID =33
+
+//buget
+
+insert into buget(buget) values(100);
+insert into buget(buget) values(300);
+insert into buget(buget) values(500);
+insert into buget(buget) values(1000);
+insert into buget(buget) values(100000);
+
+
+//

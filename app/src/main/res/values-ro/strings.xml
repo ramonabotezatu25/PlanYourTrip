@@ -55,10 +55,10 @@
     <!-- Spinner buget -->
     <array name="spinnerBuget">
         <item>Alege o optiune</item>
-        <item>Nu conteaza</item>
-        <item>Intre 100$ - 300$</item>
-        <item>Intre 301$- 500$</item>
-        <item>Intre 501$ - 1000$</item>
+        <item>100$</item>
+        <item>300$</item>
+        <item>500$</item>
+        <item>1000$</item>
         <item>Peste 1000$</item>
     </array>
     <!-- Spinner categorii-->
