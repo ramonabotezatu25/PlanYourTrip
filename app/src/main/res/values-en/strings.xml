@@ -198,7 +198,7 @@
     <string name="myPlaces">My Places</string>
     <string name="findPlaces">Find Places</string>
     <string name="userSecurity">Settings</string>
-    <string name="recomandariBuget">Recomandările  noastre</string>
+    <string name="recomandariBuget">Budget Offers</string>
     <string name="stories">Stories</string>
     <string name="sendStories">Send Stories</string>
     <string name="aboutUS">About Us</string>
@@ -224,5 +224,6 @@
     <string name="veziParola">See Password</string>
     <string name="updatePass">Update Password</string>
     <string name="updateSucces">Password is now changed</string>
-
+    <!--RECOMANDARI BUGET-->
+    <string name="titluRecomandariBuget">Check out the following offers which we recommend for your budget</string>
 </resources>

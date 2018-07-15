@@ -269,3 +269,81 @@ insert into lista_bagaj_standard values('Map','en');
  insert into story(id_user, id_locatie,titlu,poveste,facebook,instagram) values(1,29,"Experienta marocana","Casa Blanca este unul din cele mai frumoase orase din Maroc. Mancarea si fresh-urile din diferite combinatii de fructe va vor impresiona","ramona.i.botezatu","ramona.botezatu");
  insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,25,"Family Trip","It traveled with my family and it was a great experience for us","ramona.i.botezatu","-");
  insert into story (id_user, id_locatie,titlu,poveste,facebook,instagram)values(1,11,"Italy trip","Florenta este un oras minunat si trebuie sa nu va uitati camera foto","-","-");
+
+
+
+ -- Casa Blanca
+ update descriere_orase SET descriere='Though not as atmospheric as other Moroccan cities, Casablanca is the best representation of the modern nation. This is where money is being made, where young Moroccans come to seek their fortunes and where business and the creative industries prosper.',
+ descriere_ro='
+ Deși nu la fel de atmosferic ca alte orașe marocane, Casablanca este cea mai bună reprezentare a națiunii moderne. Aici se fac banii, unde tinerii marocani vin sa caute averile si unde prospera afacerile si industriile creative.
+ Numărul de proiecte de construcție aflate în prezent în curs de desfășurare este pur și simplu extraordinar - reamenajările majore includ cele din Pl Mohammed V și Parc de la Ligue Arabe, iar noile clădiri publice includ Grand Théâtre de Casablanca.',
+ atractii='Hassan II Mosque;Casablanca Cathedral;Place des Nations Unies;
+ Mohamed V Square ,Casablanca Square;Parc Sindibad;
+ Royal Palace;Musée de la Fondation Abderrahman slaoui;Mahkama du Pacha;',
+ restaurante='
+ La Sqala;Rick`s Café;Restautant du Port de Peche;Dar Beida; La Bodega; Basmane;',
+ activitati='TOAST MOROCCAN CAFÉ SOCIETY;GO SHOPPING IN CASABLANCA`S OLD AND NEW MEDINAS;
+ SPEND A DAY ON THE COAST;HEAD TO THE SKY 28;' WHERE ID =29;
+
+ -- Tokyo --
+ update descriere_orase SET descriere='Tokyo  is Japan`s capital and the world`s most populous metropolis. It is also one of Japan`s 47 prefectures, consisting of 23 central city wards and multiple cities, towns and villages west of the city center. The Izu and Ogasawara Islands are also part of Tokyo
+ Tokyo`s neon-lit streetscapes still look like a sci-fi film set – and that`s a vision of the city from the 1980s. Tokyo has been building ever since, pushing the boundaries of what`s possible on densely populated, earthquake-prone land, adding ever taller, sleeker structures. Come see the utopian mega-malls, the edgy designer boutiques from Japan`s award-winning architects, and the world`s tallest tower – Tokyo Sky Tree – a twisting spire that draws on ancient building techniques. Stand atop one of Tokyo`s skyscrapers and
+ look out over the city at night to see it blinking
+ like the control panel of a starship, stretching all the way to the horizon.',
+ descriere_ro='Tokyo  este capitala Japoniei și cea mai populată metropolă a lumii. Este, de asemenea, una dintre cele 47 de prefecturi din Japonia, formată din 23 de orașe centrale ale orașului și mai multe orașe, orașe și sate la vest de centrul orașului. Insulele Izu și Ogasawara fac de asemenea parte din Tokyo
+ Straturile de stradă strălucitoare ale orașului Tokyo încă arată ca un film de film science-fi - și aceasta este o viziune a orașului din anii 1980. Tokyo se construiește de atunci, împingând granițele a ceea ce este posibil pe un teren populat dens, cutremur, adăugând structuri tot mai înalte și mai subțiri. Veniți să vedeți mega-mall-urile utopice, buticurile de designer de la arhitecții câștigători ai premiului japonez și cel mai înalt vârf din lume - Tokyo Sky Tree - o turnă răsucire care se bazează pe tehnicile antice de construcție. Stați pe un zgârie-nori din Tokyo și priviți peste noapte orașul pentru a vedea că clipește ca panoul
+ de control al unei nave de nave, care se întinde până la orizont.',
+ atractii='Sensō-ji;Tokyo Skytree;Tokyo Disneyland;Tokyo DisneySea;Tokyo Imperial Palace;
+ Tokyo Tower;Shinjuku Gyo-en;Yoyogi Park;Hamarikyu Gardens;Ghibli Museum;
+ Tokyo Metropolitan Government Building;Rainbow Bridge;',
+ restaurante='Fukamachi $$;Sushi Sugita
+ $$$;Kagari $;Tsukiji Outer Market$;RyuGin )$$$$;',
+ activitati='Night Walk on Rainbow Bridge;
+ Purikura no Mecca $;Yayoi Kusama Museum $$$;Shinjuku Gyoen National Garden
+  $;Senso-ji $;
+ ' WHERE ID =30;
+ -- Beijing
+
+ -- Beijing
+ update descriere_orase SET descriere='Beijing, Jing for short, is a metropolis in northern China and the capital of China. Lying 70 mi (102 km) west of Bohai Sea, it borders Hebei Province to the north, west, south, and for a small section in the east and Tianjin to the southeast.
+ Constantly reimagining itself as it races towards the future, yet inextricably linked to its glorious, notorious past, Běijīng is as compelling as it is complex.',
+ descriere_ro='
+ Beijing, Jing pe scurt, este o metropolă din nordul Chinei și capitala
+  Chinei. Situat la 70 km (102 km) la vest de Marea Bohai,
+  ea se învecinează cu provincia Hebei la nord, vest, sud și pentru o
+  mică parte în est și Tianjin la sud-est.
+ Reimaginându-se mereu pe sine în timp ce se
+ îndreaptă spre viitor, dar în mod inexplicabil legat de trecutul
+  său glorios și notoriu, Beijīng este la fel de convingător
+  cat este si de complex',
+ atractii='Forbidden City;Great Wall of China;Summer Palace;Temple of Heaven;
+ Badaling;Tiananmen Square;Beihai Park;Jingshan Park;Juyong Pass;',
+ restaurante='Pure Lotus  $$;Dadong Duck $; The Bagna Cauda at Vinvie $$$;
+ Baijiu at Capital Spirits  $;Green Bites To Go  $;',
+ activitati='Dragon Escalator; China Watermelon Museum; Great Wall of China Slide;
+ Ming Dynasty Tombs; Paleozoological Museum of China; ' WHERE ID =31;
+
+ -- Shanghai
+ update descriere_orase SET descriere='Shànghǎi is home to the world`s second-tallest tower and a host of other neck-craning colossi. But it`s not all sky-scraping razzmatazz. Beyond the crisply cool veneer of the modern city typified by Pǔdōng, you can lift the lid to a treasure chest of architectural styles. The city`s period of greatest cosmopolitan excess – the 1920s and 1930s – left the city with pristine examples of art deco buildings, most of which survived the 20th-century vicissitudes assailing Shànghǎi. And there`s more: from Jesuit cathedrals, Jewish synagogues and Buddhist temples to home-grown lòngtáng (laneway) and shíkùmén (stone gate) housing, Shànghǎi`s architectural heritage is like none other.',
+ descriere_ro='Shànghǎi: puține orașe din lume evocă atât de multă istorie, exces, glamour, mistică și promisiune exotică doar în nume.
+ In Shānghǎi se află cel de-al doilea cel mai înalt turn din lume și o mulțime de alte cladiri foarte inalte. Dincolo de furnirul rece din orașul modern prezentat de Pǔdōng, puteți ridica capacul într-un coș de comori de stiluri arhitecturale. Perioada de cel mai mare exces cosmopolit al orașului - anii 1920 și 1930 - a părăsit orașul cu exemple clare de clădiri de artă deco, dintre care majoritatea au supraviețuit vicisitudinilor secolului al XX-lea care au atacat Shānghǎi. Și mai sunt multe: de la catedrala iezuită, de la sinagogi evreiești și de la templele budiste până la locuințe de lobă și de locuințe de piatră, patrimoniul arhitectural al Shānghǎi nu este ca oricare altul.',
+ atractii='Yu Garden;The Bund;Oriental Pearl Tower;Shanghai Disney Resort;
+ Jin Mao Tower;Shanghai World Financial Center;Shanghai Tower;Jade Buddha Temple;Shanghai Museum;Longhua Temple;',
+ restaurante='Jeju Izakaya;Hey There;RAC;Réel Mall;Oha Café;
+ ',
+ activitati='St. Ignatius Cathedral;Shanghai World Financial Center “100 Floor Observation Deck.”;
+ The Oriental Pearl Observation Deck at Night;Exploring the Yuyuan Garden;'
+ WHERE ID =32;
+
+ update descriere_orase SET descriere='The capital city, also called Singapore, covers about a third of the area of the main island. Located at the tip of the Malay Peninsula, Singapore`s tropical climate welcomes both leisure and business travelers year round.
+ Whizzing around Singapore can take a matter of minutes, thanks to one of the world’s most efficient and widespread public transport systems. Hankering for a roti prata breakfast in Little India, but want to visit the temples in Chinatown before lunch? No problem, you’ll be there in a jiffy using the sparkling MRT system – and why not stop at Marina Bay for a spot of shopping on your way? Plus, with new metro lines opening practically every two years, this tiny island just keeps on becoming easier to explore.',
+ descriere_ro='apitala, numită și Singapore, acoperă aproximativ o treime din zona insulei principale. Situat la vârful Peninsulei Malay, clima tropicală din Singapore salută atât călătorii de agrement, cât și călătorii de afaceri pe tot parcursul anului.
+ un drum In jurul valorii de Singapore poate dura câteva minute, datorită unuia dintre cele mai eficiente și mai răspândite sisteme de transport public din lume. Căutați un mic dejun roti prata în Mica India, dar doriți să vizitați templele din Chinatown înainte de prânz? Nici o problemă, veți fi acolo într-un timp scurt, folosind sistemul MRT - și de ce să nu vă opriți la Marina Bay pentru un loc de cumpărături pe drumul vostru? În plus, cu noi linii de metrou care se deschid practic la fiecare doi ani, această insulă mică continuă să devină mai ușor de explorat.',
+ atractii='Sentosa;Gardens by the Bay;Universal Studios Singapore;
+ Marina Bay Sands;Night Safari, Singapore;Merlion Park;
+ Singapore Flyer;Singapore Botanic Gardens;Resorts World Sentosa;Singapore Zoo;Jurong Bird Park;
+ Esplanade - Theatres on the Bay;Singapore Cable Car;Buddha Tooth Relic Temple and Museum;',
+ restaurante='Candlenut $$$;Bam! $$;Folklore $$; Hajah Maimunah $$;Wilf Rocket $$$;
+ Meta $$$; Cure $$$; Samy`s Curry $;',
+ activitati='Visit Marina Bay; Chinatown; Orchard Road; Merlion Park;
+ Take a night safari; Walk through Gardens by the Bay; SEA Aquarium;' WHERE ID =33

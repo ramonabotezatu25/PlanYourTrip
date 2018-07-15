@@ -25,6 +25,7 @@ import com.example.ramona.planyourtrip.LuggageList.Luggage;
 import com.example.ramona.planyourtrip.MultiLanguage.MultiLanguageHelper;
 import com.example.ramona.planyourtrip.Open_Setting;
 import com.example.ramona.planyourtrip.R;
+import com.example.ramona.planyourtrip.RecomandariBuget;
 import com.example.ramona.planyourtrip.Util.Database.DatabaseOperation;
 import com.example.ramona.planyourtrip.maps.YourPlace;
 import com.example.ramona.planyourtrip.voiceControl.VoiceControl;
@@ -136,6 +137,11 @@ public class UserProfile extends AppCompatActivity {
 
     public void addStory(View view){
         Intent a = new Intent(this, Luggage.class);
+        startActivity(a);
+    }
+
+    public void deschideRecomandariBuget(View view){
+        Intent a= new Intent(this, RecomandariBuget.class);
         startActivity(a);
     }
 }

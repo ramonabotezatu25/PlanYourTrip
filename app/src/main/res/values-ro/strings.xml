@@ -238,7 +238,7 @@
     <string name="myPlaces">Locurile Mele</string>
     <string name="findPlaces">Imprejurimi</string>
     <string name="userSecurity">Setari</string>
-    <string name="recomandariBuget">Our recomandations</string>
+    <string name="recomandariBuget">Oferte Buget</string>
     <string name="stories">Povesti</string>
     <string name="sendStories">Povesteste-ne</string>
     <string name="aboutUS">Despre noi</string>
@@ -264,4 +264,6 @@
     <string name="veziParola">Vezi parola</string>
     <string name="updatePass">Actualizare parola</string>
     <string name="updateSucces">Parola a fost schimbata</string>
+    <!--RECOMANDARI BUGET-->
+    <string name="titluRecomandariBuget">Analizeaza urmatoarele oferte ce se contureaza pe bugetul tau disponibil</string>
 </resources>
