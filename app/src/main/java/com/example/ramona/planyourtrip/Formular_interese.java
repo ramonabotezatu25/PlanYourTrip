@@ -29,6 +29,7 @@ import com.example.ramona.planyourtrip.Util.Locatii;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.idUtilizator;
 import static com.example.ramona.planyourtrip.GmailSender.Constante.locatiiList;
 import com.example.ramona.planyourtrip.Util.UserPreferences;
+import com.google.android.gms.common.util.NumberUtils;
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
 
@@ -359,11 +360,29 @@ public class Formular_interese extends AppCompatActivity{
         String[] selectedCategoria1 = userPreferences.getCategoria1().split(",");
         String[] selectedCategoria2 = userPreferences.getCategoria2().split(",");
         for(int i=0;i<selectedCategoria1.length;i++){
-            spinnerCategorii1.setSelection(Integer.parseInt(selectedCategoria1[i]));
+            if(NumberUtils.isNumeric(selectedCategoria1[i]))
+                spinnerCategorii1.setSelection(Integer.parseInt(selectedCategoria1[i]));
+            else{
+                int j=0;
+                for(Categorii c : listaCategorii){
+                    if(c.getNumeCategorie().equals(selectedCategoria1[i].toString()))
+                        spinnerCategorii1.setSelection(j);
+                    j++;
+                }
+            }
         }
 
         for(int i=0;i<selectedCategoria2.length;i++){
-            spinnerCategorii2.setSelection(Integer.parseInt(selectedCategoria1[i]));
+            if(NumberUtils.isNumeric(selectedCategoria2[i]))
+                spinnerCategorii2.setSelection(Integer.parseInt(selectedCategoria2[i].toString()));
+            else{
+                int j=0;
+                for(Categorii c : listaCategorii){
+                    if(c.getNumeCategorie().equals(selectedCategoria2[i]))
+                        spinnerCategorii2.setSelection(j);
+                    j++;
+                }
+            }
         }
 
         if(userPreferences.getBuget()!=null)
