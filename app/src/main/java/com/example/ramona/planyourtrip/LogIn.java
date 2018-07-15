@@ -1,10 +1,12 @@
 package com.example.ramona.planyourtrip;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -196,6 +198,16 @@ public class LogIn extends AppCompatActivity{
     }
 
     public void login(View view){
+        final ProgressDialog dialog = ProgressDialog.show(this, "Loading data...", "Loading data...",
+                true);
+        dialog.show();
+        //preia din baza orase
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 10000);
         String emailU = email.getText().toString();
         String parolaU = parola.getText().toString();
         Encrypt encryptor = new Encrypt();

@@ -56,6 +56,7 @@ public class Flight extends AppCompatActivity {
     List<Locatii> listaocatii = new ArrayList<>();
     String[] items;
     Integer indexOrasDestinatie=1;
+    Integer indexOrasPlecare = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +76,7 @@ public class Flight extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
 
         dropdown.setAdapter(adapter);
+        dropdown.setSelection(indexOrasPlecare);
         dropdown2.setAdapter(adapter);
         dropdown2.setSelection(indexOrasDestinatie);
 
@@ -107,8 +109,13 @@ public class Flight extends AppCompatActivity {
         for(int i =0;i<listaocatii.size();i++){
             int oras = resources.getIdentifier(listaocatii.get(i).getNume()+"AER", "string", context.getPackageName());
             items[i] = resources.getText(oras).toString();
+
+            int orasPlecare = resources.getIdentifier("Bucharest", "string", context.getPackageName());
+            String orasP = resources.getText(orasPlecare).toString();
             if(items[i].contains(orasDestinatieFlight))
                 indexOrasDestinatie=i;
+            if(items[i].contains(orasP))
+                indexOrasPlecare = i;
         }
 
     }
