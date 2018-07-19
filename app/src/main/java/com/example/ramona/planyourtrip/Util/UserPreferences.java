@@ -4,7 +4,7 @@ package com.example.ramona.planyourtrip.Util;
  * Created by Ramona on 4/1/2018.
  */
 
-public class UserPreferences {
+public class UserPreferences implements Cloneable {
     private Integer id;
     private String statusRelatie;
     private String areCopii;
@@ -29,6 +29,10 @@ public class UserPreferences {
         this.oraseVizitate = oraseVizitate;
     }
 
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 
     public Integer getBugetOferte() {
         return bugetOferte;

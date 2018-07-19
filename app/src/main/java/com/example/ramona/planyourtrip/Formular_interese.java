@@ -33,6 +33,10 @@ import com.google.android.gms.common.util.NumberUtils;
 import com.john.waveview.WaveView;
 import com.taishi.flipprogressdialog.FlipProgressDialog;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -199,7 +203,10 @@ public class Formular_interese extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if (position!=0){
                     waveViewProgress("spinnerBuget");
-                    userPreferences.setBuget(position);}
+                    userPreferences.setBuget(position);
+                    Integer buget = Integer.parseInt(listaBuget.get(position).replace("$",""));
+                    userPreferences.setBugetOferte(buget);
+                }
                 else
                     waveViewProgress("0");
             }
@@ -330,7 +337,11 @@ public class Formular_interese extends AppCompatActivity{
             locatiiList = db.getLocation();
 
         if(operatie.equals("update")) {
-            userPreferences = userPreferencesForHome;
+            try {
+                userPreferences = (UserPreferences) userPreferencesForHome.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
             if(userPreferences==null)
                 userPreferences = db.getUserPref(idUtilizator);
             checkedItems = new boolean[locatiiList.size()];
@@ -376,6 +387,15 @@ public class Formular_interese extends AppCompatActivity{
             if(NumberUtils.isNumeric(selectedCategoria2[i]))
                 spinnerCategorii2.setSelection(Integer.parseInt(selectedCategoria2[i].toString()));
             else{
+                List<String> listaOrase2 = new ArrayList<>();
+                for(String lo :listaOrase){
+                    listaOrase2.add(lo);
+                }
+                ArrayAdapter<String> adapter2 =
+                        new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, listaOrase2);
+                adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+                spinnerCategorii2.setAdapter(adapter2);
+                spinnerCategorii2.setVisibility(VISIBLE);
                 int j=0;
                 for(Categorii c : listaCategorii){
                     if(c.getNumeCategorie().equals(selectedCategoria2[i]))
@@ -553,10 +573,38 @@ public class Formular_interese extends AppCompatActivity{
 
         if(operatie.equals("insert"))
             db.insertUserPref(userPreferences,idUtilizator);
-        else
+        else{
+            try {
+                userPreferencesForHome = (UserPreferences) userPreferences.clone();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
             db.updateUserPref(userPreferences);
+        }
+
 
         Intent explore= new Intent(this, Home.class);
         startActivity(explore);
+    }
+
+
+    public Object deepCopy(Object input) {
+
+        Object output = null;
+        try {
+            // Writes the object
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(input);
+
+            // Reads the object
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+            ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+            output = objectInputStream.readObject();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return output;
     }
 }

@@ -152,7 +152,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.clear();
             for (int i = 0; i < arrlatlng.size(); i++) {
                 pname = new LatLng(arrlatlng.get(i).getLat(), arrlatlng.get(i).getLng());
-                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                 marker = mMap.addMarker(new MarkerOptions().position(pname).title(arrlatlng.get(i).getName()).snippet(arrlatlng.get(i).getVicinity()));
                 marker.showInfoWindow(); //always show information
                 CameraPosition cameraPosition = new CameraPosition.Builder()

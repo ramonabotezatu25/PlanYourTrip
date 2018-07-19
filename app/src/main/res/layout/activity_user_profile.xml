@@ -49,6 +49,7 @@
                         android:tint="@color/colorWhite"
                         />
                     <TextView
+                        android:id="@+id/tvUPLanguage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="8dp"
@@ -80,6 +81,7 @@
                         android:tint="@color/colorWhite"
                         />
                     <TextView
+                        android:id="@+id/tvUPPlaces"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="8dp"
@@ -111,6 +113,7 @@
                         android:tint="@color/colorWhite"
                         />
                     <TextView
+                        android:id="@+id/tvUPFindPlaces"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="8dp"
@@ -152,6 +155,7 @@
                         android:tint="@color/colorWhite"
                         />
                     <TextView
+                        android:id="@+id/tvUPSecurity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="8dp"
@@ -184,6 +188,7 @@
                         android:tint="@color/colorWhite"
                         />
                     <TextView
+                        android:id="@+id/tvUPSettings"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="8dp"
@@ -215,6 +220,7 @@
                         android:tint="@color/colorWhite"
                         />
                     <TextView
+                        android:id="@+id/tvUPLuggage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="8dp"

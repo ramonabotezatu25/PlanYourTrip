@@ -162,7 +162,6 @@ public class CardFragment extends Fragment {
     }
 
     public void getWhether(View view){
-        //iau informatiile din fosta activitate
         weatherFont = Typeface.createFromAsset(assetManager, "font/font/weathericons-regular-webfont.ttf");
 
         cityField = (TextView) view.findViewById(R.id.explore_city_field);

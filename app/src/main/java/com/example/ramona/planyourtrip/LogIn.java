@@ -221,7 +221,7 @@ public class LogIn extends AppCompatActivity{
             editor.putString(Constants.PAROLA_NAME, parolaU);
             editor.commit();
             UserPreferences userPref = db.getUserPref(idUtilizator);
-            if(userPref!=null){
+            if(userPref.getId()!=null){
                 Intent explore= new Intent(this, Home.class);
                 userPreferencesForHome = userPref;
                 startActivity(explore);

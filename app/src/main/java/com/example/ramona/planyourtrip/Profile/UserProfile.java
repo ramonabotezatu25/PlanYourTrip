@@ -58,6 +58,14 @@ public class UserProfile extends AppCompatActivity {
     //bottom nav
     private TextView mTextMessage;
 
+    TextView tvUPFindPlaces;
+    TextView tvUPLanguage;
+    TextView tvUPPlaces;
+    TextView tvUPSecurity;
+    TextView tvUPSettings;
+    TextView tvUPLuggage;
+
+
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +112,18 @@ public class UserProfile extends AppCompatActivity {
         context = getApplicationContext();
         context = MultiLanguageHelper.setLocale(context, (String) Paper.book().read("language"));
         resources = context.getResources();
+         tvUPFindPlaces=(TextView)findViewById(R.id.tvUPFindPlaces);
+         tvUPFindPlaces.setText(resources.getString(R.string.findPlaces));
+         tvUPLanguage=(TextView)findViewById(R.id.tvUPLanguage);
+         tvUPLanguage.setText(resources.getString(R.string.language));
+         tvUPPlaces=(TextView)findViewById(R.id.tvUPPlaces);
+         tvUPPlaces.setText(resources.getString(R.string.myPlaces));
+         tvUPSecurity=(TextView)findViewById(R.id.tvUPSecurity);
+         tvUPSecurity.setText(resources.getString(R.string.userSecurity));
+         tvUPSettings=(TextView)findViewById(R.id.tvUPSettings);
+         tvUPSettings.setText(resources.getString(R.string.recomandariBuget));
+         tvUPLuggage=(TextView)findViewById(R.id.tvUPLuggage);
+         tvUPLuggage.setText(resources.getString(R.string.bagaje));
     }
 
     public void changeLanguage(View view) {

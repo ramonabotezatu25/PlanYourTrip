@@ -197,7 +197,7 @@ public class Flight extends AppCompatActivity {
 
     public void searchHotel(View view){
         linkHotelArrCity = dropdown2.getSelectedItem().toString();
-        linkHotel = linkHotel+linkHotelArrCity;
+        linkHotel = linkHotel+linkHotelArrCity.substring(0,linkHotelArrCity.indexOf("(")).replace(" ","-").toLowerCase();
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkHotel));
         startActivity(browserIntent);
     }
